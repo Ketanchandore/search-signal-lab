@@ -9,38 +9,114 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LearnRouteImport } from './routes/learn'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsSchemaGeneratorRouteImport } from './routes/tools.schema-generator'
+import { Route as ToolsGeoTrackerRouteImport } from './routes/tools.geo-tracker'
+import { Route as ToolsContentCheckerRouteImport } from './routes/tools.content-checker'
+import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
 
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsSchemaGeneratorRoute = ToolsSchemaGeneratorRouteImport.update({
+  id: '/tools/schema-generator',
+  path: '/tools/schema-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsGeoTrackerRoute = ToolsGeoTrackerRouteImport.update({
+  id: '/tools/geo-tracker',
+  path: '/tools/geo-tracker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsContentCheckerRoute = ToolsContentCheckerRouteImport.update({
+  id: '/tools/content-checker',
+  path: '/tools/content-checker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
+  id: '/tools/ai-citation-audit',
+  path: '/tools/ai-citation-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/learn': typeof LearnRoute
+  '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/content-checker': typeof ToolsContentCheckerRoute
+  '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
+  '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/learn': typeof LearnRoute
+  '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/content-checker': typeof ToolsContentCheckerRoute
+  '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
+  '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/learn': typeof LearnRoute
+  '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/content-checker': typeof ToolsContentCheckerRoute
+  '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
+  '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/learn'
+    | '/tools/ai-citation-audit'
+    | '/tools/content-checker'
+    | '/tools/geo-tracker'
+    | '/tools/schema-generator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/learn'
+    | '/tools/ai-citation-audit'
+    | '/tools/content-checker'
+    | '/tools/geo-tracker'
+    | '/tools/schema-generator'
+  id:
+    | '__root__'
+    | '/'
+    | '/learn'
+    | '/tools/ai-citation-audit'
+    | '/tools/content-checker'
+    | '/tools/geo-tracker'
+    | '/tools/schema-generator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LearnRoute: typeof LearnRoute
+  ToolsAiCitationAuditRoute: typeof ToolsAiCitationAuditRoute
+  ToolsContentCheckerRoute: typeof ToolsContentCheckerRoute
+  ToolsGeoTrackerRoute: typeof ToolsGeoTrackerRoute
+  ToolsSchemaGeneratorRoute: typeof ToolsSchemaGeneratorRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +124,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/schema-generator': {
+      id: '/tools/schema-generator'
+      path: '/tools/schema-generator'
+      fullPath: '/tools/schema-generator'
+      preLoaderRoute: typeof ToolsSchemaGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/geo-tracker': {
+      id: '/tools/geo-tracker'
+      path: '/tools/geo-tracker'
+      fullPath: '/tools/geo-tracker'
+      preLoaderRoute: typeof ToolsGeoTrackerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/content-checker': {
+      id: '/tools/content-checker'
+      path: '/tools/content-checker'
+      fullPath: '/tools/content-checker'
+      preLoaderRoute: typeof ToolsContentCheckerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/ai-citation-audit': {
+      id: '/tools/ai-citation-audit'
+      path: '/tools/ai-citation-audit'
+      fullPath: '/tools/ai-citation-audit'
+      preLoaderRoute: typeof ToolsAiCitationAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LearnRoute: LearnRoute,
+  ToolsAiCitationAuditRoute: ToolsAiCitationAuditRoute,
+  ToolsContentCheckerRoute: ToolsContentCheckerRoute,
+  ToolsGeoTrackerRoute: ToolsGeoTrackerRoute,
+  ToolsSchemaGeneratorRoute: ToolsSchemaGeneratorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
