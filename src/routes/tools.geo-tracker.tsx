@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
-import { useState } from "react";
-import { Download } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Download, Search } from "lucide-react";
+import { Card3D, ToolHeader } from "@/components/Card3D";
+import { useDebounced } from "@/hooks/use-debounced";
+
 
 export const Route = createFileRoute("/tools/geo-tracker")({
   head: () => ({
@@ -51,7 +54,17 @@ const engineColor = (e: Row["engine"]) =>
 
 function TrackerTool() {
   const [filter, setFilter] = useState("All");
-  const rows = filter === "All" ? ROWS : ROWS.filter((r) => r.category === filter);
+  const [q, setQ] = useState("");
+  const dq = useDebounced(q, 200);
+
+  const rows = useMemo(() => {
+    const ql = dq.trim().toLowerCase();
+    return ROWS.filter((r) => {
+      if (filter !== "All" && r.category !== filter) return false;
+      if (!ql) return true;
+      return r.intent.toLowerCase().includes(ql) || r.domain.toLowerCase().includes(ql) || r.strategy.toLowerCase().includes(ql);
+    });
+  }, [filter, dq]);
 
   const downloadCsv = () => {
     const header = ["Intent", "Domain", "Engine", "Type", "Strategy", "Category"];
@@ -66,18 +79,25 @@ function TrackerTool() {
   return (
     <PageContainer>
       <AffiliateBar />
-      <div className="flex items-center gap-3 mb-2">
-        <h1 className="font-display text-3xl sm:text-4xl font-bold">GEO Market Intelligence</h1>
-        <span className="text-[10px] px-2 py-1 rounded bg-primary text-primary-foreground font-semibold">LIVE DATA · Updated Weekly</span>
-      </div>
-      <p className="text-muted-foreground mb-6">Track which websites Google AI Overviews, ChatGPT Search, and Perplexity are citing most across major industries.</p>
+      <ToolHeader title="GEO Market Intelligence" badge="LIVE DATA · Updated Weekly" desc="Search and filter 20+ live citation patterns across Tech, Finance, Health, and SaaS. Results update as you type." />
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {FILTERS.map((f) => (
-          <button key={f} onClick={() => setFilter(f)} className={`px-4 py-1.5 rounded-md text-sm border ${filter === f ? "border-primary text-primary bg-primary/10" : "border-border text-muted-foreground hover:text-foreground"}`}>
-            {f}
-          </button>
-        ))}
+      <div className="flex flex-col sm:flex-row gap-3 mb-4">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search intent, domain, or strategy…"
+            className="w-full pl-9 pr-3 py-2.5 rounded-md bg-surface border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
+          />
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {FILTERS.map((f) => (
+            <button key={f} onClick={() => setFilter(f)} className={`px-4 py-1.5 rounded-md text-sm border transition ${filter === f ? "border-primary text-white grad-primary" : "border-border text-muted-foreground hover:text-foreground hover:border-primary/40"}`}>
+              {f}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="rounded-xl border border-border bg-surface overflow-hidden">
