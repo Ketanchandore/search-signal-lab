@@ -274,7 +274,7 @@ function Home() {
                 "We went from <span className="text-primary">0 to 47 ChatGPT citations</span> in 30 days using nothing but the free tools on SEOAcademys. This is the GEO playbook every brand needs."
               </p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="size-12 rounded-full bg-gradient-to-br from-primary to-emerald-400 flex items-center justify-center font-display font-bold text-background">P</div>
+                <div className="size-12 rounded-full grad-primary flex items-center justify-center font-display font-bold text-white">P</div>
                 <div>
                   <div className="font-semibold">Priya Sharma</div>
                   <div className="text-sm text-muted-foreground">Head of SEO · D2C Brand · 12M MAU</div>

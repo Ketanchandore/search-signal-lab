@@ -40,7 +40,7 @@ export function Hero3D() {
           animate={{ scale: [1, 1.06, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
-          <BrainCircuit className="size-14 sm:size-16 text-background" strokeWidth={1.5} />
+          <BrainCircuit className="size-14 sm:size-16 text-white" strokeWidth={1.5} />
           <motion.div
             className="absolute inset-0 rounded-full border-2 border-primary/40"
             animate={{ scale: [1, 1.4, 1.8], opacity: [0.6, 0.2, 0] }}
