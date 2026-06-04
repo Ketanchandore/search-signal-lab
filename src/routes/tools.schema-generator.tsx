@@ -150,7 +150,7 @@ Allow: /
           </button>
         </div>
 
-        <div className="rounded-xl border border-border bg-[#08110d] p-1 flex flex-col">
+        <div className="rounded-xl border border-border bg-surface-2 shadow-[var(--shadow-3d)] p-1 flex flex-col">
           <div className="flex border-b border-border">
             {(["json", "txt"] as const).map((t) => (
               <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 text-xs font-mono ${tab === t ? "text-primary border-b-2 border-primary" : "text-muted-foreground"}`}>

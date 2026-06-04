@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
+import { Card3D, ToolHeader } from "@/components/Card3D";
 import { useMemo, useState } from "react";
+import { useDebounced } from "@/hooks/use-debounced";
+
 
 export const Route = createFileRoute("/tools/content-checker")({
   head: () => ({
@@ -49,40 +52,37 @@ function classify(sentence: string): "fact" | "filler" | "weak" | "neutral" {
 
 function ContentCheckerTool() {
   const [text, setText] = useState("");
-  const [analyzed, setAnalyzed] = useState(false);
-
-  const result = useMemo(() => (analyzed ? analyze(text) : null), [text, analyzed]);
+  const debounced = useDebounced(text, 250);
 
   const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const ready = debounced.trim().split(/\s+/).filter(Boolean).length >= 10;
+  const result = useMemo(() => (ready ? analyze(debounced) : null), [debounced, ready]);
 
   return (
     <PageContainer>
       <AffiliateBar />
-      <div className="flex items-center gap-3 mb-2">
-        <h1 className="font-display text-3xl sm:text-4xl font-bold">LLM Content Readiness Checker</h1>
-        <span className="text-[10px] px-2 py-1 rounded bg-primary text-primary-foreground font-semibold">FREE</span>
-      </div>
-      <p className="text-muted-foreground mb-8">Paste your article. See exactly why AI engines skip it — and how to fix it.</p>
+      <ToolHeader
+        title="LLM Content Readiness Checker"
+        badge="LIVE · AS YOU TYPE"
+        desc="Paste your article — analysis runs live with every keystroke. See exactly why AI engines skip it."
+      />
 
-      <div className="rounded-xl border border-border bg-surface p-4">
+      <Card3D tilt={false} className="p-4">
         <textarea
           value={text}
-          onChange={(e) => { setText(e.target.value); setAnalyzed(false); }}
+          onChange={(e) => setText(e.target.value)}
           rows={10}
-          placeholder="Paste your article, blog post, or landing page copy here (minimum 200 words)..."
-          className="w-full bg-background border border-border rounded-md p-3 text-sm font-mono outline-none focus:border-primary resize-y"
+          placeholder="Paste your article, blog post, or landing page copy here (minimum ~10 words to start)..."
+          className="w-full bg-background border border-border rounded-md p-3 text-sm font-mono outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition resize-y"
         />
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-          <div className="text-xs text-muted-foreground">{words} words · {text.length} characters</div>
-          <button
-            onClick={() => setAnalyzed(true)}
-            disabled={words < 10}
-            className="px-5 py-2.5 rounded-md bg-primary text-primary-foreground font-medium disabled:opacity-50"
-          >
-            Analyze for AI Readiness
-          </button>
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+          <span>{words} words · {text.length} characters</span>
+          <span className="inline-flex items-center gap-2">
+            <span className={`size-2 rounded-full ${ready ? "bg-success" : "bg-muted-foreground/40"}`} />
+            {ready ? "Live analysis updating" : "Type at least 10 words to start"}
+          </span>
         </div>
-      </div>
+      </Card3D>
 
       {result && (
         <>
