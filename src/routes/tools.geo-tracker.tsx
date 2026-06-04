@@ -48,9 +48,10 @@ const ROWS: Row[] = [
 const FILTERS = ["All", "Tech", "Finance", "Health", "E-Commerce", "SaaS"];
 
 const engineColor = (e: Row["engine"]) =>
-  e === "Google AI Overviews" ? "bg-blue-500/15 text-blue-400 border-blue-500/30" :
-  e === "ChatGPT Search" ? "bg-primary/15 text-primary border-primary/30" :
-  "bg-purple-500/15 text-purple-400 border-purple-500/30";
+  e === "Google AI Overviews" ? "bg-blue-500/10 text-blue-600 border-blue-500/30" :
+  e === "ChatGPT Search" ? "bg-primary/10 text-primary border-primary/30" :
+  "bg-purple-500/10 text-purple-600 border-purple-500/30";
+
 
 function TrackerTool() {
   const [filter, setFilter] = useState("All");
