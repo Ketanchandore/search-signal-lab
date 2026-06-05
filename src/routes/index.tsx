@@ -159,6 +159,9 @@ function Home() {
           </div>
         </section>
 
+        <LiveTicker />
+
+
         {/* LOGOS MARQUEE */}
         <section className="py-10 border-y border-border overflow-hidden">
           <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
