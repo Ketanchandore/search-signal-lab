@@ -9,13 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsSerpPreviewRouteImport } from './routes/tools.serp-preview'
 import { Route as ToolsSchemaGeneratorRouteImport } from './routes/tools.schema-generator'
+import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
+import { Route as ToolsMetaGeneratorRouteImport } from './routes/tools.meta-generator'
+import { Route as ToolsKeywordResearchRouteImport } from './routes/tools.keyword-research'
 import { Route as ToolsGeoTrackerRouteImport } from './routes/tools.geo-tracker'
 import { Route as ToolsContentCheckerRouteImport } from './routes/tools.content-checker'
+import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
 import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
 
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LearnRoute = LearnRouteImport.update({
   id: '/learn',
   path: '/learn',
@@ -26,90 +38,164 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSerpPreviewRoute = ToolsSerpPreviewRouteImport.update({
+  id: '/serp-preview',
+  path: '/serp-preview',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsSchemaGeneratorRoute = ToolsSchemaGeneratorRouteImport.update({
-  id: '/tools/schema-generator',
-  path: '/tools/schema-generator',
-  getParentRoute: () => rootRouteImport,
+  id: '/schema-generator',
+  path: '/schema-generator',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsRobotsTxtRoute = ToolsRobotsTxtRouteImport.update({
+  id: '/robots-txt',
+  path: '/robots-txt',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsMetaGeneratorRoute = ToolsMetaGeneratorRouteImport.update({
+  id: '/meta-generator',
+  path: '/meta-generator',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsKeywordResearchRoute = ToolsKeywordResearchRouteImport.update({
+  id: '/keyword-research',
+  path: '/keyword-research',
+  getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsGeoTrackerRoute = ToolsGeoTrackerRouteImport.update({
-  id: '/tools/geo-tracker',
-  path: '/tools/geo-tracker',
-  getParentRoute: () => rootRouteImport,
+  id: '/geo-tracker',
+  path: '/geo-tracker',
+  getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsContentCheckerRoute = ToolsContentCheckerRouteImport.update({
-  id: '/tools/content-checker',
-  path: '/tools/content-checker',
-  getParentRoute: () => rootRouteImport,
+  id: '/content-checker',
+  path: '/content-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsBacklinkCheckerRoute = ToolsBacklinkCheckerRouteImport.update({
+  id: '/backlink-checker',
+  path: '/backlink-checker',
+  getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
-  id: '/tools/ai-citation-audit',
-  path: '/tools/ai-citation-audit',
-  getParentRoute: () => rootRouteImport,
+  id: '/ai-citation-audit',
+  path: '/ai-citation-audit',
+  getParentRoute: () => ToolsRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/learn': typeof LearnRoute
+  '/tools': typeof ToolsRouteWithChildren
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/content-checker': typeof ToolsContentCheckerRoute
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
+  '/tools/keyword-research': typeof ToolsKeywordResearchRoute
+  '/tools/meta-generator': typeof ToolsMetaGeneratorRoute
+  '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/serp-preview': typeof ToolsSerpPreviewRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/learn': typeof LearnRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/content-checker': typeof ToolsContentCheckerRoute
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
+  '/tools/keyword-research': typeof ToolsKeywordResearchRoute
+  '/tools/meta-generator': typeof ToolsMetaGeneratorRoute
+  '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/serp-preview': typeof ToolsSerpPreviewRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/learn': typeof LearnRoute
+  '/tools': typeof ToolsRouteWithChildren
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/content-checker': typeof ToolsContentCheckerRoute
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
+  '/tools/keyword-research': typeof ToolsKeywordResearchRoute
+  '/tools/meta-generator': typeof ToolsMetaGeneratorRoute
+  '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/serp-preview': typeof ToolsSerpPreviewRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/learn'
+    | '/tools'
     | '/tools/ai-citation-audit'
+    | '/tools/backlink-checker'
     | '/tools/content-checker'
     | '/tools/geo-tracker'
+    | '/tools/keyword-research'
+    | '/tools/meta-generator'
+    | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/serp-preview'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/learn'
     | '/tools/ai-citation-audit'
+    | '/tools/backlink-checker'
     | '/tools/content-checker'
     | '/tools/geo-tracker'
+    | '/tools/keyword-research'
+    | '/tools/meta-generator'
+    | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/serp-preview'
+    | '/tools'
   id:
     | '__root__'
     | '/'
     | '/learn'
+    | '/tools'
     | '/tools/ai-citation-audit'
+    | '/tools/backlink-checker'
     | '/tools/content-checker'
     | '/tools/geo-tracker'
+    | '/tools/keyword-research'
+    | '/tools/meta-generator'
+    | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/serp-preview'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LearnRoute: typeof LearnRoute
-  ToolsAiCitationAuditRoute: typeof ToolsAiCitationAuditRoute
-  ToolsContentCheckerRoute: typeof ToolsContentCheckerRoute
-  ToolsGeoTrackerRoute: typeof ToolsGeoTrackerRoute
-  ToolsSchemaGeneratorRoute: typeof ToolsSchemaGeneratorRoute
+  ToolsRoute: typeof ToolsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/learn': {
       id: '/learn'
       path: '/learn'
@@ -124,44 +210,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/serp-preview': {
+      id: '/tools/serp-preview'
+      path: '/serp-preview'
+      fullPath: '/tools/serp-preview'
+      preLoaderRoute: typeof ToolsSerpPreviewRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/schema-generator': {
       id: '/tools/schema-generator'
-      path: '/tools/schema-generator'
+      path: '/schema-generator'
       fullPath: '/tools/schema-generator'
       preLoaderRoute: typeof ToolsSchemaGeneratorRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/robots-txt': {
+      id: '/tools/robots-txt'
+      path: '/robots-txt'
+      fullPath: '/tools/robots-txt'
+      preLoaderRoute: typeof ToolsRobotsTxtRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/meta-generator': {
+      id: '/tools/meta-generator'
+      path: '/meta-generator'
+      fullPath: '/tools/meta-generator'
+      preLoaderRoute: typeof ToolsMetaGeneratorRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/keyword-research': {
+      id: '/tools/keyword-research'
+      path: '/keyword-research'
+      fullPath: '/tools/keyword-research'
+      preLoaderRoute: typeof ToolsKeywordResearchRouteImport
+      parentRoute: typeof ToolsRoute
     }
     '/tools/geo-tracker': {
       id: '/tools/geo-tracker'
-      path: '/tools/geo-tracker'
+      path: '/geo-tracker'
       fullPath: '/tools/geo-tracker'
       preLoaderRoute: typeof ToolsGeoTrackerRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ToolsRoute
     }
     '/tools/content-checker': {
       id: '/tools/content-checker'
-      path: '/tools/content-checker'
+      path: '/content-checker'
       fullPath: '/tools/content-checker'
       preLoaderRoute: typeof ToolsContentCheckerRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/backlink-checker': {
+      id: '/tools/backlink-checker'
+      path: '/backlink-checker'
+      fullPath: '/tools/backlink-checker'
+      preLoaderRoute: typeof ToolsBacklinkCheckerRouteImport
+      parentRoute: typeof ToolsRoute
     }
     '/tools/ai-citation-audit': {
       id: '/tools/ai-citation-audit'
-      path: '/tools/ai-citation-audit'
+      path: '/ai-citation-audit'
       fullPath: '/tools/ai-citation-audit'
       preLoaderRoute: typeof ToolsAiCitationAuditRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ToolsRoute
     }
   }
 }
 
+interface ToolsRouteChildren {
+  ToolsAiCitationAuditRoute: typeof ToolsAiCitationAuditRoute
+  ToolsBacklinkCheckerRoute: typeof ToolsBacklinkCheckerRoute
+  ToolsContentCheckerRoute: typeof ToolsContentCheckerRoute
+  ToolsGeoTrackerRoute: typeof ToolsGeoTrackerRoute
+  ToolsKeywordResearchRoute: typeof ToolsKeywordResearchRoute
+  ToolsMetaGeneratorRoute: typeof ToolsMetaGeneratorRoute
+  ToolsRobotsTxtRoute: typeof ToolsRobotsTxtRoute
+  ToolsSchemaGeneratorRoute: typeof ToolsSchemaGeneratorRoute
+  ToolsSerpPreviewRoute: typeof ToolsSerpPreviewRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
+}
+
+const ToolsRouteChildren: ToolsRouteChildren = {
+  ToolsAiCitationAuditRoute: ToolsAiCitationAuditRoute,
+  ToolsBacklinkCheckerRoute: ToolsBacklinkCheckerRoute,
+  ToolsContentCheckerRoute: ToolsContentCheckerRoute,
+  ToolsGeoTrackerRoute: ToolsGeoTrackerRoute,
+  ToolsKeywordResearchRoute: ToolsKeywordResearchRoute,
+  ToolsMetaGeneratorRoute: ToolsMetaGeneratorRoute,
+  ToolsRobotsTxtRoute: ToolsRobotsTxtRoute,
+  ToolsSchemaGeneratorRoute: ToolsSchemaGeneratorRoute,
+  ToolsSerpPreviewRoute: ToolsSerpPreviewRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
+}
+
+const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LearnRoute: LearnRoute,
-  ToolsAiCitationAuditRoute: ToolsAiCitationAuditRoute,
-  ToolsContentCheckerRoute: ToolsContentCheckerRoute,
-  ToolsGeoTrackerRoute: ToolsGeoTrackerRoute,
-  ToolsSchemaGeneratorRoute: ToolsSchemaGeneratorRoute,
+  ToolsRoute: ToolsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
