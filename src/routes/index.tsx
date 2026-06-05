@@ -4,6 +4,7 @@ import { Hero3D } from "@/components/Hero3D";
 import { ArrowRight, Search, Code2, FileText, BarChart3, Database, FileCode, Star, Zap, ShieldCheck, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { LiveTicker, HowItWorks, FeatureShowcase, ComparisonTable, TestimonialsGrid, FAQSection, FinalCTA } from "@/components/HomeSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -158,6 +159,9 @@ function Home() {
           </div>
         </section>
 
+        <LiveTicker />
+
+
         {/* LOGOS MARQUEE */}
         <section className="py-10 border-y border-border overflow-hidden">
           <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
@@ -218,6 +222,9 @@ function Home() {
           </div>
         </section>
 
+        <HowItWorks />
+
+
         {/* TOOLS */}
         <section className="py-12">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
@@ -261,37 +268,13 @@ function Home() {
           </div>
         </section>
 
-        {/* TESTIMONIAL / CTA */}
-        <section className="py-16">
-          <div className="relative rounded-3xl border border-primary/30 bg-gradient-to-br from-surface via-surface to-primary/5 p-8 sm:p-12 overflow-hidden">
-            <div className="absolute top-0 right-0 size-64 rounded-full bg-primary/20 blur-3xl" />
-            <div className="absolute bottom-0 left-0 size-64 rounded-full bg-emerald-500/10 blur-3xl" />
-            <div className="relative max-w-3xl">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => <Star key={i} className="size-5 fill-warning text-warning" />)}
-              </div>
-              <p className="font-display text-2xl sm:text-3xl font-medium leading-relaxed">
-                "We went from <span className="text-primary">0 to 47 ChatGPT citations</span> in 30 days using nothing but the free tools on SEOAcademys. This is the GEO playbook every brand needs."
-              </p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="size-12 rounded-full grad-primary flex items-center justify-center font-display font-bold text-white">P</div>
-                <div>
-                  <div className="font-semibold">Priya Sharma</div>
-                  <div className="text-sm text-muted-foreground">Head of SEO · D2C Brand · 12M MAU</div>
-                </div>
-              </div>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link to="/tools/ai-citation-audit" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition">
-                  Start Free Audit <ArrowRight className="size-4" />
-                </Link>
-                <Link to="/learn" className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border hover:border-primary transition font-medium">
-                  Read the Playbook
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FeatureShowcase />
+        <ComparisonTable />
+        <TestimonialsGrid />
+        <FAQSection />
+        <FinalCTA />
       </PageContainer>
     </>
   );
 }
+
