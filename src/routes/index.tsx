@@ -4,6 +4,7 @@ import { Hero3D } from "@/components/Hero3D";
 import { ArrowRight, Search, Code2, FileText, BarChart3, Database, FileCode, Star, Zap, ShieldCheck, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { LiveTicker, HowItWorks, FeatureShowcase, ComparisonTable, TestimonialsGrid, FAQSection, FinalCTA } from "@/components/HomeSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
