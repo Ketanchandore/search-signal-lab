@@ -20,18 +20,23 @@ export function Layout() {
               onMouseEnter={() => setToolsOpen(true)}
               onMouseLeave={() => setToolsOpen(false)}
             >
-              <button className="px-3 py-2 hover:text-primary transition">Tools ▾</button>
+              <Link to="/tools" className="px-3 py-2 hover:text-primary transition">Tools ▾</Link>
               {toolsOpen && (
                 <div className="absolute top-full left-0 w-64 bg-surface border border-border rounded-md p-2 shadow-xl">
+                  <NavTool to="/tools" label="Dashboard" />
                   <NavTool to="/tools/ai-citation-audit" label="AI Citation Audit" />
-                  <NavTool to="/tools/schema-generator" label="Schema & llms.txt Generator" />
-                  <NavTool to="/tools/content-checker" label="Content Readiness Checker" />
-                  <NavTool to="/tools/geo-tracker" label="GEO Market Intelligence" />
+                  <NavTool to="/tools/keyword-research" label="Keyword Research" />
+                  <NavTool to="/tools/serp-preview" label="SERP Preview" />
+                  <NavTool to="/tools/schema-generator" label="Schema & llms.txt" />
+                  <NavTool to="/tools/meta-generator" label="Meta Tag Generator" />
+                  <NavTool to="/tools/robots-txt" label="Robots.txt Builder" />
+                  <NavTool to="/tools/content-checker" label="Content Readiness" />
+                  <NavTool to="/tools/geo-tracker" label="GEO Market Intel" />
+                  <NavTool to="/tools/backlink-checker" label="Backlink Checker" />
                 </div>
               )}
             </div>
             <Link to="/learn" className="px-3 py-2 hover:text-primary transition">Learn</Link>
-            <Link to="/tools/geo-tracker" className="px-3 py-2 hover:text-primary transition">GEO Tracker</Link>
           </nav>
           <a
             href="https://github.com"
