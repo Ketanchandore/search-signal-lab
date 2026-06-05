@@ -222,6 +222,9 @@ function Home() {
           </div>
         </section>
 
+        <HowItWorks />
+
+
         {/* TOOLS */}
         <section className="py-12">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
