@@ -75,7 +75,7 @@ function ToolsDashboard() {
           <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded grad-primary text-primary-foreground font-bold">All-in-one SEO + GEO suite</span>
           <h1 className="font-display text-3xl sm:text-4xl font-bold mt-3 tracking-tight">Welcome back — pick a tool to start</h1>
           <p className="text-muted-foreground mt-2 max-w-2xl">
-            9 production-grade tools. 100% free. No sign-up. Every result is computed live in your browser — no data leaves your device.
+            37 production-grade tools. 100% free. No sign-up. Every result is computed live from the real URL — no fake data, ever.
           </p>
         </div>
       </div>
