@@ -2,6 +2,8 @@ import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-r
 import {
   LayoutDashboard, Search, FileCode2, FileText, BarChart3, Globe2,
   Eye, Tag, Bot, Link2, ChevronLeft, ChevronRight, Sparkles, Wand2,
+  Gauge, Hash, Type, ListTree, ShieldCheck, ArrowRightLeft, ServerCog,
+  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -25,6 +27,60 @@ const NAV: NavGroup[] = [
     items: [{ to: "/tools", label: "Dashboard", icon: LayoutDashboard }],
   },
   {
+    label: "SEO Audit",
+    items: [
+      { to: "/tools/seo-audit", label: "Full SEO Audit", icon: Gauge, badge: "HOT" },
+      { to: "/tools/meta-tag-checker", label: "Meta Tag Checker", icon: Tag },
+      { to: "/tools/heading-checker", label: "Heading Structure", icon: ListTree },
+      { to: "/tools/og-checker", label: "Open Graph Checker", icon: Eye },
+      { to: "/tools/twitter-card-checker", label: "Twitter Card Checker", icon: Hash },
+      { to: "/tools/canonical-checker", label: "Canonical URL", icon: MoveRight },
+      { to: "/tools/robots-checker", label: "Robots.txt Checker", icon: Bot },
+      { to: "/tools/sitemap-checker", label: "Sitemap Checker", icon: Map },
+      { to: "/tools/mobile-checker", label: "Mobile-Friendly", icon: Smartphone },
+      { to: "/tools/ssl-checker", label: "SSL Checker", icon: ShieldCheck },
+    ],
+  },
+  {
+    label: "Website Analysis",
+    items: [
+      { to: "/tools/tech-detector", label: "Tech Detector", icon: Cpu },
+      { to: "/tools/redirect-checker", label: "Redirect Checker", icon: ArrowRightLeft },
+      { to: "/tools/http-headers", label: "HTTP Headers", icon: ServerCog },
+      { to: "/tools/page-size", label: "Page Size Analyzer", icon: Gauge },
+    ],
+  },
+  {
+    label: "Content SEO",
+    items: [
+      { to: "/tools/keyword-density", label: "Keyword Density", icon: Hash },
+      { to: "/tools/readability", label: "Readability", icon: BookOpen },
+      { to: "/tools/word-counter", label: "Word Counter", icon: Type },
+      { to: "/tools/link-analyzer", label: "Link Analyzer", icon: Link2 },
+      { to: "/tools/broken-links", label: "Broken Link Checker", icon: FileX2 },
+      { to: "/tools/image-seo", label: "Image SEO Checker", icon: ImageIcon },
+    ],
+  },
+  {
+    label: "Schema & Structured Data",
+    items: [
+      { to: "/tools/schema-validator", label: "Schema Validator", icon: Braces },
+      { to: "/tools/faq-schema", label: "FAQ Schema", icon: HelpCircle },
+      { to: "/tools/product-schema", label: "Product Schema", icon: Package },
+      { to: "/tools/article-schema", label: "Article Schema", icon: Newspaper },
+      { to: "/tools/breadcrumb-schema", label: "Breadcrumb Schema", icon: ListTree },
+      { to: "/tools/schema-generator", label: "Schema & llms.txt", icon: FileCode2 },
+    ],
+  },
+  {
+    label: "Performance",
+    items: [
+      { to: "/tools/html-minifier", label: "HTML Minifier", icon: Code },
+      { to: "/tools/css-minifier", label: "CSS Minifier", icon: Code },
+      { to: "/tools/js-minifier", label: "JS Minifier", icon: Code },
+    ],
+  },
+  {
     label: "AI Search & GEO",
     items: [
       { to: "/tools/ai-citation-audit", label: "AI Citation Audit", icon: Search, badge: "LIVE" },
@@ -33,19 +89,13 @@ const NAV: NavGroup[] = [
     ],
   },
   {
-    label: "Technical SEO",
-    items: [
-      { to: "/tools/schema-generator", label: "Schema & llms.txt", icon: FileCode2 },
-      { to: "/tools/meta-generator", label: "Meta Tag Generator", icon: Tag, badge: "NEW" },
-      { to: "/tools/robots-txt", label: "Robots.txt Builder", icon: Bot, badge: "NEW" },
-      { to: "/tools/serp-preview", label: "SERP Preview", icon: Eye, badge: "NEW" },
-    ],
-  },
-  {
     label: "Research",
     items: [
-      { to: "/tools/keyword-research", label: "Keyword Research", icon: Wand2, badge: "NEW" },
-      { to: "/tools/backlink-checker", label: "Backlink Checker", icon: Link2, badge: "NEW" },
+      { to: "/tools/keyword-research", label: "Keyword Research", icon: Wand2 },
+      { to: "/tools/serp-preview", label: "SERP Preview", icon: Eye },
+      { to: "/tools/meta-generator", label: "Meta Tag Generator", icon: Tag },
+      { to: "/tools/robots-txt", label: "Robots.txt Builder", icon: ScrollText },
+      { to: "/tools/backlink-checker", label: "Backlink Checker", icon: Link2 },
     ],
   },
 ];

@@ -26,6 +26,7 @@ import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
 import { Route as ToolsRobotsCheckerRouteImport } from './routes/tools.robots-checker'
 import { Route as ToolsRedirectCheckerRouteImport } from './routes/tools.redirect-checker'
 import { Route as ToolsReadabilityRouteImport } from './routes/tools.readability'
+import { Route as ToolsProductSchemaRouteImport } from './routes/tools.product-schema'
 import { Route as ToolsPageSizeRouteImport } from './routes/tools.page-size'
 import { Route as ToolsOgCheckerRouteImport } from './routes/tools.og-checker'
 import { Route as ToolsMobileCheckerRouteImport } from './routes/tools.mobile-checker'
@@ -34,14 +35,20 @@ import { Route as ToolsMetaGeneratorRouteImport } from './routes/tools.meta-gene
 import { Route as ToolsLinkAnalyzerRouteImport } from './routes/tools.link-analyzer'
 import { Route as ToolsKeywordResearchRouteImport } from './routes/tools.keyword-research'
 import { Route as ToolsKeywordDensityRouteImport } from './routes/tools.keyword-density'
+import { Route as ToolsJsMinifierRouteImport } from './routes/tools.js-minifier'
 import { Route as ToolsImageSeoRouteImport } from './routes/tools.image-seo'
 import { Route as ToolsHttpHeadersRouteImport } from './routes/tools.http-headers'
+import { Route as ToolsHtmlMinifierRouteImport } from './routes/tools.html-minifier'
 import { Route as ToolsHeadingCheckerRouteImport } from './routes/tools.heading-checker'
 import { Route as ToolsGeoTrackerRouteImport } from './routes/tools.geo-tracker'
+import { Route as ToolsFaqSchemaRouteImport } from './routes/tools.faq-schema'
+import { Route as ToolsCssMinifierRouteImport } from './routes/tools.css-minifier'
 import { Route as ToolsContentCheckerRouteImport } from './routes/tools.content-checker'
 import { Route as ToolsCanonicalCheckerRouteImport } from './routes/tools.canonical-checker'
 import { Route as ToolsBrokenLinksRouteImport } from './routes/tools.broken-links'
+import { Route as ToolsBreadcrumbSchemaRouteImport } from './routes/tools.breadcrumb-schema'
 import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
+import { Route as ToolsArticleSchemaRouteImport } from './routes/tools.article-schema'
 import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
 
 const ToolsRoute = ToolsRouteImport.update({
@@ -129,6 +136,11 @@ const ToolsReadabilityRoute = ToolsReadabilityRouteImport.update({
   path: '/readability',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsProductSchemaRoute = ToolsProductSchemaRouteImport.update({
+  id: '/product-schema',
+  path: '/product-schema',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsPageSizeRoute = ToolsPageSizeRouteImport.update({
   id: '/page-size',
   path: '/page-size',
@@ -169,6 +181,11 @@ const ToolsKeywordDensityRoute = ToolsKeywordDensityRouteImport.update({
   path: '/keyword-density',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsJsMinifierRoute = ToolsJsMinifierRouteImport.update({
+  id: '/js-minifier',
+  path: '/js-minifier',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsImageSeoRoute = ToolsImageSeoRouteImport.update({
   id: '/image-seo',
   path: '/image-seo',
@@ -179,6 +196,11 @@ const ToolsHttpHeadersRoute = ToolsHttpHeadersRouteImport.update({
   path: '/http-headers',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsHtmlMinifierRoute = ToolsHtmlMinifierRouteImport.update({
+  id: '/html-minifier',
+  path: '/html-minifier',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsHeadingCheckerRoute = ToolsHeadingCheckerRouteImport.update({
   id: '/heading-checker',
   path: '/heading-checker',
@@ -187,6 +209,16 @@ const ToolsHeadingCheckerRoute = ToolsHeadingCheckerRouteImport.update({
 const ToolsGeoTrackerRoute = ToolsGeoTrackerRouteImport.update({
   id: '/geo-tracker',
   path: '/geo-tracker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsFaqSchemaRoute = ToolsFaqSchemaRouteImport.update({
+  id: '/faq-schema',
+  path: '/faq-schema',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsCssMinifierRoute = ToolsCssMinifierRouteImport.update({
+  id: '/css-minifier',
+  path: '/css-minifier',
   getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsContentCheckerRoute = ToolsContentCheckerRouteImport.update({
@@ -204,9 +236,19 @@ const ToolsBrokenLinksRoute = ToolsBrokenLinksRouteImport.update({
   path: '/broken-links',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsBreadcrumbSchemaRoute = ToolsBreadcrumbSchemaRouteImport.update({
+  id: '/breadcrumb-schema',
+  path: '/breadcrumb-schema',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsBacklinkCheckerRoute = ToolsBacklinkCheckerRouteImport.update({
   id: '/backlink-checker',
   path: '/backlink-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsArticleSchemaRoute = ToolsArticleSchemaRouteImport.update({
+  id: '/article-schema',
+  path: '/article-schema',
   getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
@@ -220,14 +262,20 @@ export interface FileRoutesByFullPath {
   '/learn': typeof LearnRoute
   '/tools': typeof ToolsRouteWithChildren
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
+  '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
   '/tools/broken-links': typeof ToolsBrokenLinksRoute
   '/tools/canonical-checker': typeof ToolsCanonicalCheckerRoute
   '/tools/content-checker': typeof ToolsContentCheckerRoute
+  '/tools/css-minifier': typeof ToolsCssMinifierRoute
+  '/tools/faq-schema': typeof ToolsFaqSchemaRoute
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
   '/tools/heading-checker': typeof ToolsHeadingCheckerRoute
+  '/tools/html-minifier': typeof ToolsHtmlMinifierRoute
   '/tools/http-headers': typeof ToolsHttpHeadersRoute
   '/tools/image-seo': typeof ToolsImageSeoRoute
+  '/tools/js-minifier': typeof ToolsJsMinifierRoute
   '/tools/keyword-density': typeof ToolsKeywordDensityRoute
   '/tools/keyword-research': typeof ToolsKeywordResearchRoute
   '/tools/link-analyzer': typeof ToolsLinkAnalyzerRoute
@@ -236,6 +284,7 @@ export interface FileRoutesByFullPath {
   '/tools/mobile-checker': typeof ToolsMobileCheckerRoute
   '/tools/og-checker': typeof ToolsOgCheckerRoute
   '/tools/page-size': typeof ToolsPageSizeRoute
+  '/tools/product-schema': typeof ToolsProductSchemaRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -255,14 +304,20 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/learn': typeof LearnRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
+  '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
   '/tools/broken-links': typeof ToolsBrokenLinksRoute
   '/tools/canonical-checker': typeof ToolsCanonicalCheckerRoute
   '/tools/content-checker': typeof ToolsContentCheckerRoute
+  '/tools/css-minifier': typeof ToolsCssMinifierRoute
+  '/tools/faq-schema': typeof ToolsFaqSchemaRoute
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
   '/tools/heading-checker': typeof ToolsHeadingCheckerRoute
+  '/tools/html-minifier': typeof ToolsHtmlMinifierRoute
   '/tools/http-headers': typeof ToolsHttpHeadersRoute
   '/tools/image-seo': typeof ToolsImageSeoRoute
+  '/tools/js-minifier': typeof ToolsJsMinifierRoute
   '/tools/keyword-density': typeof ToolsKeywordDensityRoute
   '/tools/keyword-research': typeof ToolsKeywordResearchRoute
   '/tools/link-analyzer': typeof ToolsLinkAnalyzerRoute
@@ -271,6 +326,7 @@ export interface FileRoutesByTo {
   '/tools/mobile-checker': typeof ToolsMobileCheckerRoute
   '/tools/og-checker': typeof ToolsOgCheckerRoute
   '/tools/page-size': typeof ToolsPageSizeRoute
+  '/tools/product-schema': typeof ToolsProductSchemaRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -292,14 +348,20 @@ export interface FileRoutesById {
   '/learn': typeof LearnRoute
   '/tools': typeof ToolsRouteWithChildren
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
+  '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
   '/tools/broken-links': typeof ToolsBrokenLinksRoute
   '/tools/canonical-checker': typeof ToolsCanonicalCheckerRoute
   '/tools/content-checker': typeof ToolsContentCheckerRoute
+  '/tools/css-minifier': typeof ToolsCssMinifierRoute
+  '/tools/faq-schema': typeof ToolsFaqSchemaRoute
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
   '/tools/heading-checker': typeof ToolsHeadingCheckerRoute
+  '/tools/html-minifier': typeof ToolsHtmlMinifierRoute
   '/tools/http-headers': typeof ToolsHttpHeadersRoute
   '/tools/image-seo': typeof ToolsImageSeoRoute
+  '/tools/js-minifier': typeof ToolsJsMinifierRoute
   '/tools/keyword-density': typeof ToolsKeywordDensityRoute
   '/tools/keyword-research': typeof ToolsKeywordResearchRoute
   '/tools/link-analyzer': typeof ToolsLinkAnalyzerRoute
@@ -308,6 +370,7 @@ export interface FileRoutesById {
   '/tools/mobile-checker': typeof ToolsMobileCheckerRoute
   '/tools/og-checker': typeof ToolsOgCheckerRoute
   '/tools/page-size': typeof ToolsPageSizeRoute
+  '/tools/product-schema': typeof ToolsProductSchemaRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -330,14 +393,20 @@ export interface FileRouteTypes {
     | '/learn'
     | '/tools'
     | '/tools/ai-citation-audit'
+    | '/tools/article-schema'
     | '/tools/backlink-checker'
+    | '/tools/breadcrumb-schema'
     | '/tools/broken-links'
     | '/tools/canonical-checker'
     | '/tools/content-checker'
+    | '/tools/css-minifier'
+    | '/tools/faq-schema'
     | '/tools/geo-tracker'
     | '/tools/heading-checker'
+    | '/tools/html-minifier'
     | '/tools/http-headers'
     | '/tools/image-seo'
+    | '/tools/js-minifier'
     | '/tools/keyword-density'
     | '/tools/keyword-research'
     | '/tools/link-analyzer'
@@ -346,6 +415,7 @@ export interface FileRouteTypes {
     | '/tools/mobile-checker'
     | '/tools/og-checker'
     | '/tools/page-size'
+    | '/tools/product-schema'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -365,14 +435,20 @@ export interface FileRouteTypes {
     | '/'
     | '/learn'
     | '/tools/ai-citation-audit'
+    | '/tools/article-schema'
     | '/tools/backlink-checker'
+    | '/tools/breadcrumb-schema'
     | '/tools/broken-links'
     | '/tools/canonical-checker'
     | '/tools/content-checker'
+    | '/tools/css-minifier'
+    | '/tools/faq-schema'
     | '/tools/geo-tracker'
     | '/tools/heading-checker'
+    | '/tools/html-minifier'
     | '/tools/http-headers'
     | '/tools/image-seo'
+    | '/tools/js-minifier'
     | '/tools/keyword-density'
     | '/tools/keyword-research'
     | '/tools/link-analyzer'
@@ -381,6 +457,7 @@ export interface FileRouteTypes {
     | '/tools/mobile-checker'
     | '/tools/og-checker'
     | '/tools/page-size'
+    | '/tools/product-schema'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -401,14 +478,20 @@ export interface FileRouteTypes {
     | '/learn'
     | '/tools'
     | '/tools/ai-citation-audit'
+    | '/tools/article-schema'
     | '/tools/backlink-checker'
+    | '/tools/breadcrumb-schema'
     | '/tools/broken-links'
     | '/tools/canonical-checker'
     | '/tools/content-checker'
+    | '/tools/css-minifier'
+    | '/tools/faq-schema'
     | '/tools/geo-tracker'
     | '/tools/heading-checker'
+    | '/tools/html-minifier'
     | '/tools/http-headers'
     | '/tools/image-seo'
+    | '/tools/js-minifier'
     | '/tools/keyword-density'
     | '/tools/keyword-research'
     | '/tools/link-analyzer'
@@ -417,6 +500,7 @@ export interface FileRouteTypes {
     | '/tools/mobile-checker'
     | '/tools/og-checker'
     | '/tools/page-size'
+    | '/tools/product-schema'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -560,6 +644,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsReadabilityRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/product-schema': {
+      id: '/tools/product-schema'
+      path: '/product-schema'
+      fullPath: '/tools/product-schema'
+      preLoaderRoute: typeof ToolsProductSchemaRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/page-size': {
       id: '/tools/page-size'
       path: '/page-size'
@@ -616,6 +707,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsKeywordDensityRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/js-minifier': {
+      id: '/tools/js-minifier'
+      path: '/js-minifier'
+      fullPath: '/tools/js-minifier'
+      preLoaderRoute: typeof ToolsJsMinifierRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/image-seo': {
       id: '/tools/image-seo'
       path: '/image-seo'
@@ -630,6 +728,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsHttpHeadersRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/html-minifier': {
+      id: '/tools/html-minifier'
+      path: '/html-minifier'
+      fullPath: '/tools/html-minifier'
+      preLoaderRoute: typeof ToolsHtmlMinifierRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/heading-checker': {
       id: '/tools/heading-checker'
       path: '/heading-checker'
@@ -642,6 +747,20 @@ declare module '@tanstack/react-router' {
       path: '/geo-tracker'
       fullPath: '/tools/geo-tracker'
       preLoaderRoute: typeof ToolsGeoTrackerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/faq-schema': {
+      id: '/tools/faq-schema'
+      path: '/faq-schema'
+      fullPath: '/tools/faq-schema'
+      preLoaderRoute: typeof ToolsFaqSchemaRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/css-minifier': {
+      id: '/tools/css-minifier'
+      path: '/css-minifier'
+      fullPath: '/tools/css-minifier'
+      preLoaderRoute: typeof ToolsCssMinifierRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/content-checker': {
@@ -665,11 +784,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsBrokenLinksRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/breadcrumb-schema': {
+      id: '/tools/breadcrumb-schema'
+      path: '/breadcrumb-schema'
+      fullPath: '/tools/breadcrumb-schema'
+      preLoaderRoute: typeof ToolsBreadcrumbSchemaRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/backlink-checker': {
       id: '/tools/backlink-checker'
       path: '/backlink-checker'
       fullPath: '/tools/backlink-checker'
       preLoaderRoute: typeof ToolsBacklinkCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/article-schema': {
+      id: '/tools/article-schema'
+      path: '/article-schema'
+      fullPath: '/tools/article-schema'
+      preLoaderRoute: typeof ToolsArticleSchemaRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/ai-citation-audit': {
@@ -684,14 +817,20 @@ declare module '@tanstack/react-router' {
 
 interface ToolsRouteChildren {
   ToolsAiCitationAuditRoute: typeof ToolsAiCitationAuditRoute
+  ToolsArticleSchemaRoute: typeof ToolsArticleSchemaRoute
   ToolsBacklinkCheckerRoute: typeof ToolsBacklinkCheckerRoute
+  ToolsBreadcrumbSchemaRoute: typeof ToolsBreadcrumbSchemaRoute
   ToolsBrokenLinksRoute: typeof ToolsBrokenLinksRoute
   ToolsCanonicalCheckerRoute: typeof ToolsCanonicalCheckerRoute
   ToolsContentCheckerRoute: typeof ToolsContentCheckerRoute
+  ToolsCssMinifierRoute: typeof ToolsCssMinifierRoute
+  ToolsFaqSchemaRoute: typeof ToolsFaqSchemaRoute
   ToolsGeoTrackerRoute: typeof ToolsGeoTrackerRoute
   ToolsHeadingCheckerRoute: typeof ToolsHeadingCheckerRoute
+  ToolsHtmlMinifierRoute: typeof ToolsHtmlMinifierRoute
   ToolsHttpHeadersRoute: typeof ToolsHttpHeadersRoute
   ToolsImageSeoRoute: typeof ToolsImageSeoRoute
+  ToolsJsMinifierRoute: typeof ToolsJsMinifierRoute
   ToolsKeywordDensityRoute: typeof ToolsKeywordDensityRoute
   ToolsKeywordResearchRoute: typeof ToolsKeywordResearchRoute
   ToolsLinkAnalyzerRoute: typeof ToolsLinkAnalyzerRoute
@@ -700,6 +839,7 @@ interface ToolsRouteChildren {
   ToolsMobileCheckerRoute: typeof ToolsMobileCheckerRoute
   ToolsOgCheckerRoute: typeof ToolsOgCheckerRoute
   ToolsPageSizeRoute: typeof ToolsPageSizeRoute
+  ToolsProductSchemaRoute: typeof ToolsProductSchemaRoute
   ToolsReadabilityRoute: typeof ToolsReadabilityRoute
   ToolsRedirectCheckerRoute: typeof ToolsRedirectCheckerRoute
   ToolsRobotsCheckerRoute: typeof ToolsRobotsCheckerRoute
@@ -718,14 +858,20 @@ interface ToolsRouteChildren {
 
 const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsAiCitationAuditRoute: ToolsAiCitationAuditRoute,
+  ToolsArticleSchemaRoute: ToolsArticleSchemaRoute,
   ToolsBacklinkCheckerRoute: ToolsBacklinkCheckerRoute,
+  ToolsBreadcrumbSchemaRoute: ToolsBreadcrumbSchemaRoute,
   ToolsBrokenLinksRoute: ToolsBrokenLinksRoute,
   ToolsCanonicalCheckerRoute: ToolsCanonicalCheckerRoute,
   ToolsContentCheckerRoute: ToolsContentCheckerRoute,
+  ToolsCssMinifierRoute: ToolsCssMinifierRoute,
+  ToolsFaqSchemaRoute: ToolsFaqSchemaRoute,
   ToolsGeoTrackerRoute: ToolsGeoTrackerRoute,
   ToolsHeadingCheckerRoute: ToolsHeadingCheckerRoute,
+  ToolsHtmlMinifierRoute: ToolsHtmlMinifierRoute,
   ToolsHttpHeadersRoute: ToolsHttpHeadersRoute,
   ToolsImageSeoRoute: ToolsImageSeoRoute,
+  ToolsJsMinifierRoute: ToolsJsMinifierRoute,
   ToolsKeywordDensityRoute: ToolsKeywordDensityRoute,
   ToolsKeywordResearchRoute: ToolsKeywordResearchRoute,
   ToolsLinkAnalyzerRoute: ToolsLinkAnalyzerRoute,
@@ -734,6 +880,7 @@ const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsMobileCheckerRoute: ToolsMobileCheckerRoute,
   ToolsOgCheckerRoute: ToolsOgCheckerRoute,
   ToolsPageSizeRoute: ToolsPageSizeRoute,
+  ToolsProductSchemaRoute: ToolsProductSchemaRoute,
   ToolsReadabilityRoute: ToolsReadabilityRoute,
   ToolsRedirectCheckerRoute: ToolsRedirectCheckerRoute,
   ToolsRobotsCheckerRoute: ToolsRobotsCheckerRoute,
