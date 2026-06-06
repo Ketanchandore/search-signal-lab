@@ -26,6 +26,7 @@ import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
 import { Route as ToolsRobotsCheckerRouteImport } from './routes/tools.robots-checker'
 import { Route as ToolsRedirectCheckerRouteImport } from './routes/tools.redirect-checker'
 import { Route as ToolsReadabilityRouteImport } from './routes/tools.readability'
+import { Route as ToolsPageSizeRouteImport } from './routes/tools.page-size'
 import { Route as ToolsOgCheckerRouteImport } from './routes/tools.og-checker'
 import { Route as ToolsMobileCheckerRouteImport } from './routes/tools.mobile-checker'
 import { Route as ToolsMetaTagCheckerRouteImport } from './routes/tools.meta-tag-checker'
@@ -33,6 +34,7 @@ import { Route as ToolsMetaGeneratorRouteImport } from './routes/tools.meta-gene
 import { Route as ToolsLinkAnalyzerRouteImport } from './routes/tools.link-analyzer'
 import { Route as ToolsKeywordResearchRouteImport } from './routes/tools.keyword-research'
 import { Route as ToolsKeywordDensityRouteImport } from './routes/tools.keyword-density'
+import { Route as ToolsImageSeoRouteImport } from './routes/tools.image-seo'
 import { Route as ToolsHttpHeadersRouteImport } from './routes/tools.http-headers'
 import { Route as ToolsHeadingCheckerRouteImport } from './routes/tools.heading-checker'
 import { Route as ToolsGeoTrackerRouteImport } from './routes/tools.geo-tracker'
@@ -127,6 +129,11 @@ const ToolsReadabilityRoute = ToolsReadabilityRouteImport.update({
   path: '/readability',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsPageSizeRoute = ToolsPageSizeRouteImport.update({
+  id: '/page-size',
+  path: '/page-size',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsOgCheckerRoute = ToolsOgCheckerRouteImport.update({
   id: '/og-checker',
   path: '/og-checker',
@@ -160,6 +167,11 @@ const ToolsKeywordResearchRoute = ToolsKeywordResearchRouteImport.update({
 const ToolsKeywordDensityRoute = ToolsKeywordDensityRouteImport.update({
   id: '/keyword-density',
   path: '/keyword-density',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsImageSeoRoute = ToolsImageSeoRouteImport.update({
+  id: '/image-seo',
+  path: '/image-seo',
   getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsHttpHeadersRoute = ToolsHttpHeadersRouteImport.update({
@@ -215,6 +227,7 @@ export interface FileRoutesByFullPath {
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
   '/tools/heading-checker': typeof ToolsHeadingCheckerRoute
   '/tools/http-headers': typeof ToolsHttpHeadersRoute
+  '/tools/image-seo': typeof ToolsImageSeoRoute
   '/tools/keyword-density': typeof ToolsKeywordDensityRoute
   '/tools/keyword-research': typeof ToolsKeywordResearchRoute
   '/tools/link-analyzer': typeof ToolsLinkAnalyzerRoute
@@ -222,6 +235,7 @@ export interface FileRoutesByFullPath {
   '/tools/meta-tag-checker': typeof ToolsMetaTagCheckerRoute
   '/tools/mobile-checker': typeof ToolsMobileCheckerRoute
   '/tools/og-checker': typeof ToolsOgCheckerRoute
+  '/tools/page-size': typeof ToolsPageSizeRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -248,6 +262,7 @@ export interface FileRoutesByTo {
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
   '/tools/heading-checker': typeof ToolsHeadingCheckerRoute
   '/tools/http-headers': typeof ToolsHttpHeadersRoute
+  '/tools/image-seo': typeof ToolsImageSeoRoute
   '/tools/keyword-density': typeof ToolsKeywordDensityRoute
   '/tools/keyword-research': typeof ToolsKeywordResearchRoute
   '/tools/link-analyzer': typeof ToolsLinkAnalyzerRoute
@@ -255,6 +270,7 @@ export interface FileRoutesByTo {
   '/tools/meta-tag-checker': typeof ToolsMetaTagCheckerRoute
   '/tools/mobile-checker': typeof ToolsMobileCheckerRoute
   '/tools/og-checker': typeof ToolsOgCheckerRoute
+  '/tools/page-size': typeof ToolsPageSizeRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -283,6 +299,7 @@ export interface FileRoutesById {
   '/tools/geo-tracker': typeof ToolsGeoTrackerRoute
   '/tools/heading-checker': typeof ToolsHeadingCheckerRoute
   '/tools/http-headers': typeof ToolsHttpHeadersRoute
+  '/tools/image-seo': typeof ToolsImageSeoRoute
   '/tools/keyword-density': typeof ToolsKeywordDensityRoute
   '/tools/keyword-research': typeof ToolsKeywordResearchRoute
   '/tools/link-analyzer': typeof ToolsLinkAnalyzerRoute
@@ -290,6 +307,7 @@ export interface FileRoutesById {
   '/tools/meta-tag-checker': typeof ToolsMetaTagCheckerRoute
   '/tools/mobile-checker': typeof ToolsMobileCheckerRoute
   '/tools/og-checker': typeof ToolsOgCheckerRoute
+  '/tools/page-size': typeof ToolsPageSizeRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -319,6 +337,7 @@ export interface FileRouteTypes {
     | '/tools/geo-tracker'
     | '/tools/heading-checker'
     | '/tools/http-headers'
+    | '/tools/image-seo'
     | '/tools/keyword-density'
     | '/tools/keyword-research'
     | '/tools/link-analyzer'
@@ -326,6 +345,7 @@ export interface FileRouteTypes {
     | '/tools/meta-tag-checker'
     | '/tools/mobile-checker'
     | '/tools/og-checker'
+    | '/tools/page-size'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -352,6 +372,7 @@ export interface FileRouteTypes {
     | '/tools/geo-tracker'
     | '/tools/heading-checker'
     | '/tools/http-headers'
+    | '/tools/image-seo'
     | '/tools/keyword-density'
     | '/tools/keyword-research'
     | '/tools/link-analyzer'
@@ -359,6 +380,7 @@ export interface FileRouteTypes {
     | '/tools/meta-tag-checker'
     | '/tools/mobile-checker'
     | '/tools/og-checker'
+    | '/tools/page-size'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -386,6 +408,7 @@ export interface FileRouteTypes {
     | '/tools/geo-tracker'
     | '/tools/heading-checker'
     | '/tools/http-headers'
+    | '/tools/image-seo'
     | '/tools/keyword-density'
     | '/tools/keyword-research'
     | '/tools/link-analyzer'
@@ -393,6 +416,7 @@ export interface FileRouteTypes {
     | '/tools/meta-tag-checker'
     | '/tools/mobile-checker'
     | '/tools/og-checker'
+    | '/tools/page-size'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -536,6 +560,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsReadabilityRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/page-size': {
+      id: '/tools/page-size'
+      path: '/page-size'
+      fullPath: '/tools/page-size'
+      preLoaderRoute: typeof ToolsPageSizeRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/og-checker': {
       id: '/tools/og-checker'
       path: '/og-checker'
@@ -583,6 +614,13 @@ declare module '@tanstack/react-router' {
       path: '/keyword-density'
       fullPath: '/tools/keyword-density'
       preLoaderRoute: typeof ToolsKeywordDensityRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/image-seo': {
+      id: '/tools/image-seo'
+      path: '/image-seo'
+      fullPath: '/tools/image-seo'
+      preLoaderRoute: typeof ToolsImageSeoRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/http-headers': {
@@ -653,6 +691,7 @@ interface ToolsRouteChildren {
   ToolsGeoTrackerRoute: typeof ToolsGeoTrackerRoute
   ToolsHeadingCheckerRoute: typeof ToolsHeadingCheckerRoute
   ToolsHttpHeadersRoute: typeof ToolsHttpHeadersRoute
+  ToolsImageSeoRoute: typeof ToolsImageSeoRoute
   ToolsKeywordDensityRoute: typeof ToolsKeywordDensityRoute
   ToolsKeywordResearchRoute: typeof ToolsKeywordResearchRoute
   ToolsLinkAnalyzerRoute: typeof ToolsLinkAnalyzerRoute
@@ -660,6 +699,7 @@ interface ToolsRouteChildren {
   ToolsMetaTagCheckerRoute: typeof ToolsMetaTagCheckerRoute
   ToolsMobileCheckerRoute: typeof ToolsMobileCheckerRoute
   ToolsOgCheckerRoute: typeof ToolsOgCheckerRoute
+  ToolsPageSizeRoute: typeof ToolsPageSizeRoute
   ToolsReadabilityRoute: typeof ToolsReadabilityRoute
   ToolsRedirectCheckerRoute: typeof ToolsRedirectCheckerRoute
   ToolsRobotsCheckerRoute: typeof ToolsRobotsCheckerRoute
@@ -685,6 +725,7 @@ const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsGeoTrackerRoute: ToolsGeoTrackerRoute,
   ToolsHeadingCheckerRoute: ToolsHeadingCheckerRoute,
   ToolsHttpHeadersRoute: ToolsHttpHeadersRoute,
+  ToolsImageSeoRoute: ToolsImageSeoRoute,
   ToolsKeywordDensityRoute: ToolsKeywordDensityRoute,
   ToolsKeywordResearchRoute: ToolsKeywordResearchRoute,
   ToolsLinkAnalyzerRoute: ToolsLinkAnalyzerRoute,
@@ -692,6 +733,7 @@ const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsMetaTagCheckerRoute: ToolsMetaTagCheckerRoute,
   ToolsMobileCheckerRoute: ToolsMobileCheckerRoute,
   ToolsOgCheckerRoute: ToolsOgCheckerRoute,
+  ToolsPageSizeRoute: ToolsPageSizeRoute,
   ToolsReadabilityRoute: ToolsReadabilityRoute,
   ToolsRedirectCheckerRoute: ToolsRedirectCheckerRoute,
   ToolsRobotsCheckerRoute: ToolsRobotsCheckerRoute,

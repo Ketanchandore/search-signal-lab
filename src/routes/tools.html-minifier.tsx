@@ -49,4 +49,5 @@ function Page({ kind }: { kind: Kind }) {
   );
 }
 
-export const RouteHtml = createFileRoute("/tools/html-minifier")({ head: () => ({ meta: [{ title: "HTML Minifier — SEOAcademys" }] }), component: () => <Page kind="html" /> });
+export const Route = createFileRoute("/tools/html-minifier")({ head: () => ({ meta: [{ title: "HTML Minifier — SEOAcademys" }] }), component: () => <Page kind="html" /> });
+export { Page as MinifierPage, minify };
