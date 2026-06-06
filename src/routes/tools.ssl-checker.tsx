@@ -24,7 +24,8 @@ function Page() {
     try {
       const r = await fn({ data: { url: u } });
       const mixed = /["'](http:\/\/[^"']+)["']/i.test(r.html) && r.finalUrl.startsWith("https://");
-      setOut({ https: r.finalUrl.startsWith("https://"), hsts: r.headers["strict-transport-security"] || "", mixed, status: r.status, finalUrl: r.finalUrl });
+      const h = r.headers as Record<string, string>;
+      setOut({ https: r.finalUrl.startsWith("https://"), hsts: h["strict-transport-security"] || "", mixed, status: r.status, finalUrl: r.finalUrl });
     } finally { setLoading(false); }
   };
 
