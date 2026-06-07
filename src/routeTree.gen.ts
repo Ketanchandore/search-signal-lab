@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
@@ -54,6 +55,11 @@ import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-cita
 const ToolsRoute = ToolsRouteImport.update({
   id: '/tools',
   path: '/tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LearnRoute = LearnRouteImport.update({
@@ -260,6 +266,7 @@ const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/learn': typeof LearnRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tools': typeof ToolsRouteWithChildren
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
@@ -303,6 +310,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/learn': typeof LearnRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
@@ -346,6 +354,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/learn': typeof LearnRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tools': typeof ToolsRouteWithChildren
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
@@ -391,6 +400,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/learn'
+    | '/sitemap.xml'
     | '/tools'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
@@ -434,6 +444,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/learn'
+    | '/sitemap.xml'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
@@ -476,6 +487,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/learn'
+    | '/sitemap.xml'
     | '/tools'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
@@ -520,6 +532,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LearnRoute: typeof LearnRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ToolsRoute: typeof ToolsRouteWithChildren
 }
 
@@ -530,6 +543,13 @@ declare module '@tanstack/react-router' {
       path: '/tools'
       fullPath: '/tools'
       preLoaderRoute: typeof ToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/learn': {
@@ -902,6 +922,7 @@ const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LearnRoute: LearnRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ToolsRoute: ToolsRouteWithChildren,
 }
 export const routeTree = rootRouteImport

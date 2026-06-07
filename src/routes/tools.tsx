@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { ToolSeo } from "@/components/ToolSeo";
 
 export const Route = createFileRoute("/tools")({
   head: () => ({
@@ -256,7 +257,12 @@ function Crumb({ path }: { path: string }) {
 }
 
 export function ToolPanel({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={cn("px-4 md:px-8 py-6 max-w-[1400px] mx-auto", className)}>{children}</div>;
+  return (
+    <div className={cn("px-4 md:px-8 py-6 max-w-[1400px] mx-auto", className)}>
+      <ToolSeo />
+      {children}
+    </div>
+  );
 }
 
 export { Globe2 };

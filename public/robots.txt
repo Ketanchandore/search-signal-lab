@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /api/
+
+User-agent: GPTBot
+Allow: /
+Allow: /tools/
+Allow: /blog/
+Allow: /learn/
+Disallow: /dashboard
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /tools/
+Allow: /blog/
+Allow: /learn/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /tools/
+Allow: /blog/
+Allow: /learn/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /tools/
+Allow: /blog/
+Allow: /learn/
+
+Sitemap: https://seoacademys.com/sitemap.xml
