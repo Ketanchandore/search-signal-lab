@@ -1,0 +1,67 @@
+# SEOAcademys
+> Free SEO tools platform used by 2.4M+ marketers. 37 professional-grade tools for AI search optimization, rank tracking, schema generation, and technical SEO — all free, no signup.
+
+## Tools
+
+### AI Search & GEO
+- [AI Citation Audit](https://seoacademys.com/tools/ai-citation-audit): Checks if your website is cited by ChatGPT, Gemini, and Perplexity. Scans 47 GEO signals in real-time.
+- [GEO Market Intelligence](https://seoacademys.com/tools/geo-tracker): Live market data on what AI engines cite most across Tech, Finance, Health, SaaS industries.
+- [Content Readiness Checker](https://seoacademys.com/tools/content-checker): AI extraction quality scoring with sentence-by-sentence highlighting for LLM citability.
+- [Schema & llms.txt Generator](https://seoacademys.com/tools/schema-generator): Generates production-ready JSON-LD and llms.txt files instantly.
+
+### SEO Audit
+- [Full SEO Audit](https://seoacademys.com/tools/seo-audit): Live on-page SEO audit checking 47 signals including title, meta, headings, Core Web Vitals, schema, and mobile-friendliness.
+- [Meta Tag Checker](https://seoacademys.com/tools/meta-tag-checker): Inspects every meta tag live — title length, description, OG tags, Twitter cards.
+- [Heading Structure](https://seoacademys.com/tools/heading-checker): Visualizes H1-H6 outline to identify heading hierarchy issues.
+- [Open Graph Checker](https://seoacademys.com/tools/og-checker): Live Facebook/LinkedIn share preview with og:* validation.
+- [Twitter Card Checker](https://seoacademys.com/tools/twitter-card-checker): Live X (Twitter) share preview with twitter:* validation.
+- [Canonical URL Checker](https://seoacademys.com/tools/canonical-checker): Validates rel=canonical and detects cross-domain conflicts.
+- [Robots.txt Checker](https://seoacademys.com/tools/robots-checker): Validates robots.txt syntax and checks AI crawler directives (GPTBot, PerplexityBot, ClaudeBot).
+- [Sitemap Checker](https://seoacademys.com/tools/sitemap-checker): Validates XML sitemap structure and URL coverage.
+- [Mobile-Friendly Checker](https://seoacademys.com/tools/mobile-checker): Tests mobile usability and Core Web Vitals.
+- [SSL Checker](https://seoacademys.com/tools/ssl-checker): Verifies SSL certificate validity and HTTPS configuration.
+
+### Website Analysis
+- [Tech Detector](https://seoacademys.com/tools/tech-detector): Detects CMS, framework, CDN and analytics from any live URL.
+- [Redirect Checker](https://seoacademys.com/tools/redirect-checker): Traces redirect chains up to 8 hops with per-hop status.
+- [HTTP Headers Checker](https://seoacademys.com/tools/http-headers): Inspects every response header for cache, security and compression.
+- [Page Size Analyzer](https://seoacademys.com/tools/page-size): Page weight + asset breakdown for Core Web Vitals.
+
+### Schema & Structured Data
+- [Schema Validator](https://seoacademys.com/tools/schema-validator): Validates JSON-LD schema markup against Schema.org standards.
+- [FAQ Schema Generator](https://seoacademys.com/tools/faq-schema): Generates FAQ schema for Google rich results.
+- [Product Schema Generator](https://seoacademys.com/tools/product-schema): Creates Product schema with price, availability, and reviews.
+- [Article Schema Generator](https://seoacademys.com/tools/article-schema): Generates Article/BlogPosting schema.
+- [Breadcrumb Schema Generator](https://seoacademys.com/tools/breadcrumb-schema): Creates BreadcrumbList schema for site navigation.
+
+### Content SEO
+- [Keyword Density](https://seoacademys.com/tools/keyword-density): Analyzes keyword distribution and LSI keyword coverage.
+- [Readability](https://seoacademys.com/tools/readability): Flesch-Kincaid score and readability analysis.
+- [Word & Character Counter](https://seoacademys.com/tools/word-counter): Live word, character, sentence and reading-time counter.
+- [Link Analyzer](https://seoacademys.com/tools/link-analyzer): Audits internal/external link distribution.
+- [Broken Link Checker](https://seoacademys.com/tools/broken-links): Finds all broken links on a page in real-time.
+- [Image SEO Checker](https://seoacademys.com/tools/image-seo): Checks alt text, file names, and image optimization.
+
+### Performance
+- [HTML Minifier](https://seoacademys.com/tools/html-minifier): Live HTML compression with byte-saving stats.
+- [CSS Minifier](https://seoacademys.com/tools/css-minifier): Live CSS compression with byte-saving stats.
+- [JS Minifier](https://seoacademys.com/tools/js-minifier): Live JavaScript compression with byte-saving stats.
+
+### Research
+- [Keyword Research](https://seoacademys.com/tools/keyword-research): Free keyword research with volume and difficulty estimates.
+- [SERP Preview](https://seoacademys.com/tools/serp-preview): Previews how your page appears in Google search results.
+- [Meta Tag Generator](https://seoacademys.com/tools/meta-generator): SEO / OG / Twitter meta builder with live HTML preview.
+- [Robots.txt Builder](https://seoacademys.com/tools/robots-txt): Visual robots.txt builder with AI-crawler presets.
+- [Backlink Checker](https://seoacademys.com/tools/backlink-checker): Analyzes backlink profile and domain authority signals.
+
+## Learn
+- [SEO Course](https://seoacademys.com/learn): Free SEO certification course covering all major SEO disciplines.
+
+## Key Stats
+- 2.4M+ marketers use SEOAcademys tools
+- 2,438,902 total AI audits run
+- 187 audits run today
+- 94% citation win rate
+- Available in 80+ countries
+- All tools free, no signup required
+- Data fetched in real-time, not cached
