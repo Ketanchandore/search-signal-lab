@@ -6,18 +6,63 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { LiveTicker, HowItWorks, FeatureShowcase, ComparisonTable, TestimonialsGrid, FAQSection, FinalCTA } from "@/components/HomeSections";
 
+const HOME_TITLE = "Free SEO Tools — AI Audit, Rank Tracker, Schema Generator | SEOAcademys";
+const HOME_DESC = "37 free SEO tools used by 2.4M+ marketers. AI Citation Audit, Rank Tracker, Schema Generator, Site Audit — no signup. Rank #1 in Google & AI Search.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SEOAcademys — #1 Free GEO & AI Search Intelligence Hub" },
-      { name: "description", content: "Used by 2.4M+ marketers. Check if Google AI Overviews, ChatGPT Search & Perplexity cite your site. Free GEO tools, schema generator, llms.txt builder." },
-      { name: "keywords", content: "GEO, generative engine optimization, AI SEO, ChatGPT SEO, AI Overviews, Perplexity SEO, schema generator, llms.txt" },
-      { property: "og:title", content: "SEOAcademys — #1 Free GEO & AI Search Intelligence Hub" },
-      { property: "og:description", content: "2.4M+ scans run. Rank in ChatGPT, Google AI Overviews & Perplexity — for free." },
-      { property: "og:url", content: "/" },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESC },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "keywords", content: "free SEO tools, AI citation audit, GEO, generative engine optimization, ChatGPT SEO, AI Overviews, Perplexity SEO, schema generator, llms.txt, rank tracker" },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESC },
+      { property: "og:url", content: "https://seoacademys.com/" },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "SEOAcademys" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: HOME_TITLE },
+      { name: "twitter:description", content: HOME_DESC },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://seoacademys.com/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "SEOAcademys",
+          url: "https://seoacademys.com",
+          logo: "https://seoacademys.com/logo.png",
+          description: "Free SEO tools platform used by 2.4M+ marketers. Provides AI Citation Audit, Rank Tracker, Schema Generator, and 34 more free SEO tools.",
+          foundingDate: "2024",
+          numberOfEmployees: "1-10",
+          sameAs: [
+            "https://twitter.com/seoacademys",
+            "https://www.linkedin.com/company/seoacademys",
+            "https://www.producthunt.com/products/seoacademys",
+            "https://github.com/seoacademys",
+          ],
+          knowsAbout: ["SEO", "Generative Engine Optimization", "AI Search Optimization", "Schema Markup", "llms.txt", "Rank Tracking", "Technical SEO"],
+          hasOfferCatalog: { "@type": "OfferCatalog", name: "Free SEO Tools", numberOfItems: "37" },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "SEOAcademys",
+          url: "https://seoacademys.com",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://seoacademys.com/tools?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      },
+    ],
   }),
   component: Home,
 });
