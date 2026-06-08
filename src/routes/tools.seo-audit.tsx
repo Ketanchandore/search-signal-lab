@@ -7,7 +7,7 @@ import { Check, X } from "lucide-react";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/seo-audit")({
-  head: () => ({ meta: [{ title: "Free SEO Audit Tool — Real On-Page Analyzer | SEOAcademys" }, { name: "description", content: "Audit any URL: meta, headings, OG, schema, links, images, redirects, tech stack — all real, no signup." }] }),
+  head: () => ({ meta: [{ title: "Free SEO Audit Tool — 47-Point On-Page Check | SEOAcademys" }, { name: "description", content: "Run a live SEO audit in 2 seconds. Checks 47 signals: meta tags, headings, schema, Core Web Vitals, mobile. Free, no signup." }, { property: "og:title", content: "Free SEO Audit Tool — 47-Point On-Page Check" }, { property: "og:description", content: "Run a live SEO audit in 2 seconds. 47 signals checked. Free." }, { property: "og:url", content: "/tools/seo-audit" }], links: [{ rel: "canonical", href: "/tools/seo-audit" }] }),
   component: Page,
 });
 
