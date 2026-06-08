@@ -27,6 +27,7 @@ import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
 import { Route as ToolsRobotsCheckerRouteImport } from './routes/tools.robots-checker'
 import { Route as ToolsRedirectCheckerRouteImport } from './routes/tools.redirect-checker'
 import { Route as ToolsReadabilityRouteImport } from './routes/tools.readability'
+import { Route as ToolsRankTrackerRouteImport } from './routes/tools.rank-tracker'
 import { Route as ToolsProductSchemaRouteImport } from './routes/tools.product-schema'
 import { Route as ToolsPageSizeRouteImport } from './routes/tools.page-size'
 import { Route as ToolsOgCheckerRouteImport } from './routes/tools.og-checker'
@@ -140,6 +141,11 @@ const ToolsRedirectCheckerRoute = ToolsRedirectCheckerRouteImport.update({
 const ToolsReadabilityRoute = ToolsReadabilityRouteImport.update({
   id: '/readability',
   path: '/readability',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsRankTrackerRoute = ToolsRankTrackerRouteImport.update({
+  id: '/rank-tracker',
+  path: '/rank-tracker',
   getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsProductSchemaRoute = ToolsProductSchemaRouteImport.update({
@@ -292,6 +298,7 @@ export interface FileRoutesByFullPath {
   '/tools/og-checker': typeof ToolsOgCheckerRoute
   '/tools/page-size': typeof ToolsPageSizeRoute
   '/tools/product-schema': typeof ToolsProductSchemaRoute
+  '/tools/rank-tracker': typeof ToolsRankTrackerRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -335,6 +342,7 @@ export interface FileRoutesByTo {
   '/tools/og-checker': typeof ToolsOgCheckerRoute
   '/tools/page-size': typeof ToolsPageSizeRoute
   '/tools/product-schema': typeof ToolsProductSchemaRoute
+  '/tools/rank-tracker': typeof ToolsRankTrackerRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -380,6 +388,7 @@ export interface FileRoutesById {
   '/tools/og-checker': typeof ToolsOgCheckerRoute
   '/tools/page-size': typeof ToolsPageSizeRoute
   '/tools/product-schema': typeof ToolsProductSchemaRoute
+  '/tools/rank-tracker': typeof ToolsRankTrackerRoute
   '/tools/readability': typeof ToolsReadabilityRoute
   '/tools/redirect-checker': typeof ToolsRedirectCheckerRoute
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
@@ -426,6 +435,7 @@ export interface FileRouteTypes {
     | '/tools/og-checker'
     | '/tools/page-size'
     | '/tools/product-schema'
+    | '/tools/rank-tracker'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -469,6 +479,7 @@ export interface FileRouteTypes {
     | '/tools/og-checker'
     | '/tools/page-size'
     | '/tools/product-schema'
+    | '/tools/rank-tracker'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -513,6 +524,7 @@ export interface FileRouteTypes {
     | '/tools/og-checker'
     | '/tools/page-size'
     | '/tools/product-schema'
+    | '/tools/rank-tracker'
     | '/tools/readability'
     | '/tools/redirect-checker'
     | '/tools/robots-checker'
@@ -662,6 +674,13 @@ declare module '@tanstack/react-router' {
       path: '/readability'
       fullPath: '/tools/readability'
       preLoaderRoute: typeof ToolsReadabilityRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/rank-tracker': {
+      id: '/tools/rank-tracker'
+      path: '/rank-tracker'
+      fullPath: '/tools/rank-tracker'
+      preLoaderRoute: typeof ToolsRankTrackerRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/product-schema': {
@@ -860,6 +879,7 @@ interface ToolsRouteChildren {
   ToolsOgCheckerRoute: typeof ToolsOgCheckerRoute
   ToolsPageSizeRoute: typeof ToolsPageSizeRoute
   ToolsProductSchemaRoute: typeof ToolsProductSchemaRoute
+  ToolsRankTrackerRoute: typeof ToolsRankTrackerRoute
   ToolsReadabilityRoute: typeof ToolsReadabilityRoute
   ToolsRedirectCheckerRoute: typeof ToolsRedirectCheckerRoute
   ToolsRobotsCheckerRoute: typeof ToolsRobotsCheckerRoute
@@ -901,6 +921,7 @@ const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsOgCheckerRoute: ToolsOgCheckerRoute,
   ToolsPageSizeRoute: ToolsPageSizeRoute,
   ToolsProductSchemaRoute: ToolsProductSchemaRoute,
+  ToolsRankTrackerRoute: ToolsRankTrackerRoute,
   ToolsReadabilityRoute: ToolsReadabilityRoute,
   ToolsRedirectCheckerRoute: ToolsRedirectCheckerRoute,
   ToolsRobotsCheckerRoute: ToolsRobotsCheckerRoute,
