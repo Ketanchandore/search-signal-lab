@@ -8,8 +8,11 @@ import { ToolPanel } from "./tools";
 export const Route = createFileRoute("/tools/keyword-research")({
   head: () => ({
     meta: [
-      { title: "Free Keyword Research Tool — SEOAcademys" },
-      { name: "description", content: "Generate hundreds of long-tail keyword ideas with search intent classification. 100% free." },
+      { title: "Free Keyword Research Tool — Volume, KD & CPC Data | SEOAcademys" },
+      { name: "description", content: "Research keywords with search volume, keyword difficulty, and CPC data. Find low-competition keywords. 100% free." },
+      { property: "og:title", content: "Free Keyword Research Tool — Volume, KD & CPC Data" },
+      { property: "og:description", content: "Long-tail ideas with intent, volume, difficulty and CPC. Free." },
+      { property: "og:url", content: "/tools/keyword-research" },
     ],
     links: [{ rel: "canonical", href: "/tools/keyword-research" }],
   }),
