@@ -6,6 +6,14 @@ export type ToolMeta = {
   description: string;
   features: string[];
   faqs: { q: string; a: string }[];
+  /** Optional override H1 — falls back to `Free ${name} — …` */
+  h1?: string;
+  /** Optional comparison competitor name (defaults to Semrush) */
+  competitor?: string;
+  /** Optional list of related tool slugs to feature (defaults to auto-picked) */
+  related?: string[];
+  /** Optional list of common issues for the "Common issues" SEO block */
+  commonIssues?: { title: string; body: string }[];
 };
 
 const SITE = "https://seoacademys.com";
@@ -17,6 +25,9 @@ function buildFaqs(name: string, signals: string, frequency = "monthly", advanta
     { q: `How accurate is ${name}?`, a: `${name} fetches data in real time from the live URL — never cached. It evaluates ${signals} using the same methodology as enterprise SEO suites and has been used by 2.4M+ marketers across 80+ countries.` },
     { q: `How does ${name} compare to paid tools?`, a: `${name} provides the same core checks as paid tools like Semrush and Ahrefs, but completely free. Its advantage is ${advantage} and full transparency on every signal evaluated.` },
     { q: `How often should I use ${name}?`, a: `SEO experts recommend running ${name} ${frequency}, and after every major release or content update. Changes to the signals it tracks can affect rankings within 7–30 days.` },
+    { q: `Does ${name} store my data?`, a: `No. ${name} fetches the URL you submit, returns the analysis, and discards everything. We never log URLs, never store results, and never share data with third parties.` },
+    { q: `Can I use ${name} on competitor sites?`, a: `Yes. ${name} works on any publicly accessible URL — your own pages or competitors. Run side-by-side audits to find gaps in their SEO that you can exploit.` },
+    { q: `Is there an API for ${name}?`, a: `${name} is browser-based today. Bulk and API access are on the roadmap. Until then, you can run unlimited URLs through the dashboard at no cost.` },
   ];
 }
 
