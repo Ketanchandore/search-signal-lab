@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Search, FileCode2, FileText, BarChart3, Globe2,
   Eye, Tag, Bot, Link2, ChevronLeft, ChevronRight, Sparkles, Wand2,
   Gauge, Hash, Type, ListTree, ShieldCheck, ArrowRightLeft, ServerCog,
-  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight,
+  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight, TrendingUp,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -93,6 +93,7 @@ const NAV: NavGroup[] = [
   {
     label: "Research",
     items: [
+      { to: "/tools/rank-tracker", label: "Rank Tracker", icon: TrendingUp, badge: "NEW" },
       { to: "/tools/keyword-research", label: "Keyword Research", icon: Wand2 },
       { to: "/tools/serp-preview", label: "SERP Preview", icon: Eye },
       { to: "/tools/meta-generator", label: "Meta Tag Generator", icon: Tag },
@@ -244,6 +245,7 @@ const NAMES: Record<string, string> = {
   "html-minifier": "HTML Minifier",
   "css-minifier": "CSS Minifier",
   "js-minifier": "JS Minifier",
+  "rank-tracker": "Rank Tracker",
 };
 
 function Crumb({ path }: { path: string }) {
