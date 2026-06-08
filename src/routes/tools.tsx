@@ -262,6 +262,7 @@ export function ToolPanel({ children, className }: { children: ReactNode; classN
     <div className={cn("px-4 md:px-8 py-6 max-w-[1400px] mx-auto", className)}>
       <ToolSeo />
       {children}
+      <ToolContent />
     </div>
   );
 }
