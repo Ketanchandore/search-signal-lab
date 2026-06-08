@@ -6,7 +6,7 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/meta-tag-checker")({
-  head: () => ({ meta: [{ title: "Meta Tag Checker — Free Real-Time | SEOAcademys" }] }),
+  head: () => ({ meta: [{ title: "Free Meta Tag Checker — Inspect Any URL Instantly | SEOAcademys" }, { name: "description", content: "Check title length, meta description, OG tags, Twitter cards on any URL. Live fetch, real data. Free SEO tool." }, { property: "og:title", content: "Free Meta Tag Checker — Inspect Any URL Instantly" }, { property: "og:description", content: "Live title, description, OG and Twitter tag inspector. Free." }, { property: "og:url", content: "/tools/meta-tag-checker" }], links: [{ rel: "canonical", href: "/tools/meta-tag-checker" }] }),
   component: () => (
     <ToolPanel>
       <ToolHeader title="Meta Tag Checker" desc="Inspect every meta tag of any URL — title, description, robots, viewport, charset, canonical." />

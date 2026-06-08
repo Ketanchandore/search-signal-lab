@@ -8,8 +8,11 @@ import { ToolPanel } from "./tools";
 export const Route = createFileRoute("/tools/backlink-checker")({
   head: () => ({
     meta: [
-      { title: "Free Backlink Authority Checker — SEOAcademys" },
-      { name: "description", content: "Estimate any domain's backlink profile, authority score, and spam signals. Free instant check." },
+      { title: "Free Backlink Checker — Analyze Any Domain's Backlinks | SEOAcademys" },
+      { name: "description", content: "Check any website's backlink profile, domain authority signals, and referring domains. Free backlink analysis tool." },
+      { property: "og:title", content: "Free Backlink Checker — Analyze Any Domain's Backlinks" },
+      { property: "og:description", content: "Authority score, referring domains and spam signals — free." },
+      { property: "og:url", content: "/tools/backlink-checker" },
     ],
     links: [{ rel: "canonical", href: "/tools/backlink-checker" }],
   }),

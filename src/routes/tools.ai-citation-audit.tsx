@@ -11,10 +11,10 @@ const RadialGauge = lazy(() => import("@/components/RadialGauge"));
 export const Route = createFileRoute("/tools/ai-citation-audit")({
   head: () => ({
     meta: [
-      { title: "AI Citation Readiness Audit — SEOAcademys" },
-      { name: "description", content: "Free real-time tool to audit your site's AI citation readiness for Google AI Overviews, ChatGPT, and Perplexity." },
-      { property: "og:title", content: "AI Citation Readiness Audit" },
-      { property: "og:description", content: "Check why AI engines aren't citing your site." },
+      { title: "Free AI Citation Audit — Check ChatGPT & Gemini Visibility | SEOAcademys" },
+      { name: "description", content: "Check if ChatGPT, Gemini & Perplexity cite your website. Scans 47 GEO signals. See your AI search visibility score." },
+      { property: "og:title", content: "Free AI Citation Audit — Check ChatGPT & Gemini Visibility" },
+      { property: "og:description", content: "Scans 47 GEO signals to see your AI search visibility score. Free." },
       { property: "og:url", content: "/tools/ai-citation-audit" },
     ],
     links: [{ rel: "canonical", href: "/tools/ai-citation-audit" }],
