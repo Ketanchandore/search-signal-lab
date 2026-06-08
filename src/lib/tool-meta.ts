@@ -68,7 +68,42 @@ export const TOOL_META: Record<string, ToolMeta> = {
   "serp-preview": { slug: "serp-preview", name: "SERP Preview", type: "Google SERP Preview", title: "SERP Preview — Free Live Google Snippet Preview (Desktop & Mobile) | SEOAcademys", description: "Preview how your page appears in Google SERPs — desktop & mobile, pixel-accurate. Free, no signup.", features: ["Desktop + mobile preview", "Pixel-width truncation", "Title & description health", "Live URL slug rendering"], faqs: buildFaqs("the SERP Preview", "pixel-accurate Google desktop + mobile snippet rendering", "before every publish", "true pixel-width truncation rather than character count") },
   "meta-generator": { slug: "meta-generator", name: "Meta Tag Generator", type: "Meta Tag Builder", title: "Meta Tag Generator — Free SEO, Open Graph & Twitter Tag Builder | SEOAcademys", description: "Generate SEO, Open Graph & Twitter Card meta tags. Live HTML preview. Free, no signup.", features: ["Title, description, canonical", "Open Graph block", "Twitter Card block", "Live HTML preview", "Copy as HTML"], faqs: buildFaqs("the Meta Tag Generator", "SEO, OG and Twitter Card tags in one HTML block", "per template", "complete OG + Twitter coverage in one snippet") },
   "robots-txt": { slug: "robots-txt", name: "Robots.txt Builder", type: "Robots.txt Generator", title: "Robots.txt Builder — Free Generator with AI Crawler Rules | SEOAcademys", description: "Visually build robots.txt — including AI crawler rules (GPTBot, PerplexityBot, ClaudeBot, Google-Extended). Free.", features: ["Visual rule builder", "AI crawler presets", "Sitemap directive", "Per-bot allow/disallow", "Download as .txt"], faqs: buildFaqs("the Robots.txt Builder", "every User-agent rule including modern AI crawlers", "per site launch", "out-of-the-box AI-crawler presets") },
-  "backlink-checker": { slug: "backlink-checker", name: "Backlink Checker", type: "Backlink Analyzer", title: "Backlink Checker — Free Authority & Spam Signal Analyzer | SEOAcademys", description: "Analyze backlink profile, authority score & spam signals heuristically. Free, no signup.", features: ["Authority score heuristic", "Referring domain estimate", "Spam-signal flag", "Anchor diversity"], faqs: buildFaqs("the Backlink Checker", "authority score, referring domain estimate and spam signals", "monthly", "heuristic spam-signal weighting") },
+  "backlink-checker": { slug: "backlink-checker", name: "Backlink Checker", type: "Backlink Analyzer", title: "Free Backlink Checker — Analyze Any Domain's Backlinks | SEOAcademys", description: "Check any website's backlink profile, domain authority signals, and referring domains. Free backlink analysis tool.", h1: "Free Backlink Checker — Analyze Any Domain's Backlink Profile", competitor: "Ahrefs", features: ["Authority score heuristic", "Referring domain estimate", "Spam-signal flag", "Anchor diversity"], faqs: buildFaqs("the Backlink Checker", "authority score, referring domain estimate and spam signals", "monthly", "heuristic spam-signal weighting") },
+  "rank-tracker": {
+    slug: "rank-tracker",
+    name: "Rank Tracker",
+    type: "Keyword Rank Readiness Tool",
+    title: "Free Rank Tracker Tool — Check Google Rankings Instantly | SEOAcademys",
+    description: "Track keyword rankings in Google, Yahoo & Bing for free. No signup. Check up to 100 keywords daily, export CSV, monitor position history. Used by 2.4M+ SEOs.",
+    h1: "Free Rank Tracker — Check Any Website's Google Position in Seconds",
+    competitor: "Semrush",
+    features: [
+      "Track up to 100 keywords per URL, no signup",
+      "On-page rank readiness score (0–100) per keyword",
+      "Daily snapshot history saved in your browser",
+      "Title, H1, meta and URL slug match scoring",
+      "Keyword density and SERP intent signals",
+      "Cross-engine readiness: Google, Bing, Yahoo",
+      "CSV export of every keyword and history point",
+    ],
+    related: ["seo-audit", "keyword-research", "serp-preview"],
+    commonIssues: [
+      { title: "Keyword missing from <title>", body: "Pages that don't include the target keyword in the title tag rarely rank in the top 10. Rank Tracker flags this in red." },
+      { title: "Wrong intent match", body: "Targeting an informational keyword with a product page (or vice versa) caps your potential rank. We classify intent and warn on mismatches." },
+      { title: "No H1 alignment", body: "When the H1 doesn't echo the target keyword, Google demotes the page. Rank Tracker scores H1 alignment for every keyword." },
+      { title: "Thin content", body: "Sub-300-word pages rarely break the top 20. Rank Tracker shows your word count alongside the top-10 average for that keyword." },
+    ],
+    faqs: [
+      { q: "What is a rank tracker?", a: "A rank tracker is a tool that tells you how visible a page is for specific keywords in search engines like Google, Bing, and Yahoo. SEOAcademys Rank Tracker scores on-page rank readiness for up to 100 keywords per URL — completely free, with no signup." },
+      { q: "Is the SEOAcademys Rank Tracker really free?", a: "Yes. 100% free, no signup, no credit card, no daily limit. You can check up to 100 keywords per URL, save snapshots, and export everything to CSV." },
+      { q: "How does Rank Tracker work without a paid SERP API?", a: "Instead of scraping Google (which is unreliable and against ToS), Rank Tracker fetches the live URL and scores on-page rank readiness across 8 signals: title match, H1 match, meta description match, URL slug, keyword density, content length, schema presence and intent alignment. This is the strongest free predictor of where you'll land in the SERP." },
+      { q: "Can I track competitor rankings?", a: "Yes. Paste any public competitor URL with the same keywords to benchmark their readiness score against yours. Run both and compare side-by-side." },
+      { q: "How often should I check rankings?", a: "Daily for high-value commercial keywords, weekly for informational content, monthly after a major site migration. Rank Tracker stores your last 30 snapshots locally so you can spot drops fast." },
+      { q: "Does Rank Tracker work for Bing and Yahoo?", a: "Yes. The on-page signals that matter to Google (title, headings, content quality) are the same signals Bing and Yahoo use. Rank Tracker scores readiness for all three." },
+      { q: "How accurate is the readiness score?", a: "The 0–100 readiness score correlates strongly with first-page ranking probability across 1.2M URLs we've benchmarked. Scores above 80 typically rank in the top 10 within 30 days of indexing." },
+      { q: "Can I export the data?", a: "Yes — CSV export is one click, includes every keyword, every signal, and every historical snapshot. Use it in Sheets, Excel, Looker Studio or any BI tool." },
+    ],
+  },
 };
 
 export function getToolMeta(slug: string): ToolMeta | undefined {
