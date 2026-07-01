@@ -1,33 +1,35 @@
 User-agent: *
 Allow: /
-Disallow: /dashboard
-Disallow: /profile
+Disallow: /dashboard/
 Disallow: /api/
+Disallow: /admin/
 
-User-agent: GPTBot
+# AI Citation Bots — ALLOW for citations
+User-agent: OAI-SearchBot
 Allow: /
-Allow: /tools/
-Allow: /blog/
-Allow: /learn/
-Disallow: /dashboard
-Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
-Allow: /tools/
-Allow: /blog/
-Allow: /learn/
 
 User-agent: ClaudeBot
 Allow: /
-Allow: /tools/
-Allow: /blog/
-Allow: /learn/
 
 User-agent: Google-Extended
 Allow: /
-Allow: /tools/
-Allow: /blog/
-Allow: /learn/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# AI Training Bots — BLOCK
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Crawl-delay: 1
 
 Sitemap: https://seoacademys.com/sitemap.xml
