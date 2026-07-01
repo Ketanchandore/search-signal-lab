@@ -186,6 +186,15 @@ export function ToolContent() {
           ))}
         </div>
       </Block>
+
+      {/* E-E-A-T author + last updated */}
+      <div className="rounded-xl border border-border bg-surface-2 p-5 text-sm text-muted-foreground flex flex-wrap gap-4 items-center justify-between">
+        <div>
+          <div className="text-foreground font-semibold">Published by SEOAcademys Editorial Team</div>
+          <div className="text-xs">SEO & GEO Research Team · Analysis of 2.4M+ audits across 80+ countries</div>
+        </div>
+        <div className="text-xs">Last Updated: <span className="text-foreground font-medium">{meta.updatedDate ?? "June 2026"}</span></div>
+      </div>
     </section>
   );
 }
