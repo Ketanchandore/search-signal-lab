@@ -22,6 +22,25 @@ export function ToolContent() {
 
   return (
     <section className="mt-12 max-w-4xl mx-auto space-y-12 pb-16">
+      {/* Quick Facts Box */}
+      {meta.quickFacts && meta.quickFacts.length > 0 && (
+        <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5">
+          <h2 className="font-display text-sm uppercase tracking-widest text-primary mb-3">Quick Facts</h2>
+          <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-foreground">
+            {meta.quickFacts.map((f, i) => (
+              <li key={i} className="leading-relaxed">{f}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Direct Answer (AI extraction target — first 200 words) */}
+      {meta.directAnswer && (
+        <Block id="direct-answer" title={`What Is ${tn}?`}>
+          <p className="text-base text-foreground/90 leading-relaxed">{meta.directAnswer}</p>
+        </Block>
+      )}
+
       {/* H2 What does it check */}
       <Block id="what-it-checks" title={`What Does ${tn} Check?`}>
         <p className="text-muted-foreground mb-5">
@@ -36,6 +55,20 @@ export function ToolContent() {
           ))}
         </div>
       </Block>
+
+      {/* Why Matters in 2026 */}
+      {meta.whyMatters && (
+        <Block id="why-matters" title={`Why ${tn} Matters for Google Rankings in 2026`}>
+          <p className="text-muted-foreground leading-relaxed">{meta.whyMatters}</p>
+        </Block>
+      )}
+
+      {/* Extra freeform blocks (e.g. recommended robots.txt) */}
+      {meta.extraBlocks?.map((b, i) => (
+        <Block key={i} id={`extra-${i}`} title={b.title}>
+          <pre className="rounded-xl bg-surface-2 border border-border p-4 text-xs overflow-x-auto whitespace-pre-wrap font-mono text-foreground/90">{b.body}</pre>
+        </Block>
+      ))}
 
       {/* H2 How to use */}
       <Block id="how-to-use" title={`How to Use ${tn}`}>
@@ -153,6 +186,15 @@ export function ToolContent() {
           ))}
         </div>
       </Block>
+
+      {/* E-E-A-T author + last updated */}
+      <div className="rounded-xl border border-border bg-surface-2 p-5 text-sm text-muted-foreground flex flex-wrap gap-4 items-center justify-between">
+        <div>
+          <div className="text-foreground font-semibold">Published by SEOAcademys Editorial Team</div>
+          <div className="text-xs">SEO & GEO Research Team · Analysis of 2.4M+ audits across 80+ countries</div>
+        </div>
+        <div className="text-xs">Last Updated: <span className="text-foreground font-medium">{meta.updatedDate ?? "June 2026"}</span></div>
+      </div>
     </section>
   );
 }

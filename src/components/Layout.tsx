@@ -37,6 +37,8 @@ export function Layout() {
               )}
             </div>
             <Link to="/learn" className="px-3 py-2 hover:text-primary transition">Learn</Link>
+            <Link to="/about" className="px-3 py-2 hover:text-primary transition">About</Link>
+            <Link to="/contact" className="px-3 py-2 hover:text-primary transition">Contact</Link>
           </nav>
           <a
             href="https://github.com"
@@ -68,13 +70,17 @@ export function Layout() {
             <h4 className="font-display font-semibold mb-3">Learn</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li><Link to="/learn" className="hover:text-primary">All Modules</Link></li>
+              <li><Link to="/tools" className="hover:text-primary">All 37 Tools</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-display font-semibold mb-3">About</h4>
-            <p className="text-muted-foreground">
-              Built to make GEO open and accessible. Not affiliated with Google, OpenAI, or Perplexity.
-            </p>
+            <h4 className="font-display font-semibold mb-3">Company</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/about" className="hover:text-primary">About</Link></li>
+              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+              <li><Link to="/privacy" className="hover:text-primary">Privacy</Link></li>
+              <li><Link to="/terms" className="hover:text-primary">Terms</Link></li>
+            </ul>
           </div>
         </div>
         <div className="text-center text-xs text-muted-foreground py-4 border-t border-border">
