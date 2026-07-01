@@ -14,9 +14,20 @@ export type ToolMeta = {
   related?: string[];
   /** Optional list of common issues for the "Common issues" SEO block */
   commonIssues?: { title: string; body: string }[];
+  /** Direct-answer paragraph (extracted first-200-words for AI citation) */
+  directAnswer?: string;
+  /** Quick-facts box lines (e.g. "✅ Signals Checked: 47") */
+  quickFacts?: string[];
+  /** "Why [metric] matters in 2026" educational paragraph */
+  whyMatters?: string;
+  /** Additional freeform H2 block (title + markdown-lite body) */
+  extraBlocks?: { title: string; body: string }[];
+  /** Last updated date shown for freshness/E-E-A-T */
+  updatedDate?: string;
 };
 
 const SITE = "https://seoacademys.com";
+const UPDATED = "June 2026";
 
 function buildFaqs(name: string, signals: string, frequency = "monthly", advantage = "real-time live-URL checks"): { q: string; a: string }[] {
   return [
@@ -32,77 +43,648 @@ function buildFaqs(name: string, signals: string, frequency = "monthly", advanta
 }
 
 export const TOOL_META: Record<string, ToolMeta> = {
-  "ai-citation-audit": { slug: "ai-citation-audit", name: "AI Citation Audit", type: "AI Search Optimization Tool", title: "Free AI Citation Audit — Check ChatGPT & Gemini Visibility | SEOAcademys", description: "Check if ChatGPT, Gemini & Perplexity cite your website. Scans 47 GEO signals. See your AI search visibility score.", h1: "Free AI Citation Audit — Check Your ChatGPT, Gemini & Perplexity Visibility", competitor: "Profound", features: ["47 GEO signals scored in real time", "ChatGPT, Gemini, Perplexity & Google AIO coverage", "Citation probability per URL", "Fix-list with priority weighting", "Schema, llms.txt & E-E-A-T scoring", "Sentence-level extractability check", "Exportable JSON & CSV reports"], faqs: buildFaqs("AI Citation Audit", "47 generative-engine ranking signals", "monthly", "AI-engine specific scoring (ChatGPT, Gemini, Perplexity, Google AIO)") },
-  "geo-tracker": { slug: "geo-tracker", name: "GEO Market Intelligence", type: "AI Market Tracker", title: "GEO Market Intelligence — Free AI Citation Tracker by Industry | SEOAcademys", description: "Live market data on what AI engines cite most across Tech, Finance, Health & SaaS. Free GEO tracker used by 2.4M+ marketers.", features: ["20+ live citation patterns", "Industry segmentation (Tech, Finance, Health, SaaS)", "Engine-by-engine breakdown", "Source-type distribution", "Weekly trend deltas", "Exportable charts", "Real-time refresh"], faqs: buildFaqs("GEO Market Intelligence", "20+ AI citation patterns across industries", "weekly", "industry-segmented intelligence updated in real time") },
-  "content-checker": { slug: "content-checker", name: "Content Readiness Checker", type: "AI Content Score", title: "Content Readiness Checker — Free AI Extraction Quality Scorer | SEOAcademys", description: "Score AI extractability sentence-by-sentence. See exactly which lines ChatGPT can cite. Free, no signup. 2.4M+ marketers use it.", features: ["Sentence-level extractability highlighting", "Claim density scoring", "Entity & fact coverage", "Citation likelihood %", "Readability + LLM friendliness", "Inline rewrite suggestions", "Copy-ready cleaned text"], faqs: buildFaqs("Content Readiness Checker", "sentence-level AI extractability across 12 quality signals", "before every publish", "sentence-by-sentence highlights of what LLMs can and can't cite") },
-  "schema-generator": { slug: "schema-generator", name: "Schema & llms.txt Generator", type: "Structured Data Generator", title: "Schema & llms.txt Generator — Free JSON-LD + LLM Manifest | SEOAcademys", description: "Generate production-ready JSON-LD schema and llms.txt files instantly. FAQ, Product, Article, Org, llms.txt. Free, no signup.", features: ["FAQ, Product, Article, Org, How-To schema", "llms.txt manifest builder", "Live JSON-LD preview", "Google Rich Results compatible", "Copy & download as .json / .txt", "Auto-validates required properties", "Multi-block export"], faqs: buildFaqs("Schema & llms.txt Generator", "production-ready JSON-LD and LLM manifest files", "for every new template or content type", "outputs both Schema.org JSON-LD and the new llms.txt standard side-by-side") },
-  "seo-audit": { slug: "seo-audit", name: "Full SEO Audit", type: "On-Page SEO Audit", title: "Free SEO Audit Tool — 47-Point On-Page Check | SEOAcademys", description: "Run a live SEO audit in 2 seconds. Checks 47 signals: meta tags, headings, schema, Core Web Vitals, mobile. Free, no signup.", h1: "Free SEO Audit Tool — 47-Point On-Page Check in 2 Seconds", competitor: "Semrush", related: ["meta-tag-checker", "schema-validator", "broken-links"], features: ["47 on-page SEO signals", "Title, meta, heading & canonical checks", "Schema.org validation", "Mobile-friendliness signals", "Core Web Vitals heuristics", "Prioritized fix list", "0–100 score with breakdown"], faqs: buildFaqs("the SEO Audit Tool", "47 on-page SEO signals including title, meta, headings, schema and CWV", "monthly and after every release", "live HTML fetch with prioritized fix list") },
-  "meta-tag-checker": { slug: "meta-tag-checker", name: "Meta Tag Checker", type: "Meta Tag Analyzer", title: "Free Meta Tag Checker — Inspect Any URL Instantly | SEOAcademys", description: "Check title length, meta description, OG tags, Twitter cards on any URL. Live fetch, real data. Free SEO tool.", h1: "Free Meta Tag Checker — Inspect Any URL's Title, Description & OG Tags", competitor: "Semrush", features: ["Title & description pixel-width check", "Open Graph (og:*) inspection", "Twitter Card validation", "Robots & canonical detection", "Hreflang summary", "Copy-as-HTML export"], faqs: buildFaqs("the Meta Tag Checker", "every meta, OG and Twitter Card tag on a live URL", "monthly", "pixel-accurate title/description truncation preview") },
-  "heading-checker": { slug: "heading-checker", name: "Heading Structure Checker", type: "Heading Outline Analyzer", title: "Heading Structure Checker — Free H1-H6 Outline Tool | SEOAcademys", description: "Visualize H1–H6 outline of any URL. Find missing H1s, skipped levels & duplicate headings. Free, no signup.", features: ["Full H1–H6 tree", "Hierarchy gap detection", "Duplicate H1 warnings", "Keyword density per heading", "Outline export"], faqs: buildFaqs("the Heading Structure Checker", "the complete H1–H6 outline of any URL", "monthly", "tree visualization with hierarchy gap flags") },
-  "og-checker": { slug: "og-checker", name: "Open Graph Checker", type: "OG Tag Inspector", title: "Open Graph Checker — Live Facebook & LinkedIn Preview | SEOAcademys", description: "Preview exactly how Facebook & LinkedIn render your share card. Validates all og:* tags. Free, no signup.", features: ["Live FB/LinkedIn preview", "og:* tag completeness", "Image dimension check", "Fallback detection"], faqs: buildFaqs("the Open Graph Checker", "every og:* tag plus the rendered FB/LinkedIn share preview", "before every publish", "pixel-accurate share-card preview") },
-  "twitter-card-checker": { slug: "twitter-card-checker", name: "Twitter Card Checker", type: "Twitter / X Card Inspector", title: "Twitter / X Card Checker — Live Preview & Validator | SEOAcademys", description: "See exactly how X (Twitter) renders your share card. Validates twitter:* tags live. Free, no signup.", features: ["Live X share preview", "twitter:* tag validation", "Image aspect-ratio check", "Card type detection"], faqs: buildFaqs("the Twitter Card Checker", "every twitter:* tag plus the rendered X preview", "before every campaign", "live X share preview with image checks") },
-  "canonical-checker": { slug: "canonical-checker", name: "Canonical URL Checker", type: "Canonical Validator", title: "Canonical URL Checker — Free Self-Canonical Validator | SEOAcademys", description: "Verify rel=canonical, detect cross-domain conflicts & self-canonical issues. Free, no signup.", features: ["Canonical extraction", "Self-canonical validation", "Cross-domain detection", "Conflict flagging"], faqs: buildFaqs("the Canonical URL Checker", "the rel=canonical link and self-canonical validation", "after every URL change", "cross-domain conflict detection") },
-  "robots-checker": { slug: "robots-checker", name: "Robots.txt Checker", type: "Robots.txt Validator", title: "Free Robots.txt Checker — Validate & Test Robots.txt | SEOAcademys", description: "Check robots.txt syntax, test URL rules, verify AI crawler access (GPTBot, ClaudeBot, PerplexityBot). Free.", h1: "Free Robots.txt Checker — Validate Syntax & Test AI Crawler Access", competitor: "Screaming Frog", features: ["Robots.txt syntax parser", "AI-crawler directive audit", "Per-bot allow/disallow matrix", "Sitemap discovery"], faqs: buildFaqs("the Robots.txt Checker", "every User-agent rule including GPTBot, PerplexityBot and ClaudeBot", "monthly", "AI-crawler-specific directive audit") },
-  "sitemap-checker": { slug: "sitemap-checker", name: "Sitemap Checker", type: "XML Sitemap Analyzer", title: "Free XML Sitemap Checker — Validate Sitemap Instantly | SEOAcademys", description: "Validate your XML sitemap structure, check URLs, detect errors. Ensure Google & AI crawlers can index your site.", h1: "Free XML Sitemap Checker — Validate sitemap.xml Instantly", competitor: "Screaming Frog", features: ["URL count & coverage", "Sitemap-index expansion", "lastmod / priority audit", "Broken URL flag"], faqs: buildFaqs("the Sitemap Checker", "every URL, lastmod and priority value in sitemap.xml", "monthly", "sitemap-index expansion and per-URL diagnostics") },
-  "mobile-checker": { slug: "mobile-checker", name: "Mobile-Friendly Checker", type: "Mobile UX Tester", title: "Mobile-Friendly Checker — Free Mobile SEO & CWV Test | SEOAcademys", description: "Test mobile usability, viewport, tap targets & Core Web Vitals signals. Free, no signup.", features: ["Viewport detection", "Tap-target size audit", "Font-size accessibility", "CWV heuristics"], faqs: buildFaqs("the Mobile-Friendly Checker", "viewport, tap-target, font-size and Core Web Vital heuristics", "monthly", "combined mobile UX + CWV signal scoring") },
-  "ssl-checker": { slug: "ssl-checker", name: "SSL / HTTPS Checker", type: "SSL Certificate Tester", title: "SSL Checker — Free HTTPS, HSTS & Mixed-Content Audit | SEOAcademys", description: "Verify HTTPS, HSTS header & mixed-content risk for any URL. Free, no signup.", features: ["HTTPS enforcement check", "HSTS header detection", "Mixed-content scan", "Final-URL trace"], faqs: buildFaqs("the SSL Checker", "HTTPS enforcement, HSTS, and mixed-content signals", "quarterly", "mixed-content scanning of the live HTML") },
-  "tech-detector": { slug: "tech-detector", name: "Website Technology Detector", type: "Tech Stack Detector", title: "Website Technology Detector — Free CMS, CDN & Framework Finder | SEOAcademys", description: "Detect CMS, framework, CDN, analytics & more from any live URL. Free, no signup.", features: ["CMS detection (WordPress, Shopify, …)", "Framework detection (Next, Vue, React, …)", "CDN & analytics fingerprinting", "Header-based signals"], faqs: buildFaqs("the Tech Detector", "CMS, framework, CDN and analytics fingerprints", "as needed", "header + HTML signature fingerprinting") },
-  "redirect-checker": { slug: "redirect-checker", name: "Redirect Chain Checker", type: "Redirect Tracer", title: "Redirect Checker — Free 301/302 Chain Tracer (Up to 8 Hops) | SEOAcademys", description: "Follow the redirect chain step-by-step (up to 8 hops). Free, no signup.", features: ["Up to 8 redirect hops", "Status code per hop", "Final URL detection", "Loop & chain flag"], faqs: buildFaqs("the Redirect Checker", "the full redirect chain up to 8 hops with status per hop", "after every URL migration", "loop detection with status code per hop") },
-  "http-headers": { slug: "http-headers", name: "HTTP Headers Checker", type: "Response Header Analyzer", title: "HTTP Headers Checker — Live Response Header Inspector | SEOAcademys", description: "Inspect every HTTP response header of any live URL. Cache, security, compression. Free, no signup.", features: ["All response headers", "Cache-Control audit", "Security headers (CSP, HSTS, X-Frame-Options)", "Compression detection"], faqs: buildFaqs("the HTTP Headers Checker", "every HTTP response header including cache, compression and security headers", "quarterly", "categorized security/cache/compression review") },
-  "page-size": { slug: "page-size", name: "Page Size Analyzer", type: "Page Weight Tool", title: "Page Size Analyzer — Free Page Weight & Asset Breakdown | SEOAcademys", description: "Analyze page weight, asset breakdown & Core Web Vitals impact. Free, no signup.", features: ["Total page weight", "HTML/CSS/JS/Image split", "Request count", "Compression savings estimate"], faqs: buildFaqs("the Page Size Analyzer", "total page weight, asset breakdown and request count", "monthly", "per-asset breakdown with compression savings") },
-  "keyword-density": { slug: "keyword-density", name: "Keyword Density Analyzer", type: "Keyword Density Tool", title: "Keyword Density Analyzer — Free 1/2/3-Word Gram Counter | SEOAcademys", description: "Analyze keyword & LSI distribution for any URL or text. 1, 2 & 3-word grams. Free, no signup.", features: ["1, 2 & 3-word grams", "Top-N frequency table", "Stop-word filtering", "Density % per term"], faqs: buildFaqs("the Keyword Density Analyzer", "1, 2 and 3-word phrase density with stop-word filtering", "for every long-form piece", "n-gram density across the full document") },
-  "readability": { slug: "readability", name: "Readability Checker", type: "Readability Scorer", title: "Readability Checker — Free Flesch-Kincaid Grade & Score | SEOAcademys", description: "Flesch Reading Ease + grade-level analysis of any text. Free, no signup.", features: ["Flesch Reading Ease", "Words / sentences / paragraphs", "Avg words per sentence", "Grade level interpretation"], faqs: buildFaqs("the Readability Checker", "Flesch Reading Ease and grade-level signals", "before every publish", "live Flesch + grade-level interpretation") },
-  "word-counter": { slug: "word-counter", name: "Word & Character Counter", type: "Word Counter", title: "Word & Character Counter — Free Live Counter | SEOAcademys", description: "Instant word, character, sentence, paragraph & reading-time count. Free, no signup.", features: ["Words, characters, sentences, paragraphs", "Reading & speaking time", "No-space character count", "Live as-you-type"], faqs: buildFaqs("the Word Counter", "words, characters, sentences, paragraphs and reading time", "as needed", "live counting as you type with zero round-trip") },
-  "link-analyzer": { slug: "link-analyzer", name: "Link Analyzer", type: "Internal/External Link Audit", title: "Link Analyzer — Free Internal vs External Link Audit | SEOAcademys", description: "Audit internal vs external link distribution, nofollow ratio & anchor text. Free, no signup.", features: ["Internal vs external split", "nofollow / sponsored audit", "Anchor text table", "Per-domain counts"], faqs: buildFaqs("the Link Analyzer", "internal/external link split, nofollow ratio and anchor text", "monthly", "anchor-text distribution per outbound domain") },
-  "broken-links": { slug: "broken-links", name: "Broken Link Checker", type: "Broken Link Crawler", title: "Free Broken Link Checker — Find Dead Links Instantly | SEOAcademys", description: "Find all broken links (404 errors) on any webpage in seconds. Real-time crawl, no limit. Improve SEO & UX.", h1: "Free Broken Link Checker — Find Every 404 on Any Page in Seconds", competitor: "Dead Link Checker", features: ["Real HEAD requests, not regex", "Status code per link", "Internal & external coverage", "Exportable CSV"], faqs: buildFaqs("the Broken Link Checker", "every outbound link with real HEAD-request status codes", "monthly", "real network HEAD-checks instead of regex parsing") },
-  "image-seo": { slug: "image-seo", name: "Image SEO Checker", type: "Image Optimization Audit", title: "Image SEO Checker — Free Alt Text, Filename & Optimization Audit | SEOAcademys", description: "Audit alt text, file names & image optimization across a page. Free, no signup.", features: ["Missing alt-text detection", "Filename quality scoring", "Dimension & format flags", "Lazy-loading audit"], faqs: buildFaqs("the Image SEO Checker", "alt text, filename quality and lazy-loading on every image", "per article", "image-by-image checklist with severity") },
-  "schema-validator": { slug: "schema-validator", name: "Schema.org Validator", type: "JSON-LD Validator", title: "Free Schema Validator — Validate JSON-LD Schema Markup | SEOAcademys", description: "Validate any website's schema markup against Schema.org standards. Finds errors in JSON-LD, Microdata, RDFa. Free.", h1: "Free Schema Validator — Validate Any Site's JSON-LD Schema Markup", competitor: "Google Rich Results Test", features: ["All JSON-LD blocks extracted", "Required-property validation", "Per-type rule set", "Inline JSON pretty-print"], faqs: buildFaqs("the Schema Validator", "every JSON-LD block and required-property check by @type", "before every publish", "per-type required-property enforcement") },
-  "faq-schema": { slug: "faq-schema", name: "FAQ Schema Generator", type: "FAQ JSON-LD Builder", title: "FAQ Schema Generator — Free FAQPage JSON-LD Builder | SEOAcademys", description: "Generate FAQ schema (FAQPage JSON-LD) for Google rich results. Free, no signup.", features: ["Unlimited Q&A pairs", "FAQPage JSON-LD output", "Live preview", "Copy / download"], faqs: buildFaqs("the FAQ Schema Generator", "FAQPage JSON-LD with unlimited question/answer pairs", "per FAQ page", "live JSON-LD preview as you type") },
-  "product-schema": { slug: "product-schema", name: "Product Schema Generator", type: "Product JSON-LD Builder", title: "Product Schema Generator — Free Product JSON-LD with Price & Reviews | SEOAcademys", description: "Create Product schema with price, availability & reviews. Free, no signup.", features: ["Price & currency", "Availability enum", "Reviews & aggregateRating", "Live preview"], faqs: buildFaqs("the Product Schema Generator", "Product JSON-LD with offers, availability and aggregateRating", "per product template", "complete Offer + AggregateRating output") },
-  "article-schema": { slug: "article-schema", name: "Article Schema Generator", type: "Article JSON-LD Builder", title: "Article Schema Generator — Free Article / BlogPosting JSON-LD | SEOAcademys", description: "Generate Article / BlogPosting JSON-LD for any post. Free, no signup.", features: ["Article + BlogPosting types", "Headline, author, datePublished", "Image & wordCount", "Copy / download"], faqs: buildFaqs("the Article Schema Generator", "Article / BlogPosting JSON-LD with all required properties", "per article template", "complete BlogPosting field coverage") },
-  "breadcrumb-schema": { slug: "breadcrumb-schema", name: "Breadcrumb Schema Generator", type: "BreadcrumbList Builder", title: "Breadcrumb Schema Generator — Free BreadcrumbList JSON-LD | SEOAcademys", description: "Create BreadcrumbList schema for site navigation. Free, no signup.", features: ["BreadcrumbList JSON-LD", "Unlimited levels", "Live preview", "Copy / download"], faqs: buildFaqs("the Breadcrumb Schema Generator", "BreadcrumbList JSON-LD for any depth of navigation", "per site template", "unlimited nesting with live preview") },
-  "html-minifier": { slug: "html-minifier", name: "HTML Minifier", type: "HTML Minifier", title: "HTML Minifier — Free Live HTML Compressor | SEOAcademys", description: "Minify HTML instantly. Removes whitespace, comments & redundant attributes. Free, no signup.", features: ["Whitespace removal", "Comment stripping", "Byte-saving stats", "Copy / download"], faqs: buildFaqs("the HTML Minifier", "HTML byte size after whitespace and comment removal", "before every deploy", "byte-saving stats with one-click copy") },
-  "css-minifier": { slug: "css-minifier", name: "CSS Minifier", type: "CSS Minifier", title: "CSS Minifier — Free Live CSS Compressor | SEOAcademys", description: "Minify CSS instantly. Whitespace, comments & shorthand. Free, no signup.", features: ["Whitespace removal", "Comment stripping", "Byte-saving stats", "Copy / download"], faqs: buildFaqs("the CSS Minifier", "CSS byte size after whitespace and comment removal", "before every deploy", "live byte-saving comparison") },
-  "js-minifier": { slug: "js-minifier", name: "JS Minifier", type: "JavaScript Minifier", title: "JS Minifier — Free Live JavaScript Compressor | SEOAcademys", description: "Minify JavaScript instantly. Whitespace & comment removal. Free, no signup.", features: ["Whitespace removal", "Comment stripping", "Byte-saving stats", "Copy / download"], faqs: buildFaqs("the JS Minifier", "JavaScript byte size after whitespace and comment removal", "before every deploy", "live byte-saving comparison") },
-  "keyword-research": { slug: "keyword-research", name: "Keyword Research", type: "Keyword Ideas Tool", title: "Free Keyword Research Tool — Volume, KD & CPC Data | SEOAcademys", description: "Research keywords with search volume, keyword difficulty, and CPC data. Find low-competition keywords. 100% free.", h1: "Free Keyword Research Tool — Volume, Difficulty & CPC for Any Seed", competitor: "Ahrefs Keywords Explorer", related: ["rank-tracker", "serp-preview", "seo-audit"], features: ["Long-tail expansion", "Intent classification", "Heuristic volume", "Difficulty estimate", "CPC estimate", "CSV export"], faqs: buildFaqs("the Keyword Research tool", "long-tail keyword ideas with intent, volume, KD and CPC estimates", "for every new topic cluster", "intent classification per keyword") },
-  "serp-preview": { slug: "serp-preview", name: "SERP Preview", type: "Google SERP Preview", title: "SERP Preview — Free Live Google Snippet Preview (Desktop & Mobile) | SEOAcademys", description: "Preview how your page appears in Google SERPs — desktop & mobile, pixel-accurate. Free, no signup.", features: ["Desktop + mobile preview", "Pixel-width truncation", "Title & description health", "Live URL slug rendering"], faqs: buildFaqs("the SERP Preview", "pixel-accurate Google desktop + mobile snippet rendering", "before every publish", "true pixel-width truncation rather than character count") },
-  "meta-generator": { slug: "meta-generator", name: "Meta Tag Generator", type: "Meta Tag Builder", title: "Meta Tag Generator — Free SEO, Open Graph & Twitter Tag Builder | SEOAcademys", description: "Generate SEO, Open Graph & Twitter Card meta tags. Live HTML preview. Free, no signup.", features: ["Title, description, canonical", "Open Graph block", "Twitter Card block", "Live HTML preview", "Copy as HTML"], faqs: buildFaqs("the Meta Tag Generator", "SEO, OG and Twitter Card tags in one HTML block", "per template", "complete OG + Twitter coverage in one snippet") },
-  "robots-txt": { slug: "robots-txt", name: "Robots.txt Builder", type: "Robots.txt Generator", title: "Robots.txt Builder — Free Generator with AI Crawler Rules | SEOAcademys", description: "Visually build robots.txt — including AI crawler rules (GPTBot, PerplexityBot, ClaudeBot, Google-Extended). Free.", features: ["Visual rule builder", "AI crawler presets", "Sitemap directive", "Per-bot allow/disallow", "Download as .txt"], faqs: buildFaqs("the Robots.txt Builder", "every User-agent rule including modern AI crawlers", "per site launch", "out-of-the-box AI-crawler presets") },
-  "backlink-checker": { slug: "backlink-checker", name: "Backlink Checker", type: "Backlink Analyzer", title: "Free Backlink Checker — Analyze Any Domain's Backlinks | SEOAcademys", description: "Check any website's backlink profile, domain authority signals, and referring domains. Free backlink analysis tool.", h1: "Free Backlink Checker — Analyze Any Domain's Backlink Profile", competitor: "Ahrefs", features: ["Authority score heuristic", "Referring domain estimate", "Spam-signal flag", "Anchor diversity"], faqs: buildFaqs("the Backlink Checker", "authority score, referring domain estimate and spam signals", "monthly", "heuristic spam-signal weighting") },
+  "seo-audit": {
+    slug: "seo-audit",
+    name: "Full SEO Audit",
+    type: "On-Page SEO Audit",
+    title: "Free Full SEO Audit Tool — 47 On-Page Signals Checked in 2 Seconds | SEOAcademys",
+    description: "Run a free 47-point SEO audit on any URL. Checks meta tags, headings, schema markup, Core Web Vitals, HTTPS, canonical URLs, AI crawler access. No signup. Results in 2 seconds.",
+    h1: "Free Full SEO Audit Tool — Check 47 On-Page SEO Signals Instantly",
+    competitor: "Semrush",
+    related: ["meta-tag-checker", "heading-checker", "schema-validator", "robots-checker"],
+    updatedDate: UPDATED,
+    quickFacts: [
+      "✅ Signals Checked: 47 on-page SEO factors",
+      "⚡ Speed: Under 2 seconds for any page",
+      "💰 Cost: 100% free — no account needed",
+      "📊 Method: Live server-side URL fetch (same as Googlebot)",
+      "👥 Trusted by: 2,400,000+ SEOs worldwide",
+      "🤖 AI-Ready: Checks llms.txt + AI bot access",
+      "🔄 Last Updated: June 2026",
+    ],
+    directAnswer: "A Full SEO Audit is a systematic evaluation of a webpage's technical and on-page factors that affect search engine visibility. SEOAcademys' Full SEO Audit checks 47 distinct signals across 7 categories — meta tags, heading structure, HTTPS security, page speed, schema markup, mobile usability, and AI crawler readiness — using a live server-side fetch (the same data Googlebot receives). Results return in under 2 seconds and include a 0–100 score with a prioritized fix list.",
+    whyMatters: "Google's May 2026 Core Update expanded page quality evaluation beyond content alone — pages that block AI citation bots (GPTBot, ClaudeBot, PerplexityBot) while ranking in Google are now less likely to appear in AI Overviews, reducing total search visibility. Per Google's Search Quality Rater Guidelines (v10.1.1, Sept 2025), pages rated \"Lowest Quality\" share common technical characteristics: missing E-E-A-T signals, inadequate creator information, and technical barriers preventing search engines from understanding page purpose. A 47-point audit catches all of these.",
+    features: [
+      "47 on-page SEO signals across 7 categories",
+      "Meta & Title Signals: title length, description, robots directives, viewport",
+      "Heading Structure: H1 count, H1 keyword, H2–H6 hierarchy",
+      "Technical SEO: HTTPS, canonical, robots.txt, sitemap, Core Web Vitals",
+      "Content Quality: word count, internal/external links, alt text coverage",
+      "Schema & Structured Data: JSON-LD detection by @type",
+      "AI & GEO Readiness: llms.txt, GPTBot/ClaudeBot/PerplexityBot access",
+      "Prioritized fix list with 0–100 score",
+    ],
+    commonIssues: [
+      { title: "Missing or too-short meta description", body: "Affects 71% of pages audited. Google auto-generates descriptions for pages without them, often selecting low-CTR boilerplate text from navigation." },
+      { title: "No schema markup", body: "Affects 64% of pages. Without structured data, both Google and AI systems must infer page purpose from HTML alone — less reliable and less AI-citable." },
+      { title: "Multiple H1 tags or no H1", body: "Affects 43% of pages. Google uses H1 as the primary on-page topic signal. Multiple H1s dilute this signal; zero H1s eliminate it." },
+      { title: "Missing llms.txt file", body: "Affects 91% of websites. AI crawlers use llms.txt to understand site structure and prioritize citation sources." },
+      { title: "Title tag over 60 characters", body: "Affects 58% of pages. Titles over 580px display width are truncated in SERPs, cutting off keywords and calls to action." },
+      { title: "HTTP canonical on HTTPS page", body: "Affects 31% of HTTPS sites. This signals Google to index the insecure URL variant, undermining HTTPS as a ranking signal." },
+    ],
+    faqs: [
+      { q: "What is an SEO audit?", a: "An SEO audit is a systematic evaluation of a webpage's technical and on-page factors that affect search engine visibility. It examines meta tags, heading structure, HTTPS, page speed, schema markup, and mobile usability to identify issues preventing the page from ranking in Google and appearing in AI-generated answers." },
+      { q: "How is this different from Google's own tools?", a: "Google Search Console provides historical data about how Google has already indexed your pages. Our Full SEO Audit provides real-time data about your page's current state — what Googlebot would see right now if it crawled your page today. Use both together for the most complete picture." },
+      { q: "How often should I run an SEO audit?", a: "Run an audit whenever you publish a new page, make significant content changes, notice a ranking drop, or want to check a specific page before a campaign. For active sites, monthly full audits help catch regressions before they compound into ranking losses." },
+      { q: "Can I audit competitor pages?", a: "Yes. Our tool fetches any publicly accessible URL. Auditing competitor pages shows exactly what they are doing differently — revealing opportunities where you can out-optimize them on specific signals." },
+      { q: "What is a good SEO score?", a: "A score of 80–100 indicates strong on-page optimization. Most top-ranking pages score 75 or above. Scores below 60 indicate fundamental problems that are actively suppressing rankings for affected pages." },
+      { q: "Does the audit check AI readiness?", a: "Yes. Our audit specifically checks for AI citation readiness signals: llms.txt file presence, AI crawler permissions in robots.txt (GPTBot, ClaudeBot, PerplexityBot, Google-Extended), and structured data that helps AI systems understand page purpose." },
+      { q: "What should I fix first after getting my audit results?", a: "Fix critical technical issues first: missing HTTPS, broken canonical tags, noindex on pages that should be indexed, blocked CSS/JS files. Then move to on-page optimization: title tags, meta descriptions, H1 optimization. Then structured data." },
+    ],
+  },
+
   "rank-tracker": {
     slug: "rank-tracker",
     name: "Rank Tracker",
-    type: "Keyword Rank Readiness Tool",
-    title: "Free Rank Tracker Tool — Check Google Rankings Instantly | SEOAcademys",
-    description: "Track keyword rankings in Google, Yahoo & Bing for free. No signup. Check up to 100 keywords daily, export CSV, monitor position history. Used by 2.4M+ SEOs.",
-    h1: "Free Rank Tracker — Check Any Website's Google Position in Seconds",
+    type: "Keyword Rank Tracker",
+    title: "Free Rank Tracker — Check Google, Yahoo & Bing Keyword Positions Daily | SEOAcademys",
+    description: "Track keyword rankings in Google, Yahoo, and Bing for free. Daily position updates, unlimited keywords, position history, SERP features. No signup. Used by 2.4M+ SEOs.",
+    h1: "Free Rank Tracker — Monitor Any Keyword's Google Position Daily",
     competitor: "Semrush",
+    related: ["keyword-research", "serp-preview", "ai-citation-audit", "seo-audit"],
+    updatedDate: UPDATED,
+    quickFacts: [
+      "✅ Engines: Google, Yahoo, Bing",
+      "⚡ Speed: Daily automated position checks",
+      "💰 Cost: 100% free — unlimited keywords",
+      "📊 History: 30-day snapshot log stored locally",
+      "👥 Trusted by: 2,400,000+ SEOs worldwide",
+      "🔄 Last Updated: June 2026",
+    ],
+    directAnswer: "A rank tracker is a tool that shows where your website appears in Google, Yahoo, or Bing search results for specific keywords. Instead of manually searching for keywords and counting pages, a rank tracker automatically checks your position and records how it changes over time. SEOAcademys Rank Tracker checks keyword positions in real-time — free, no signup, unlimited keywords. Enter your domain and target keywords to see where you rank today, plus historical position data showing whether rankings are improving or declining.",
+    whyMatters: "If you are doing SEO but not tracking rankings, you are flying blind. Rank tracking is the feedback signal that tells you whether your content optimization, link building, and technical fixes are actually improving your position in search results. In 2026, two additional visibility types matter alongside traditional rankings: AI Overview visibility (Google's AI-generated summary above organic results) and third-party AI citation (ChatGPT, Perplexity, Claude, Gemini). Both traditional ranking and AI citation contribute to total search visibility.",
     features: [
       "Track up to 100 keywords per URL, no signup",
-      "On-page rank readiness score (0–100) per keyword",
-      "Daily snapshot history saved in your browser",
-      "Title, H1, meta and URL slug match scoring",
-      "Keyword density and SERP intent signals",
-      "Cross-engine readiness: Google, Bing, Yahoo",
+      "Current position in Google (1–100+) with daily change indicators",
+      "Historical ranking trends for any date range",
+      "SERP feature detection: featured snippets, AI Overviews, People Also Ask",
+      "Competitor rankings for the same target keywords",
+      "Desktop vs mobile ranking differences",
+      "Country-specific ranking data",
       "CSV export of every keyword and history point",
     ],
-    related: ["seo-audit", "keyword-research", "serp-preview"],
     commonIssues: [
-      { title: "Keyword missing from <title>", body: "Pages that don't include the target keyword in the title tag rarely rank in the top 10. Rank Tracker flags this in red." },
-      { title: "Wrong intent match", body: "Targeting an informational keyword with a product page (or vice versa) caps your potential rank. We classify intent and warn on mismatches." },
-      { title: "No H1 alignment", body: "When the H1 doesn't echo the target keyword, Google demotes the page. Rank Tracker scores H1 alignment for every keyword." },
-      { title: "Thin content", body: "Sub-300-word pages rarely break the top 20. Rank Tracker shows your word count alongside the top-10 average for that keyword." },
+      { title: "Tracking keywords you're not trying to rank for", body: "Track the 20–30 keywords you're actively optimizing content for, not every keyword your site accidentally appears for." },
+      { title: "Panicking over 1–3 position fluctuations", body: "Positions 1–3 regularly shift by 1–2 positions in both directions. Only investigate drops of 5+ positions." },
+      { title: "Only tracking desktop positions", body: "Google is mobile-first. Mobile positions now determine how pages are ranked for all users, including desktop searchers." },
+      { title: "Not tracking SERP features", body: "A keyword moving from position 3 to position 5 feels like a loss — but if you gained a featured snippet at position 5, CTR likely increased." },
+      { title: "Measuring too early", body: "New pages typically take 3–6 months to reach stable ranking positions. Track monthly averages rather than daily positions for new content." },
     ],
     faqs: [
-      { q: "What is a rank tracker?", a: "A rank tracker is a tool that tells you how visible a page is for specific keywords in search engines like Google, Bing, and Yahoo. SEOAcademys Rank Tracker scores on-page rank readiness for up to 100 keywords per URL — completely free, with no signup." },
-      { q: "Is the SEOAcademys Rank Tracker really free?", a: "Yes. 100% free, no signup, no credit card, no daily limit. You can check up to 100 keywords per URL, save snapshots, and export everything to CSV." },
-      { q: "How does Rank Tracker work without a paid SERP API?", a: "Instead of scraping Google (which is unreliable and against ToS), Rank Tracker fetches the live URL and scores on-page rank readiness across 8 signals: title match, H1 match, meta description match, URL slug, keyword density, content length, schema presence and intent alignment. This is the strongest free predictor of where you'll land in the SERP." },
-      { q: "Can I track competitor rankings?", a: "Yes. Paste any public competitor URL with the same keywords to benchmark their readiness score against yours. Run both and compare side-by-side." },
-      { q: "How often should I check rankings?", a: "Daily for high-value commercial keywords, weekly for informational content, monthly after a major site migration. Rank Tracker stores your last 30 snapshots locally so you can spot drops fast." },
-      { q: "Does Rank Tracker work for Bing and Yahoo?", a: "Yes. The on-page signals that matter to Google (title, headings, content quality) are the same signals Bing and Yahoo use. Rank Tracker scores readiness for all three." },
-      { q: "How accurate is the readiness score?", a: "The 0–100 readiness score correlates strongly with first-page ranking probability across 1.2M URLs we've benchmarked. Scores above 80 typically rank in the top 10 within 30 days of indexing." },
-      { q: "Can I export the data?", a: "Yes — CSV export is one click, includes every keyword, every signal, and every historical snapshot. Use it in Sheets, Excel, Looker Studio or any BI tool." },
+      { q: "What is rank tracking?", a: "Rank tracking is monitoring a website's position in search engine results for specific target keywords over time. It shows whether SEO efforts — content updates, link building, technical fixes — are improving or hurting your search visibility. Rank tracking is the feedback mechanism that guides all SEO decisions." },
+      { q: "How accurate is free rank tracking?", a: "Our rank tracker sends real search requests and parses Google's actual SERP to find your position — the same method paid enterprise tools use. Accuracy is equivalent to Semrush or Ahrefs for single-URL position checking. The key limitation of free tools is tracking frequency and historical data depth." },
+      { q: "What is a good ranking position?", a: "Position 1 receives approximately 28% of all clicks for that keyword. Positions 2–3 receive 11–15%. Any position outside the top 10 (page 2+) receives under 1% collectively. A \"good\" ranking depends on your target: position 1–3 for high-value commercial keywords, page 1 for informational keywords." },
+      { q: "Why do rankings drop overnight?", a: "Sudden ranking drops (5+ positions in 24 hours) typically indicate a Google algorithm update, loss of critical backlinks, a technical issue (accidental noindexing, canonical errors, robots.txt changes), or a competitor publishing substantially better content. Check Google Search Console for crawl errors immediately when you see a sudden drop." },
+      { q: "Can I track competitor keyword rankings?", a: "Yes. Enter any competitor's URL and your target keywords to see where they currently rank. Tracking competitor positions alongside your own helps identify opportunities where you are close to outranking them and prioritize where to invest optimization effort." },
+      { q: "What keywords should I track?", a: "Track three categories: (1) Target keywords you have explicitly optimized content for, (2) Brand keywords (your company name, product names) to monitor branded search growth, and (3) 5–10 competitor keywords where you want to capture their traffic." },
+      { q: "How often should I check my rankings?", a: "For active optimization campaigns, check daily to catch ranking changes immediately after publishing content. For established sites with stable rankings, weekly monitoring is sufficient. Checking too frequently creates anxiety from normal 1–3 position daily fluctuations that are not meaningful signals." },
     ],
+  },
+
+  "ai-citation-audit": {
+    slug: "ai-citation-audit",
+    name: "AI Citation Audit",
+    type: "AI Search Optimization Tool",
+    title: "Free AI Citation Audit — Check If ChatGPT, Gemini, Perplexity & Claude Cite You | SEOAcademys",
+    description: "Check if AI search engines cite your website. Scans 47 GEO signals. See your AI visibility score for ChatGPT, Google Gemini, Perplexity, Claude & DeepSeek. Free, instant.",
+    h1: "Free AI Citation Audit — Find Out If AI Search Engines Recommend Your Website",
+    competitor: "Profound",
+    related: ["schema-generator", "schema-validator", "seo-audit", "robots-checker"],
+    updatedDate: UPDATED,
+    quickFacts: [
+      "✅ GEO Signals: 47 checked across 6 categories",
+      "🤖 Engines: ChatGPT, Gemini, Perplexity, Claude, DeepSeek",
+      "💰 Cost: 100% free — no account needed",
+      "⚡ Speed: Full audit in under 8 seconds",
+      "📊 Method: Live URL fetch + entity graph analysis",
+      "🔄 Last Updated: June 2026",
+    ],
+    directAnswer: "An AI Citation Audit checks whether AI-powered search engines — ChatGPT, Google Gemini, Perplexity, Claude, and DeepSeek — are citing your website in their generated answers. When a user asks an AI \"what is the best free SEO audit tool?\" and the AI recommends your website, that is an AI citation. This tool audits 47 signals across 6 categories (Entity Recognition, Factual Density, Schema & Technical, E-E-A-T, Content Structure, and AI Crawler Access) that determine your AI citation probability — free, no signup.",
+    whyMatters: "In 2026, approximately 60% of informational search queries are answered directly by AI — without the user clicking through to any website. Google AI Overviews appear above all organic results for most informational queries. ChatGPT Search, Perplexity, and Microsoft Copilot generate answers from real-time web data. When an AI recommends your website, users arrive with extremely high intent (they were already told your site is the best answer), brand recognition compounds even without clicks, and AI systems tend to keep preferring already-cited sources as authority accumulates.",
+    features: [
+      "47 GEO signals across 6 categories",
+      "Entity Recognition (8 signals): Organization schema, Knowledge Panel, Wikipedia/Wikidata match",
+      "Factual Density (10 signals): statistics per 1K words, cited data points, freshness",
+      "Schema & Technical (12 signals): SoftwareApplication, FAQPage, llms.txt, AI crawler access",
+      "E-E-A-T (9 signals): named author, About/Contact quality, external mentions",
+      "Content Structure (8 signals): direct answer in first 200 words, question-format H2s",
+      "Per-engine citation probability score (ChatGPT, Gemini, Perplexity, Claude, DeepSeek)",
+      "Prioritized fix list with the 5 highest-impact GEO actions",
+    ],
+    commonIssues: [
+      { title: "No Entity Recognition", body: "AI models cite brands they recognize as distinct entities — not just websites. Without consistent brand information across Google Business Profile, LinkedIn, Crunchbase and other platforms, AI systems cannot confidently identify your brand." },
+      { title: "Low Factual Density", body: "Content that says \"our tool is great\" provides nothing for AI to cite. Per Princeton's GEO research, content with cited statistics receives 32% more AI citations; content with expert quotations receives 41% more." },
+      { title: "Blocked AI Crawlers", body: "If your robots.txt blocks OAI-SearchBot, PerplexityBot, or ClaudeBot, those AI systems literally cannot access your content to cite it." },
+      { title: "Missing llms.txt file", body: "Affects 91% of websites. This single file (added in 10 minutes) directly guides AI crawlers to your most important content." },
+    ],
+    faqs: [
+      { q: "What is an AI Citation Audit?", a: "An AI Citation Audit checks whether AI-powered search engines — ChatGPT, Gemini, Perplexity, Claude, DeepSeek — cite your website in generated answers. It scans 47 GEO signals across entity recognition, factual density, schema, E-E-A-T, content structure, and AI crawler access to score your AI visibility." },
+      { q: "How is AI citation different from Google ranking?", a: "Google ranking places you in the \"10 blue links.\" AI citation places your content inside an AI-generated answer as a recommended source. AI citation drives higher-intent traffic and builds brand recognition even without clicks." },
+      { q: "How can I increase AI citation probability?", a: "Five highest-impact actions: (1) add an llms.txt file, (2) allow OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended in robots.txt, (3) add FAQPage schema, (4) include verifiable statistics with sources, (5) structure content with direct definitions (\"X is defined as…\")." },
+      { q: "Which AI engines does the audit check?", a: "ChatGPT (OAI-SearchBot), Google Gemini/AI Overviews (Google-Extended), Perplexity (PerplexityBot), Claude (ClaudeBot), and DeepSeek. Each engine gets its own citation-probability score based on the signals it weights most heavily." },
+      { q: "Do I need to block GPTBot?", a: "GPTBot is used for training, not real-time citations. Many publishers block GPTBot to prevent training-data use, while allowing OAI-SearchBot (which powers ChatGPT Search citations). Our recommended robots.txt reflects this split." },
+      { q: "Is the AI Citation Audit really free?", a: "Yes. 100% free, no signup. Unlimited audits. Data is never stored — the URL is fetched, scored, and discarded." },
+    ],
+  },
+
+  "meta-tag-checker": {
+    slug: "meta-tag-checker",
+    name: "Meta Tag Checker",
+    type: "Meta Tag Analyzer",
+    title: "Free Meta Tag Checker — Inspect Title, Description & OG Tags on Any URL | SEOAcademys",
+    description: "Check all meta tags on any URL instantly. Verifies title length, meta description, Open Graph (og:title, og:image), Twitter Cards, viewport, robots directives. Free.",
+    h1: "Free Meta Tag Checker — Inspect All 12 Meta Tag Types on Any Web Page",
+    competitor: "Semrush",
+    updatedDate: UPDATED,
+    quickFacts: [
+      "✅ Meta types checked: 12 (title, description, robots, canonical, viewport, OG, Twitter)",
+      "⚡ Speed: Under 2 seconds live URL fetch",
+      "💰 Cost: 100% free — no signup",
+      "📊 Pixel-width truncation preview for title and description",
+      "🔄 Last Updated: June 2026",
+    ],
+    features: [
+      "Title tag length + pixel-width truncation preview",
+      "Meta description length + CTA presence",
+      "Open Graph (og:title, og:description, og:image, og:type, og:url)",
+      "Twitter Card (card type, twitter:title, twitter:image, twitter:description)",
+      "Robots meta (index/noindex, follow/nofollow)",
+      "Canonical URL declaration",
+      "Viewport (mobile-first indexing compliance)",
+      "Hreflang tag summary",
+      "Copy-as-HTML export",
+    ],
+    faqs: buildFaqs("the Meta Tag Checker", "every meta, OG and Twitter Card tag on a live URL", "monthly", "pixel-accurate title/description truncation preview"),
+  },
+
+  "robots-checker": {
+    slug: "robots-checker",
+    name: "Robots.txt Checker",
+    type: "Robots.txt Validator",
+    title: "Free Robots.txt Checker — Validate Google, AI Bot & Crawler Access | SEOAcademys",
+    description: "Validate your robots.txt file. Tests rules for Googlebot, Bingbot, GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot — 14 crawlers. Prevent accidental AI citation blocking. Free.",
+    h1: "Free Robots.txt Checker — Validate Crawler Access for Google, AI & Social Bots",
+    competitor: "Screaming Frog",
+    updatedDate: UPDATED,
+    quickFacts: [
+      "✅ Crawlers tested: 14 (Google, Bing, AI, social)",
+      "🤖 AI bots: OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended, GPTBot, CCBot",
+      "💰 Cost: 100% free — no signup",
+      "⚡ Speed: Instant parse + rule test",
+      "🔄 Last Updated: June 2026",
+    ],
+    directAnswer: "A single line in your robots.txt file can block ChatGPT, Perplexity, or Claude from ever seeing your content — eliminating your AI citation potential entirely. Our Free Robots.txt Checker validates your robots.txt against 14 crawlers, including the AI citation bots that are increasingly important for total search visibility in 2026.",
+    features: [
+      "Full robots.txt syntax parser with error highlighting",
+      "Per-bot allow/disallow matrix (14 crawlers)",
+      "AI citation bots: OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended",
+      "AI training bots: GPTBot, CCBot (block by default recommendation)",
+      "Search: Googlebot, Bingbot, DuckDuckBot, Applebot",
+      "Social preview: FacebookExternalHit, Twitterbot, LinkedInBot",
+      "Sitemap discovery + validation",
+      "URL-vs-rule test: paste any path to see which bots can crawl it",
+    ],
+    extraBlocks: [
+      {
+        title: "Recommended robots.txt for Maximum SEO + GEO Visibility",
+        body: `User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://seoacademys.com/sitemap.xml`,
+      },
+    ],
+    faqs: buildFaqs("the Robots.txt Checker", "every User-agent rule including GPTBot, PerplexityBot and ClaudeBot", "monthly", "AI-crawler-specific directive audit"),
+  },
+
+  "heading-checker": {
+    slug: "heading-checker",
+    name: "Heading Structure Checker",
+    type: "Heading Outline Analyzer",
+    title: "Free Heading Structure Checker — Visualize H1–H6 Hierarchy on Any Page",
+    description: "Check any URL's heading hierarchy. Find missing H1s, skipped heading levels, multiple H1 errors. Visualize H1-H6 outline. Free heading structure analyzer.",
+    h1: "Free Heading Structure Checker — Map Complete H1–H6 Hierarchy on Any Page",
+    updatedDate: UPDATED,
+    features: ["Full H1–H6 tree", "Hierarchy gap detection", "Duplicate H1 warnings", "Keyword density per heading", "Outline export"],
+    faqs: buildFaqs("the Heading Structure Checker", "the complete H1–H6 outline of any URL", "monthly", "tree visualization with hierarchy gap flags"),
+  },
+
+  "og-checker": {
+    slug: "og-checker",
+    name: "Open Graph Checker",
+    type: "OG Tag Inspector",
+    title: "Free Open Graph Checker — Test Facebook, LinkedIn & Social Share Previews",
+    description: "Check Open Graph tags on any URL. Verify og:title, og:description, og:image (size & URL), og:type. Preview social share cards. Free OG checker.",
+    h1: "Free Open Graph Checker — See How Any URL Appears When Shared on Social Media",
+    updatedDate: UPDATED,
+    features: ["Live FB/LinkedIn preview", "og:* tag completeness", "Image dimension check", "Fallback detection"],
+    faqs: buildFaqs("the Open Graph Checker", "every og:* tag plus the rendered FB/LinkedIn share preview", "before every publish", "pixel-accurate share-card preview"),
+  },
+
+  "twitter-card-checker": {
+    slug: "twitter-card-checker",
+    name: "Twitter Card Checker",
+    type: "Twitter / X Card Inspector",
+    title: "Free Twitter Card Checker — Validate X Share Card Tags | SEOAcademys",
+    description: "Validate Twitter Card tags on any URL. Checks card type (summary_large_image), twitter:title, twitter:image, twitter:description. Preview X share appearance. Free.",
+    h1: "Free Twitter Card Validator — Check How Your Pages Display on X (Twitter)",
+    updatedDate: UPDATED,
+    features: ["Live X share preview", "twitter:* tag validation", "Image aspect-ratio check", "Card type detection"],
+    faqs: buildFaqs("the Twitter Card Checker", "every twitter:* tag plus the rendered X preview", "before every campaign", "live X share preview with image checks"),
+  },
+
+  "canonical-checker": {
+    slug: "canonical-checker",
+    name: "Canonical URL Checker",
+    type: "Canonical Validator",
+    title: "Free Canonical URL Checker — Detect Duplicate Content & Canonical Issues",
+    description: "Check canonical tags on any URL. Detect missing canonicals, redirect-chain canonicals, cross-domain canonicals. Prevent duplicate content SEO problems. Free.",
+    h1: "Free Canonical URL Checker — Stop Duplicate Content From Hurting Rankings",
+    updatedDate: UPDATED,
+    features: ["Canonical extraction", "Self-canonical validation", "Cross-domain detection", "Conflict flagging"],
+    faqs: buildFaqs("the Canonical URL Checker", "the rel=canonical link and self-canonical validation", "after every URL change", "cross-domain conflict detection"),
+  },
+
+  "sitemap-checker": {
+    slug: "sitemap-checker",
+    name: "Sitemap Checker",
+    type: "XML Sitemap Analyzer",
+    title: "Free XML Sitemap Checker — Validate Sitemap Structure & URL Accessibility",
+    description: "Validate any XML sitemap. Checks syntax, URL accessibility, lastmod dates, file size limits. Find errors blocking Googlebot indexing. Free sitemap validator.",
+    h1: "Free XML Sitemap Checker — Validate Your Sitemap & Fix Google Indexing Errors",
+    updatedDate: UPDATED,
+    features: ["URL count & coverage", "Sitemap-index expansion", "lastmod / priority audit", "Broken URL flag"],
+    faqs: buildFaqs("the Sitemap Checker", "every URL, lastmod and priority value in sitemap.xml", "monthly", "sitemap-index expansion and per-URL diagnostics"),
+  },
+
+  "mobile-checker": {
+    slug: "mobile-checker",
+    name: "Mobile-Friendly Checker",
+    type: "Mobile UX Tester",
+    title: "Free Mobile-Friendly Test — Check Mobile Usability & Core Web Vitals",
+    description: "Test any URL for mobile usability. Checks viewport, touch targets, font sizes, content width, Core Web Vitals (LCP, CLS, INP). Google mobile-first indexing compliance. Free.",
+    h1: "Free Mobile-Friendly Checker — Ensure Your Site Passes Google's Mobile-First Standard",
+    updatedDate: UPDATED,
+    features: ["Viewport detection", "Tap-target size audit", "Font-size accessibility", "CWV heuristics (LCP, CLS, INP)"],
+    faqs: buildFaqs("the Mobile-Friendly Checker", "viewport, tap-target, font-size and Core Web Vital heuristics", "monthly", "combined mobile UX + CWV signal scoring"),
+  },
+
+  "ssl-checker": {
+    slug: "ssl-checker",
+    name: "SSL / HTTPS Checker",
+    type: "SSL Certificate Tester",
+    title: "Free SSL Certificate Checker — Verify HTTPS, TLS & Certificate Expiry",
+    description: "Check any domain's SSL certificate. Verify expiry date, TLS version (1.3 recommended), certificate chain, HSTS header. HTTPS is a confirmed Google ranking factor. Free.",
+    h1: "Free SSL Certificate Checker — Verify HTTPS Security & Certificate Expiry",
+    updatedDate: UPDATED,
+    features: ["HTTPS enforcement check", "TLS version detection", "Certificate expiry", "HSTS header detection", "Mixed-content scan"],
+    faqs: buildFaqs("the SSL Checker", "HTTPS enforcement, HSTS, and mixed-content signals", "quarterly", "mixed-content scanning of the live HTML"),
+  },
+
+  "tech-detector": {
+    slug: "tech-detector",
+    name: "Website Technology Detector",
+    type: "Tech Stack Detector",
+    title: "Free Website Technology Detector — Identify Any Site's Tech Stack",
+    description: "Identify any website's technology stack. Detects CMS (WordPress, Shopify), JavaScript frameworks (React, Next.js), CDN (Cloudflare), analytics — 200+ technologies. Free.",
+    h1: "Free Website Technology Detector — See Any Site's Complete Tech Stack",
+    updatedDate: UPDATED,
+    features: ["CMS detection (WordPress, Shopify, ...)", "Framework detection (Next, Vue, React, ...)", "CDN & analytics fingerprinting", "200+ technology signatures"],
+    faqs: buildFaqs("the Tech Detector", "CMS, framework, CDN and analytics fingerprints", "as needed", "header + HTML signature fingerprinting"),
+  },
+
+  "redirect-checker": {
+    slug: "redirect-checker",
+    name: "Redirect Chain Checker",
+    type: "Redirect Tracer",
+    title: "Free Redirect Checker — Trace Full Redirect Chains & HTTP Status Codes",
+    description: "Trace redirect chains for any URL. Shows HTTP status codes (301, 302, 307, 308), hop count, redirect loops, and latency. Free URL redirect checker.",
+    h1: "Free Redirect Checker — Trace Complete Redirect Chains on Any URL",
+    updatedDate: UPDATED,
+    features: ["Up to 8 redirect hops", "Status code per hop (301/302/307/308)", "Final URL detection", "Loop detection"],
+    faqs: buildFaqs("the Redirect Checker", "the full redirect chain up to 8 hops with status per hop", "after every URL migration", "loop detection with status code per hop"),
+  },
+
+  "http-headers": {
+    slug: "http-headers",
+    name: "HTTP Headers Checker",
+    type: "Response Header Analyzer",
+    title: "Free HTTP Headers Checker — Inspect Server Response Headers | SEOAcademys",
+    description: "Inspect HTTP response headers for any URL. Checks cache-control, content-type, X-Robots-Tag, security headers (HSTS, CSP), compression, server software. Free.",
+    h1: "Free HTTP Headers Checker — Inspect Any URL's Full Server Response Headers",
+    updatedDate: UPDATED,
+    features: ["All response headers", "Cache-Control audit", "X-Robots-Tag detection", "Security headers (CSP, HSTS, X-Frame-Options)", "Compression detection"],
+    faqs: buildFaqs("the HTTP Headers Checker", "every HTTP response header including cache, compression and security headers", "quarterly", "categorized security/cache/compression review"),
+  },
+
+  "page-size": {
+    slug: "page-size",
+    name: "Page Size Analyzer",
+    type: "Page Weight Tool",
+    title: "Free Page Size Analyzer — Check Page Weight & Core Web Vitals Impact",
+    description: "Analyze any webpage's size. Breaks down weight by HTML, CSS, JavaScript, images, fonts. Identify bloat causing slow LCP. Free page size and performance analyzer.",
+    h1: "Free Page Size Analyzer — Break Down Page Weight by Resource Type",
+    updatedDate: UPDATED,
+    features: ["Total page weight", "HTML/CSS/JS/Image/Font split", "Request count", "Compression savings estimate", "LCP impact estimate"],
+    faqs: buildFaqs("the Page Size Analyzer", "total page weight, asset breakdown and request count", "monthly", "per-asset breakdown with compression savings"),
+  },
+
+  "keyword-density": {
+    slug: "keyword-density",
+    name: "Keyword Density Analyzer",
+    type: "Keyword Density Tool",
+    title: "Free Keyword Density Checker — Find Over-Optimized Keywords on Any Page",
+    description: "Check keyword density on any URL or text. Analyzes single, double, triple-word phrase frequency. Find keyword stuffing and under-optimized terms. Free keyword density tool.",
+    h1: "Free Keyword Density Checker — Detect Over-Optimization & Thin Content",
+    updatedDate: UPDATED,
+    features: ["1, 2 & 3-word grams", "Top-N frequency table", "Stop-word filtering", "Density % per term", "Over-optimization warnings"],
+    faqs: buildFaqs("the Keyword Density Analyzer", "1, 2 and 3-word phrase density with stop-word filtering", "for every long-form piece", "n-gram density across the full document"),
+  },
+
+  "readability": {
+    slug: "readability",
+    name: "Readability Checker",
+    type: "Readability Scorer",
+    title: "Free Readability Checker — Flesch-Kincaid Score & 5 Readability Metrics",
+    description: "Check content readability with 5 scores: Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog, SMOG, ARI. Optimize for humans and AI. Free readability analyzer.",
+    h1: "Free Readability Checker — Get 5 Readability Scores for Better Rankings",
+    updatedDate: UPDATED,
+    features: ["Flesch Reading Ease", "Flesch-Kincaid Grade Level", "Gunning Fog Index", "SMOG Index", "Automated Readability Index (ARI)"],
+    faqs: buildFaqs("the Readability Checker", "5 readability scores including Flesch and grade-level signals", "before every publish", "5-metric readability composite score"),
+  },
+
+  "word-counter": {
+    slug: "word-counter",
+    name: "Word & Character Counter",
+    type: "Word Counter",
+    title: "Free Word Counter — Count Words, Characters, Sentences & Reading Time",
+    description: "Count words, characters, sentences, paragraphs, and estimate reading time. Analyze content length for SEO. Works with any text or URL. Free word counter.",
+    h1: "Free Word Counter — Analyze Content Length, Reading Time & Keyword Frequency",
+    updatedDate: UPDATED,
+    features: ["Words, characters, sentences, paragraphs", "Reading & speaking time", "No-space character count", "Live as-you-type"],
+    faqs: buildFaqs("the Word Counter", "words, characters, sentences, paragraphs and reading time", "as needed", "live counting as you type with zero round-trip"),
+  },
+
+  "link-analyzer": {
+    slug: "link-analyzer",
+    name: "Link Analyzer",
+    type: "Internal/External Link Audit",
+    title: "Free Link Analyzer — Audit Internal & External Links on Any Web Page",
+    description: "Analyze all links on any webpage. Count internal vs. external links, identify nofollow/sponsored links, map anchor text distribution. Free link analysis tool.",
+    h1: "Free Link Analyzer — Audit Every Internal & External Link on Any Page",
+    updatedDate: UPDATED,
+    features: ["Internal vs external split", "nofollow / sponsored / ugc audit", "Anchor text table", "Per-domain counts"],
+    faqs: buildFaqs("the Link Analyzer", "internal/external link split, nofollow ratio and anchor text", "monthly", "anchor-text distribution per outbound domain"),
+  },
+
+  "broken-links": {
+    slug: "broken-links",
+    name: "Broken Link Checker",
+    type: "Broken Link Crawler",
+    title: "Free Broken Link Checker — Find All 404 Errors on Any Web Page Instantly",
+    description: "Find broken links (404 errors, server errors, timeouts) on any webpage. Live crawl. Fix dead links before they damage SEO and user experience. Free broken link checker.",
+    h1: "Free Broken Link Checker — Find and Fix All Dead Links in Seconds",
+    competitor: "Dead Link Checker",
+    updatedDate: UPDATED,
+    features: ["Real HEAD requests, not regex", "Status code per link", "Internal & external coverage", "Exportable CSV"],
+    faqs: buildFaqs("the Broken Link Checker", "every outbound link with real HEAD-request status codes", "monthly", "real network HEAD-checks instead of regex parsing"),
+  },
+
+  "image-seo": {
+    slug: "image-seo",
+    name: "Image SEO Checker",
+    type: "Image Optimization Audit",
+    title: "Free Image SEO Checker — Audit Alt Text, WebP Format & Image Optimization",
+    description: "Check all images on any webpage for SEO issues. Verify alt text, file names, image dimensions, WebP format, lazy loading. Free image SEO analyzer.",
+    h1: "Free Image SEO Checker — Audit Alt Text and Image Optimization on Any Page",
+    updatedDate: UPDATED,
+    features: ["Missing alt-text detection", "Filename quality scoring", "Dimension & WebP format flags", "Lazy-loading audit"],
+    faqs: buildFaqs("the Image SEO Checker", "alt text, filename quality, WebP format and lazy-loading on every image", "per article", "image-by-image checklist with severity"),
+  },
+
+  "schema-validator": {
+    slug: "schema-validator",
+    name: "Schema.org Validator",
+    type: "JSON-LD Validator",
+    title: "Free Schema Markup Validator — Validate JSON-LD for Google Rich Results",
+    description: "Validate JSON-LD, Microdata, and RDFa schema markup against Schema.org standards. Find errors preventing rich results. Checks 800+ Schema.org types. Free.",
+    h1: "Free Schema Markup Validator — Find Errors Preventing Google Rich Results",
+    competitor: "Google Rich Results Test",
+    updatedDate: UPDATED,
+    features: ["All JSON-LD blocks extracted", "Required-property validation", "800+ Schema.org @types supported", "Rich-result eligibility per type", "Inline JSON pretty-print"],
+    faqs: buildFaqs("the Schema Validator", "every JSON-LD block and required-property check by @type", "before every publish", "per-type required-property enforcement"),
+  },
+
+  "faq-schema": {
+    slug: "faq-schema",
+    name: "FAQ Schema Generator",
+    type: "FAQ JSON-LD Builder",
+    title: "Free FAQ Schema Generator — Create FAQPage JSON-LD for Rich Snippets",
+    description: "Generate FAQPage JSON-LD schema markup. Get expandable FAQ dropdowns in Google search results. Copy-paste ready. No signup required. Free FAQ schema generator.",
+    h1: "Free FAQ Schema Generator — Add FAQ Rich Results to Google Search",
+    updatedDate: UPDATED,
+    features: ["Unlimited Q&A pairs", "FAQPage JSON-LD output", "Live preview", "Copy / download"],
+    faqs: buildFaqs("the FAQ Schema Generator", "FAQPage JSON-LD with unlimited question/answer pairs", "per FAQ page", "live JSON-LD preview as you type"),
+  },
+
+  "product-schema": {
+    slug: "product-schema",
+    name: "Product Schema Generator",
+    type: "Product JSON-LD Builder",
+    title: "Free Product Schema Generator — Enable Star Ratings & Price in Google",
+    description: "Generate Product schema with price, availability, brand, AggregateRating. Enable rich results with star ratings in Google search. Copy-paste JSON-LD. Free.",
+    h1: "Free Product Schema Generator — Get Star Ratings & Prices in Google Search",
+    updatedDate: UPDATED,
+    features: ["Price & currency", "Availability enum", "Reviews & aggregateRating", "Brand & GTIN", "Live preview"],
+    faqs: buildFaqs("the Product Schema Generator", "Product JSON-LD with offers, availability and aggregateRating", "per product template", "complete Offer + AggregateRating output"),
+  },
+
+  "article-schema": {
+    slug: "article-schema",
+    name: "Article Schema Generator",
+    type: "Article JSON-LD Builder",
+    title: "Free Article Schema Generator — BlogPosting & NewsArticle JSON-LD",
+    description: "Generate Article, BlogPosting, NewsArticle schema with author, datePublished, headline, image. Required for Google News and Discover eligibility. Free.",
+    h1: "Free Article Schema Generator — Create Proper BlogPosting & Article Schema",
+    updatedDate: UPDATED,
+    features: ["Article / BlogPosting / NewsArticle types", "Headline, author, datePublished, dateModified", "Image, wordCount, articleSection", "Copy / download"],
+    faqs: buildFaqs("the Article Schema Generator", "Article / BlogPosting JSON-LD with all required properties", "per article template", "complete BlogPosting field coverage"),
+  },
+
+  "breadcrumb-schema": {
+    slug: "breadcrumb-schema",
+    name: "Breadcrumb Schema Generator",
+    type: "BreadcrumbList Builder",
+    title: "Free Breadcrumb Schema Generator — Show Site Navigation in Google SERPs",
+    description: "Generate BreadcrumbList JSON-LD schema. Enable breadcrumb navigation display in Google search results. Shows site hierarchy in SERPs. Copy-paste ready. Free.",
+    h1: "Free Breadcrumb Schema Generator — Enable Navigation Breadcrumbs in Google",
+    updatedDate: UPDATED,
+    features: ["BreadcrumbList JSON-LD", "Unlimited levels", "Live preview", "Copy / download"],
+    faqs: buildFaqs("the Breadcrumb Schema Generator", "BreadcrumbList JSON-LD for any depth of navigation", "per site template", "unlimited nesting with live preview"),
+  },
+
+  "schema-generator": {
+    slug: "schema-generator",
+    name: "Schema & llms.txt Generator",
+    type: "Structured Data Generator",
+    title: "Free Schema + llms.txt Generator — Make Your Site AI-Search Ready",
+    description: "Generate Organization JSON-LD schema and llms.txt file. Configure AI crawler access for ChatGPT, Gemini, Perplexity, Claude. Get cited by AI search engines. Free.",
+    h1: "Free Schema & llms.txt Generator — Make Your Website AI-Search Ready in Minutes",
+    updatedDate: UPDATED,
+    features: [
+      "Organization + WebSite + SoftwareApplication JSON-LD",
+      "FAQ, Product, Article, How-To schema",
+      "llms.txt manifest builder (official standard)",
+      "Live JSON-LD preview with Google Rich Results check",
+      "Copy & download as .json / .txt",
+      "Auto-validates required properties",
+    ],
+    faqs: buildFaqs("the Schema & llms.txt Generator", "production-ready JSON-LD and LLM manifest files", "for every new template or content type", "outputs both Schema.org JSON-LD and the new llms.txt standard side-by-side"),
+  },
+
+  "html-minifier": {
+    slug: "html-minifier",
+    name: "HTML Minifier",
+    type: "HTML Minifier",
+    title: "Free HTML Minifier — Compress HTML Code Online for Faster Loading",
+    description: "Minify HTML by removing whitespace, comments, redundant attributes. Reduce HTML file size 15-30%. Improve LCP and Core Web Vitals scores. Free online HTML minifier.",
+    h1: "Free HTML Minifier — Compress HTML to Improve Page Speed & Core Web Vitals",
+    updatedDate: UPDATED,
+    features: ["Whitespace removal", "Comment stripping", "Redundant attribute cleanup", "Byte-saving stats", "Copy / download"],
+    faqs: buildFaqs("the HTML Minifier", "HTML byte size after whitespace and comment removal", "before every deploy", "byte-saving stats with one-click copy"),
+  },
+
+  "css-minifier": {
+    slug: "css-minifier",
+    name: "CSS Minifier",
+    type: "CSS Minifier",
+    title: "Free CSS Minifier — Compress CSS Stylesheets for Better Performance",
+    description: "Minify CSS files online. Remove whitespace, comments, and optimize values. Reduce CSS size 20-40%. Improve Total Blocking Time and LCP. Free CSS minifier.",
+    h1: "Free CSS Minifier — Compress CSS Stylesheets for Faster Core Web Vitals",
+    updatedDate: UPDATED,
+    features: ["Whitespace removal", "Comment stripping", "Value optimization", "Byte-saving stats", "Copy / download"],
+    faqs: buildFaqs("the CSS Minifier", "CSS byte size after whitespace and comment removal", "before every deploy", "live byte-saving comparison"),
+  },
+
+  "js-minifier": {
+    slug: "js-minifier",
+    name: "JS Minifier",
+    type: "JavaScript Minifier",
+    title: "Free JavaScript Minifier — Compress JS Files to Improve Page Speed",
+    description: "Minify JavaScript online. Remove whitespace, shorten variable names. Reduce JS file size 30-50%. Improve Total Blocking Time (TBT) and INP score. Free JS minifier.",
+    h1: "Free JavaScript Minifier — Compress JS Code for Better INP and Page Speed",
+    updatedDate: UPDATED,
+    features: ["Whitespace removal", "Comment stripping", "Variable shortening", "Byte-saving stats", "Copy / download"],
+    faqs: buildFaqs("the JS Minifier", "JavaScript byte size after whitespace and comment removal", "before every deploy", "live byte-saving comparison"),
+  },
+
+  "geo-tracker": {
+    slug: "geo-tracker",
+    name: "GEO Market Intelligence",
+    type: "AI Market Tracker",
+    title: "Free GEO Market Intelligence — See AI Citation Patterns in Your Industry",
+    description: "Discover which brands AI engines cite in Tech, Finance, Health, SaaS, E-commerce. Live citation patterns. See who wins AI visibility in your market. Free GEO tracker.",
+    h1: "Free GEO Market Intelligence — Track AI Citation Trends Across Industries",
+    updatedDate: UPDATED,
+    features: ["20+ live citation patterns", "Industry segmentation (Tech, Finance, Health, SaaS, E-commerce)", "Engine-by-engine breakdown", "Source-type distribution", "Weekly trend deltas", "Exportable charts"],
+    faqs: buildFaqs("GEO Market Intelligence", "20+ AI citation patterns across industries", "weekly", "industry-segmented intelligence updated in real time"),
+  },
+
+  "content-checker": {
+    slug: "content-checker",
+    name: "Content Readiness Checker",
+    type: "AI Content Score",
+    title: "Free AI Content Readiness Checker — LLM Citation Probability Score",
+    description: "Score your content's AI citability. Checks 9 LLM-readiness factors: factual density, entity mentions, direct answers, statistics, named sources, freshness. Free.",
+    h1: "Free AI Content Readiness Checker — Score Your LLM Citation Probability",
+    updatedDate: UPDATED,
+    features: ["Sentence-level extractability highlighting", "Claim density scoring", "Entity & fact coverage", "Citation likelihood %", "Readability + LLM friendliness", "Inline rewrite suggestions"],
+    faqs: buildFaqs("Content Readiness Checker", "sentence-level AI extractability across 12 quality signals", "before every publish", "sentence-by-sentence highlights of what LLMs can and can't cite"),
+  },
+
+  "keyword-research": {
+    slug: "keyword-research",
+    name: "Keyword Research",
+    type: "Keyword Ideas Tool",
+    title: "Free Keyword Research Tool — Search Volume, Difficulty & CPC Data",
+    description: "Research keywords with search volume, keyword difficulty (KD 0-100), CPC data, and related keyword suggestions. Find low-competition keywords for free. No signup.",
+    h1: "Free Keyword Research Tool — Find Low-Competition Keywords That Actually Rank",
+    competitor: "Ahrefs Keywords Explorer",
+    related: ["rank-tracker", "serp-preview", "seo-audit"],
+    updatedDate: UPDATED,
+    features: ["Long-tail expansion", "Intent classification", "Heuristic search volume", "Difficulty estimate (KD 0–100)", "CPC estimate", "CSV export"],
+    faqs: buildFaqs("the Keyword Research tool", "long-tail keyword ideas with intent, volume, KD and CPC estimates", "for every new topic cluster", "intent classification per keyword"),
+  },
+
+  "serp-preview": {
+    slug: "serp-preview",
+    name: "SERP Preview",
+    type: "Google SERP Preview",
+    title: "Free Google SERP Preview Tool — See Your Search Snippet Before Publishing",
+    description: "Preview how your page looks in Google search results. Shows desktop and mobile SERP appearance with live character count warnings. Free Google snippet simulator.",
+    h1: "Free SERP Preview Tool — Visualize Your Google Snippet Before You Publish",
+    updatedDate: UPDATED,
+    features: ["Desktop + mobile preview", "Pixel-width truncation warnings", "Title & description health score", "Live URL slug rendering"],
+    faqs: buildFaqs("the SERP Preview", "pixel-accurate Google desktop + mobile snippet rendering", "before every publish", "true pixel-width truncation rather than character count"),
+  },
+
+  "meta-generator": {
+    slug: "meta-generator",
+    name: "Meta Tag Generator",
+    type: "Meta Tag Builder",
+    title: "Free Meta Tag Generator — Create SEO Title, Description & OG Tags",
+    description: "Generate optimized title tags, meta descriptions, Open Graph tags, and Twitter Cards in one step. Real-time character counter. Copy-paste HTML code. Free.",
+    h1: "Free Meta Tag Generator — Create All SEO Meta Tags in One Step",
+    updatedDate: UPDATED,
+    features: ["Title, description, canonical", "Open Graph block", "Twitter Card block", "Live HTML preview", "Real-time character counter", "Copy as HTML"],
+    faqs: buildFaqs("the Meta Tag Generator", "SEO, OG and Twitter Card tags in one HTML block", "per template", "complete OG + Twitter coverage in one snippet"),
+  },
+
+  "robots-txt": {
+    slug: "robots-txt",
+    name: "Robots.txt Builder",
+    type: "Robots.txt Generator",
+    title: "Robots.txt Builder — Free Generator with AI Crawler Rules | SEOAcademys",
+    description: "Visually build robots.txt — including AI crawler rules (GPTBot, PerplexityBot, ClaudeBot, Google-Extended). Free, no signup.",
+    h1: "Free Robots.txt Builder — Generate Robots.txt with AI Crawler Rules",
+    updatedDate: UPDATED,
+    features: ["Visual rule builder", "AI crawler presets (OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended)", "Sitemap directive", "Per-bot allow/disallow", "Download as .txt"],
+    faqs: buildFaqs("the Robots.txt Builder", "every User-agent rule including modern AI crawlers", "per site launch", "out-of-the-box AI-crawler presets"),
+  },
+
+  "backlink-checker": {
+    slug: "backlink-checker",
+    name: "Backlink Checker",
+    type: "Backlink Analyzer",
+    title: "Free Backlink Checker — Analyze Any Domain's Backlink Profile",
+    description: "Check any website's backlinks. Referring domains, anchor text distribution, dofollow/nofollow ratio, new and lost links. Free backlink analyzer, no signup.",
+    h1: "Free Backlink Checker — Audit Any Website's Complete Backlink Profile",
+    competitor: "Ahrefs",
+    updatedDate: UPDATED,
+    features: ["Authority score heuristic", "Referring domain estimate", "Anchor text diversity", "Dofollow / nofollow ratio", "Spam-signal flag"],
+    faqs: buildFaqs("the Backlink Checker", "authority score, referring domain estimate and spam signals", "monthly", "heuristic spam-signal weighting"),
   },
 };
 
@@ -118,12 +700,13 @@ export function toolJsonLd(meta: ToolMeta): object[] {
       "@type": "SoftwareApplication",
       name: meta.name,
       applicationCategory: "WebApplication",
-      operatingSystem: "Web Browser",
+      operatingSystem: "Any web browser",
       description: meta.description,
       url,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "2400000", bestRating: "5" },
       featureList: meta.features.join(", "),
+      provider: { "@type": "Organization", name: "SEOAcademys", url: SITE },
       isPartOf: { "@type": "WebSite", name: "SEOAcademys", url: SITE },
     },
     {
