@@ -82,6 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "37 free SEO tools used by 2.4M+ marketers. AI Citation Audit, Schema Generator, Site Audit, Rank Tracker — no signup. Rank #1 in Google & AI Search." },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { name: "author", content: "SEOAcademys" },
+      { name: "google-site-verification", content: "KrPUA7V1X_REbe_1oojsMMfhXeqUn3tEmmOZPaMTZCU" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "SEOAcademys" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -95,6 +96,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      { src: "https://www.googletagmanager.com/gtag/js?id=G-WEMSSMC2E8", async: true },
+      {
+        children:
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WEMSSMC2E8');",
       },
     ],
   }),
