@@ -19,7 +19,7 @@ export function Hero3D() {
 
 
       {/* Central orbiting system */}
-      <div className="relative" style={{ perspective: "1000px" }}>
+      <div className="relative scale-[0.5] xs:scale-[0.6] sm:scale-90 lg:scale-100 origin-center" style={{ perspective: "1000px" }}>
         {/* Pulsing core */}
         <motion.div
           className="relative size-32 sm:size-40 rounded-full flex items-center justify-center"
