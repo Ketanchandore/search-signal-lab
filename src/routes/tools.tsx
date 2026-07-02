@@ -3,10 +3,11 @@ import {
   LayoutDashboard, Search, FileCode2, FileText, BarChart3, Globe2,
   Eye, Tag, Bot, Link2, ChevronLeft, ChevronRight, Sparkles, Wand2,
   Gauge, Hash, Type, ListTree, ShieldCheck, ArrowRightLeft, ServerCog,
-  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight, TrendingUp,
+  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight, TrendingUp, Menu,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ToolSeo } from "@/components/ToolSeo";
 import { ToolContent } from "@/components/ToolContent";
 
@@ -103,13 +104,67 @@ const NAV: NavGroup[] = [
   },
 ];
 
+function SidebarNav({ path, collapsed, onNavigate }: { path: string; collapsed: boolean; onNavigate?: () => void }) {
+  return (
+    <nav className="flex-1 overflow-y-auto px-2 pb-6 space-y-5">
+      {NAV.map((group) => (
+        <div key={group.label}>
+          {!collapsed && (
+            <div className="px-3 mb-1.5 text-[10px] uppercase tracking-wider text-muted-foreground/80 font-semibold">
+              {group.label}
+            </div>
+          )}
+          <ul className="space-y-0.5">
+            {group.items.map((it) => {
+              const active = path === it.to;
+              const Icon = it.icon;
+              return (
+                <li key={it.to}>
+                  <Link
+                    to={it.to}
+                    onClick={onNavigate}
+                    title={collapsed ? it.label : undefined}
+                    className={cn(
+                      "group flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition relative",
+                      active
+                        ? "bg-primary/10 text-primary font-medium"
+                        : "text-foreground/80 hover:bg-secondary hover:text-foreground",
+                    )}
+                  >
+                    {active && <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r grad-primary" />}
+                    <Icon className={cn("size-4 shrink-0", active && "text-primary")} />
+                    {!collapsed && (
+                      <>
+                        <span className="truncate">{it.label}</span>
+                        {it.badge && (
+                          <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded-full grad-primary text-primary-foreground font-bold">
+                            {it.badge}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </nav>
+  );
+}
+
 function ToolsLayout() {
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
+
+  // Close mobile drawer on route change
+  useEffect(() => { setMobileOpen(false); }, [path]);
 
   return (
     <div className="flex min-h-[calc(100vh-3.5rem)] bg-background">
-      {/* Sidebar */}
+      {/* Desktop Sidebar */}
       <aside
         className={cn(
           "hidden md:flex sticky top-14 self-start h-[calc(100vh-3.5rem)] flex-col border-r border-border bg-surface/80 backdrop-blur transition-[width] duration-200",
@@ -130,54 +185,7 @@ function ToolsLayout() {
             {collapsed ? <ChevronRight className="size-4" /> : <ChevronLeft className="size-4" />}
           </button>
         </div>
-
-        <nav className="flex-1 overflow-y-auto px-2 pb-6 space-y-5">
-          {NAV.map((group) => (
-            <div key={group.label}>
-              {!collapsed && (
-                <div className="px-3 mb-1.5 text-[10px] uppercase tracking-wider text-muted-foreground/80 font-semibold">
-                  {group.label}
-                </div>
-              )}
-              <ul className="space-y-0.5">
-                {group.items.map((it) => {
-                  const active = path === it.to;
-                  const Icon = it.icon;
-                  return (
-                    <li key={it.to}>
-                      <Link
-                        to={it.to}
-                        title={collapsed ? it.label : undefined}
-                        className={cn(
-                          "group flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition relative",
-                          active
-                            ? "bg-primary/10 text-primary font-medium"
-                            : "text-foreground/80 hover:bg-secondary hover:text-foreground",
-                        )}
-                      >
-                        {active && (
-                          <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r grad-primary" />
-                        )}
-                        <Icon className={cn("size-4 shrink-0", active && "text-primary")} />
-                        {!collapsed && (
-                          <>
-                            <span className="truncate">{it.label}</span>
-                            {it.badge && (
-                              <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded-full grad-primary text-primary-foreground font-bold">
-                                {it.badge}
-                              </span>
-                            )}
-                          </>
-                        )}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
-        </nav>
-
+        <SidebarNav path={path} collapsed={collapsed} />
         {!collapsed && (
           <div className="m-3 p-3 rounded-lg border border-primary/20 bg-primary/5">
             <div className="text-xs font-semibold text-primary">Pro Tip</div>
@@ -193,6 +201,23 @@ function ToolsLayout() {
         {/* Top bar */}
         <div className="sticky top-14 z-30 border-b border-border bg-surface/70 backdrop-blur">
           <div className="flex items-center gap-3 px-4 md:px-8 h-12 text-xs">
+            {/* Mobile menu trigger */}
+            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+              <SheetTrigger asChild>
+                <button
+                  className="md:hidden inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-border bg-background text-foreground hover:border-primary hover:text-primary"
+                  aria-label="Open tools menu"
+                >
+                  <Menu className="size-4" /> <span className="font-medium">All Tools</span>
+                </button>
+              </SheetTrigger>
+              <SheetContent side="left" className="p-0 w-[280px] bg-surface">
+                <div className="flex items-center gap-2 px-4 py-4 border-b border-border text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  <Sparkles className="size-3.5 text-primary" /> SEO Suite · 37 Tools
+                </div>
+                <SidebarNav path={path} collapsed={false} onNavigate={() => setMobileOpen(false)} />
+              </SheetContent>
+            </Sheet>
             <Link to="/tools" className="text-muted-foreground hover:text-primary">Tools</Link>
             <Crumb path={path} />
             <div className="ml-auto hidden sm:flex items-center gap-2 text-muted-foreground">

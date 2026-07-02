@@ -7,7 +7,7 @@ import { Bot, Sparkles, Zap, Globe2, FileSearch, BrainCircuit } from "lucide-rea
  */
 export function Hero3D() {
   return (
-    <div className="relative w-full h-[420px] sm:h-[480px] flex items-center justify-center pointer-events-none select-none">
+    <div className="relative w-full h-[320px] sm:h-[480px] flex items-center justify-center pointer-events-none select-none">
       {/* Gradient mesh background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 size-[600px] rounded-full opacity-40 blur-3xl"
@@ -29,7 +29,7 @@ export function Hero3D() {
       />
 
       {/* Central orbiting system */}
-      <div className="relative" style={{ perspective: "1000px" }}>
+      <div className="relative scale-75 sm:scale-100" style={{ perspective: "1000px" }}>
         {/* Pulsing core */}
         <motion.div
           className="relative size-32 sm:size-40 rounded-full flex items-center justify-center"
@@ -55,8 +55,8 @@ export function Hero3D() {
 
         {/* Orbiting rings */}
         {[
-          { size: 220, dur: 18, items: [{ icon: Bot, label: "ChatGPT", color: "oklch(0.72 0.17 162)" }, { icon: Globe2, label: "Google AIO", color: "oklch(0.7 0.2 240)" }, { icon: Sparkles, label: "Perplexity", color: "oklch(0.65 0.2 300)" }] },
-          { size: 320, dur: 28, reverse: true, items: [{ icon: Zap, label: "Gemini", color: "oklch(0.78 0.17 70)" }, { icon: FileSearch, label: "Claude", color: "oklch(0.7 0.18 30)" }] },
+          { size: 220, dur: 18, items: [{ icon: Bot, label: "ChatGPT", color: "oklch(0.72 0.17 162)" }, { icon: Globe2, label: "Gemini", color: "oklch(0.7 0.2 240)" }, { icon: Sparkles, label: "Perplexity", color: "oklch(0.65 0.2 300)" }] },
+          { size: 320, dur: 28, reverse: true, items: [{ icon: Zap, label: "Copilot", color: "oklch(0.78 0.17 70)" }, { icon: FileSearch, label: "Claude", color: "oklch(0.7 0.18 30)" }] },
         ].map((ring, ri) => (
           <motion.div
             key={ri}
