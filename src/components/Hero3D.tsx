@@ -7,29 +7,19 @@ import { Bot, Sparkles, Zap, Globe2, FileSearch, BrainCircuit } from "lucide-rea
  */
 export function Hero3D() {
   return (
-    <div className="relative w-full h-[320px] sm:h-[480px] flex items-center justify-center pointer-events-none select-none">
-      {/* Gradient mesh background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 size-[600px] rounded-full opacity-40 blur-3xl"
-          style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 60%)" }} />
-        <div className="absolute bottom-0 left-10 size-[300px] rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(circle, oklch(0.55 0.22 280) 0%, transparent 60%)" }} />
-        <div className="absolute top-10 right-10 size-[260px] rounded-full opacity-25 blur-3xl"
-          style={{ background: "radial-gradient(circle, oklch(0.7 0.2 200) 0%, transparent 60%)" }} />
-      </div>
-
-      {/* Grid floor */}
-      <div className="absolute inset-x-0 bottom-0 h-48 opacity-30"
+    <div className="relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center pointer-events-none select-none">
+      {/* Circular glow backdrop */}
+      <div
+        className="absolute inset-[8%] rounded-full opacity-70 blur-2xl"
         style={{
           background:
-            "linear-gradient(transparent, var(--background)), repeating-linear-gradient(0deg, transparent 0 38px, color-mix(in oklab, var(--primary) 30%, transparent) 38px 39px), repeating-linear-gradient(90deg, transparent 0 38px, color-mix(in oklab, var(--primary) 30%, transparent) 38px 39px)",
-          transform: "perspective(600px) rotateX(60deg)",
-          transformOrigin: "bottom",
+            "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--primary) 35%, transparent) 0%, color-mix(in oklab, var(--primary) 12%, transparent) 45%, transparent 72%)",
         }}
       />
 
+
       {/* Central orbiting system */}
-      <div className="relative scale-75 sm:scale-100" style={{ perspective: "1000px" }}>
+      <div className="relative scale-[0.5] xs:scale-[0.6] sm:scale-90 lg:scale-100 origin-center" style={{ perspective: "1000px" }}>
         {/* Pulsing core */}
         <motion.div
           className="relative size-32 sm:size-40 rounded-full flex items-center justify-center"
