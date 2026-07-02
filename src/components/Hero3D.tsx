@@ -55,8 +55,8 @@ export function Hero3D() {
 
         {/* Orbiting rings */}
         {[
-          { size: 220, dur: 18, items: [{ icon: Bot, label: "ChatGPT", color: "oklch(0.72 0.17 162)" }, { icon: Globe2, label: "Google AIO", color: "oklch(0.7 0.2 240)" }, { icon: Sparkles, label: "Perplexity", color: "oklch(0.65 0.2 300)" }] },
-          { size: 320, dur: 28, reverse: true, items: [{ icon: Zap, label: "Gemini", color: "oklch(0.78 0.17 70)" }, { icon: FileSearch, label: "Claude", color: "oklch(0.7 0.18 30)" }] },
+          { size: 160, sizeSm: 220, dur: 18, items: [{ icon: Bot, label: "ChatGPT", color: "oklch(0.72 0.17 162)" }, { icon: Globe2, label: "Gemini", color: "oklch(0.7 0.2 240)" }, { icon: Sparkles, label: "Perplexity", color: "oklch(0.65 0.2 300)" }] },
+          { size: 240, sizeSm: 320, dur: 28, reverse: true, items: [{ icon: Zap, label: "Copilot", color: "oklch(0.78 0.17 70)" }, { icon: FileSearch, label: "Claude", color: "oklch(0.7 0.18 30)" }] },
         ].map((ring, ri) => (
           <motion.div
             key={ri}
