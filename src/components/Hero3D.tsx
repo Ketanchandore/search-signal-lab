@@ -7,7 +7,7 @@ import { Bot, Sparkles, Zap, Globe2, FileSearch, BrainCircuit } from "lucide-rea
  */
 export function Hero3D() {
   return (
-    <div className="relative w-full h-[420px] sm:h-[480px] flex items-center justify-center pointer-events-none select-none">
+    <div className="relative w-full h-[320px] sm:h-[480px] flex items-center justify-center pointer-events-none select-none">
       {/* Gradient mesh background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 size-[600px] rounded-full opacity-40 blur-3xl"
