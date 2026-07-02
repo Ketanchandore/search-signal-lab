@@ -3,10 +3,11 @@ import {
   LayoutDashboard, Search, FileCode2, FileText, BarChart3, Globe2,
   Eye, Tag, Bot, Link2, ChevronLeft, ChevronRight, Sparkles, Wand2,
   Gauge, Hash, Type, ListTree, ShieldCheck, ArrowRightLeft, ServerCog,
-  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight, TrendingUp,
+  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight, TrendingUp, Menu,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ToolSeo } from "@/components/ToolSeo";
 import { ToolContent } from "@/components/ToolContent";
 
