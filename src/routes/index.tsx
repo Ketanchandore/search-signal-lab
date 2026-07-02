@@ -132,7 +132,7 @@ function Home() {
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               LIVE · 2,438,902 scans run · 187 today
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+            <h1 className="font-display text-[2.1rem] leading-[1.08] sm:text-5xl lg:text-6xl font-bold tracking-tight">
               Rank #1 in{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 bg-gradient-to-br from-primary via-primary to-emerald-300 bg-clip-text text-transparent">
