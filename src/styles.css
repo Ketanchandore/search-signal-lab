@@ -80,6 +80,12 @@
 
 @layer base {
   * { border-color: var(--color-border); }
+  html, body {
+    /* Prevent accidental horizontal scroll on mobile from Hero orbit overflow / marquees */
+    max-width: 100vw;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+  }
   html { background-color: var(--color-background); }
   body {
     background-color: var(--color-background);
@@ -88,6 +94,8 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);

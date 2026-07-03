@@ -7,7 +7,7 @@ import { Bot, Sparkles, Zap, Globe2, FileSearch, BrainCircuit } from "lucide-rea
  */
 export function Hero3D() {
   return (
-    <div className="relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center pointer-events-none select-none">
+    <div className="relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center pointer-events-none select-none overflow-hidden">
       {/* Circular glow backdrop */}
       <div
         className="absolute inset-[8%] rounded-full opacity-70 blur-2xl"
@@ -19,7 +19,7 @@ export function Hero3D() {
 
 
       {/* Central orbiting system */}
-      <div className="relative scale-[0.5] xs:scale-[0.6] sm:scale-90 lg:scale-100 origin-center" style={{ perspective: "1000px" }}>
+      <div className="relative scale-[0.7] xs:scale-75 sm:scale-90 lg:scale-100 origin-center" style={{ perspective: "1000px" }}>
         {/* Pulsing core */}
         <motion.div
           className="relative size-32 sm:size-40 rounded-full flex items-center justify-center"
