@@ -39,7 +39,7 @@ const NAV: NavGroup[] = [
       { to: "/tools/twitter-card-checker", label: "Twitter Card Checker", icon: Hash },
       { to: "/tools/canonical-checker", label: "Canonical URL", icon: MoveRight },
       { to: "/tools/robots-checker", label: "Robots.txt Checker", icon: Bot },
-      { to: "/tools/sitemap-checker", label: "Sitemap Checker", icon: Map },
+      { to: "/tools/sitemap-checker", label: "Sitemap Checker", icon: MapIcon },
       { to: "/tools/mobile-checker", label: "Mobile-Friendly", icon: Smartphone },
       { to: "/tools/ssl-checker", label: "SSL Checker", icon: ShieldCheck },
     ],
