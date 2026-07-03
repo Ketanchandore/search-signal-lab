@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Search, FileCode2, FileText, BarChart3, Globe2,
   Eye, Tag, Bot, Link2, ChevronLeft, ChevronRight, Sparkles, Wand2,
   Gauge, Hash, Type, ListTree, ShieldCheck, ArrowRightLeft, ServerCog,
-  Map, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight, TrendingUp, Menu,
+  Map as MapIcon, Smartphone, Cpu, ImageIcon, FileX2, BookOpen, Code, Braces, ScrollText, HelpCircle, Package, Newspaper, MoveRight, TrendingUp, Menu,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -39,7 +39,7 @@ const NAV: NavGroup[] = [
       { to: "/tools/twitter-card-checker", label: "Twitter Card Checker", icon: Hash },
       { to: "/tools/canonical-checker", label: "Canonical URL", icon: MoveRight },
       { to: "/tools/robots-checker", label: "Robots.txt Checker", icon: Bot },
-      { to: "/tools/sitemap-checker", label: "Sitemap Checker", icon: Map },
+      { to: "/tools/sitemap-checker", label: "Sitemap Checker", icon: MapIcon },
       { to: "/tools/mobile-checker", label: "Mobile-Friendly", icon: Smartphone },
       { to: "/tools/ssl-checker", label: "SSL Checker", icon: ShieldCheck },
     ],
