@@ -7,7 +7,7 @@ import { Bot, Sparkles, Zap, Globe2, FileSearch, BrainCircuit } from "lucide-rea
  */
 export function Hero3D() {
   return (
-    <div className="relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center pointer-events-none select-none">
+    <div className="relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center pointer-events-none select-none overflow-hidden">
       {/* Circular glow backdrop */}
       <div
         className="absolute inset-[8%] rounded-full opacity-70 blur-2xl"
