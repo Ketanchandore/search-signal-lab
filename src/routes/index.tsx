@@ -122,17 +122,18 @@ function Home() {
     <>
       <PageContainer>
         {/* HERO */}
-        <section className="grid grid-cols-[1.05fr_0.95fr] gap-3 sm:gap-6 items-center pt-4 sm:pt-12 pb-8 sm:pb-12">
+        <section className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-6 lg:gap-8 items-center pt-4 sm:pt-12 pb-8 sm:pb-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="min-w-0"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-xs text-primary mb-5 font-mono">
-              <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-              LIVE · 2,438,902 scans run · 187 today
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-[11px] sm:text-xs text-primary mb-4 sm:mb-5 font-mono max-w-full">
+              <span className="size-1.5 rounded-full bg-primary animate-pulse shrink-0" />
+              <span className="truncate">LIVE · 2,438,902 scans · 187 today</span>
             </div>
-            <h1 className="font-display text-[1.75rem] leading-[1.1] sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="font-display text-[2rem] leading-[1.05] sm:text-5xl lg:text-6xl font-bold tracking-tight">
               Rank #1 in{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 bg-gradient-to-br from-primary via-primary to-emerald-300 bg-clip-text text-transparent">
@@ -148,11 +149,11 @@ function Home() {
               </span>
               <br />Not just Google.
             </h1>
-            <p className="mt-5 max-w-xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-              ChatGPT, Gemini & Perplexity now answer <b className="text-foreground">60% of queries</b> without a click.
+            <p className="mt-4 sm:mt-5 max-w-xl text-muted-foreground text-sm sm:text-lg leading-relaxed">
+              ChatGPT, Gemini &amp; Perplexity now answer <b className="text-foreground">60% of queries</b> without a click.
               Run the world's most-used free GEO toolkit — built by SEOs who rank #1 in AI Overviews daily.
             </p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
+            <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row gap-3">
               <Link
                 to="/tools/ai-citation-audit"
                 className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold overflow-hidden"
@@ -173,14 +174,14 @@ function Home() {
                 Learn GEO Free
               </Link>
             </div>
-            <div className="mt-6 flex items-center gap-4 text-xs text-muted-foreground">
+            <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => <Star key={i} className="size-3.5 fill-warning text-warning" />)}
                 <span className="ml-1 text-foreground font-medium">4.9</span>
               </div>
-              <span>·</span>
+              <span className="hidden sm:inline">·</span>
               <span>Trusted by <b className="text-foreground">2.4M+ marketers</b></span>
-              <span>·</span>
+              <span className="hidden sm:inline">·</span>
               <span>No signup</span>
             </div>
           </motion.div>
@@ -189,10 +190,12 @@ function Home() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
+            className="min-w-0 w-full flex items-center justify-center"
           >
             <Hero3D />
           </motion.div>
         </section>
+
 
         {/* STATS */}
         <section className="py-8">
