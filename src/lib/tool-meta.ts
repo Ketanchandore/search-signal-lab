@@ -727,6 +727,19 @@ export function toolJsonLd(meta: ToolMeta): object[] {
         acceptedAnswer: { "@type": "Answer", text: f.a },
       })),
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: `How to Use ${meta.name}`,
+      description: `Step-by-step guide to run ${meta.name} on any URL in under 8 seconds.`,
+      totalTime: "PT30S",
+      tool: [{ "@type": "HowToTool", name: meta.name }],
+      step: [
+        { "@type": "HowToStep", position: 1, name: "Enter Your URL", text: `Paste any public URL into ${meta.name}. Both http:// and https:// are accepted and redirects are auto-resolved.`, url: `${url}#how-to-use` },
+        { "@type": "HowToStep", position: 2, name: "Run the Analysis", text: `Click Analyze. ${meta.name} fetches the live HTML server-side in under 8 seconds — no caching, always fresh.`, url: `${url}#how-to-use` },
+        { "@type": "HowToStep", position: 3, name: "Fix the Issues", text: `Review the prioritized fix list, apply the recommended snippets, then re-run ${meta.name} to confirm the improvement.`, url: `${url}#how-to-use` },
+      ],
+    },
   ];
 }
 
