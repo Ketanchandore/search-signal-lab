@@ -55,22 +55,43 @@ export function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-border mt-12 hidden md:block">
-        <div className="max-w-[1280px] mx-auto px-6 py-10 grid grid-cols-3 gap-8 text-sm">
+      <footer className="border-t border-border mt-12 pb-20 md:pb-0">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 text-sm">
+          <div className="col-span-2 md:col-span-1">
+            <Link to="/" className="flex items-center gap-2 font-display font-bold text-base">
+              <Sparkles className="size-4 text-primary" />
+              <span><span className="text-primary">SEO</span>Academys</span>
+            </Link>
+            <p className="text-xs text-muted-foreground mt-3 leading-relaxed">Free SEO + GEO toolkit trusted by 2.4M+ marketers. 37 real-time tools. No signup.</p>
+          </div>
           <div>
-            <h4 className="font-display font-semibold mb-3">Tools</h4>
+            <h4 className="font-display font-semibold mb-3">SEO Audit</h4>
             <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/tools/seo-audit" className="hover:text-primary">Full SEO Audit</Link></li>
+              <li><Link to="/tools/meta-tag-checker" className="hover:text-primary">Meta Tag Checker</Link></li>
+              <li><Link to="/tools/heading-checker" className="hover:text-primary">Heading Structure</Link></li>
+              <li><Link to="/tools/schema-validator" className="hover:text-primary">Schema Validator</Link></li>
+              <li><Link to="/tools/mobile-checker" className="hover:text-primary">Mobile-Friendly</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-display font-semibold mb-3">Research</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/tools/keyword-research" className="hover:text-primary">Keyword Research</Link></li>
+              <li><Link to="/tools/rank-tracker" className="hover:text-primary">Rank Tracker</Link></li>
+              <li><Link to="/tools/backlink-checker" className="hover:text-primary">Backlink Checker</Link></li>
+              <li><Link to="/tools/serp-preview" className="hover:text-primary">SERP Preview</Link></li>
               <li><Link to="/tools/ai-citation-audit" className="hover:text-primary">AI Citation Audit</Link></li>
-              <li><Link to="/tools/schema-generator" className="hover:text-primary">Schema Generator</Link></li>
-              <li><Link to="/tools/content-checker" className="hover:text-primary">Content Checker</Link></li>
-              <li><Link to="/tools/geo-tracker" className="hover:text-primary">GEO Tracker</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-display font-semibold mb-3">Learn</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><Link to="/learn" className="hover:text-primary">All Modules</Link></li>
               <li><Link to="/tools" className="hover:text-primary">All 37 Tools</Link></li>
+              <li><Link to="/learn" className="hover:text-primary">SEO Learn Hub</Link></li>
+              <li><Link to="/tools/schema-generator" className="hover:text-primary">Schema & llms.txt</Link></li>
+              <li><Link to="/tools/robots-txt" className="hover:text-primary">Robots.txt Builder</Link></li>
+              <li><Link to="/tools/geo-tracker" className="hover:text-primary">GEO Market Intel</Link></li>
             </ul>
           </div>
           <div>
@@ -83,8 +104,8 @@ export function Layout() {
             </ul>
           </div>
         </div>
-        <div className="text-center text-xs text-muted-foreground py-4 border-t border-border">
-          © {new Date().getFullYear()} SEOAcademys
+        <div className="text-center text-xs text-muted-foreground py-4 border-t border-border px-4">
+          © {new Date().getFullYear()} SEOAcademys · Free SEO + GEO Tools · Last Updated: June 2026
         </div>
       </footer>
 

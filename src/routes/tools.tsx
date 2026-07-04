@@ -211,11 +211,13 @@ function ToolsLayout() {
                   <Menu className="size-4" /> <span className="font-medium">All Tools</span>
                 </button>
               </SheetTrigger>
-              <SheetContent side="left" className="p-0 w-[280px] bg-surface">
-                <div className="flex items-center gap-2 px-4 py-4 border-b border-border text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <SheetContent side="left" className="p-0 w-[280px] bg-surface flex flex-col">
+                <div className="shrink-0 flex items-center gap-2 px-4 py-4 border-b border-border text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   <Sparkles className="size-3.5 text-primary" /> SEO Suite · 37 Tools
                 </div>
-                <SidebarNav path={path} collapsed={false} onNavigate={() => setMobileOpen(false)} />
+                <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
+                  <SidebarNav path={path} collapsed={false} onNavigate={() => setMobileOpen(false)} />
+                </div>
               </SheetContent>
             </Sheet>
             <Link to="/tools" className="text-muted-foreground hover:text-primary">Tools</Link>
