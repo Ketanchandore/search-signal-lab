@@ -7,10 +7,10 @@ import { Bot, Sparkles, Zap, Globe2, FileSearch, BrainCircuit } from "lucide-rea
  */
 export function Hero3D() {
   return (
-    <div className="relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center pointer-events-none select-none overflow-hidden">
+    <div className="relative w-full aspect-square max-w-[420px] mx-auto flex items-center justify-center pointer-events-none select-none rounded-full overflow-hidden">
       {/* Circular glow backdrop */}
       <div
-        className="absolute inset-[8%] rounded-full opacity-70 blur-2xl"
+        className="absolute inset-0 rounded-full opacity-70 blur-2xl"
         style={{
           background:
             "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--primary) 35%, transparent) 0%, color-mix(in oklab, var(--primary) 12%, transparent) 45%, transparent 72%)",
