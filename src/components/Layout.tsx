@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { Home, Search, Code2, FileText, BarChart3, BookOpen, Github, Sparkles } from "lucide-react";
 import { useState } from "react";
+import logoAsset from "@/assets/seoacademys-logo.png.asset.json";
 
 export function Layout() {
   const [toolsOpen, setToolsOpen] = useState(false);
