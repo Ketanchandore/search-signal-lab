@@ -150,17 +150,17 @@ function Home() {
               </span>
               <br />Not just Google.
             </h1>
-            <p className="mt-4 sm:mt-5 max-w-xl text-muted-foreground text-sm sm:text-lg leading-relaxed">
+            <p className="mt-2.5 sm:mt-5 max-w-xl text-muted-foreground text-[11px] sm:text-lg leading-snug sm:leading-relaxed">
               ChatGPT, Gemini &amp; Perplexity now answer <b className="text-foreground">60% of queries</b> without a click.
               Run the world's most-used free GEO toolkit — built by SEOs who rank #1 in AI Overviews daily.
             </p>
-            <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row gap-3">
+            <div className="mt-3 sm:mt-7 flex flex-col sm:flex-row gap-2 sm:gap-3">
               <Link
                 to="/tools/ai-citation-audit"
-                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold overflow-hidden"
+                className="group relative inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs sm:text-base sm:px-6 sm:py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold overflow-hidden"
               >
                 <span className="relative z-10">Run Free AI Audit</span>
-                <ArrowRight className="size-4 relative z-10 group-hover:translate-x-1 transition" />
+                <ArrowRight className="size-3.5 sm:size-4 relative z-10 group-hover:translate-x-1 transition" />
                 <motion.span
                   className="absolute inset-0 bg-gradient-to-r from-emerald-300 to-primary"
                   initial={{ x: "-100%" }}
@@ -170,11 +170,12 @@ function Home() {
               </Link>
               <Link
                 to="/learn"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg border border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition font-medium"
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-base sm:px-6 sm:py-3.5 rounded-lg border border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition font-medium"
               >
                 Learn GEO Free
               </Link>
             </div>
+
             <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => <Star key={i} className="size-3.5 fill-warning text-warning" />)}
