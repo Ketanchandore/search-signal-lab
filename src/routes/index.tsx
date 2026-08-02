@@ -122,18 +122,19 @@ function Home() {
     <>
       <PageContainer>
         {/* HERO */}
-        <section className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-6 lg:gap-8 items-center pt-4 sm:pt-12 pb-8 sm:pb-12">
+        <section className="grid grid-cols-[1.15fr_0.85fr] lg:grid-cols-[1.05fr_0.95fr] gap-3 lg:gap-8 items-center pt-4 sm:pt-12 pb-8 sm:pb-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="min-w-0"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-[11px] sm:text-xs text-primary mb-4 sm:mb-5 font-mono max-w-full">
-              <span className="size-1.5 rounded-full bg-primary animate-pulse shrink-0" />
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-primary/30 bg-primary/5 text-[9px] sm:text-xs text-primary mb-2.5 sm:mb-5 font-mono max-w-full">
+              <span className="size-1 sm:size-1.5 rounded-full bg-primary animate-pulse shrink-0" />
               <span className="truncate">LIVE · 2,438,902 scans · 187 today</span>
             </div>
-            <h1 className="font-display text-[2rem] leading-[1.05] sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="font-display text-[1.35rem] leading-[1.1] sm:text-5xl lg:text-6xl font-bold tracking-tight">
+
               Rank #1 in{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 bg-gradient-to-br from-primary via-primary to-emerald-300 bg-clip-text text-transparent">
@@ -149,17 +150,17 @@ function Home() {
               </span>
               <br />Not just Google.
             </h1>
-            <p className="mt-4 sm:mt-5 max-w-xl text-muted-foreground text-sm sm:text-lg leading-relaxed">
+            <p className="mt-2.5 sm:mt-5 max-w-xl text-muted-foreground text-[11px] sm:text-lg leading-snug sm:leading-relaxed">
               ChatGPT, Gemini &amp; Perplexity now answer <b className="text-foreground">60% of queries</b> without a click.
               Run the world's most-used free GEO toolkit — built by SEOs who rank #1 in AI Overviews daily.
             </p>
-            <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row gap-3">
+            <div className="mt-3 sm:mt-7 flex flex-col sm:flex-row gap-2 sm:gap-3">
               <Link
                 to="/tools/ai-citation-audit"
-                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold overflow-hidden"
+                className="group relative inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs sm:text-base sm:px-6 sm:py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold overflow-hidden"
               >
                 <span className="relative z-10">Run Free AI Audit</span>
-                <ArrowRight className="size-4 relative z-10 group-hover:translate-x-1 transition" />
+                <ArrowRight className="size-3.5 sm:size-4 relative z-10 group-hover:translate-x-1 transition" />
                 <motion.span
                   className="absolute inset-0 bg-gradient-to-r from-emerald-300 to-primary"
                   initial={{ x: "-100%" }}
@@ -169,14 +170,15 @@ function Home() {
               </Link>
               <Link
                 to="/learn"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg border border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition font-medium"
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-base sm:px-6 sm:py-3.5 rounded-lg border border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition font-medium"
               >
                 Learn GEO Free
               </Link>
             </div>
-            <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => <Star key={i} className="size-3.5 fill-warning text-warning" />)}
+
+            <div className="mt-3 sm:mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] sm:text-xs text-muted-foreground">
+              <div className="flex items-center gap-0.5 sm:gap-1">
+                {[...Array(5)].map((_, i) => <Star key={i} className="size-2.5 sm:size-3.5 fill-warning text-warning" />)}
                 <span className="ml-1 text-foreground font-medium">4.9</span>
               </div>
               <span className="hidden sm:inline">·</span>
@@ -190,8 +192,9 @@ function Home() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="min-w-0 w-full flex items-center justify-center"
+            className="min-w-0 w-full flex items-center justify-end lg:justify-center -mr-8 sm:mr-0"
           >
+
             <Hero3D />
           </motion.div>
         </section>

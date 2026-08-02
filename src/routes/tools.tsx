@@ -106,7 +106,7 @@ const NAV: NavGroup[] = [
 
 function SidebarNav({ path, collapsed, onNavigate }: { path: string; collapsed: boolean; onNavigate?: () => void }) {
   return (
-    <nav className="flex-1 overflow-y-auto px-2 pb-6 space-y-5">
+    <nav className="flex-1 min-h-0 overflow-y-auto md:overflow-visible px-2 pb-6 space-y-5">
       {NAV.map((group) => (
         <div key={group.label}>
           {!collapsed && (
@@ -167,7 +167,7 @@ function ToolsLayout() {
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          "hidden md:flex sticky top-14 self-start h-[calc(100vh-3.5rem)] flex-col border-r border-border bg-surface/80 backdrop-blur transition-[width] duration-200",
+          "hidden md:flex self-stretch flex-col border-r border-border bg-surface/80 backdrop-blur transition-[width] duration-200",
           collapsed ? "w-[68px]" : "w-[260px]",
         )}
       >
