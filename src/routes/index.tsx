@@ -129,11 +129,12 @@ function Home() {
             transition={{ duration: 0.6 }}
             className="min-w-0"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-[11px] sm:text-xs text-primary mb-4 sm:mb-5 font-mono max-w-full">
-              <span className="size-1.5 rounded-full bg-primary animate-pulse shrink-0" />
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-primary/30 bg-primary/5 text-[9px] sm:text-xs text-primary mb-2.5 sm:mb-5 font-mono max-w-full">
+              <span className="size-1 sm:size-1.5 rounded-full bg-primary animate-pulse shrink-0" />
               <span className="truncate">LIVE · 2,438,902 scans · 187 today</span>
             </div>
-            <h1 className="font-display text-[2rem] leading-[1.05] sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="font-display text-[1.35rem] leading-[1.1] sm:text-5xl lg:text-6xl font-bold tracking-tight">
+
               Rank #1 in{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 bg-gradient-to-br from-primary via-primary to-emerald-300 bg-clip-text text-transparent">
