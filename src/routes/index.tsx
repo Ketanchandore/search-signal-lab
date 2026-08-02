@@ -122,7 +122,7 @@ function Home() {
     <>
       <PageContainer>
         {/* HERO */}
-        <section className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-6 lg:gap-8 items-center pt-4 sm:pt-12 pb-8 sm:pb-12">
+        <section className="grid grid-cols-[1.15fr_0.85fr] lg:grid-cols-[1.05fr_0.95fr] gap-3 lg:gap-8 items-center pt-4 sm:pt-12 pb-8 sm:pb-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
