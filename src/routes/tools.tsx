@@ -167,7 +167,7 @@ function ToolsLayout() {
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          "hidden md:flex sticky top-14 self-start h-[calc(100vh-3.5rem)] flex-col border-r border-border bg-surface/80 backdrop-blur transition-[width] duration-200",
+          "hidden md:flex self-stretch flex-col border-r border-border bg-surface/80 backdrop-blur transition-[width] duration-200",
           collapsed ? "w-[68px]" : "w-[260px]",
         )}
       >
