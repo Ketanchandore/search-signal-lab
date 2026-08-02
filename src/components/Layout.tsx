@@ -11,7 +11,14 @@ export function Layout() {
       <header className="sticky top-0 z-40 backdrop-blur bg-background/80 border-b border-border">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg">
-            <Sparkles className="size-5 text-primary" />
+            <img
+              src={logoAsset.url}
+              alt="SEOAcademys logo"
+              width={28}
+              height={28}
+              className="size-7 rounded-md shrink-0"
+              loading="eager"
+            />
             <span><span className="text-primary">SEO</span>Academys</span>
           </Link>
           <nav className="hidden md:flex items-center gap-1 text-sm">
