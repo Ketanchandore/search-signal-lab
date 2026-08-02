@@ -176,9 +176,9 @@ function Home() {
               </Link>
             </div>
 
-            <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => <Star key={i} className="size-3.5 fill-warning text-warning" />)}
+            <div className="mt-3 sm:mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] sm:text-xs text-muted-foreground">
+              <div className="flex items-center gap-0.5 sm:gap-1">
+                {[...Array(5)].map((_, i) => <Star key={i} className="size-2.5 sm:size-3.5 fill-warning text-warning" />)}
                 <span className="ml-1 text-foreground font-medium">4.9</span>
               </div>
               <span className="hidden sm:inline">·</span>
@@ -192,8 +192,9 @@ function Home() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="min-w-0 w-full flex items-center justify-center"
+            className="min-w-0 w-full flex items-center justify-end lg:justify-center -mr-8 sm:mr-0"
           >
+
             <Hero3D />
           </motion.div>
         </section>
