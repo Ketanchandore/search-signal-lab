@@ -14,6 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
+      audit_runs: {
+        Row: {
+          checks: string[]
+          created_at: string
+          error: string | null
+          id: string
+          progress: number
+          results: Json
+          score: number | null
+          status: string
+          updated_at: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          checks?: string[]
+          created_at?: string
+          error?: string | null
+          id?: string
+          progress?: number
+          results?: Json
+          score?: number | null
+          status?: string
+          updated_at?: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          checks?: string[]
+          created_at?: string
+          error?: string | null
+          id?: string
+          progress?: number
+          results?: Json
+          score?: number | null
+          status?: string
+          updated_at?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      data_connections: {
+        Row: {
+          active: boolean
+          created_at: string
+          id: string
+          property: string
+          provider: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          id?: string
+          property: string
+          provider: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          id?: string
+          property?: string
+          provider?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

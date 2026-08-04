@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { PageContainer } from "@/components/Layout";
 import { useSession } from "@/hooks/use-session";
 import { toast } from "sonner";
-import { Loader2, Plus, Globe, Trash2, LogOut, BarChart3, Search, Code2 } from "lucide-react";
+import { Loader2, Plus, Globe, Trash2, LogOut, BarChart3, Search, Code2, Play, Bot, Link2 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
@@ -149,6 +149,25 @@ function Dashboard() {
         </section>
 
         <section className="mt-10 grid gap-4 sm:grid-cols-3">
+          <Link to="/audit" className="rounded-xl border border-primary/40 bg-primary/5 p-5 hover:border-primary transition">
+            <Play className="size-5 text-primary mb-2" />
+            <div className="font-medium">Bulk Audit Runner</div>
+            <div className="text-xs text-muted-foreground">Tick tools → Run → PDF report</div>
+          </Link>
+          <Link to="/assistant" className="rounded-xl border border-primary/40 bg-primary/5 p-5 hover:border-primary transition">
+            <Bot className="size-5 text-primary mb-2" />
+            <div className="font-medium">AI SEO Assistant</div>
+            <div className="text-xs text-muted-foreground">Diagnose your site in chat</div>
+          </Link>
+          <Link to="/connections" className="rounded-xl border border-primary/40 bg-primary/5 p-5 hover:border-primary transition">
+            <Link2 className="size-5 text-primary mb-2" />
+            <div className="font-medium">Connected project</div>
+            <div className="text-xs text-muted-foreground">GSC · GA4 · Bing</div>
+          </Link>
+        </section>
+
+        <section className="mt-6 grid gap-4 sm:grid-cols-3">
+
           <Link to="/tools/ai-citation-audit" className="rounded-xl border border-border bg-surface/50 p-5 hover:border-primary transition">
             <Search className="size-5 text-primary mb-2" />
             <div className="font-medium">Run AI Citation Audit</div>
