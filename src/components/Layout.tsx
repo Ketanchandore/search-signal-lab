@@ -1,11 +1,14 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
-import { Home, Search, Code2, FileText, BarChart3, BookOpen, Github, Sparkles } from "lucide-react";
+import { Home, Search, Code2, FileText, BarChart3, Github, LayoutDashboard, LogIn, Sparkles } from "lucide-react";
 import { useState } from "react";
 import logoAsset from "@/assets/seoacademys-logo.png.asset.json";
+import { useSession } from "@/hooks/use-session";
 
 export function Layout() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const loc = useLocation();
+  const { user } = useSession();
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -48,16 +51,34 @@ export function Layout() {
             <Link to="/about" className="px-3 py-2 hover:text-primary transition">About</Link>
             <Link to="/contact" className="px-3 py-2 hover:text-primary transition">Contact</Link>
           </nav>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-md border border-border hover:border-primary hover:text-primary transition"
-          >
-            <Github className="size-4" /> Star on GitHub
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden lg:inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-md border border-border hover:border-primary hover:text-primary transition"
+            >
+              <Github className="size-4" /> Star on GitHub
+            </a>
+            {user ? (
+              <Link
+                to="/dashboard"
+                className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md bg-primary text-primary-foreground font-medium"
+              >
+                <LayoutDashboard className="size-4" /> Dashboard
+              </Link>
+            ) : (
+              <Link
+                to="/auth"
+                className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-border hover:border-primary hover:text-primary transition"
+              >
+                <LogIn className="size-4" /> Sign in
+              </Link>
+            )}
+          </div>
         </div>
       </header>
+
 
       <main className="flex-1 pb-20 md:pb-8">
         <Outlet />

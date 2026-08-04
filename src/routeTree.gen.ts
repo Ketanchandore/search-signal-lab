@@ -15,7 +15,9 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
 import { Route as ToolsWordCounterRouteImport } from './routes/tools.word-counter'
@@ -56,6 +58,7 @@ import { Route as ToolsBreadcrumbSchemaRouteImport } from './routes/tools.breadc
 import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
 import { Route as ToolsArticleSchemaRouteImport } from './routes/tools.article-schema'
 import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 
 const ToolsRoute = ToolsRouteImport.update({
   id: '/tools',
@@ -87,9 +90,18 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -292,16 +304,23 @@ const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
   path: '/ai-citation-audit',
   getParentRoute: () => ToolsRoute,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRouteWithChildren
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
@@ -345,11 +364,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
@@ -393,13 +414,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRouteWithChildren
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
@@ -445,12 +469,14 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/contact'
     | '/learn'
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
     | '/tools'
+    | '/dashboard'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
@@ -494,11 +520,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/contact'
     | '/learn'
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
+    | '/dashboard'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
@@ -541,13 +569,16 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/contact'
     | '/learn'
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
     | '/tools'
+    | '/_authenticated/dashboard'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
@@ -591,7 +622,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   LearnRoute: typeof LearnRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -644,11 +677,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -931,8 +978,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsAiCitationAuditRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface ToolsRouteChildren {
   ToolsAiCitationAuditRoute: typeof ToolsAiCitationAuditRoute
@@ -1022,7 +1087,9 @@ const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   LearnRoute: LearnRoute,
   PrivacyRoute: PrivacyRoute,
