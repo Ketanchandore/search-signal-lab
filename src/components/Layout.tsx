@@ -1,11 +1,14 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
-import { Home, Search, Code2, FileText, BarChart3, BookOpen, Github, Sparkles } from "lucide-react";
+import { Home, Search, Code2, FileText, BarChart3, Github, LayoutDashboard, LogIn, Sparkles } from "lucide-react";
 import { useState } from "react";
 import logoAsset from "@/assets/seoacademys-logo.png.asset.json";
+import { useSession } from "@/hooks/use-session";
 
 export function Layout() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const loc = useLocation();
+  const { user } = useSession();
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
