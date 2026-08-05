@@ -20,6 +20,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ToolsWordCounterRouteImport } from './routes/tools.word-counter'
 import { Route as ToolsTwitterCardCheckerRouteImport } from './routes/tools.twitter-card-checker'
 import { Route as ToolsTechDetectorRouteImport } from './routes/tools.tech-detector'
@@ -58,10 +59,12 @@ import { Route as ToolsBreadcrumbSchemaRouteImport } from './routes/tools.breadc
 import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
 import { Route as ToolsArticleSchemaRouteImport } from './routes/tools.article-schema'
 import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedConnectionsRouteImport } from './routes/_authenticated/connections'
 import { Route as AuthenticatedAuditRouteImport } from './routes/_authenticated/audit'
 import { Route as AuthenticatedAssistantRouteImport } from './routes/_authenticated/assistant'
+import { Route as BlogAuthorTeamRouteImport } from './routes/blog.author.team'
 
 const ToolsRoute = ToolsRouteImport.update({
   id: '/tools',
@@ -116,6 +119,11 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ToolsRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsWordCounterRoute = ToolsWordCounterRouteImport.update({
   id: '/word-counter',
@@ -307,6 +315,11 @@ const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
   path: '/ai-citation-audit',
   getParentRoute: () => ToolsRoute,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -328,6 +341,11 @@ const AuthenticatedAssistantRoute = AuthenticatedAssistantRouteImport.update({
   path: '/assistant',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const BlogAuthorTeamRoute = BlogAuthorTeamRouteImport.update({
+  id: '/blog/author/team',
+  path: '/blog/author/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -343,6 +361,7 @@ export interface FileRoutesByFullPath {
   '/audit': typeof AuthenticatedAuditRoute
   '/connections': typeof AuthenticatedConnectionsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
@@ -381,7 +400,9 @@ export interface FileRoutesByFullPath {
   '/tools/tech-detector': typeof ToolsTechDetectorRoute
   '/tools/twitter-card-checker': typeof ToolsTwitterCardCheckerRoute
   '/tools/word-counter': typeof ToolsWordCounterRoute
+  '/blog/': typeof BlogIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/blog/author/team': typeof BlogAuthorTeamRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -396,6 +417,7 @@ export interface FileRoutesByTo {
   '/audit': typeof AuthenticatedAuditRoute
   '/connections': typeof AuthenticatedConnectionsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
@@ -434,7 +456,9 @@ export interface FileRoutesByTo {
   '/tools/tech-detector': typeof ToolsTechDetectorRoute
   '/tools/twitter-card-checker': typeof ToolsTwitterCardCheckerRoute
   '/tools/word-counter': typeof ToolsWordCounterRoute
+  '/blog': typeof BlogIndexRoute
   '/tools': typeof ToolsIndexRoute
+  '/blog/author/team': typeof BlogAuthorTeamRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -452,6 +476,7 @@ export interface FileRoutesById {
   '/_authenticated/audit': typeof AuthenticatedAuditRoute
   '/_authenticated/connections': typeof AuthenticatedConnectionsRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
@@ -490,7 +515,9 @@ export interface FileRoutesById {
   '/tools/tech-detector': typeof ToolsTechDetectorRoute
   '/tools/twitter-card-checker': typeof ToolsTwitterCardCheckerRoute
   '/tools/word-counter': typeof ToolsWordCounterRoute
+  '/blog/': typeof BlogIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/blog/author/team': typeof BlogAuthorTeamRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -508,6 +535,7 @@ export interface FileRouteTypes {
     | '/audit'
     | '/connections'
     | '/dashboard'
+    | '/blog/$slug'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
@@ -546,7 +574,9 @@ export interface FileRouteTypes {
     | '/tools/tech-detector'
     | '/tools/twitter-card-checker'
     | '/tools/word-counter'
+    | '/blog/'
     | '/tools/'
+    | '/blog/author/team'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -561,6 +591,7 @@ export interface FileRouteTypes {
     | '/audit'
     | '/connections'
     | '/dashboard'
+    | '/blog/$slug'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
@@ -599,7 +630,9 @@ export interface FileRouteTypes {
     | '/tools/tech-detector'
     | '/tools/twitter-card-checker'
     | '/tools/word-counter'
+    | '/blog'
     | '/tools'
+    | '/blog/author/team'
   id:
     | '__root__'
     | '/'
@@ -616,6 +649,7 @@ export interface FileRouteTypes {
     | '/_authenticated/audit'
     | '/_authenticated/connections'
     | '/_authenticated/dashboard'
+    | '/blog/$slug'
     | '/tools/ai-citation-audit'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
@@ -654,7 +688,9 @@ export interface FileRouteTypes {
     | '/tools/tech-detector'
     | '/tools/twitter-card-checker'
     | '/tools/word-counter'
+    | '/blog/'
     | '/tools/'
+    | '/blog/author/team'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -668,6 +704,9 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   ToolsRoute: typeof ToolsRouteWithChildren
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  BlogAuthorTeamRoute: typeof BlogAuthorTeamRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -748,6 +787,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/tools/'
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof ToolsRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/tools/word-counter': {
       id: '/tools/word-counter'
@@ -1015,6 +1061,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsAiCitationAuditRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -1042,6 +1095,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/assistant'
       preLoaderRoute: typeof AuthenticatedAssistantRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/blog/author/team': {
+      id: '/blog/author/team'
+      path: '/blog/author/team'
+      fullPath: '/blog/author/team'
+      preLoaderRoute: typeof BlogAuthorTeamRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -1160,17 +1220,10 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   ToolsRoute: ToolsRouteWithChildren,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  BlogAuthorTeamRoute: BlogAuthorTeamRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
