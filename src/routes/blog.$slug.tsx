@@ -76,9 +76,10 @@ function BlogPostPage() {
           <ul className="space-y-1.5 text-sm">
             {post.relatedTools.map((t) => (
               <li key={t.slug}>
-                <Link to="/tools/$" params={{ _splat: t.slug }} className="text-primary font-medium underline underline-offset-4">
+                <Link to={`/tools/${t.slug}` as never} className="text-primary font-medium underline underline-offset-4">
                   {t.anchor}
                 </Link>
+
               </li>
             ))}
           </ul>
