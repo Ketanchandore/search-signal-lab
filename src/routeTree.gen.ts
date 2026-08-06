@@ -14,8 +14,10 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LearnRouteImport } from './routes/learn'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ApiDocsRouteImport } from './routes/api-docs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -27,8 +29,10 @@ import { Route as ToolsTechDetectorRouteImport } from './routes/tools.tech-detec
 import { Route as ToolsSslCheckerRouteImport } from './routes/tools.ssl-checker'
 import { Route as ToolsSitemapCheckerRouteImport } from './routes/tools.sitemap-checker'
 import { Route as ToolsSerpPreviewRouteImport } from './routes/tools.serp-preview'
+import { Route as ToolsSeoAuditHubRouteImport } from './routes/tools.seo-audit-hub'
 import { Route as ToolsSeoAuditRouteImport } from './routes/tools.seo-audit'
 import { Route as ToolsSchemaValidatorRouteImport } from './routes/tools.schema-validator'
+import { Route as ToolsSchemaHubRouteImport } from './routes/tools.schema-hub'
 import { Route as ToolsSchemaGeneratorRouteImport } from './routes/tools.schema-generator'
 import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
 import { Route as ToolsRobotsCheckerRouteImport } from './routes/tools.robots-checker'
@@ -58,6 +62,7 @@ import { Route as ToolsBrokenLinksRouteImport } from './routes/tools.broken-link
 import { Route as ToolsBreadcrumbSchemaRouteImport } from './routes/tools.breadcrumb-schema'
 import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
 import { Route as ToolsArticleSchemaRouteImport } from './routes/tools.article-schema'
+import { Route as ToolsAiGeoHubRouteImport } from './routes/tools.ai-geo-hub'
 import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -91,6 +96,11 @@ const LearnRoute = LearnRouteImport.update({
   path: '/learn',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -99,6 +109,11 @@ const ContactRoute = ContactRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDocsRoute = ApiDocsRouteImport.update({
+  id: '/api-docs',
+  path: '/api-docs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -155,6 +170,11 @@ const ToolsSerpPreviewRoute = ToolsSerpPreviewRouteImport.update({
   path: '/serp-preview',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsSeoAuditHubRoute = ToolsSeoAuditHubRouteImport.update({
+  id: '/seo-audit-hub',
+  path: '/seo-audit-hub',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsSeoAuditRoute = ToolsSeoAuditRouteImport.update({
   id: '/seo-audit',
   path: '/seo-audit',
@@ -163,6 +183,11 @@ const ToolsSeoAuditRoute = ToolsSeoAuditRouteImport.update({
 const ToolsSchemaValidatorRoute = ToolsSchemaValidatorRouteImport.update({
   id: '/schema-validator',
   path: '/schema-validator',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSchemaHubRoute = ToolsSchemaHubRouteImport.update({
+  id: '/schema-hub',
+  path: '/schema-hub',
   getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsSchemaGeneratorRoute = ToolsSchemaGeneratorRouteImport.update({
@@ -310,6 +335,11 @@ const ToolsArticleSchemaRoute = ToolsArticleSchemaRouteImport.update({
   path: '/article-schema',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsAiGeoHubRoute = ToolsAiGeoHubRouteImport.update({
+  id: '/ai-geo-hub',
+  path: '/ai-geo-hub',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
   id: '/ai-citation-audit',
   path: '/ai-citation-audit',
@@ -350,8 +380,10 @@ const BlogAuthorTeamRoute = BlogAuthorTeamRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/api-docs': typeof ApiDocsRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -363,6 +395,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/ai-geo-hub': typeof ToolsAiGeoHubRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
@@ -392,8 +425,10 @@ export interface FileRoutesByFullPath {
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
   '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/schema-hub': typeof ToolsSchemaHubRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
+  '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
   '/tools/serp-preview': typeof ToolsSerpPreviewRoute
   '/tools/sitemap-checker': typeof ToolsSitemapCheckerRoute
   '/tools/ssl-checker': typeof ToolsSslCheckerRoute
@@ -407,8 +442,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/api-docs': typeof ApiDocsRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -419,6 +456,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/ai-geo-hub': typeof ToolsAiGeoHubRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
@@ -448,8 +486,10 @@ export interface FileRoutesByTo {
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
   '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/schema-hub': typeof ToolsSchemaHubRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
+  '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
   '/tools/serp-preview': typeof ToolsSerpPreviewRoute
   '/tools/sitemap-checker': typeof ToolsSitemapCheckerRoute
   '/tools/ssl-checker': typeof ToolsSslCheckerRoute
@@ -465,8 +505,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/api-docs': typeof ApiDocsRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -478,6 +520,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/ai-geo-hub': typeof ToolsAiGeoHubRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
@@ -507,8 +550,10 @@ export interface FileRoutesById {
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
   '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/schema-hub': typeof ToolsSchemaHubRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
+  '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
   '/tools/serp-preview': typeof ToolsSerpPreviewRoute
   '/tools/sitemap-checker': typeof ToolsSitemapCheckerRoute
   '/tools/ssl-checker': typeof ToolsSslCheckerRoute
@@ -524,8 +569,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/api-docs'
     | '/auth'
     | '/contact'
+    | '/how-it-works'
     | '/learn'
     | '/privacy'
     | '/sitemap.xml'
@@ -537,6 +584,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/blog/$slug'
     | '/tools/ai-citation-audit'
+    | '/tools/ai-geo-hub'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
     | '/tools/breadcrumb-schema'
@@ -566,8 +614,10 @@ export interface FileRouteTypes {
     | '/tools/robots-checker'
     | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/schema-hub'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
+    | '/tools/seo-audit-hub'
     | '/tools/serp-preview'
     | '/tools/sitemap-checker'
     | '/tools/ssl-checker'
@@ -581,8 +631,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/api-docs'
     | '/auth'
     | '/contact'
+    | '/how-it-works'
     | '/learn'
     | '/privacy'
     | '/sitemap.xml'
@@ -593,6 +645,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/blog/$slug'
     | '/tools/ai-citation-audit'
+    | '/tools/ai-geo-hub'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
     | '/tools/breadcrumb-schema'
@@ -622,8 +675,10 @@ export interface FileRouteTypes {
     | '/tools/robots-checker'
     | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/schema-hub'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
+    | '/tools/seo-audit-hub'
     | '/tools/serp-preview'
     | '/tools/sitemap-checker'
     | '/tools/ssl-checker'
@@ -638,8 +693,10 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/about'
+    | '/api-docs'
     | '/auth'
     | '/contact'
+    | '/how-it-works'
     | '/learn'
     | '/privacy'
     | '/sitemap.xml'
@@ -651,6 +708,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/blog/$slug'
     | '/tools/ai-citation-audit'
+    | '/tools/ai-geo-hub'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
     | '/tools/breadcrumb-schema'
@@ -680,8 +738,10 @@ export interface FileRouteTypes {
     | '/tools/robots-checker'
     | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/schema-hub'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
+    | '/tools/seo-audit-hub'
     | '/tools/serp-preview'
     | '/tools/sitemap-checker'
     | '/tools/ssl-checker'
@@ -697,8 +757,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  ApiDocsRoute: typeof ApiDocsRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  HowItWorksRoute: typeof HowItWorksRoute
   LearnRoute: typeof LearnRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -746,6 +808,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LearnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -758,6 +827,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api-docs': {
+      id: '/api-docs'
+      path: '/api-docs'
+      fullPath: '/api-docs'
+      preLoaderRoute: typeof ApiDocsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -837,6 +913,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsSerpPreviewRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/seo-audit-hub': {
+      id: '/tools/seo-audit-hub'
+      path: '/seo-audit-hub'
+      fullPath: '/tools/seo-audit-hub'
+      preLoaderRoute: typeof ToolsSeoAuditHubRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/seo-audit': {
       id: '/tools/seo-audit'
       path: '/seo-audit'
@@ -849,6 +932,13 @@ declare module '@tanstack/react-router' {
       path: '/schema-validator'
       fullPath: '/tools/schema-validator'
       preLoaderRoute: typeof ToolsSchemaValidatorRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/schema-hub': {
+      id: '/tools/schema-hub'
+      path: '/schema-hub'
+      fullPath: '/tools/schema-hub'
+      preLoaderRoute: typeof ToolsSchemaHubRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/schema-generator': {
@@ -1054,6 +1144,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsArticleSchemaRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/ai-geo-hub': {
+      id: '/tools/ai-geo-hub'
+      path: '/ai-geo-hub'
+      fullPath: '/tools/ai-geo-hub'
+      preLoaderRoute: typeof ToolsAiGeoHubRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/ai-citation-audit': {
       id: '/tools/ai-citation-audit'
       path: '/ai-citation-audit'
@@ -1125,6 +1222,7 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface ToolsRouteChildren {
   ToolsAiCitationAuditRoute: typeof ToolsAiCitationAuditRoute
+  ToolsAiGeoHubRoute: typeof ToolsAiGeoHubRoute
   ToolsArticleSchemaRoute: typeof ToolsArticleSchemaRoute
   ToolsBacklinkCheckerRoute: typeof ToolsBacklinkCheckerRoute
   ToolsBreadcrumbSchemaRoute: typeof ToolsBreadcrumbSchemaRoute
@@ -1154,8 +1252,10 @@ interface ToolsRouteChildren {
   ToolsRobotsCheckerRoute: typeof ToolsRobotsCheckerRoute
   ToolsRobotsTxtRoute: typeof ToolsRobotsTxtRoute
   ToolsSchemaGeneratorRoute: typeof ToolsSchemaGeneratorRoute
+  ToolsSchemaHubRoute: typeof ToolsSchemaHubRoute
   ToolsSchemaValidatorRoute: typeof ToolsSchemaValidatorRoute
   ToolsSeoAuditRoute: typeof ToolsSeoAuditRoute
+  ToolsSeoAuditHubRoute: typeof ToolsSeoAuditHubRoute
   ToolsSerpPreviewRoute: typeof ToolsSerpPreviewRoute
   ToolsSitemapCheckerRoute: typeof ToolsSitemapCheckerRoute
   ToolsSslCheckerRoute: typeof ToolsSslCheckerRoute
@@ -1167,6 +1267,7 @@ interface ToolsRouteChildren {
 
 const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsAiCitationAuditRoute: ToolsAiCitationAuditRoute,
+  ToolsAiGeoHubRoute: ToolsAiGeoHubRoute,
   ToolsArticleSchemaRoute: ToolsArticleSchemaRoute,
   ToolsBacklinkCheckerRoute: ToolsBacklinkCheckerRoute,
   ToolsBreadcrumbSchemaRoute: ToolsBreadcrumbSchemaRoute,
@@ -1196,8 +1297,10 @@ const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsRobotsCheckerRoute: ToolsRobotsCheckerRoute,
   ToolsRobotsTxtRoute: ToolsRobotsTxtRoute,
   ToolsSchemaGeneratorRoute: ToolsSchemaGeneratorRoute,
+  ToolsSchemaHubRoute: ToolsSchemaHubRoute,
   ToolsSchemaValidatorRoute: ToolsSchemaValidatorRoute,
   ToolsSeoAuditRoute: ToolsSeoAuditRoute,
+  ToolsSeoAuditHubRoute: ToolsSeoAuditHubRoute,
   ToolsSerpPreviewRoute: ToolsSerpPreviewRoute,
   ToolsSitemapCheckerRoute: ToolsSitemapCheckerRoute,
   ToolsSslCheckerRoute: ToolsSslCheckerRoute,
@@ -1213,8 +1316,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  ApiDocsRoute: ApiDocsRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  HowItWorksRoute: HowItWorksRoute,
   LearnRoute: LearnRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

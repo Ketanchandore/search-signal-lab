@@ -1,3 +1,5 @@
+import { GEO_CONTENT } from "./tool-content-geo";
+
 export type ToolMeta = {
   slug: string;
   name: string;
@@ -1538,6 +1540,12 @@ Sitemap: https://seoacademys.com/sitemap.xml`,
     faqs: buildFaqs("the Backlink Checker", "authority score, referring domain estimate and spam signals", "monthly", "heuristic spam-signal weighting"),
   },
 };
+
+// Merge in the Batch C research/GEO long-form content packs.
+for (const [slug, patch] of Object.entries(GEO_CONTENT)) {
+  const base = TOOL_META[slug];
+  if (base) TOOL_META[slug] = { ...base, ...patch } as ToolMeta;
+}
 
 export function getToolMeta(slug: string): ToolMeta | undefined {
   return TOOL_META[slug];
