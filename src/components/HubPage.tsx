@@ -96,7 +96,7 @@ export function HubPage({ hub }: { hub: HubDef }) {
             return (
               <Card3D key={slug} className="p-5 flex flex-col h-full">
                 <h3 className="font-display text-base font-semibold">
-                  <Link to="/tools/$" params={{ _splat: slug }} className="hover:text-primary">{m.name}</Link>
+                  <a href={`/tools/${slug}`} className="hover:text-primary">{m.name}</a>
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground flex-1 leading-relaxed">{m.description}</p>
                 <a href={`/tools/${slug}`} className="mt-3 text-sm font-semibold text-primary">Open tool →</a>
