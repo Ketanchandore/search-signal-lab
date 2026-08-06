@@ -48,6 +48,7 @@ export function Layout() {
               )}
             </div>
             <Link to="/learn" className="px-3 py-2 hover:text-primary transition">Learn</Link>
+            <Link to="/blog" className="px-3 py-2 hover:text-primary transition">Blog</Link>
             <Link to="/about" className="px-3 py-2 hover:text-primary transition">About</Link>
             <Link to="/contact" className="px-3 py-2 hover:text-primary transition">Contact</Link>
           </nav>
@@ -126,6 +127,9 @@ export function Layout() {
           <div>
             <h4 className="font-display font-semibold mb-3">Company</h4>
             <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/blog" className="hover:text-primary">Blog</Link></li>
+              <li><Link to="/how-it-works" className="hover:text-primary">How It Works</Link></li>
+              <li><Link to="/api-docs" className="hover:text-primary">API</Link></li>
               <li><Link to="/about" className="hover:text-primary">About</Link></li>
               <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
               <li><Link to="/privacy" className="hover:text-primary">Privacy</Link></li>
