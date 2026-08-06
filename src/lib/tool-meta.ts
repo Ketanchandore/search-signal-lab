@@ -1,3 +1,5 @@
+import { GEO_CONTENT } from "./tool-content-geo";
+
 export type ToolMeta = {
   slug: string;
   name: string;
