@@ -59,6 +59,7 @@ import { Route as ToolsBrokenLinksRouteImport } from './routes/tools.broken-link
 import { Route as ToolsBreadcrumbSchemaRouteImport } from './routes/tools.breadcrumb-schema'
 import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
 import { Route as ToolsArticleSchemaRouteImport } from './routes/tools.article-schema'
+import { Route as ToolsAiGeoHubRouteImport } from './routes/tools.ai-geo-hub'
 import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -316,6 +317,11 @@ const ToolsArticleSchemaRoute = ToolsArticleSchemaRouteImport.update({
   path: '/article-schema',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsAiGeoHubRoute = ToolsAiGeoHubRouteImport.update({
+  id: '/ai-geo-hub',
+  path: '/ai-geo-hub',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
   id: '/ai-citation-audit',
   path: '/ai-citation-audit',
@@ -369,6 +375,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/ai-geo-hub': typeof ToolsAiGeoHubRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
@@ -426,6 +433,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/ai-geo-hub': typeof ToolsAiGeoHubRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
@@ -486,6 +494,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/tools/ai-citation-audit': typeof ToolsAiCitationAuditRoute
+  '/tools/ai-geo-hub': typeof ToolsAiGeoHubRoute
   '/tools/article-schema': typeof ToolsArticleSchemaRoute
   '/tools/backlink-checker': typeof ToolsBacklinkCheckerRoute
   '/tools/breadcrumb-schema': typeof ToolsBreadcrumbSchemaRoute
@@ -546,6 +555,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/blog/$slug'
     | '/tools/ai-citation-audit'
+    | '/tools/ai-geo-hub'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
     | '/tools/breadcrumb-schema'
@@ -603,6 +613,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/blog/$slug'
     | '/tools/ai-citation-audit'
+    | '/tools/ai-geo-hub'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
     | '/tools/breadcrumb-schema'
@@ -662,6 +673,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/blog/$slug'
     | '/tools/ai-citation-audit'
+    | '/tools/ai-geo-hub'
     | '/tools/article-schema'
     | '/tools/backlink-checker'
     | '/tools/breadcrumb-schema'
@@ -1073,6 +1085,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsArticleSchemaRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/ai-geo-hub': {
+      id: '/tools/ai-geo-hub'
+      path: '/ai-geo-hub'
+      fullPath: '/tools/ai-geo-hub'
+      preLoaderRoute: typeof ToolsAiGeoHubRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/tools/ai-citation-audit': {
       id: '/tools/ai-citation-audit'
       path: '/ai-citation-audit'
@@ -1144,6 +1163,7 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface ToolsRouteChildren {
   ToolsAiCitationAuditRoute: typeof ToolsAiCitationAuditRoute
+  ToolsAiGeoHubRoute: typeof ToolsAiGeoHubRoute
   ToolsArticleSchemaRoute: typeof ToolsArticleSchemaRoute
   ToolsBacklinkCheckerRoute: typeof ToolsBacklinkCheckerRoute
   ToolsBreadcrumbSchemaRoute: typeof ToolsBreadcrumbSchemaRoute
@@ -1187,6 +1207,7 @@ interface ToolsRouteChildren {
 
 const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsAiCitationAuditRoute: ToolsAiCitationAuditRoute,
+  ToolsAiGeoHubRoute: ToolsAiGeoHubRoute,
   ToolsArticleSchemaRoute: ToolsArticleSchemaRoute,
   ToolsBacklinkCheckerRoute: ToolsBacklinkCheckerRoute,
   ToolsBreadcrumbSchemaRoute: ToolsBreadcrumbSchemaRoute,
