@@ -27,6 +27,7 @@ import { Route as ToolsTechDetectorRouteImport } from './routes/tools.tech-detec
 import { Route as ToolsSslCheckerRouteImport } from './routes/tools.ssl-checker'
 import { Route as ToolsSitemapCheckerRouteImport } from './routes/tools.sitemap-checker'
 import { Route as ToolsSerpPreviewRouteImport } from './routes/tools.serp-preview'
+import { Route as ToolsSeoAuditHubRouteImport } from './routes/tools.seo-audit-hub'
 import { Route as ToolsSeoAuditRouteImport } from './routes/tools.seo-audit'
 import { Route as ToolsSchemaValidatorRouteImport } from './routes/tools.schema-validator'
 import { Route as ToolsSchemaGeneratorRouteImport } from './routes/tools.schema-generator'
@@ -153,6 +154,11 @@ const ToolsSitemapCheckerRoute = ToolsSitemapCheckerRouteImport.update({
 const ToolsSerpPreviewRoute = ToolsSerpPreviewRouteImport.update({
   id: '/serp-preview',
   path: '/serp-preview',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSeoAuditHubRoute = ToolsSeoAuditHubRouteImport.update({
+  id: '/seo-audit-hub',
+  path: '/seo-audit-hub',
   getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsSeoAuditRoute = ToolsSeoAuditRouteImport.update({
@@ -394,6 +400,7 @@ export interface FileRoutesByFullPath {
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
+  '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
   '/tools/serp-preview': typeof ToolsSerpPreviewRoute
   '/tools/sitemap-checker': typeof ToolsSitemapCheckerRoute
   '/tools/ssl-checker': typeof ToolsSslCheckerRoute
@@ -450,6 +457,7 @@ export interface FileRoutesByTo {
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
+  '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
   '/tools/serp-preview': typeof ToolsSerpPreviewRoute
   '/tools/sitemap-checker': typeof ToolsSitemapCheckerRoute
   '/tools/ssl-checker': typeof ToolsSslCheckerRoute
@@ -509,6 +517,7 @@ export interface FileRoutesById {
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
+  '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
   '/tools/serp-preview': typeof ToolsSerpPreviewRoute
   '/tools/sitemap-checker': typeof ToolsSitemapCheckerRoute
   '/tools/ssl-checker': typeof ToolsSslCheckerRoute
@@ -568,6 +577,7 @@ export interface FileRouteTypes {
     | '/tools/schema-generator'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
+    | '/tools/seo-audit-hub'
     | '/tools/serp-preview'
     | '/tools/sitemap-checker'
     | '/tools/ssl-checker'
@@ -624,6 +634,7 @@ export interface FileRouteTypes {
     | '/tools/schema-generator'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
+    | '/tools/seo-audit-hub'
     | '/tools/serp-preview'
     | '/tools/sitemap-checker'
     | '/tools/ssl-checker'
@@ -682,6 +693,7 @@ export interface FileRouteTypes {
     | '/tools/schema-generator'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
+    | '/tools/seo-audit-hub'
     | '/tools/serp-preview'
     | '/tools/sitemap-checker'
     | '/tools/ssl-checker'
@@ -835,6 +847,13 @@ declare module '@tanstack/react-router' {
       path: '/serp-preview'
       fullPath: '/tools/serp-preview'
       preLoaderRoute: typeof ToolsSerpPreviewRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/seo-audit-hub': {
+      id: '/tools/seo-audit-hub'
+      path: '/seo-audit-hub'
+      fullPath: '/tools/seo-audit-hub'
+      preLoaderRoute: typeof ToolsSeoAuditHubRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/seo-audit': {
@@ -1156,6 +1175,7 @@ interface ToolsRouteChildren {
   ToolsSchemaGeneratorRoute: typeof ToolsSchemaGeneratorRoute
   ToolsSchemaValidatorRoute: typeof ToolsSchemaValidatorRoute
   ToolsSeoAuditRoute: typeof ToolsSeoAuditRoute
+  ToolsSeoAuditHubRoute: typeof ToolsSeoAuditHubRoute
   ToolsSerpPreviewRoute: typeof ToolsSerpPreviewRoute
   ToolsSitemapCheckerRoute: typeof ToolsSitemapCheckerRoute
   ToolsSslCheckerRoute: typeof ToolsSslCheckerRoute
@@ -1198,6 +1218,7 @@ const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsSchemaGeneratorRoute: ToolsSchemaGeneratorRoute,
   ToolsSchemaValidatorRoute: ToolsSchemaValidatorRoute,
   ToolsSeoAuditRoute: ToolsSeoAuditRoute,
+  ToolsSeoAuditHubRoute: ToolsSeoAuditHubRoute,
   ToolsSerpPreviewRoute: ToolsSerpPreviewRoute,
   ToolsSitemapCheckerRoute: ToolsSitemapCheckerRoute,
   ToolsSslCheckerRoute: ToolsSslCheckerRoute,
