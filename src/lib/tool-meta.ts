@@ -1539,6 +1539,12 @@ Sitemap: https://seoacademys.com/sitemap.xml`,
   },
 };
 
+// Merge in the Batch C research/GEO long-form content packs.
+for (const [slug, patch] of Object.entries(GEO_CONTENT)) {
+  const base = TOOL_META[slug];
+  if (base) TOOL_META[slug] = { ...base, ...patch } as ToolMeta;
+}
+
 export function getToolMeta(slug: string): ToolMeta | undefined {
   return TOOL_META[slug];
 }
