@@ -30,6 +30,7 @@ import { Route as ToolsSerpPreviewRouteImport } from './routes/tools.serp-previe
 import { Route as ToolsSeoAuditHubRouteImport } from './routes/tools.seo-audit-hub'
 import { Route as ToolsSeoAuditRouteImport } from './routes/tools.seo-audit'
 import { Route as ToolsSchemaValidatorRouteImport } from './routes/tools.schema-validator'
+import { Route as ToolsSchemaHubRouteImport } from './routes/tools.schema-hub'
 import { Route as ToolsSchemaGeneratorRouteImport } from './routes/tools.schema-generator'
 import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
 import { Route as ToolsRobotsCheckerRouteImport } from './routes/tools.robots-checker'
@@ -170,6 +171,11 @@ const ToolsSeoAuditRoute = ToolsSeoAuditRouteImport.update({
 const ToolsSchemaValidatorRoute = ToolsSchemaValidatorRouteImport.update({
   id: '/schema-validator',
   path: '/schema-validator',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSchemaHubRoute = ToolsSchemaHubRouteImport.update({
+  id: '/schema-hub',
+  path: '/schema-hub',
   getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsSchemaGeneratorRoute = ToolsSchemaGeneratorRouteImport.update({
@@ -405,6 +411,7 @@ export interface FileRoutesByFullPath {
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
   '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/schema-hub': typeof ToolsSchemaHubRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
   '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
@@ -463,6 +470,7 @@ export interface FileRoutesByTo {
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
   '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/schema-hub': typeof ToolsSchemaHubRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
   '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
@@ -524,6 +532,7 @@ export interface FileRoutesById {
   '/tools/robots-checker': typeof ToolsRobotsCheckerRoute
   '/tools/robots-txt': typeof ToolsRobotsTxtRoute
   '/tools/schema-generator': typeof ToolsSchemaGeneratorRoute
+  '/tools/schema-hub': typeof ToolsSchemaHubRoute
   '/tools/schema-validator': typeof ToolsSchemaValidatorRoute
   '/tools/seo-audit': typeof ToolsSeoAuditRoute
   '/tools/seo-audit-hub': typeof ToolsSeoAuditHubRoute
@@ -585,6 +594,7 @@ export interface FileRouteTypes {
     | '/tools/robots-checker'
     | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/schema-hub'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
     | '/tools/seo-audit-hub'
@@ -643,6 +653,7 @@ export interface FileRouteTypes {
     | '/tools/robots-checker'
     | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/schema-hub'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
     | '/tools/seo-audit-hub'
@@ -703,6 +714,7 @@ export interface FileRouteTypes {
     | '/tools/robots-checker'
     | '/tools/robots-txt'
     | '/tools/schema-generator'
+    | '/tools/schema-hub'
     | '/tools/schema-validator'
     | '/tools/seo-audit'
     | '/tools/seo-audit-hub'
@@ -880,6 +892,13 @@ declare module '@tanstack/react-router' {
       path: '/schema-validator'
       fullPath: '/tools/schema-validator'
       preLoaderRoute: typeof ToolsSchemaValidatorRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/schema-hub': {
+      id: '/tools/schema-hub'
+      path: '/schema-hub'
+      fullPath: '/tools/schema-hub'
+      preLoaderRoute: typeof ToolsSchemaHubRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/schema-generator': {
@@ -1193,6 +1212,7 @@ interface ToolsRouteChildren {
   ToolsRobotsCheckerRoute: typeof ToolsRobotsCheckerRoute
   ToolsRobotsTxtRoute: typeof ToolsRobotsTxtRoute
   ToolsSchemaGeneratorRoute: typeof ToolsSchemaGeneratorRoute
+  ToolsSchemaHubRoute: typeof ToolsSchemaHubRoute
   ToolsSchemaValidatorRoute: typeof ToolsSchemaValidatorRoute
   ToolsSeoAuditRoute: typeof ToolsSeoAuditRoute
   ToolsSeoAuditHubRoute: typeof ToolsSeoAuditHubRoute
@@ -1237,6 +1257,7 @@ const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsRobotsCheckerRoute: ToolsRobotsCheckerRoute,
   ToolsRobotsTxtRoute: ToolsRobotsTxtRoute,
   ToolsSchemaGeneratorRoute: ToolsSchemaGeneratorRoute,
+  ToolsSchemaHubRoute: ToolsSchemaHubRoute,
   ToolsSchemaValidatorRoute: ToolsSchemaValidatorRoute,
   ToolsSeoAuditRoute: ToolsSeoAuditRoute,
   ToolsSeoAuditHubRoute: ToolsSeoAuditHubRoute,
