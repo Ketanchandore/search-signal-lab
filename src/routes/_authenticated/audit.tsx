@@ -11,7 +11,12 @@ import { trackToolRun, trackToolResult, trackToolError, trackExport } from "@/li
 function exportCsv(run: AuditRun) {
   const rows = [
     ["check", "status", "label", "detail"],
-    ...run.results.map((r) => [r.id ?? "", r.status ?? "", r.label ?? "", String(r.details ?? "").replace(/\s+/g, " ")]),
+    ...run.results.map((r) => [
+      r.id ?? "",
+      r.status ?? "",
+      r.label ?? "",
+      (r.details ?? []).map((d) => `${d.k}: ${d.v}`).join(" | ").replace(/\s+/g, " "),
+    ]),
   ];
   const csv = rows.map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\n");
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
