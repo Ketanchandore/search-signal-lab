@@ -40,12 +40,16 @@ function AuditPage() {
     e.preventDefault();
     setBusy(true);
     setResult(null);
+    trackToolRun("bulk-audit", { checks_selected: selected.length });
     try {
       const r = await run({ data: { url: url.trim(), checks: selected } });
       setResult(r);
+      trackToolResult("bulk-audit", { score: r.score, checks_run: r.results.length });
       toast.success(`Audit complete — score ${r.score}/100`);
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Audit failed");
+      const msg = err instanceof Error ? err.message : "Audit failed";
+      trackToolError("bulk-audit", msg);
+      toast.error(msg);
     } finally {
       setBusy(false);
     }
@@ -105,9 +109,17 @@ function Report({ run }: { run: AuditRun }) {
           <h2 className="font-display text-xl font-bold">Report — {run.url}</h2>
           <p className="text-sm text-muted-foreground">Overall score {run.score}/100 · {run.results.length} tools run</p>
         </div>
-        <button onClick={() => window.print()} className="print:hidden inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm hover:border-primary hover:text-primary">
-          <Download className="size-4" /> Download PDF
-        </button>
+        <div className="print:hidden flex gap-2">
+          <button
+            onClick={() => { trackExport("bulk-audit", "pdf", { checks_run: run.results.length }); window.print(); }}
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm hover:border-primary hover:text-primary"
+          >
+            <Download className="size-4" /> Download PDF
+          </button>
+          <button onClick={() => exportCsv(run)} className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm hover:border-primary hover:text-primary">
+            <Download className="size-4" /> CSV
+          </button>
+        </div>
       </div>
 
       <div className="mt-5 grid gap-3">
