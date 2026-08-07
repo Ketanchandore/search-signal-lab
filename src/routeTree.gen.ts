@@ -16,6 +16,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ApiDocsRouteImport } from './routes/api-docs'
 import { Route as AboutRouteImport } from './routes/about'
@@ -104,6 +105,11 @@ const HowItWorksRoute = HowItWorksRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -382,6 +388,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/api-docs': typeof ApiDocsRoute
   '/auth': typeof AuthRoute
+  '/changelog': typeof ChangelogRoute
   '/contact': typeof ContactRoute
   '/how-it-works': typeof HowItWorksRoute
   '/learn': typeof LearnRoute
@@ -444,6 +451,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/api-docs': typeof ApiDocsRoute
   '/auth': typeof AuthRoute
+  '/changelog': typeof ChangelogRoute
   '/contact': typeof ContactRoute
   '/how-it-works': typeof HowItWorksRoute
   '/learn': typeof LearnRoute
@@ -507,6 +515,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/api-docs': typeof ApiDocsRoute
   '/auth': typeof AuthRoute
+  '/changelog': typeof ChangelogRoute
   '/contact': typeof ContactRoute
   '/how-it-works': typeof HowItWorksRoute
   '/learn': typeof LearnRoute
@@ -571,6 +580,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/api-docs'
     | '/auth'
+    | '/changelog'
     | '/contact'
     | '/how-it-works'
     | '/learn'
@@ -633,6 +643,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/api-docs'
     | '/auth'
+    | '/changelog'
     | '/contact'
     | '/how-it-works'
     | '/learn'
@@ -695,6 +706,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/api-docs'
     | '/auth'
+    | '/changelog'
     | '/contact'
     | '/how-it-works'
     | '/learn'
@@ -759,6 +771,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ApiDocsRoute: typeof ApiDocsRoute
   AuthRoute: typeof AuthRoute
+  ChangelogRoute: typeof ChangelogRoute
   ContactRoute: typeof ContactRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LearnRoute: typeof LearnRoute
@@ -820,6 +833,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -1318,6 +1338,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ApiDocsRoute: ApiDocsRoute,
   AuthRoute: AuthRoute,
+  ChangelogRoute: ChangelogRoute,
   ContactRoute: ContactRoute,
   HowItWorksRoute: HowItWorksRoute,
   LearnRoute: LearnRoute,

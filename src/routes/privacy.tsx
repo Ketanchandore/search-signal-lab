@@ -43,8 +43,23 @@ function Privacy() {
           </section>
 
           <section>
-            <h2 className="font-display text-2xl font-bold text-foreground mb-2">Cookies</h2>
-            <p>We use Google Analytics 4 with IP anonymization enabled. No third-party advertising cookies.</p>
+            <h2 className="font-display text-2xl font-bold text-foreground mb-2">Cookies & Consent</h2>
+            <p>Analytics and advertising storage are set to <strong>denied</strong> until you accept our cookie banner. Declining keeps every tool fully functional.</p>
+            <p className="mt-2">You can change your choice at any time by clearing site data for seoacademys.com in your browser, which brings the banner back.</p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-bold text-foreground mb-2">Google Analytics 4 Disclosure</h2>
+            <p>We use Google Analytics 4 (measurement ID G-WEMSSMC2E8) to count page views and which free tools are used.</p>
+            <p className="mt-2">IP anonymization is enabled and Google Consent Mode v2 is implemented, so no analytics cookie is written before you accept.</p>
+            <p className="mt-2">Events we record are limited to: page views, tool runs, report exports and tool errors. We never send URLs you audit, form contents or personal identifiers to Google.</p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-bold text-foreground mb-2">Google AdSense Disclosure</h2>
+            <p>This site may display advertising served by Google AdSense and its certified partners to keep all 37 tools free.</p>
+            <p className="mt-2">Google and third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Ad cookies load only after you accept our consent banner.</p>
+            <p className="mt-2">You can opt out of personalized advertising at any time through <a href="https://www.google.com/settings/ads" rel="noopener nofollow" target="_blank" className="text-primary underline">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" rel="noopener nofollow" target="_blank" className="text-primary underline">aboutads.info</a>. EU, UK and Swiss visitors are served ads under Google's IAB TCF-compatible consent flow.</p>
           </section>
 
           <section>
@@ -52,6 +67,8 @@ function Privacy() {
             <ul className="list-disc pl-5 space-y-1">
               <li>Cloudflare (CDN & DDoS protection)</li>
               <li>Google Analytics 4 (anonymized traffic analytics)</li>
+              <li>Google AdSense (advertising, consent-gated)</li>
+              <li>Supabase (authentication and saved audit history for signed-in users)</li>
             </ul>
           </section>
 
