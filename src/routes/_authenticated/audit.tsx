@@ -6,6 +6,22 @@ import { AUDIT_CHECKS, type CheckResult } from "@/lib/audit-engine";
 import { runAudit, type AuditRun } from "@/lib/audit.functions";
 import { toast } from "sonner";
 import { Loader2, Play, Download, CheckCircle2, AlertTriangle, XCircle, Info } from "lucide-react";
+import { trackToolRun, trackToolResult, trackToolError, trackExport } from "@/lib/analytics";
+
+function exportCsv(run: AuditRun) {
+  const rows = [
+    ["check", "status", "label", "detail"],
+    ...run.results.map((r) => [r.id ?? "", r.status ?? "", r.label ?? "", String(r.detail ?? "").replace(/\s+/g, " ")]),
+  ];
+  const csv = rows.map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `seo-audit-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  trackExport("bulk-audit", "csv", { checks_run: run.results.length });
+}
 
 export const Route = createFileRoute("/_authenticated/audit")({
   head: () => ({
