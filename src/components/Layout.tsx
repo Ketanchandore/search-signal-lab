@@ -3,6 +3,7 @@ import { Home, Search, Code2, FileText, BarChart3, Github, LayoutDashboard, LogI
 import { useState } from "react";
 import logoAsset from "@/assets/seoacademys-logo.png.asset.json";
 import { useSession } from "@/hooks/use-session";
+import { CookieConsent } from "@/components/CookieConsent";
 
 export function Layout() {
   const [toolsOpen, setToolsOpen] = useState(false);
@@ -129,6 +130,7 @@ export function Layout() {
             <ul className="space-y-2 text-muted-foreground">
               <li><Link to="/blog" className="hover:text-primary">Blog</Link></li>
               <li><Link to="/how-it-works" className="hover:text-primary">How It Works</Link></li>
+              <li><Link to="/changelog" className="hover:text-primary">Changelog</Link></li>
               <li><Link to="/api-docs" className="hover:text-primary">API</Link></li>
               <li><Link to="/about" className="hover:text-primary">About</Link></li>
               <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
@@ -152,6 +154,8 @@ export function Layout() {
           <BottomTab to="/tools/geo-tracker" icon={<BarChart3 className="size-5" />} label="Tracker" active={loc.pathname.includes("tracker")} />
         </div>
       </nav>
+
+      <CookieConsent />
     </div>
   );
 }

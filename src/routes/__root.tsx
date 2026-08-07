@@ -95,16 +95,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/logo.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "preconnect", href: "https://www.googletagmanager.com" },
+      { rel: "dns-prefetch", href: "https://www.google-analytics.com" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
       },
     ],
     scripts: [
-      { src: "https://www.googletagmanager.com/gtag/js?id=G-WEMSSMC2E8", async: true },
       {
         children:
-          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WEMSSMC2E8');",
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}" +
+          "var c=null;try{c=localStorage.getItem('sa_consent_v1')}catch(e){}" +
+          "var g=c==='granted'?'granted':'denied';" +
+          "gtag('consent','default',{analytics_storage:g,ad_storage:g,ad_user_data:g,ad_personalization:g});" +
+          "gtag('js',new Date());gtag('config','G-WEMSSMC2E8',{anonymize_ip:true});" +
+          "addEventListener('load',function(){var s=document.createElement('script');s.async=true;" +
+          "s.src='https://www.googletagmanager.com/gtag/js?id=G-WEMSSMC2E8';document.head.appendChild(s);});",
       },
     ],
   }),
