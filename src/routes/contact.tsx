@@ -85,6 +85,34 @@ function Contact() {
             </button>
           </form>
         )}
+
+        <section className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-surface p-5">
+            <h2 className="font-display text-lg font-bold mb-2">Business details</h2>
+            <address className="not-italic text-sm text-muted-foreground leading-relaxed">
+              SEOAcademys
+              <br />
+              {/* TODO: replace with your registered business address before AdSense review */}
+              Registered address: add your street, city, postal code and country here
+              <br />
+              Email: <a href="mailto:hello@seoacademys.com" className="text-primary underline">hello@seoacademys.com</a>
+            </address>
+            <p className="mt-3 text-xs text-muted-foreground">
+              A verifiable physical address is required for Google AdSense approval — replace the placeholder above before submitting.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-surface p-5">
+            <h2 className="font-display text-lg font-bold mb-2">Response-time SLA</h2>
+            <ul className="text-sm text-muted-foreground space-y-1.5">
+              <li>Bug reports and tool outages — within 8 business hours</li>
+              <li>General support and feature requests — within 24 business hours</li>
+              <li>Partnerships, press and API access — within 3 business days</li>
+              <li>GDPR/CCPA data requests — within 30 days, as required by law</li>
+            </ul>
+            <p className="mt-3 text-xs text-muted-foreground">Support hours: Monday to Friday, 09:00–18:00 IST.</p>
+          </div>
+        </section>
       </div>
     </PageContainer>
   );
