@@ -6,7 +6,15 @@ import { ToolHeader, Card3D } from "@/components/Card3D";
 import { fleschReadingEase, wordTokens } from "@/lib/html-analyzer";
 
 export const Route = createFileRoute("/tools/readability")({
-  head: () => toolHead("readability") || []).length || 1;
+  head: () => toolHead("readability"),
+  component: Page,
+});
+
+function Page() {
+  const [text, setText] = useState("");
+  const m = useMemo(() => {
+    const words = wordTokens(text);
+    const sentences = (text.match(/[.!?]+/g) || []).length || 1;
     const fre = fleschReadingEase(text);
     let grade = "Very easy";
     if (fre < 30) grade = "Very difficult (college graduate)";

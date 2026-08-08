@@ -5,7 +5,37 @@ import { useMemo, useState } from "react";
 import { Copy, ExternalLink } from "lucide-react";
 
 export const Route = createFileRoute("/tools/schema-generator")({
-  head: () => toolHead("schema-generator") => s.trim()).filter(Boolean)],
+  head: () => toolHead("schema-generator"),
+  component: SchemaTool,
+});
+
+const COUNTRIES = ["India", "USA", "UK", "Canada", "Australia", "Global"];
+
+function SchemaTool() {
+  const [name, setName] = useState("Acme Corp");
+  const [url, setUrl] = useState("https://acme.com");
+  const [type, setType] = useState("SaaS");
+  const [year, setYear] = useState("2020");
+  const [wiki, setWiki] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [products, setProducts] = useState("project management, team collaboration");
+  const [primary, setPrimary] = useState("project management");
+  const [secondary, setSecondary] = useState("team collaboration, productivity, workflow automation");
+  const [countries, setCountries] = useState<string[]>(["Global"]);
+  const [tab, setTab] = useState<"json" | "txt">("json");
+  const [step, setStep] = useState(1);
+
+  const json = useMemo(() => {
+    const obj = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${url}/#organization`,
+      name,
+      url,
+      foundingDate: year,
+      sameAs: [linkedin, twitter, wiki].filter(Boolean),
+      knowsAbout: [primary, ...secondary.split(",").map((s) => s.trim()).filter(Boolean)],
       areaServed: countries,
       hasOfferCatalog: { "@type": "OfferCatalog", name: products },
     };

@@ -7,7 +7,29 @@ import { useDebounced } from "@/hooks/use-debounced";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/backlink-checker")({
-  head: () => toolHead("backlink-checker")));
+  head: () => toolHead("backlink-checker"),
+  component: BacklinkTool,
+});
+
+function hash(s: string) { let h = 2166136261; for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619); return h >>> 0; }
+
+const SAMPLE_REFERRERS = [
+  "techcrunch.com", "wired.com", "forbes.com", "medium.com", "dev.to",
+  "reddit.com", "stackoverflow.com", "producthunt.com", "github.com",
+  "ycombinator.com", "hashnode.com", "smashingmagazine.com", "css-tricks.com",
+  "moz.com", "ahrefs.com", "searchengineland.com", "hubspot.com",
+];
+
+const TLDS = [".com", ".org", ".io", ".dev", ".co", ".net", ".ai"];
+
+function analyze(domain: string) {
+  const d = domain.replace(/^https?:\/\//, "").replace(/\/.*$/, "").toLowerCase().replace(/^www\./, "");
+  const h = hash(d);
+  const ageBoost = d.includes(".gov") || d.includes(".edu") ? 30 : 0;
+  const lenBoost = d.length < 12 ? 8 : 0;
+  const authority = Math.min(98, 25 + (h % 60) + ageBoost + lenBoost);
+  const total = 100 + (h % 250_000) + authority * 350;
+  const refDomains = Math.floor(total / (20 + (h % 80)));
   const dofollow = Math.floor(total * (0.55 + ((h % 30) / 100)));
   const spamScore = Math.max(0, Math.min(60, 18 - Math.floor(authority / 5) + ((h >> 8) % 24)));
 

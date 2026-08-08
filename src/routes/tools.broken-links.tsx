@@ -9,7 +9,7 @@ import { getLinks } from "@/lib/html-analyzer";
 import { Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/tools/broken-links")({
-  head: () => toolHead("broken-links") on any webpage in seconds. Real-time crawl, no limit. Improve SEO & UX." }, { property: "og:title", content: "Free Broken Link Checker — Find Dead Links Instantly" }, { property: "og:url", content: "/tools/broken-links" }], links: [{ rel: "canonical", href: "/tools/broken-links" }] }),
+  head: () => toolHead("broken-links"),
   component: Page,
 });
 

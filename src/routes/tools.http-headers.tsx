@@ -7,7 +7,11 @@ import { UrlTool, Section } from "@/components/UrlTool";
 const IMPORTANT = ["content-type","server","x-powered-by","strict-transport-security","content-security-policy","x-frame-options","x-content-type-options","referrer-policy","permissions-policy","cache-control","etag","last-modified","cf-ray","x-vercel-id","x-nf-request-id","content-encoding","vary"];
 
 export const Route = createFileRoute("/tools/http-headers")({
-  head: () => toolHead("http-headers") => {
+  head: () => toolHead("http-headers"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="HTTP Header Checker" desc="Inspect every response header. Security headers highlighted." />
+      <UrlTool>{(r) => {
         const keys = Array.from(new Set([...IMPORTANT, ...Object.keys(r.headers).sort()]));
         return (
           <Section title="Response headers">

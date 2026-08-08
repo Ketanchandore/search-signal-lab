@@ -7,7 +7,11 @@ import { getHeadings } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/heading-checker")({
-  head: () => toolHead("heading-checker") => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("heading-checker"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Heading Structure Checker" desc="Visualize the H1–H6 outline of any URL and flag jumps." />
+      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

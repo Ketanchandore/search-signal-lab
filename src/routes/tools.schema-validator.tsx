@@ -8,7 +8,11 @@ import { useMemo } from "react";
 import { Check, X } from "lucide-react";
 
 export const Route = createFileRoute("/tools/schema-validator")({
-  head: () => toolHead("schema-validator") => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("schema-validator"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Schema.org JSON-LD Validator" desc="Find every JSON-LD block on the page, parse it and validate required properties." />
+      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

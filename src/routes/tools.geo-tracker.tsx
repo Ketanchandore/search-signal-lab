@@ -8,7 +8,51 @@ import { useDebounced } from "@/hooks/use-debounced";
 
 
 export const Route = createFileRoute("/tools/geo-tracker")({
-  head: () => toolHead("geo-tracker") => {
+  head: () => toolHead("geo-tracker"),
+  component: TrackerTool,
+});
+
+type Row = { intent: string; domain: string; engine: "Google AI Overviews" | "ChatGPT Search" | "Perplexity"; type: string; strategy: string; category: string };
+
+const ROWS: Row[] = [
+  { intent: "best cloud hosting 2026", domain: "aws.amazon.com", engine: "Google AI Overviews", type: "Direct Answer", strategy: "FAQ Schema + Stats", category: "Tech" },
+  { intent: "how to invest in index funds", domain: "investopedia.com", engine: "ChatGPT Search", type: "Expert Guide", strategy: "Entity Authority", category: "Finance" },
+  { intent: "symptoms of vitamin D deficiency", domain: "healthline.com", engine: "Perplexity", type: "Medical Info", strategy: "Citation + Sources", category: "Health" },
+  { intent: "best CRM software", domain: "g2.com", engine: "Google AI Overviews", type: "Comparison", strategy: "Structured List", category: "SaaS" },
+  { intent: "Python vs JavaScript 2026", domain: "stackoverflow.com", engine: "ChatGPT Search", type: "Technical", strategy: "Code + Data", category: "Tech" },
+  { intent: "credit card rewards comparison", domain: "nerdwallet.com", engine: "Perplexity", type: "Finance", strategy: "Data Table", category: "Finance" },
+  { intent: "remote work productivity tips", domain: "hbr.org", engine: "Google AI Overviews", type: "Authoritative", strategy: "Research Citation", category: "Tech" },
+  { intent: "WordPress vs Webflow", domain: "kinsta.com", engine: "Perplexity", type: "Comparison", strategy: "Schema Markup", category: "Tech" },
+  { intent: "diabetes management diet", domain: "webmd.com", engine: "ChatGPT Search", type: "Medical", strategy: "Medical Schema", category: "Health" },
+  { intent: "AI tools for business 2026", domain: "forbes.com", engine: "Google AI Overviews", type: "News/List", strategy: "Author Entity", category: "Tech" },
+  { intent: "best laptops under 50000 INR", domain: "gadgets360.com", engine: "Google AI Overviews", type: "Product", strategy: "Product Schema", category: "E-Commerce" },
+  { intent: "GST registration India", domain: "cleartax.in", engine: "Perplexity", type: "Legal/Finance", strategy: "FAQ Schema", category: "Finance" },
+  { intent: "how to start dropshipping", domain: "shopify.com/blog", engine: "ChatGPT Search", type: "Tutorial", strategy: "HowTo Schema", category: "E-Commerce" },
+  { intent: "free email marketing tools", domain: "mailchimp.com", engine: "Google AI Overviews", type: "SaaS", strategy: "Feature List", category: "SaaS" },
+  { intent: "best mutual funds India", domain: "valueresearchonline.com", engine: "Perplexity", type: "Finance", strategy: "Data Table", category: "Finance" },
+  { intent: "machine learning roadmap", domain: "towardsdatascience.com", engine: "ChatGPT Search", type: "Education", strategy: "Structured Guide", category: "Tech" },
+  { intent: "ecommerce SEO guide", domain: "semrush.com/blog", engine: "Google AI Overviews", type: "SEO", strategy: "Long-form Authority", category: "E-Commerce" },
+  { intent: "React vs Next.js", domain: "vercel.com/blog", engine: "ChatGPT Search", type: "Technical", strategy: "Developer Entity", category: "Tech" },
+  { intent: "weight loss meal plan", domain: "healthline.com", engine: "Perplexity", type: "Health", strategy: "Structured Plan", category: "Health" },
+  { intent: "startup funding options India", domain: "inc42.com", engine: "Google AI Overviews", type: "Business", strategy: "News Authority", category: "Finance" },
+];
+
+const FILTERS = ["All", "Tech", "Finance", "Health", "E-Commerce", "SaaS"];
+
+const engineColor = (e: Row["engine"]) =>
+  e === "Google AI Overviews" ? "bg-blue-500/10 text-blue-600 border-blue-500/30" :
+  e === "ChatGPT Search" ? "bg-primary/10 text-primary border-primary/30" :
+  "bg-purple-500/10 text-purple-600 border-purple-500/30";
+
+
+function TrackerTool() {
+  const [filter, setFilter] = useState("All");
+  const [q, setQ] = useState("");
+  const dq = useDebounced(q, 200);
+
+  const rows = useMemo(() => {
+    const ql = dq.trim().toLowerCase();
+    return ROWS.filter((r) => {
       if (filter !== "All" && r.category !== filter) return false;
       if (!ql) return true;
       return r.intent.toLowerCase().includes(ql) || r.domain.toLowerCase().includes(ql) || r.strategy.toLowerCase().includes(ql);

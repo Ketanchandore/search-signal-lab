@@ -9,7 +9,42 @@ import { useDebounced } from "@/hooks/use-debounced";
 const RadialGauge = lazy(() => import("@/components/RadialGauge"));
 
 export const Route = createFileRoute("/tools/ai-citation-audit")({
-  head: () => toolHead("ai-citation-audit") => setCalc(false), 450);
+  head: () => toolHead("ai-citation-audit"),
+  component: AuditTool,
+});
+
+// Deterministic pseudo-score derived from URL + keyword — feels live, no API needed.
+function scoreFor(url: string, kw: string) {
+  const s = (url + "|" + kw).toLowerCase();
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  const base = 30 + (h % 55);
+  const httpsBoost = url.startsWith("https://") ? 8 : 0;
+  const kwBoost = kw.trim().length > 4 ? 6 : 0;
+  const lenBoost = Math.min(10, Math.floor(url.length / 8));
+  return Math.min(98, base + httpsBoost + kwBoost + lenBoost);
+}
+
+function inferDomain(url: string) {
+  try {
+    return new URL(url.startsWith("http") ? url : `https://${url}`).hostname.replace(/^www\./, "");
+  } catch {
+    return "—";
+  }
+}
+
+function AuditTool() {
+  const [url, setUrl] = useState("");
+  const [kw, setKw] = useState("");
+  const dUrl = useDebounced(url, 350);
+  const dKw = useDebounced(kw, 350);
+  const ready = dUrl.length > 3;
+  const [calc, setCalc] = useState(false);
+
+  useEffect(() => {
+    if (!ready) return;
+    setCalc(true);
+    const t = setTimeout(() => setCalc(false), 450);
     return () => clearTimeout(t);
   }, [dUrl, dKw, ready]);
 

@@ -7,7 +7,11 @@ import { getLinks } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/link-analyzer")({
-  head: () => toolHead("link-analyzer") => <View html={r.html} url={r.finalUrl} />}</UrlTool>
+  head: () => toolHead("link-analyzer"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Link Analyzer" desc="See every link on the page — internal vs external, follow vs nofollow." />
+      <UrlTool>{(r) => <View html={r.html} url={r.finalUrl} />}</UrlTool>
     </ToolPanel>
   ),
 });

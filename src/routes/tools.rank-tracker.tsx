@@ -9,7 +9,42 @@ import { getMeta, getHeadings, getJsonLd, wordTokens } from "@/lib/html-analyzer
 import { Loader2, Download, Trash2, TrendingUp, TrendingDown, Minus } from "lucide-react";
 
 export const Route = createFileRoute("/tools/rank-tracker")({
-  head: () => toolHead("rank-tracker"));
+  head: () => toolHead("rank-tracker"),
+  component: Page,
+});
+
+type KwScore = {
+  keyword: string;
+  score: number;
+  signals: {
+    inTitle: boolean;
+    inH1: boolean;
+    inDescription: boolean;
+    inUrl: boolean;
+    headingHits: number;
+    density: number; // percent
+    wordCount: number;
+    schemaPresent: boolean;
+  };
+};
+
+type Snapshot = { ts: number; url: string; scores: KwScore[] };
+const STORAGE_KEY = "seoacademys.rank-tracker.v1";
+
+function Page() {
+  const fn = useServerFn(fetchUrl);
+  const [url, setUrl] = useState("");
+  const [keywordsRaw, setKeywordsRaw] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [scores, setScores] = useState<KwScore[] | null>(null);
+  const [resultUrl, setResultUrl] = useState("");
+  const [history, setHistory] = useState<Snapshot[]>([]);
+  const [err, setErr] = useState("");
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) setHistory(JSON.parse(raw));
     } catch { /* noop */ }
   }, []);
 

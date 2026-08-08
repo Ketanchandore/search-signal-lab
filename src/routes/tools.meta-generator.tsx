@@ -6,11 +6,7 @@ import { Card3D, ToolHeader } from "@/components/Card3D";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/meta-generator")({
-  head: () => toolHead("meta-generator") — SEOAcademys" },
-      { name: "description", content: "Generate complete SEO meta tags, Open Graph, and Twitter Card HTML instantly. Free." },
-    ],
-    links: [{ rel: "canonical", href: "/tools/meta-generator" }],
-  }),
+  head: () => toolHead("meta-generator"),
   component: MetaGen,
 });
 

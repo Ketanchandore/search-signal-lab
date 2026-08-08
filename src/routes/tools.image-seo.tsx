@@ -7,7 +7,11 @@ import { getImages } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/image-seo")({
-  head: () => toolHead("image-seo") => <View html={r.html} url={r.finalUrl} />}</UrlTool>
+  head: () => toolHead("image-seo"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Image SEO Checker" desc="List every <img> tag: alt, dimensions, lazy-loading and file format." />
+      <UrlTool>{(r) => <View html={r.html} url={r.finalUrl} />}</UrlTool>
     </ToolPanel>
   ),
 });

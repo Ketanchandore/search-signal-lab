@@ -5,7 +5,10 @@ import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section, KV } from "@/components/UrlTool";
 
 export const Route = createFileRoute("/tools/redirect-checker")({
-  head: () => toolHead("redirect-checker")." />
+  head: () => toolHead("redirect-checker"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Redirect Checker" desc="Follow the redirect chain step-by-step (up to 8 hops)." />
       <UrlTool>{(r) => (
         <Section title={`${r.redirectChain.length} hop(s) to final URL`}>
           <ol className="space-y-2 text-sm">

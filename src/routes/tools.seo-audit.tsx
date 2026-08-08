@@ -8,7 +8,31 @@ import { Check, X } from "lucide-react";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/seo-audit")({
-  head: () => toolHead("seo-audit").replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<[^>]+>/g, " ")).length, [result.html]);
+  head: () => toolHead("seo-audit"),
+  component: Page,
+});
+
+function Page() {
+  return (
+    <ToolPanel>
+      <ToolHeader title="SEO Audit Tool" badge="REAL FETCH" desc="Live on-page SEO audit. We fetch the URL server-side and analyze its actual HTML." />
+      <UrlTool>
+        {(r) => <Audit r={r} />}
+      </UrlTool>
+    </ToolPanel>
+  );
+}
+
+function Audit({ r }: { r: ReturnType<typeof Object> }) {
+  const result = r as { html: string; headers: Record<string, string>; finalUrl: string; status: number; redirectChain: { url: string; status: number }[]; bytes: number };
+  const meta = useMemo(() => getMeta(result.html), [result.html]);
+  const headings = useMemo(() => getHeadings(result.html), [result.html]);
+  const links = useMemo(() => getLinks(result.html, result.finalUrl), [result.html, result.finalUrl]);
+  const images = useMemo(() => getImages(result.html, result.finalUrl), [result.html, result.finalUrl]);
+  const jsonld = useMemo(() => getJsonLd(result.html), [result.html]);
+  const tech = useMemo(() => detectTech(result.html, result.headers), [result.html, result.headers]);
+
+  const wordCount = useMemo(() => wordTokens(result.html.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<[^>]+>/g, " ")).length, [result.html]);
   const missingAlt = images.filter((i) => !i.alt).length;
   const h1Count = headings.filter((h) => h.level === 1).length;
   const issues = [

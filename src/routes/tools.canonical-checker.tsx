@@ -7,7 +7,11 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/canonical-checker")({
-  head: () => toolHead("canonical-checker") => <View html={r.html} finalUrl={r.finalUrl} />}</UrlTool>
+  head: () => toolHead("canonical-checker"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Canonical URL Checker" desc="Confirm the rel=canonical link tag and detect self-canonical / cross-domain conflicts." />
+      <UrlTool>{(r) => <View html={r.html} finalUrl={r.finalUrl} />}</UrlTool>
     </ToolPanel>
   ),
 });

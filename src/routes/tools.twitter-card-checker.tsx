@@ -7,7 +7,11 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/twitter-card-checker")({
-  head: () => toolHead("twitter-card-checker") => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("twitter-card-checker"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Twitter / X Card Checker" desc="See exactly what twitter:* tags X will use for your share preview." />
+      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

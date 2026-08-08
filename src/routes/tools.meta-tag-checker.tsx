@@ -7,7 +7,11 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/meta-tag-checker")({
-  head: () => toolHead("meta-tag-checker") => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("meta-tag-checker"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Meta Tag Checker" desc="Inspect every meta tag of any URL — title, description, robots, viewport, charset, canonical." />
+      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

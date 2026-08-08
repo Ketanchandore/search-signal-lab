@@ -7,7 +7,11 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/og-checker")({
-  head: () => toolHead("og-checker") => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("og-checker"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Open Graph Checker" desc="Preview how Facebook, LinkedIn and Slack will render your link." />
+      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

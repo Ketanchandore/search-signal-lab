@@ -8,7 +8,7 @@ import { fetchUrl } from "@/lib/fetch-url.functions";
 import { Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/tools/robots-checker")({
-  head: () => toolHead("robots-checker"). Free." }, { property: "og:title", content: "Free Robots.txt Checker — Validate & Test Robots.txt" }, { property: "og:url", content: "/tools/robots-checker" }], links: [{ rel: "canonical", href: "/tools/robots-checker" }] }),
+  head: () => toolHead("robots-checker"),
   component: Page,
 });
 

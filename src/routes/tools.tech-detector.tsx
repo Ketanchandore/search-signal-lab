@@ -7,7 +7,11 @@ import { detectTech, wpThemeDetect } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/tech-detector")({
-  head: () => toolHead("tech-detector") => <View html={r.html} headers={r.headers} />}</UrlTool>
+  head: () => toolHead("tech-detector"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Website Technology Detector" desc="Detect CMS, framework, CDN, analytics and more from HTML + headers." />
+      <UrlTool>{(r) => <View html={r.html} headers={r.headers} />}</UrlTool>
     </ToolPanel>
   ),
 });

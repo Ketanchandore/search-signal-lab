@@ -7,7 +7,11 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/mobile-checker")({
-  head: () => toolHead("mobile-checker") => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("mobile-checker"),
+  component: () => (
+    <ToolPanel>
+      <ToolHeader title="Mobile-Friendly Checker" desc="Heuristic mobile readiness: viewport meta, responsive units, tap target hints." />
+      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

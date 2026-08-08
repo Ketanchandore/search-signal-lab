@@ -8,7 +8,27 @@ import { fetchUrl } from "@/lib/fetch-url.functions";
 import { Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/tools/sitemap-checker")({
-  head: () => toolHead("sitemap-checker")?.[1].trim() || "",
+  head: () => toolHead("sitemap-checker"),
+  component: Page,
+});
+
+function Page() {
+  const fn = useServerFn(fetchUrl);
+  const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<{ count: number; urls: { loc: string; lastmod?: string; priority?: string }[]; isIndex: boolean; raw: string } | null>(null);
+
+  const run = async () => {
+    let u = url.trim(); if (!u) return;
+    if (!/^https?:\/\//i.test(u)) u = "https://" + u;
+    if (!/sitemap/i.test(u)) u = new URL(u).origin + "/sitemap.xml";
+    setLoading(true);
+    try {
+      const r = await fn({ data: { url: u } });
+      const xml = r.html;
+      const isIndex = /<sitemapindex/i.test(xml);
+      const urls = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/gi)].map(m => ({
+        loc: m[1].match(/<loc>([\s\S]*?)<\/loc>/i)?.[1].trim() || "",
         lastmod: m[1].match(/<lastmod>([\s\S]*?)<\/lastmod>/i)?.[1].trim(),
         priority: m[1].match(/<priority>([\s\S]*?)<\/priority>/i)?.[1].trim(),
       }));
