@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { MinifierPage } from "./tools.html-minifier";
 
 export const Route = createFileRoute("/tools/css-minifier")({
-  head: () => ({ meta: [{ title: "CSS Minifier — SEOAcademys" }] }),
+  head: () => toolHead("css-minifier"),
   component: () => <MinifierPage kind="css" />,
 });

@@ -1,17 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { Copy, Check, Download } from "lucide-react";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/robots-txt")({
-  head: () => ({
-    meta: [
-      { title: "Robots.txt Generator + AI Crawler Rules — SEOAcademys" },
-      { name: "description", content: "Visual robots.txt builder with rules for GPTBot, GoogleExtended, PerplexityBot, ClaudeBot, and more." },
-    ],
-    links: [{ rel: "canonical", href: "/tools/robots-txt" }],
-  }),
+  head: () => toolHead("robots-txt"),
   component: RobotsTool,
 });
 

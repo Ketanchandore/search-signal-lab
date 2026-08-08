@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -9,16 +10,7 @@ import { useDebounced } from "@/hooks/use-debounced";
 const RadialGauge = lazy(() => import("@/components/RadialGauge"));
 
 export const Route = createFileRoute("/tools/ai-citation-audit")({
-  head: () => ({
-    meta: [
-      { title: "Free AI Citation Audit — Check ChatGPT & Gemini Visibility | SEOAcademys" },
-      { name: "description", content: "Check if ChatGPT, Gemini & Perplexity cite your website. Scans 47 GEO signals. See your AI search visibility score." },
-      { property: "og:title", content: "Free AI Citation Audit — Check ChatGPT & Gemini Visibility" },
-      { property: "og:description", content: "Scans 47 GEO signals to see your AI search visibility score. Free." },
-      { property: "og:url", content: "/tools/ai-citation-audit" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/ai-citation-audit" }],
-  }),
+  head: () => toolHead("ai-citation-audit"),
   component: AuditTool,
 });
 

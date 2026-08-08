@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { ToolPanel } from "./tools";
@@ -7,7 +8,7 @@ import { fetchUrl } from "@/lib/fetch-url.functions";
 import { Loader2, ShieldCheck, ShieldAlert } from "lucide-react";
 
 export const Route = createFileRoute("/tools/ssl-checker")({
-  head: () => ({ meta: [{ title: "SSL / HTTPS Checker — SEOAcademys" }] }),
+  head: () => toolHead("ssl-checker"),
   component: Page,
 });
 

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section } from "@/components/UrlTool";
@@ -6,7 +7,7 @@ import { UrlTool, Section } from "@/components/UrlTool";
 const IMPORTANT = ["content-type","server","x-powered-by","strict-transport-security","content-security-policy","x-frame-options","x-content-type-options","referrer-policy","permissions-policy","cache-control","etag","last-modified","cf-ray","x-vercel-id","x-nf-request-id","content-encoding","vary"];
 
 export const Route = createFileRoute("/tools/http-headers")({
-  head: () => ({ meta: [{ title: "HTTP Headers Checker — SEOAcademys" }] }),
+  head: () => toolHead("http-headers"),
   component: () => (
     <ToolPanel>
       <ToolHeader title="HTTP Header Checker" desc="Inspect every response header. Security headers highlighted." />

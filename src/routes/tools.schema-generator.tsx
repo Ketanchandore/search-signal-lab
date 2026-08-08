@@ -1,19 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
 import { useMemo, useState } from "react";
 import { Copy, ExternalLink } from "lucide-react";
 
 export const Route = createFileRoute("/tools/schema-generator")({
-  head: () => ({
-    meta: [
-      { title: "Schema 2.0 & llms.txt Generator — SEOAcademys" },
-      { name: "description", content: "Free generator for JSON-LD Organization Schema and llms.txt files. No signup required." },
-      { property: "og:title", content: "Schema 2.0 & llms.txt Generator" },
-      { property: "og:description", content: "Generate JSON-LD and llms.txt files instantly." },
-      { property: "og:url", content: "/tools/schema-generator" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/schema-generator" }],
-  }),
+  head: () => toolHead("schema-generator"),
   component: SchemaTool,
 });
 

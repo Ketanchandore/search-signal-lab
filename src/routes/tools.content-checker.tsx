@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { useMemo, useState } from "react";
@@ -6,16 +7,7 @@ import { useDebounced } from "@/hooks/use-debounced";
 
 
 export const Route = createFileRoute("/tools/content-checker")({
-  head: () => ({
-    meta: [
-      { title: "LLM Content Readiness Checker — SEOAcademys" },
-      { name: "description", content: "Analyze your blog post or article for AI citation probability. Free tool." },
-      { property: "og:title", content: "LLM Content Readiness Checker" },
-      { property: "og:description", content: "See why AI engines skip your content — and how to fix it." },
-      { property: "og:url", content: "/tools/content-checker" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/content-checker" }],
-  }),
+  head: () => toolHead("content-checker"),
   component: ContentCheckerTool,
 });
 

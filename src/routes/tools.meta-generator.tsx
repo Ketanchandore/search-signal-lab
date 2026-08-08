@@ -1,17 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { Copy, Check } from "lucide-react";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/meta-generator")({
-  head: () => ({
-    meta: [
-      { title: "Meta Tag Generator (OG + Twitter) — SEOAcademys" },
-      { name: "description", content: "Generate complete SEO meta tags, Open Graph, and Twitter Card HTML instantly. Free." },
-    ],
-    links: [{ rel: "canonical", href: "/tools/meta-generator" }],
-  }),
+  head: () => toolHead("meta-generator"),
   component: MetaGen,
 });
 

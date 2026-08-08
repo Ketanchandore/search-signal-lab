@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { ToolPanel } from "./tools";
 import { ToolHeader, Card3D } from "@/components/Card3D";
 
 export const Route = createFileRoute("/tools/word-counter")({
-  head: () => ({ meta: [{ title: "Word & Character Counter — SEOAcademys" }] }),
+  head: () => toolHead("word-counter"),
   component: Page,
 });
 

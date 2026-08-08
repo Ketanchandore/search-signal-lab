@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { ToolPanel } from "./tools";
 import { ToolHeader, Card3D } from "@/components/Card3D";
 import { wordTokens } from "@/lib/html-analyzer";
 
 export const Route = createFileRoute("/tools/keyword-density")({
-  head: () => ({ meta: [{ title: "Keyword Density Checker — SEOAcademys" }] }),
+  head: () => toolHead("keyword-density"),
   component: Page,
 });
 

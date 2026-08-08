@@ -21,9 +21,13 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "https://seoacademys.com/" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "SEOAcademys" },
+      { property: "og:image", content: "https://seoacademys.com/logo.png" },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: HOME_TITLE },
       { name: "twitter:description", content: HOME_DESC },
+      { name: "twitter:image", content: "https://seoacademys.com/logo.png" },
+
     ],
     links: [{ rel: "canonical", href: "https://seoacademys.com/" }],
     scripts: [

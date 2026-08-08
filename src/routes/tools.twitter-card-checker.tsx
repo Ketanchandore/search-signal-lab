@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section, KV } from "@/components/UrlTool";
@@ -6,7 +7,7 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/twitter-card-checker")({
-  head: () => ({ meta: [{ title: "Twitter / X Card Checker — SEOAcademys" }] }),
+  head: () => toolHead("twitter-card-checker"),
   component: () => (
     <ToolPanel>
       <ToolHeader title="Twitter / X Card Checker" desc="See exactly what twitter:* tags X will use for your share preview." />

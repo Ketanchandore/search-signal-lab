@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { ToolPanel } from "./tools";
@@ -7,7 +8,7 @@ import { fetchUrl } from "@/lib/fetch-url.functions";
 import { Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/tools/robots-checker")({
-  head: () => ({ meta: [{ title: "Free Robots.txt Checker — Validate & Test Robots.txt | SEOAcademys" }, { name: "description", content: "Check robots.txt syntax, test URL rules, verify AI crawler access (GPTBot, ClaudeBot, PerplexityBot). Free." }, { property: "og:title", content: "Free Robots.txt Checker — Validate & Test Robots.txt" }, { property: "og:url", content: "/tools/robots-checker" }], links: [{ rel: "canonical", href: "/tools/robots-checker" }] }),
+  head: () => toolHead("robots-checker"),
   component: Page,
 });
 

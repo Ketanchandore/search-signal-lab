@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section, KV } from "@/components/UrlTool";
@@ -7,7 +8,7 @@ import { Check, X } from "lucide-react";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/seo-audit")({
-  head: () => ({ meta: [{ title: "Free SEO Audit Tool — 47-Point On-Page Check | SEOAcademys" }, { name: "description", content: "Run a live SEO audit in 2 seconds. Checks 47 signals: meta tags, headings, schema, Core Web Vitals, mobile. Free, no signup." }, { property: "og:title", content: "Free SEO Audit Tool — 47-Point On-Page Check" }, { property: "og:description", content: "Run a live SEO audit in 2 seconds. 47 signals checked. Free." }, { property: "og:url", content: "/tools/seo-audit" }], links: [{ rel: "canonical", href: "/tools/seo-audit" }] }),
+  head: () => toolHead("seo-audit"),
   component: Page,
 });
 

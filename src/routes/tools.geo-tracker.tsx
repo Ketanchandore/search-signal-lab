@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
 import { useMemo, useState } from "react";
 import { Download, Search } from "lucide-react";
@@ -7,16 +8,7 @@ import { useDebounced } from "@/hooks/use-debounced";
 
 
 export const Route = createFileRoute("/tools/geo-tracker")({
-  head: () => ({
-    meta: [
-      { title: "GEO Market Intelligence — SEOAcademys" },
-      { name: "description", content: "Track which websites Google AI Overviews, ChatGPT Search, and Perplexity cite most." },
-      { property: "og:title", content: "GEO Market Intelligence Dashboard" },
-      { property: "og:description", content: "Live AI citation data across industries." },
-      { property: "og:url", content: "/tools/geo-tracker" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/geo-tracker" }],
-  }),
+  head: () => toolHead("geo-tracker"),
   component: TrackerTool,
 });
 

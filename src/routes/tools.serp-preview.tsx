@@ -1,17 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useState } from "react";
 import { Globe, Smartphone, Monitor } from "lucide-react";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/serp-preview")({
-  head: () => ({
-    meta: [
-      { title: "Google SERP Preview Tool — SEOAcademys" },
-      { name: "description", content: "Preview how your page appears in Google search results on desktop and mobile. Free." },
-    ],
-    links: [{ rel: "canonical", href: "/tools/serp-preview" }],
-  }),
+  head: () => toolHead("serp-preview"),
   component: SerpPreview,
 });
 

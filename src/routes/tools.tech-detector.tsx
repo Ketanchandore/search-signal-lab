@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section } from "@/components/UrlTool";
@@ -6,7 +7,7 @@ import { detectTech, wpThemeDetect } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/tech-detector")({
-  head: () => ({ meta: [{ title: "Website Technology Detector — SEOAcademys" }] }),
+  head: () => toolHead("tech-detector"),
   component: () => (
     <ToolPanel>
       <ToolHeader title="Website Technology Detector" desc="Detect CMS, framework, CDN, analytics and more from HTML + headers." />

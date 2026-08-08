@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useServerFn } from "@tanstack/react-start";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ToolPanel } from "./tools";
@@ -8,16 +9,7 @@ import { getMeta, getHeadings, getJsonLd, wordTokens } from "@/lib/html-analyzer
 import { Loader2, Download, Trash2, TrendingUp, TrendingDown, Minus } from "lucide-react";
 
 export const Route = createFileRoute("/tools/rank-tracker")({
-  head: () => ({
-    meta: [
-      { title: "Free Rank Tracker Tool — Check Google Rankings Instantly | SEOAcademys" },
-      { name: "description", content: "Track keyword rankings in Google, Yahoo & Bing for free. No signup. Check up to 100 keywords daily, export CSV, monitor position history. Used by 2.4M+ SEOs." },
-      { property: "og:title", content: "Free Rank Tracker Tool — Check Google Rankings Instantly" },
-      { property: "og:description", content: "Track up to 100 keywords per URL across Google, Bing & Yahoo. Daily snapshots, CSV export, free forever." },
-      { property: "og:url", content: "/tools/rank-tracker" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/rank-tracker" }],
-  }),
+  head: () => toolHead("rank-tracker"),
   component: Page,
 });
 

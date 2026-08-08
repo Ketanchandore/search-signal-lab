@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { ToolPanel } from "./tools";
@@ -7,7 +8,7 @@ import { fetchUrl } from "@/lib/fetch-url.functions";
 import { Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/tools/sitemap-checker")({
-  head: () => ({ meta: [{ title: "Free XML Sitemap Checker — Validate Sitemap Instantly | SEOAcademys" }, { name: "description", content: "Validate your XML sitemap structure, check URLs, detect errors. Ensure Google & AI crawlers can index your site." }, { property: "og:title", content: "Free XML Sitemap Checker — Validate Sitemap Instantly" }, { property: "og:url", content: "/tools/sitemap-checker" }], links: [{ rel: "canonical", href: "/tools/sitemap-checker" }] }),
+  head: () => toolHead("sitemap-checker"),
   component: Page,
 });
 

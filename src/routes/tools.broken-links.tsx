@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { ToolPanel } from "./tools";
@@ -8,7 +9,7 @@ import { getLinks } from "@/lib/html-analyzer";
 import { Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/tools/broken-links")({
-  head: () => ({ meta: [{ title: "Free Broken Link Checker — Find Dead Links Instantly | SEOAcademys" }, { name: "description", content: "Find all broken links (404 errors) on any webpage in seconds. Real-time crawl, no limit. Improve SEO & UX." }, { property: "og:title", content: "Free Broken Link Checker — Find Dead Links Instantly" }, { property: "og:url", content: "/tools/broken-links" }], links: [{ rel: "canonical", href: "/tools/broken-links" }] }),
+  head: () => toolHead("broken-links"),
   component: Page,
 });
 

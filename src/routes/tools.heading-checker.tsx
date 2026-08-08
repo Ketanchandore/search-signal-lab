@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section } from "@/components/UrlTool";
@@ -6,7 +7,7 @@ import { getHeadings } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/heading-checker")({
-  head: () => ({ meta: [{ title: "Heading Structure Checker — SEOAcademys" }] }),
+  head: () => toolHead("heading-checker"),
   component: () => (
     <ToolPanel>
       <ToolHeader title="Heading Structure Checker" desc="Visualize the H1–H6 outline of any URL and flag jumps." />

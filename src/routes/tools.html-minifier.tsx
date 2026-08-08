@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { ToolPanel } from "./tools";
 import { ToolHeader, Card3D } from "@/components/Card3D";
@@ -49,5 +50,5 @@ function Page({ kind }: { kind: Kind }) {
   );
 }
 
-export const Route = createFileRoute("/tools/html-minifier")({ head: () => ({ meta: [{ title: "HTML Minifier — SEOAcademys" }] }), component: () => <Page kind="html" /> });
+export const Route = createFileRoute("/tools/html-minifier")({ head: () => toolHead("html-minifier"), component: () => <Page kind="html" /> });
 export { Page as MinifierPage, minify };

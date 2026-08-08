@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section } from "@/components/UrlTool";
@@ -6,7 +7,7 @@ import { getLinks } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/link-analyzer")({
-  head: () => ({ meta: [{ title: "Internal & External Link Analyzer — SEOAcademys" }] }),
+  head: () => toolHead("link-analyzer"),
   component: () => (
     <ToolPanel>
       <ToolHeader title="Link Analyzer" desc="See every link on the page — internal vs external, follow vs nofollow." />

@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section, KV } from "@/components/UrlTool";
 
 export const Route = createFileRoute("/tools/redirect-checker")({
-  head: () => ({ meta: [{ title: "Redirect Chain Checker — SEOAcademys" }] }),
+  head: () => toolHead("redirect-checker"),
   component: () => (
     <ToolPanel>
       <ToolHeader title="Redirect Checker" desc="Follow the redirect chain step-by-step (up to 8 hops)." />

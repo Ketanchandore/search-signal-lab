@@ -1603,3 +1603,28 @@ export function toolJsonLd(meta: ToolMeta): object[] {
 }
 
 export const SITE_URL = SITE;
+
+/** Full head() payload for a /tools/<slug> route: title, description, canonical, OG/Twitter. */
+export function toolHead(slug: string, fallbackTitle?: string) {
+  const meta = TOOL_META[slug];
+  const url = `${SITE}/tools/${slug}`;
+  const title = meta?.title ?? fallbackTitle ?? "Free SEO Tool | SEOAcademys";
+  const description =
+    meta?.description ??
+    "Free SEO and GEO tool from SEOAcademys. Real-time analysis of any live URL — no signup, no limits.";
+  return {
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: url },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ],
+    links: [{ rel: "canonical", href: url }],
+  };
+}

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { ToolPanel } from "./tools";
 import { ToolHeader, Card3D } from "@/components/Card3D";
@@ -70,6 +71,6 @@ export function SchemaBuilder({ kind }: { kind: SchemaKind }) {
 }
 
 export const Route = createFileRoute("/tools/faq-schema")({
-  head: () => ({ meta: [{ title: "FAQ Schema Generator — SEOAcademys" }] }),
+  head: () => toolHead("faq-schema"),
   component: () => <SchemaBuilder kind="faq" />,
 });
