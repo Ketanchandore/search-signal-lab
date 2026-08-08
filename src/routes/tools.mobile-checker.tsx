@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section, KV } from "@/components/UrlTool";
@@ -6,11 +7,7 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/mobile-checker")({
-  head: () => ({ meta: [{ title: "Mobile-Friendly Checker — SEOAcademys" }] }),
-  component: () => (
-    <ToolPanel>
-      <ToolHeader title="Mobile-Friendly Checker" desc="Heuristic mobile readiness: viewport meta, responsive units, tap target hints." />
-      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("mobile-checker") => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

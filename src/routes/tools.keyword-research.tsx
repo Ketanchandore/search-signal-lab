@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { Search, Download, Wand2 } from "lucide-react";
 import { Card3D, ToolHeader } from "@/components/Card3D";
@@ -6,39 +7,7 @@ import { useDebounced } from "@/hooks/use-debounced";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/keyword-research")({
-  head: () => ({
-    meta: [
-      { title: "Free Keyword Research Tool — Volume, KD & CPC Data | SEOAcademys" },
-      { name: "description", content: "Research keywords with search volume, keyword difficulty, and CPC data. Find low-competition keywords. 100% free." },
-      { property: "og:title", content: "Free Keyword Research Tool — Volume, KD & CPC Data" },
-      { property: "og:description", content: "Long-tail ideas with intent, volume, difficulty and CPC. Free." },
-      { property: "og:url", content: "/tools/keyword-research" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/keyword-research" }],
-  }),
-  component: KeywordResearch,
-});
-
-const MODIFIERS = {
-  informational: ["how to", "what is", "why", "guide to", "tutorial", "best way to", "tips for", "explained", "examples of", "beginner"],
-  commercial: ["best", "top", "cheap", "vs", "review", "comparison", "alternatives", "free", "premium", "2026"],
-  transactional: ["buy", "pricing", "discount", "coupon", "near me", "online", "download", "subscription", "trial", "deal"],
-  navigational: ["login", "official", "dashboard", "app", "support", "contact", "docs", "tutorial", "community", "blog"],
-};
-
-const QUESTIONS = ["how", "what", "why", "when", "where", "which", "is", "can", "should", "does"];
-
-function hash(s: string) {
-  let h = 2166136261;
-  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
-  return h >>> 0;
-}
-
-type KW = { phrase: string; intent: "Informational" | "Commercial" | "Transactional" | "Navigational" | "Question"; volume: number; difficulty: number; cpc: number };
-
-function classify(p: string): KW["intent"] {
-  const l = p.toLowerCase();
-  if (QUESTIONS.some((q) => l.startsWith(q + " "))) return "Question";
+  head: () => toolHead("keyword-research") => l.startsWith(q + " "))) return "Question";
   if (MODIFIERS.transactional.some((m) => l.includes(m))) return "Transactional";
   if (MODIFIERS.commercial.some((m) => l.includes(m))) return "Commercial";
   if (MODIFIERS.navigational.some((m) => l.includes(m))) return "Navigational";

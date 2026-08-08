@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section, KV } from "@/components/UrlTool";
@@ -6,11 +7,7 @@ import { getMeta } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/canonical-checker")({
-  head: () => ({ meta: [{ title: "Canonical URL Checker — SEOAcademys" }] }),
-  component: () => (
-    <ToolPanel>
-      <ToolHeader title="Canonical URL Checker" desc="Confirm the rel=canonical link tag and detect self-canonical / cross-domain conflicts." />
-      <UrlTool>{(r) => <View html={r.html} finalUrl={r.finalUrl} />}</UrlTool>
+  head: () => toolHead("canonical-checker") => <View html={r.html} finalUrl={r.finalUrl} />}</UrlTool>
     </ToolPanel>
   ),
 });

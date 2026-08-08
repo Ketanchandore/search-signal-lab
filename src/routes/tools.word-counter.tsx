@@ -1,20 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { ToolPanel } from "./tools";
 import { ToolHeader, Card3D } from "@/components/Card3D";
 
 export const Route = createFileRoute("/tools/word-counter")({
-  head: () => ({ meta: [{ title: "Word & Character Counter — SEOAcademys" }] }),
-  component: Page,
-});
-
-function Page() {
-  const [t, setT] = useState("");
-  const m = useMemo(() => {
-    const chars = t.length;
-    const noSpace = t.replace(/\s/g, "").length;
-    const words = t.trim() ? t.trim().split(/\s+/).length : 0;
-    const sentences = (t.match(/[.!?]+/g) || []).length;
+  head: () => toolHead("word-counter") || []).length;
     const paragraphs = t.split(/\n\s*\n/).filter(Boolean).length;
     const reading = Math.ceil(words / 225);
     const speaking = Math.ceil(words / 130);

@@ -1,49 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
 import { useMemo, useState } from "react";
 import { Copy, ExternalLink } from "lucide-react";
 
 export const Route = createFileRoute("/tools/schema-generator")({
-  head: () => ({
-    meta: [
-      { title: "Schema 2.0 & llms.txt Generator — SEOAcademys" },
-      { name: "description", content: "Free generator for JSON-LD Organization Schema and llms.txt files. No signup required." },
-      { property: "og:title", content: "Schema 2.0 & llms.txt Generator" },
-      { property: "og:description", content: "Generate JSON-LD and llms.txt files instantly." },
-      { property: "og:url", content: "/tools/schema-generator" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/schema-generator" }],
-  }),
-  component: SchemaTool,
-});
-
-const COUNTRIES = ["India", "USA", "UK", "Canada", "Australia", "Global"];
-
-function SchemaTool() {
-  const [name, setName] = useState("Acme Corp");
-  const [url, setUrl] = useState("https://acme.com");
-  const [type, setType] = useState("SaaS");
-  const [year, setYear] = useState("2020");
-  const [wiki, setWiki] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [twitter, setTwitter] = useState("");
-  const [products, setProducts] = useState("project management, team collaboration");
-  const [primary, setPrimary] = useState("project management");
-  const [secondary, setSecondary] = useState("team collaboration, productivity, workflow automation");
-  const [countries, setCountries] = useState<string[]>(["Global"]);
-  const [tab, setTab] = useState<"json" | "txt">("json");
-  const [step, setStep] = useState(1);
-
-  const json = useMemo(() => {
-    const obj = {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": `${url}/#organization`,
-      name,
-      url,
-      foundingDate: year,
-      sameAs: [linkedin, twitter, wiki].filter(Boolean),
-      knowsAbout: [primary, ...secondary.split(",").map((s) => s.trim()).filter(Boolean)],
+  head: () => toolHead("schema-generator") => s.trim()).filter(Boolean)],
       areaServed: countries,
       hasOfferCatalog: { "@type": "OfferCatalog", name: products },
     };

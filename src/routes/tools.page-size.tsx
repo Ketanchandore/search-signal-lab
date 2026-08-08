@@ -1,14 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section, KV } from "@/components/UrlTool";
 
 export const Route = createFileRoute("/tools/page-size")({
-  head: () => ({ meta: [{ title: "Page Size Analyzer — SEOAcademys" }] }),
-  component: () => (
-    <ToolPanel>
-      <ToolHeader title="Page Size Analyzer" desc="Breakdown of HTML, inline scripts, inline styles and referenced assets." />
-      <UrlTool>{(r) => {
+  head: () => toolHead("page-size") => {
         const inlineJS = (r.html.match(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi) || []).reduce((a,s)=>a+s.length,0);
         const inlineCSS = (r.html.match(/<style[^>]*>([\s\S]*?)<\/style>/gi) || []).reduce((a,s)=>a+s.length,0);
         const scripts = (r.html.match(/<script\b[^>]*\bsrc=/gi) || []).length;

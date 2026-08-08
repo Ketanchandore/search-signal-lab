@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section } from "@/components/UrlTool";
@@ -7,11 +8,7 @@ import { useMemo } from "react";
 import { Check, X } from "lucide-react";
 
 export const Route = createFileRoute("/tools/schema-validator")({
-  head: () => ({ meta: [{ title: "Free Schema Validator — Validate JSON-LD Schema Markup | SEOAcademys" }, { name: "description", content: "Validate any website's schema markup against Schema.org standards. Finds errors in JSON-LD, Microdata, RDFa. Free." }, { property: "og:title", content: "Free Schema Validator — Validate JSON-LD Schema Markup" }, { property: "og:url", content: "/tools/schema-validator" }], links: [{ rel: "canonical", href: "/tools/schema-validator" }] }),
-  component: () => (
-    <ToolPanel>
-      <ToolHeader title="Schema.org JSON-LD Validator" desc="Find every JSON-LD block on the page, parse it and validate required properties." />
-      <UrlTool>{(r) => <View html={r.html} />}</UrlTool>
+  head: () => toolHead("schema-validator") => <View html={r.html} />}</UrlTool>
     </ToolPanel>
   ),
 });

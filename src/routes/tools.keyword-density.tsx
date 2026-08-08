@@ -1,26 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { ToolPanel } from "./tools";
 import { ToolHeader, Card3D } from "@/components/Card3D";
 import { wordTokens } from "@/lib/html-analyzer";
 
 export const Route = createFileRoute("/tools/keyword-density")({
-  head: () => ({ meta: [{ title: "Keyword Density Checker — SEOAcademys" }] }),
-  component: Page,
-});
-
-const STOP = new Set("a an the and or but if then else of in on at to from for by with without is are was were be been being have has had do does did this that those these it its they them their there here as i you he she we us our your my so not no yes very can will just about into over under more most less".split(" "));
-
-function Page() {
-  const [text, setText] = useState("");
-  const stats = useMemo(() => {
-    const tokens = wordTokens(text);
-    const total = tokens.length;
-    const grams = (n: number) => {
-      const map = new Map<string, number>();
-      for (let i = 0; i <= tokens.length - n; i++) {
-        const slice = tokens.slice(i, i+n);
-        if (slice.some(t => STOP.has(t))) continue;
+  head: () => toolHead("keyword-density")) continue;
         const key = slice.join(" ");
         map.set(key, (map.get(key) || 0) + 1);
       }

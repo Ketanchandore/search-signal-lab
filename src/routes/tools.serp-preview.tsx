@@ -1,40 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useState } from "react";
 import { Globe, Smartphone, Monitor } from "lucide-react";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/serp-preview")({
-  head: () => ({
-    meta: [
-      { title: "Google SERP Preview Tool — SEOAcademys" },
-      { name: "description", content: "Preview how your page appears in Google search results on desktop and mobile. Free." },
-    ],
-    links: [{ rel: "canonical", href: "/tools/serp-preview" }],
-  }),
-  component: SerpPreview,
-});
-
-const TITLE_LIMIT_PX = 580;
-const DESC_LIMIT_PX = 920;
-
-function approxWidth(s: string, fontSize = 18) {
-  // rough heuristic — average glyph width ~ 0.52em
-  return s.length * fontSize * 0.52;
-}
-
-function SerpPreview() {
-  const [url, setUrl] = useState("https://yourwebsite.com/best-tools");
-  const [title, setTitle] = useState("10 Best AI SEO Tools in 2026 (Free & Paid Comparison)");
-  const [desc, setDesc] = useState("Compare the top AI-powered SEO tools for 2026. We tested 30+ platforms across pricing, features, and citation accuracy.");
-  const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
-
-  const titleW = approxWidth(title, device === "desktop" ? 20 : 16);
-  const descW = approxWidth(desc, 14);
-  const titleOver = titleW > TITLE_LIMIT_PX;
-  const descOver = descW > DESC_LIMIT_PX;
-
-  const truncT = titleOver ? title.slice(0, Math.floor((TITLE_LIMIT_PX / (device === "desktop" ? 20 : 16)) / 0.52) - 1) + "…" : title;
+  head: () => toolHead("serp-preview") / 0.52) - 1) + "…" : title;
   const truncD = descOver ? desc.slice(0, Math.floor(DESC_LIMIT_PX / 14 / 0.52) - 1) + "…" : desc;
 
   const breadcrumb = (() => {

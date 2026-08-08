@@ -1,38 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { useMemo, useState } from "react";
 import { Copy, Check, Download } from "lucide-react";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { ToolPanel } from "./tools";
 
 export const Route = createFileRoute("/tools/robots-txt")({
-  head: () => ({
-    meta: [
-      { title: "Robots.txt Generator + AI Crawler Rules — SEOAcademys" },
-      { name: "description", content: "Visual robots.txt builder with rules for GPTBot, GoogleExtended, PerplexityBot, ClaudeBot, and more." },
-    ],
-    links: [{ rel: "canonical", href: "/tools/robots-txt" }],
-  }),
-  component: RobotsTool,
-});
-
-const AI_BOTS = [
-  { id: "GPTBot", label: "OpenAI / GPTBot" },
-  { id: "ChatGPT-User", label: "ChatGPT-User (live retrievals)" },
-  { id: "Google-Extended", label: "Google-Extended (Gemini training)" },
-  { id: "PerplexityBot", label: "PerplexityBot" },
-  { id: "ClaudeBot", label: "Anthropic / ClaudeBot" },
-  { id: "CCBot", label: "Common Crawl / CCBot" },
-  { id: "anthropic-ai", label: "anthropic-ai" },
-  { id: "Applebot-Extended", label: "Applebot-Extended" },
-  { id: "Bytespider", label: "ByteDance / Bytespider" },
-];
-
-function RobotsTool() {
-  const [allowAll, setAllowAll] = useState(true);
-  const [disallowed, setDisallowed] = useState("/admin\n/private\n/cart\n/checkout");
-  const [sitemap, setSitemap] = useState("https://yourwebsite.com/sitemap.xml");
-  const [botRules, setBotRules] = useState<Record<string, "allow" | "disallow">>(
-    Object.fromEntries(AI_BOTS.map((b) => [b.id, "allow"])),
+  head: () => toolHead("robots-txt")),
   );
   const [crawlDelay, setCrawlDelay] = useState("");
   const [copied, setCopied] = useState(false);

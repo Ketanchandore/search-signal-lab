@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { ToolPanel } from "./tools";
 import { ToolHeader } from "@/components/Card3D";
 import { UrlTool, Section } from "@/components/UrlTool";
@@ -6,11 +7,7 @@ import { getImages } from "@/lib/html-analyzer";
 import { useMemo } from "react";
 
 export const Route = createFileRoute("/tools/image-seo")({
-  head: () => ({ meta: [{ title: "Image SEO Checker — SEOAcademys" }] }),
-  component: () => (
-    <ToolPanel>
-      <ToolHeader title="Image SEO Checker" desc="List every <img> tag: alt, dimensions, lazy-loading and file format." />
-      <UrlTool>{(r) => <View html={r.html} url={r.finalUrl} />}</UrlTool>
+  head: () => toolHead("image-seo") => <View html={r.html} url={r.finalUrl} />}</UrlTool>
     </ToolPanel>
   ),
 });

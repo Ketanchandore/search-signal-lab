@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { useMemo, useState } from "react";
@@ -6,28 +7,7 @@ import { useDebounced } from "@/hooks/use-debounced";
 
 
 export const Route = createFileRoute("/tools/content-checker")({
-  head: () => ({
-    meta: [
-      { title: "LLM Content Readiness Checker — SEOAcademys" },
-      { name: "description", content: "Analyze your blog post or article for AI citation probability. Free tool." },
-      { property: "og:title", content: "LLM Content Readiness Checker" },
-      { property: "og:description", content: "See why AI engines skip your content — and how to fix it." },
-      { property: "og:url", content: "/tools/content-checker" },
-    ],
-    links: [{ rel: "canonical", href: "/tools/content-checker" }],
-  }),
-  component: ContentCheckerTool,
-});
-
-const FILLERS = ["basically", "very", "really", "quite", "somewhat", "i think", "in conclusion", "it is important to note"];
-
-function analyze(text: string) {
-  const sentences = text.split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean);
-  const total = Math.max(1, sentences.length);
-
-  const factRegex = /\b(\d+(\.\d+)?%?|\d{4}|[A-Z][a-z]+\s[A-Z][a-z]+|\$\d+)/;
-  const factCount = sentences.filter((s) => factRegex.test(s)).length;
-  const factualDensity = Math.min(100, Math.round((factCount / total) * 150));
+  head: () => toolHead("content-checker") * 150));
 
   const directCount = sentences.filter((s) => !/^(however|but|also|why|how|what|when|where|who|is|are|do|does|can|could|should|would)\b/i.test(s)).length;
   const directAnswer = Math.round((directCount / total) * 100);
