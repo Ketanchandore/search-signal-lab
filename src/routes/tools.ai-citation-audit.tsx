@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toolHead } from "@/lib/tool-meta";
 import { AffiliateBar, PageContainer } from "@/components/Layout";
 import { Card3D, ToolHeader } from "@/components/Card3D";
 import { Skeleton } from "@/components/ui/skeleton";
