@@ -27,7 +27,11 @@ type NavGroup = { label: string; items: NavItem[] };
 const NAV: NavGroup[] = [
   {
     label: "Overview",
-    items: [{ to: "/tools", label: "Dashboard", icon: LayoutDashboard }],
+    items: [
+      { to: "/tools", label: "Dashboard", icon: LayoutDashboard },
+      { to: "/audit", label: "Bulk Audit Runner", icon: Gauge },
+      { to: "/assistant", label: "AI SEO Assistant", icon: Bot },
+    ],
   },
   {
     label: "SEO Audit",
