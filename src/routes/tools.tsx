@@ -158,7 +158,7 @@ function SidebarNav({ path, collapsed, onNavigate }: { path: string; collapsed: 
   );
 }
 
-function ToolsLayout() {
+export function ToolsLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
