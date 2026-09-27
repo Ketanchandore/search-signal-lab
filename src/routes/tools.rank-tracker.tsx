@@ -89,10 +89,14 @@ function Page() {
   return (
     <ToolPanel>
       <ToolHeader
-        title="Free Rank Tracker — Check Any Website's Google Position in Seconds"
-        badge="LIVE"
-        desc="Score on-page rank readiness for up to 100 keywords per URL. Daily snapshots, CSV export, 100% free."
+        title="Keyword On-Page Readiness Checker"
+        badge="LIVE PAGE CHECK"
+        desc="Analyze how each keyword appears in a page’s title, headings, URL, and content. This reports on-page signals—not Google or Bing search positions."
       />
+
+      <p className="mb-5 text-sm text-muted-foreground">
+        Search-position data is not estimated here. Actual Google/Bing positions require an authorized Search Console, Webmaster, or rank-data connection; this checker only scores the page you submit.
+      </p>
 
       <Card3D tilt={false} className="p-5 mb-6">
         <div className="grid md:grid-cols-2 gap-3">
@@ -143,9 +147,9 @@ function Page() {
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
             <Stat label="Keywords scored" value={scores.length} />
-            <Stat label="Top-10 ready (≥80)" value={scores.filter((s) => s.score >= 80).length} good />
-            <Stat label="Needs work (40–79)" value={scores.filter((s) => s.score >= 40 && s.score < 80).length} />
-            <Stat label="Not ranking (<40)" value={scores.filter((s) => s.score < 40).length} bad />
+            <Stat label="Strong signals (80+)" value={scores.filter((s) => s.score >= 80).length} good />
+            <Stat label="Moderate signals (40–79)" value={scores.filter((s) => s.score >= 40 && s.score < 80).length} />
+            <Stat label="Improve signals (<40)" value={scores.filter((s) => s.score < 40).length} bad />
           </div>
 
           <Card3D tilt={false} className="p-0 overflow-hidden">
@@ -155,7 +159,7 @@ function Page() {
                   <tr>
                     <th className="text-left p-3">Keyword</th>
                     <th className="text-center p-3">Readiness</th>
-                    <th className="text-center p-3">Δ</th>
+                    <th className="text-center p-3">Score Δ</th>
                     <th className="text-center p-3">Title</th>
                     <th className="text-center p-3">H1</th>
                     <th className="text-center p-3">Meta</th>
@@ -191,7 +195,7 @@ function Page() {
           </Card3D>
 
           <p className="text-xs text-muted-foreground mt-3">
-            Readiness score predicts how likely this page is to land in the top 10 for each keyword. Built from 8 on-page signals — the same ones Google, Bing, and Yahoo weight most heavily. Run daily and watch the Δ column to spot drops fast.
+            The score summarizes on-page keyword signals only; it is not a search ranking or a prediction of a top-10 position. Score Δ compares this page check with its previous saved check on this device.
           </p>
         </>
       )}
