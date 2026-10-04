@@ -9,121 +9,72 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as ApiDocsRouteImport } from './routes/api-docs'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as ChangelogRouteImport } from './routes/changelog'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as HowItWorksRouteImport } from './routes/how-it-works'
-import { Route as LearnRouteImport } from './routes/learn'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ToolsRouteImport } from './routes/tools'
-import { Route as AuthenticatedAssistantRouteImport } from './routes/_authenticated/assistant'
-import { Route as AuthenticatedAuditRouteImport } from './routes/_authenticated/audit'
-import { Route as AuthenticatedConnectionsRouteImport } from './routes/_authenticated/connections'
-import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
-import { Route as BlogIndexRouteImport } from './routes/blog.index'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LearnRouteImport } from './routes/learn'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ChangelogRouteImport } from './routes/changelog'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ApiDocsRouteImport } from './routes/api-docs'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
-import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
-import { Route as ToolsAiGeoHubRouteImport } from './routes/tools.ai-geo-hub'
-import { Route as ToolsArticleSchemaRouteImport } from './routes/tools.article-schema'
-import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
-import { Route as ToolsBreadcrumbSchemaRouteImport } from './routes/tools.breadcrumb-schema'
-import { Route as ToolsBrokenLinksRouteImport } from './routes/tools.broken-links'
-import { Route as ToolsCanonicalCheckerRouteImport } from './routes/tools.canonical-checker'
-import { Route as ToolsContentCheckerRouteImport } from './routes/tools.content-checker'
-import { Route as ToolsCssMinifierRouteImport } from './routes/tools.css-minifier'
-import { Route as ToolsFaqSchemaRouteImport } from './routes/tools.faq-schema'
-import { Route as ToolsGeoTrackerRouteImport } from './routes/tools.geo-tracker'
-import { Route as ToolsHeadingCheckerRouteImport } from './routes/tools.heading-checker'
-import { Route as ToolsHtmlMinifierRouteImport } from './routes/tools.html-minifier'
-import { Route as ToolsHttpHeadersRouteImport } from './routes/tools.http-headers'
-import { Route as ToolsImageSeoRouteImport } from './routes/tools.image-seo'
-import { Route as ToolsJsMinifierRouteImport } from './routes/tools.js-minifier'
-import { Route as ToolsKeywordDensityRouteImport } from './routes/tools.keyword-density'
-import { Route as ToolsKeywordResearchRouteImport } from './routes/tools.keyword-research'
-import { Route as ToolsLinkAnalyzerRouteImport } from './routes/tools.link-analyzer'
-import { Route as ToolsMetaGeneratorRouteImport } from './routes/tools.meta-generator'
-import { Route as ToolsMetaTagCheckerRouteImport } from './routes/tools.meta-tag-checker'
-import { Route as ToolsMobileCheckerRouteImport } from './routes/tools.mobile-checker'
-import { Route as ToolsOgCheckerRouteImport } from './routes/tools.og-checker'
-import { Route as ToolsPageSizeRouteImport } from './routes/tools.page-size'
-import { Route as ToolsProductSchemaRouteImport } from './routes/tools.product-schema'
-import { Route as ToolsRankTrackerRouteImport } from './routes/tools.rank-tracker'
-import { Route as ToolsReadabilityRouteImport } from './routes/tools.readability'
-import { Route as ToolsRedirectCheckerRouteImport } from './routes/tools.redirect-checker'
-import { Route as ToolsRobotsCheckerRouteImport } from './routes/tools.robots-checker'
-import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
-import { Route as ToolsSchemaGeneratorRouteImport } from './routes/tools.schema-generator'
-import { Route as ToolsSchemaHubRouteImport } from './routes/tools.schema-hub'
-import { Route as ToolsSchemaValidatorRouteImport } from './routes/tools.schema-validator'
-import { Route as ToolsSeoAuditRouteImport } from './routes/tools.seo-audit'
-import { Route as ToolsSeoAuditHubRouteImport } from './routes/tools.seo-audit-hub'
-import { Route as ToolsSerpPreviewRouteImport } from './routes/tools.serp-preview'
-import { Route as ToolsSitemapCheckerRouteImport } from './routes/tools.sitemap-checker'
-import { Route as ToolsSslCheckerRouteImport } from './routes/tools.ssl-checker'
-import { Route as ToolsTechDetectorRouteImport } from './routes/tools.tech-detector'
-import { Route as ToolsTwitterCardCheckerRouteImport } from './routes/tools.twitter-card-checker'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ToolsWordCounterRouteImport } from './routes/tools.word-counter'
+import { Route as ToolsTwitterCardCheckerRouteImport } from './routes/tools.twitter-card-checker'
+import { Route as ToolsTechDetectorRouteImport } from './routes/tools.tech-detector'
+import { Route as ToolsSslCheckerRouteImport } from './routes/tools.ssl-checker'
+import { Route as ToolsSitemapCheckerRouteImport } from './routes/tools.sitemap-checker'
+import { Route as ToolsSerpPreviewRouteImport } from './routes/tools.serp-preview'
+import { Route as ToolsSeoAuditHubRouteImport } from './routes/tools.seo-audit-hub'
+import { Route as ToolsSeoAuditRouteImport } from './routes/tools.seo-audit'
+import { Route as ToolsSchemaValidatorRouteImport } from './routes/tools.schema-validator'
+import { Route as ToolsSchemaHubRouteImport } from './routes/tools.schema-hub'
+import { Route as ToolsSchemaGeneratorRouteImport } from './routes/tools.schema-generator'
+import { Route as ToolsRobotsTxtRouteImport } from './routes/tools.robots-txt'
+import { Route as ToolsRobotsCheckerRouteImport } from './routes/tools.robots-checker'
+import { Route as ToolsRedirectCheckerRouteImport } from './routes/tools.redirect-checker'
+import { Route as ToolsReadabilityRouteImport } from './routes/tools.readability'
+import { Route as ToolsRankTrackerRouteImport } from './routes/tools.rank-tracker'
+import { Route as ToolsProductSchemaRouteImport } from './routes/tools.product-schema'
+import { Route as ToolsPageSizeRouteImport } from './routes/tools.page-size'
+import { Route as ToolsOgCheckerRouteImport } from './routes/tools.og-checker'
+import { Route as ToolsMobileCheckerRouteImport } from './routes/tools.mobile-checker'
+import { Route as ToolsMetaTagCheckerRouteImport } from './routes/tools.meta-tag-checker'
+import { Route as ToolsMetaGeneratorRouteImport } from './routes/tools.meta-generator'
+import { Route as ToolsLinkAnalyzerRouteImport } from './routes/tools.link-analyzer'
+import { Route as ToolsKeywordResearchRouteImport } from './routes/tools.keyword-research'
+import { Route as ToolsKeywordDensityRouteImport } from './routes/tools.keyword-density'
+import { Route as ToolsJsMinifierRouteImport } from './routes/tools.js-minifier'
+import { Route as ToolsImageSeoRouteImport } from './routes/tools.image-seo'
+import { Route as ToolsHttpHeadersRouteImport } from './routes/tools.http-headers'
+import { Route as ToolsHtmlMinifierRouteImport } from './routes/tools.html-minifier'
+import { Route as ToolsHeadingCheckerRouteImport } from './routes/tools.heading-checker'
+import { Route as ToolsGeoTrackerRouteImport } from './routes/tools.geo-tracker'
+import { Route as ToolsFaqSchemaRouteImport } from './routes/tools.faq-schema'
+import { Route as ToolsCssMinifierRouteImport } from './routes/tools.css-minifier'
+import { Route as ToolsContentCheckerRouteImport } from './routes/tools.content-checker'
+import { Route as ToolsCanonicalCheckerRouteImport } from './routes/tools.canonical-checker'
+import { Route as ToolsBrokenLinksRouteImport } from './routes/tools.broken-links'
+import { Route as ToolsBreadcrumbSchemaRouteImport } from './routes/tools.breadcrumb-schema'
+import { Route as ToolsBacklinkCheckerRouteImport } from './routes/tools.backlink-checker'
+import { Route as ToolsArticleSchemaRouteImport } from './routes/tools.article-schema'
+import { Route as ToolsAiGeoHubRouteImport } from './routes/tools.ai-geo-hub'
+import { Route as ToolsAiCitationAuditRouteImport } from './routes/tools.ai-citation-audit'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedConnectionsRouteImport } from './routes/_authenticated/connections'
+import { Route as AuthenticatedAuditRouteImport } from './routes/_authenticated/audit'
+import { Route as AuthenticatedAssistantRouteImport } from './routes/_authenticated/assistant'
 import { Route as BlogAuthorTeamRouteImport } from './routes/blog.author.team'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiDocsRoute = ApiDocsRouteImport.update({
-  id: '/api-docs',
-  path: '/api-docs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChangelogRoute = ChangelogRouteImport.update({
-  id: '/changelog',
-  path: '/changelog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HowItWorksRoute = HowItWorksRouteImport.update({
-  id: '/how-it-works',
-  path: '/how-it-works',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LearnRoute = LearnRouteImport.update({
-  id: '/learn',
-  path: '/learn',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -131,19 +82,283 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ToolsRoute = ToolsRouteImport.update({
-  id: '/tools',
-  path: '/tools',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAssistantRoute = AuthenticatedAssistantRouteImport.update({
-  id: '/assistant',
-  path: '/assistant',
-  getParentRoute: () => AuthenticatedRouteRoute,
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAuditRoute = AuthenticatedAuditRouteImport.update({
-  id: '/audit',
-  path: '/audit',
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDocsRoute = ApiDocsRouteImport.update({
+  id: '/api-docs',
+  path: '/api-docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsWordCounterRoute = ToolsWordCounterRouteImport.update({
+  id: '/word-counter',
+  path: '/word-counter',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsTwitterCardCheckerRoute = ToolsTwitterCardCheckerRouteImport.update({
+  id: '/twitter-card-checker',
+  path: '/twitter-card-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsTechDetectorRoute = ToolsTechDetectorRouteImport.update({
+  id: '/tech-detector',
+  path: '/tech-detector',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSslCheckerRoute = ToolsSslCheckerRouteImport.update({
+  id: '/ssl-checker',
+  path: '/ssl-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSitemapCheckerRoute = ToolsSitemapCheckerRouteImport.update({
+  id: '/sitemap-checker',
+  path: '/sitemap-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSerpPreviewRoute = ToolsSerpPreviewRouteImport.update({
+  id: '/serp-preview',
+  path: '/serp-preview',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSeoAuditHubRoute = ToolsSeoAuditHubRouteImport.update({
+  id: '/seo-audit-hub',
+  path: '/seo-audit-hub',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSeoAuditRoute = ToolsSeoAuditRouteImport.update({
+  id: '/seo-audit',
+  path: '/seo-audit',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSchemaValidatorRoute = ToolsSchemaValidatorRouteImport.update({
+  id: '/schema-validator',
+  path: '/schema-validator',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSchemaHubRoute = ToolsSchemaHubRouteImport.update({
+  id: '/schema-hub',
+  path: '/schema-hub',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsSchemaGeneratorRoute = ToolsSchemaGeneratorRouteImport.update({
+  id: '/schema-generator',
+  path: '/schema-generator',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsRobotsTxtRoute = ToolsRobotsTxtRouteImport.update({
+  id: '/robots-txt',
+  path: '/robots-txt',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsRobotsCheckerRoute = ToolsRobotsCheckerRouteImport.update({
+  id: '/robots-checker',
+  path: '/robots-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsRedirectCheckerRoute = ToolsRedirectCheckerRouteImport.update({
+  id: '/redirect-checker',
+  path: '/redirect-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsReadabilityRoute = ToolsReadabilityRouteImport.update({
+  id: '/readability',
+  path: '/readability',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsRankTrackerRoute = ToolsRankTrackerRouteImport.update({
+  id: '/rank-tracker',
+  path: '/rank-tracker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsProductSchemaRoute = ToolsProductSchemaRouteImport.update({
+  id: '/product-schema',
+  path: '/product-schema',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsPageSizeRoute = ToolsPageSizeRouteImport.update({
+  id: '/page-size',
+  path: '/page-size',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsOgCheckerRoute = ToolsOgCheckerRouteImport.update({
+  id: '/og-checker',
+  path: '/og-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsMobileCheckerRoute = ToolsMobileCheckerRouteImport.update({
+  id: '/mobile-checker',
+  path: '/mobile-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsMetaTagCheckerRoute = ToolsMetaTagCheckerRouteImport.update({
+  id: '/meta-tag-checker',
+  path: '/meta-tag-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsMetaGeneratorRoute = ToolsMetaGeneratorRouteImport.update({
+  id: '/meta-generator',
+  path: '/meta-generator',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsLinkAnalyzerRoute = ToolsLinkAnalyzerRouteImport.update({
+  id: '/link-analyzer',
+  path: '/link-analyzer',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsKeywordResearchRoute = ToolsKeywordResearchRouteImport.update({
+  id: '/keyword-research',
+  path: '/keyword-research',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsKeywordDensityRoute = ToolsKeywordDensityRouteImport.update({
+  id: '/keyword-density',
+  path: '/keyword-density',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsJsMinifierRoute = ToolsJsMinifierRouteImport.update({
+  id: '/js-minifier',
+  path: '/js-minifier',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsImageSeoRoute = ToolsImageSeoRouteImport.update({
+  id: '/image-seo',
+  path: '/image-seo',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsHttpHeadersRoute = ToolsHttpHeadersRouteImport.update({
+  id: '/http-headers',
+  path: '/http-headers',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsHtmlMinifierRoute = ToolsHtmlMinifierRouteImport.update({
+  id: '/html-minifier',
+  path: '/html-minifier',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsHeadingCheckerRoute = ToolsHeadingCheckerRouteImport.update({
+  id: '/heading-checker',
+  path: '/heading-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsGeoTrackerRoute = ToolsGeoTrackerRouteImport.update({
+  id: '/geo-tracker',
+  path: '/geo-tracker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsFaqSchemaRoute = ToolsFaqSchemaRouteImport.update({
+  id: '/faq-schema',
+  path: '/faq-schema',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsCssMinifierRoute = ToolsCssMinifierRouteImport.update({
+  id: '/css-minifier',
+  path: '/css-minifier',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsContentCheckerRoute = ToolsContentCheckerRouteImport.update({
+  id: '/content-checker',
+  path: '/content-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsCanonicalCheckerRoute = ToolsCanonicalCheckerRouteImport.update({
+  id: '/canonical-checker',
+  path: '/canonical-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsBrokenLinksRoute = ToolsBrokenLinksRouteImport.update({
+  id: '/broken-links',
+  path: '/broken-links',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsBreadcrumbSchemaRoute = ToolsBreadcrumbSchemaRouteImport.update({
+  id: '/breadcrumb-schema',
+  path: '/breadcrumb-schema',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsBacklinkCheckerRoute = ToolsBacklinkCheckerRouteImport.update({
+  id: '/backlink-checker',
+  path: '/backlink-checker',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsArticleSchemaRoute = ToolsArticleSchemaRouteImport.update({
+  id: '/article-schema',
+  path: '/article-schema',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsAiGeoHubRoute = ToolsAiGeoHubRouteImport.update({
+  id: '/ai-geo-hub',
+  path: '/ai-geo-hub',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
+  id: '/ai-citation-audit',
+  path: '/ai-citation-audit',
+  getParentRoute: () => ToolsRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedConnectionsRoute =
@@ -152,230 +367,15 @@ const AuthenticatedConnectionsRoute =
     path: '/connections',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+const AuthenticatedAuditRoute = AuthenticatedAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ToolsIndexRoute = ToolsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsAiCitationAuditRoute = ToolsAiCitationAuditRouteImport.update({
-  id: '/ai-citation-audit',
-  path: '/ai-citation-audit',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsAiGeoHubRoute = ToolsAiGeoHubRouteImport.update({
-  id: '/ai-geo-hub',
-  path: '/ai-geo-hub',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsArticleSchemaRoute = ToolsArticleSchemaRouteImport.update({
-  id: '/article-schema',
-  path: '/article-schema',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsBacklinkCheckerRoute = ToolsBacklinkCheckerRouteImport.update({
-  id: '/backlink-checker',
-  path: '/backlink-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsBreadcrumbSchemaRoute = ToolsBreadcrumbSchemaRouteImport.update({
-  id: '/breadcrumb-schema',
-  path: '/breadcrumb-schema',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsBrokenLinksRoute = ToolsBrokenLinksRouteImport.update({
-  id: '/broken-links',
-  path: '/broken-links',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsCanonicalCheckerRoute = ToolsCanonicalCheckerRouteImport.update({
-  id: '/canonical-checker',
-  path: '/canonical-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsContentCheckerRoute = ToolsContentCheckerRouteImport.update({
-  id: '/content-checker',
-  path: '/content-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsCssMinifierRoute = ToolsCssMinifierRouteImport.update({
-  id: '/css-minifier',
-  path: '/css-minifier',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsFaqSchemaRoute = ToolsFaqSchemaRouteImport.update({
-  id: '/faq-schema',
-  path: '/faq-schema',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsGeoTrackerRoute = ToolsGeoTrackerRouteImport.update({
-  id: '/geo-tracker',
-  path: '/geo-tracker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsHeadingCheckerRoute = ToolsHeadingCheckerRouteImport.update({
-  id: '/heading-checker',
-  path: '/heading-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsHtmlMinifierRoute = ToolsHtmlMinifierRouteImport.update({
-  id: '/html-minifier',
-  path: '/html-minifier',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsHttpHeadersRoute = ToolsHttpHeadersRouteImport.update({
-  id: '/http-headers',
-  path: '/http-headers',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsImageSeoRoute = ToolsImageSeoRouteImport.update({
-  id: '/image-seo',
-  path: '/image-seo',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsJsMinifierRoute = ToolsJsMinifierRouteImport.update({
-  id: '/js-minifier',
-  path: '/js-minifier',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsKeywordDensityRoute = ToolsKeywordDensityRouteImport.update({
-  id: '/keyword-density',
-  path: '/keyword-density',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsKeywordResearchRoute = ToolsKeywordResearchRouteImport.update({
-  id: '/keyword-research',
-  path: '/keyword-research',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsLinkAnalyzerRoute = ToolsLinkAnalyzerRouteImport.update({
-  id: '/link-analyzer',
-  path: '/link-analyzer',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsMetaGeneratorRoute = ToolsMetaGeneratorRouteImport.update({
-  id: '/meta-generator',
-  path: '/meta-generator',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsMetaTagCheckerRoute = ToolsMetaTagCheckerRouteImport.update({
-  id: '/meta-tag-checker',
-  path: '/meta-tag-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsMobileCheckerRoute = ToolsMobileCheckerRouteImport.update({
-  id: '/mobile-checker',
-  path: '/mobile-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsOgCheckerRoute = ToolsOgCheckerRouteImport.update({
-  id: '/og-checker',
-  path: '/og-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsPageSizeRoute = ToolsPageSizeRouteImport.update({
-  id: '/page-size',
-  path: '/page-size',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsProductSchemaRoute = ToolsProductSchemaRouteImport.update({
-  id: '/product-schema',
-  path: '/product-schema',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsRankTrackerRoute = ToolsRankTrackerRouteImport.update({
-  id: '/rank-tracker',
-  path: '/rank-tracker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsReadabilityRoute = ToolsReadabilityRouteImport.update({
-  id: '/readability',
-  path: '/readability',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsRedirectCheckerRoute = ToolsRedirectCheckerRouteImport.update({
-  id: '/redirect-checker',
-  path: '/redirect-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsRobotsCheckerRoute = ToolsRobotsCheckerRouteImport.update({
-  id: '/robots-checker',
-  path: '/robots-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsRobotsTxtRoute = ToolsRobotsTxtRouteImport.update({
-  id: '/robots-txt',
-  path: '/robots-txt',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSchemaGeneratorRoute = ToolsSchemaGeneratorRouteImport.update({
-  id: '/schema-generator',
-  path: '/schema-generator',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSchemaHubRoute = ToolsSchemaHubRouteImport.update({
-  id: '/schema-hub',
-  path: '/schema-hub',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSchemaValidatorRoute = ToolsSchemaValidatorRouteImport.update({
-  id: '/schema-validator',
-  path: '/schema-validator',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSeoAuditRoute = ToolsSeoAuditRouteImport.update({
-  id: '/seo-audit',
-  path: '/seo-audit',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSeoAuditHubRoute = ToolsSeoAuditHubRouteImport.update({
-  id: '/seo-audit-hub',
-  path: '/seo-audit-hub',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSerpPreviewRoute = ToolsSerpPreviewRouteImport.update({
-  id: '/serp-preview',
-  path: '/serp-preview',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSitemapCheckerRoute = ToolsSitemapCheckerRouteImport.update({
-  id: '/sitemap-checker',
-  path: '/sitemap-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsSslCheckerRoute = ToolsSslCheckerRouteImport.update({
-  id: '/ssl-checker',
-  path: '/ssl-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsTechDetectorRoute = ToolsTechDetectorRouteImport.update({
-  id: '/tech-detector',
-  path: '/tech-detector',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsTwitterCardCheckerRoute = ToolsTwitterCardCheckerRouteImport.update({
-  id: '/twitter-card-checker',
-  path: '/twitter-card-checker',
-  getParentRoute: () => ToolsRoute,
-} as any)
-const ToolsWordCounterRoute = ToolsWordCounterRouteImport.update({
-  id: '/word-counter',
-  path: '/word-counter',
-  getParentRoute: () => ToolsRoute,
+const AuthenticatedAssistantRoute = AuthenticatedAssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const BlogAuthorTeamRoute = BlogAuthorTeamRouteImport.update({
   id: '/blog/author/team',
@@ -786,81 +786,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api-docs': {
-      id: '/api-docs'
-      path: '/api-docs'
-      fullPath: '/api-docs'
-      preLoaderRoute: typeof ApiDocsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/changelog': {
-      id: '/changelog'
-      path: '/changelog'
-      fullPath: '/changelog'
-      preLoaderRoute: typeof ChangelogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/how-it-works': {
-      id: '/how-it-works'
-      path: '/how-it-works'
-      fullPath: '/how-it-works'
-      preLoaderRoute: typeof HowItWorksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/learn': {
-      id: '/learn'
-      path: '/learn'
-      fullPath: '/learn'
-      preLoaderRoute: typeof LearnRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -870,53 +800,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tools': {
-      id: '/tools'
-      path: '/tools'
-      fullPath: '/tools'
-      preLoaderRoute: typeof ToolsRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/assistant': {
-      id: '/_authenticated/assistant'
-      path: '/assistant'
-      fullPath: '/assistant'
-      preLoaderRoute: typeof AuthenticatedAssistantRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/audit': {
-      id: '/_authenticated/audit'
-      path: '/audit'
-      fullPath: '/audit'
-      preLoaderRoute: typeof AuthenticatedAuditRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/connections': {
-      id: '/_authenticated/connections'
-      path: '/connections'
-      fullPath: '/connections'
-      preLoaderRoute: typeof AuthenticatedConnectionsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/dashboard': {
-      id: '/_authenticated/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api-docs': {
+      id: '/api-docs'
+      path: '/api-docs'
+      fullPath: '/api-docs'
+      preLoaderRoute: typeof ApiDocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/': {
@@ -926,277 +884,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof ToolsRoute
     }
-    '/tools/ai-citation-audit': {
-      id: '/tools/ai-citation-audit'
-      path: '/ai-citation-audit'
-      fullPath: '/tools/ai-citation-audit'
-      preLoaderRoute: typeof ToolsAiCitationAuditRouteImport
-      parentRoute: typeof ToolsRoute
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/tools/ai-geo-hub': {
-      id: '/tools/ai-geo-hub'
-      path: '/ai-geo-hub'
-      fullPath: '/tools/ai-geo-hub'
-      preLoaderRoute: typeof ToolsAiGeoHubRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/article-schema': {
-      id: '/tools/article-schema'
-      path: '/article-schema'
-      fullPath: '/tools/article-schema'
-      preLoaderRoute: typeof ToolsArticleSchemaRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/backlink-checker': {
-      id: '/tools/backlink-checker'
-      path: '/backlink-checker'
-      fullPath: '/tools/backlink-checker'
-      preLoaderRoute: typeof ToolsBacklinkCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/breadcrumb-schema': {
-      id: '/tools/breadcrumb-schema'
-      path: '/breadcrumb-schema'
-      fullPath: '/tools/breadcrumb-schema'
-      preLoaderRoute: typeof ToolsBreadcrumbSchemaRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/broken-links': {
-      id: '/tools/broken-links'
-      path: '/broken-links'
-      fullPath: '/tools/broken-links'
-      preLoaderRoute: typeof ToolsBrokenLinksRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/canonical-checker': {
-      id: '/tools/canonical-checker'
-      path: '/canonical-checker'
-      fullPath: '/tools/canonical-checker'
-      preLoaderRoute: typeof ToolsCanonicalCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/content-checker': {
-      id: '/tools/content-checker'
-      path: '/content-checker'
-      fullPath: '/tools/content-checker'
-      preLoaderRoute: typeof ToolsContentCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/css-minifier': {
-      id: '/tools/css-minifier'
-      path: '/css-minifier'
-      fullPath: '/tools/css-minifier'
-      preLoaderRoute: typeof ToolsCssMinifierRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/faq-schema': {
-      id: '/tools/faq-schema'
-      path: '/faq-schema'
-      fullPath: '/tools/faq-schema'
-      preLoaderRoute: typeof ToolsFaqSchemaRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/geo-tracker': {
-      id: '/tools/geo-tracker'
-      path: '/geo-tracker'
-      fullPath: '/tools/geo-tracker'
-      preLoaderRoute: typeof ToolsGeoTrackerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/heading-checker': {
-      id: '/tools/heading-checker'
-      path: '/heading-checker'
-      fullPath: '/tools/heading-checker'
-      preLoaderRoute: typeof ToolsHeadingCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/html-minifier': {
-      id: '/tools/html-minifier'
-      path: '/html-minifier'
-      fullPath: '/tools/html-minifier'
-      preLoaderRoute: typeof ToolsHtmlMinifierRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/http-headers': {
-      id: '/tools/http-headers'
-      path: '/http-headers'
-      fullPath: '/tools/http-headers'
-      preLoaderRoute: typeof ToolsHttpHeadersRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/image-seo': {
-      id: '/tools/image-seo'
-      path: '/image-seo'
-      fullPath: '/tools/image-seo'
-      preLoaderRoute: typeof ToolsImageSeoRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/js-minifier': {
-      id: '/tools/js-minifier'
-      path: '/js-minifier'
-      fullPath: '/tools/js-minifier'
-      preLoaderRoute: typeof ToolsJsMinifierRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/keyword-density': {
-      id: '/tools/keyword-density'
-      path: '/keyword-density'
-      fullPath: '/tools/keyword-density'
-      preLoaderRoute: typeof ToolsKeywordDensityRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/keyword-research': {
-      id: '/tools/keyword-research'
-      path: '/keyword-research'
-      fullPath: '/tools/keyword-research'
-      preLoaderRoute: typeof ToolsKeywordResearchRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/link-analyzer': {
-      id: '/tools/link-analyzer'
-      path: '/link-analyzer'
-      fullPath: '/tools/link-analyzer'
-      preLoaderRoute: typeof ToolsLinkAnalyzerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/meta-generator': {
-      id: '/tools/meta-generator'
-      path: '/meta-generator'
-      fullPath: '/tools/meta-generator'
-      preLoaderRoute: typeof ToolsMetaGeneratorRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/meta-tag-checker': {
-      id: '/tools/meta-tag-checker'
-      path: '/meta-tag-checker'
-      fullPath: '/tools/meta-tag-checker'
-      preLoaderRoute: typeof ToolsMetaTagCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/mobile-checker': {
-      id: '/tools/mobile-checker'
-      path: '/mobile-checker'
-      fullPath: '/tools/mobile-checker'
-      preLoaderRoute: typeof ToolsMobileCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/og-checker': {
-      id: '/tools/og-checker'
-      path: '/og-checker'
-      fullPath: '/tools/og-checker'
-      preLoaderRoute: typeof ToolsOgCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/page-size': {
-      id: '/tools/page-size'
-      path: '/page-size'
-      fullPath: '/tools/page-size'
-      preLoaderRoute: typeof ToolsPageSizeRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/product-schema': {
-      id: '/tools/product-schema'
-      path: '/product-schema'
-      fullPath: '/tools/product-schema'
-      preLoaderRoute: typeof ToolsProductSchemaRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/rank-tracker': {
-      id: '/tools/rank-tracker'
-      path: '/rank-tracker'
-      fullPath: '/tools/rank-tracker'
-      preLoaderRoute: typeof ToolsRankTrackerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/readability': {
-      id: '/tools/readability'
-      path: '/readability'
-      fullPath: '/tools/readability'
-      preLoaderRoute: typeof ToolsReadabilityRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/redirect-checker': {
-      id: '/tools/redirect-checker'
-      path: '/redirect-checker'
-      fullPath: '/tools/redirect-checker'
-      preLoaderRoute: typeof ToolsRedirectCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/robots-checker': {
-      id: '/tools/robots-checker'
-      path: '/robots-checker'
-      fullPath: '/tools/robots-checker'
-      preLoaderRoute: typeof ToolsRobotsCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/robots-txt': {
-      id: '/tools/robots-txt'
-      path: '/robots-txt'
-      fullPath: '/tools/robots-txt'
-      preLoaderRoute: typeof ToolsRobotsTxtRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/schema-generator': {
-      id: '/tools/schema-generator'
-      path: '/schema-generator'
-      fullPath: '/tools/schema-generator'
-      preLoaderRoute: typeof ToolsSchemaGeneratorRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/schema-hub': {
-      id: '/tools/schema-hub'
-      path: '/schema-hub'
-      fullPath: '/tools/schema-hub'
-      preLoaderRoute: typeof ToolsSchemaHubRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/schema-validator': {
-      id: '/tools/schema-validator'
-      path: '/schema-validator'
-      fullPath: '/tools/schema-validator'
-      preLoaderRoute: typeof ToolsSchemaValidatorRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/seo-audit': {
-      id: '/tools/seo-audit'
-      path: '/seo-audit'
-      fullPath: '/tools/seo-audit'
-      preLoaderRoute: typeof ToolsSeoAuditRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/seo-audit-hub': {
-      id: '/tools/seo-audit-hub'
-      path: '/seo-audit-hub'
-      fullPath: '/tools/seo-audit-hub'
-      preLoaderRoute: typeof ToolsSeoAuditHubRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/serp-preview': {
-      id: '/tools/serp-preview'
-      path: '/serp-preview'
-      fullPath: '/tools/serp-preview'
-      preLoaderRoute: typeof ToolsSerpPreviewRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/sitemap-checker': {
-      id: '/tools/sitemap-checker'
-      path: '/sitemap-checker'
-      fullPath: '/tools/sitemap-checker'
-      preLoaderRoute: typeof ToolsSitemapCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/ssl-checker': {
-      id: '/tools/ssl-checker'
-      path: '/ssl-checker'
-      fullPath: '/tools/ssl-checker'
-      preLoaderRoute: typeof ToolsSslCheckerRouteImport
-      parentRoute: typeof ToolsRoute
-    }
-    '/tools/tech-detector': {
-      id: '/tools/tech-detector'
-      path: '/tech-detector'
-      fullPath: '/tools/tech-detector'
-      preLoaderRoute: typeof ToolsTechDetectorRouteImport
+    '/tools/word-counter': {
+      id: '/tools/word-counter'
+      path: '/word-counter'
+      fullPath: '/tools/word-counter'
+      preLoaderRoute: typeof ToolsWordCounterRouteImport
       parentRoute: typeof ToolsRoute
     }
     '/tools/twitter-card-checker': {
@@ -1206,12 +905,313 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsTwitterCardCheckerRouteImport
       parentRoute: typeof ToolsRoute
     }
-    '/tools/word-counter': {
-      id: '/tools/word-counter'
-      path: '/word-counter'
-      fullPath: '/tools/word-counter'
-      preLoaderRoute: typeof ToolsWordCounterRouteImport
+    '/tools/tech-detector': {
+      id: '/tools/tech-detector'
+      path: '/tech-detector'
+      fullPath: '/tools/tech-detector'
+      preLoaderRoute: typeof ToolsTechDetectorRouteImport
       parentRoute: typeof ToolsRoute
+    }
+    '/tools/ssl-checker': {
+      id: '/tools/ssl-checker'
+      path: '/ssl-checker'
+      fullPath: '/tools/ssl-checker'
+      preLoaderRoute: typeof ToolsSslCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/sitemap-checker': {
+      id: '/tools/sitemap-checker'
+      path: '/sitemap-checker'
+      fullPath: '/tools/sitemap-checker'
+      preLoaderRoute: typeof ToolsSitemapCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/serp-preview': {
+      id: '/tools/serp-preview'
+      path: '/serp-preview'
+      fullPath: '/tools/serp-preview'
+      preLoaderRoute: typeof ToolsSerpPreviewRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/seo-audit-hub': {
+      id: '/tools/seo-audit-hub'
+      path: '/seo-audit-hub'
+      fullPath: '/tools/seo-audit-hub'
+      preLoaderRoute: typeof ToolsSeoAuditHubRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/seo-audit': {
+      id: '/tools/seo-audit'
+      path: '/seo-audit'
+      fullPath: '/tools/seo-audit'
+      preLoaderRoute: typeof ToolsSeoAuditRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/schema-validator': {
+      id: '/tools/schema-validator'
+      path: '/schema-validator'
+      fullPath: '/tools/schema-validator'
+      preLoaderRoute: typeof ToolsSchemaValidatorRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/schema-hub': {
+      id: '/tools/schema-hub'
+      path: '/schema-hub'
+      fullPath: '/tools/schema-hub'
+      preLoaderRoute: typeof ToolsSchemaHubRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/schema-generator': {
+      id: '/tools/schema-generator'
+      path: '/schema-generator'
+      fullPath: '/tools/schema-generator'
+      preLoaderRoute: typeof ToolsSchemaGeneratorRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/robots-txt': {
+      id: '/tools/robots-txt'
+      path: '/robots-txt'
+      fullPath: '/tools/robots-txt'
+      preLoaderRoute: typeof ToolsRobotsTxtRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/robots-checker': {
+      id: '/tools/robots-checker'
+      path: '/robots-checker'
+      fullPath: '/tools/robots-checker'
+      preLoaderRoute: typeof ToolsRobotsCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/redirect-checker': {
+      id: '/tools/redirect-checker'
+      path: '/redirect-checker'
+      fullPath: '/tools/redirect-checker'
+      preLoaderRoute: typeof ToolsRedirectCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/readability': {
+      id: '/tools/readability'
+      path: '/readability'
+      fullPath: '/tools/readability'
+      preLoaderRoute: typeof ToolsReadabilityRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/rank-tracker': {
+      id: '/tools/rank-tracker'
+      path: '/rank-tracker'
+      fullPath: '/tools/rank-tracker'
+      preLoaderRoute: typeof ToolsRankTrackerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/product-schema': {
+      id: '/tools/product-schema'
+      path: '/product-schema'
+      fullPath: '/tools/product-schema'
+      preLoaderRoute: typeof ToolsProductSchemaRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/page-size': {
+      id: '/tools/page-size'
+      path: '/page-size'
+      fullPath: '/tools/page-size'
+      preLoaderRoute: typeof ToolsPageSizeRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/og-checker': {
+      id: '/tools/og-checker'
+      path: '/og-checker'
+      fullPath: '/tools/og-checker'
+      preLoaderRoute: typeof ToolsOgCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/mobile-checker': {
+      id: '/tools/mobile-checker'
+      path: '/mobile-checker'
+      fullPath: '/tools/mobile-checker'
+      preLoaderRoute: typeof ToolsMobileCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/meta-tag-checker': {
+      id: '/tools/meta-tag-checker'
+      path: '/meta-tag-checker'
+      fullPath: '/tools/meta-tag-checker'
+      preLoaderRoute: typeof ToolsMetaTagCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/meta-generator': {
+      id: '/tools/meta-generator'
+      path: '/meta-generator'
+      fullPath: '/tools/meta-generator'
+      preLoaderRoute: typeof ToolsMetaGeneratorRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/link-analyzer': {
+      id: '/tools/link-analyzer'
+      path: '/link-analyzer'
+      fullPath: '/tools/link-analyzer'
+      preLoaderRoute: typeof ToolsLinkAnalyzerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/keyword-research': {
+      id: '/tools/keyword-research'
+      path: '/keyword-research'
+      fullPath: '/tools/keyword-research'
+      preLoaderRoute: typeof ToolsKeywordResearchRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/keyword-density': {
+      id: '/tools/keyword-density'
+      path: '/keyword-density'
+      fullPath: '/tools/keyword-density'
+      preLoaderRoute: typeof ToolsKeywordDensityRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/js-minifier': {
+      id: '/tools/js-minifier'
+      path: '/js-minifier'
+      fullPath: '/tools/js-minifier'
+      preLoaderRoute: typeof ToolsJsMinifierRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/image-seo': {
+      id: '/tools/image-seo'
+      path: '/image-seo'
+      fullPath: '/tools/image-seo'
+      preLoaderRoute: typeof ToolsImageSeoRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/http-headers': {
+      id: '/tools/http-headers'
+      path: '/http-headers'
+      fullPath: '/tools/http-headers'
+      preLoaderRoute: typeof ToolsHttpHeadersRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/html-minifier': {
+      id: '/tools/html-minifier'
+      path: '/html-minifier'
+      fullPath: '/tools/html-minifier'
+      preLoaderRoute: typeof ToolsHtmlMinifierRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/heading-checker': {
+      id: '/tools/heading-checker'
+      path: '/heading-checker'
+      fullPath: '/tools/heading-checker'
+      preLoaderRoute: typeof ToolsHeadingCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/geo-tracker': {
+      id: '/tools/geo-tracker'
+      path: '/geo-tracker'
+      fullPath: '/tools/geo-tracker'
+      preLoaderRoute: typeof ToolsGeoTrackerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/faq-schema': {
+      id: '/tools/faq-schema'
+      path: '/faq-schema'
+      fullPath: '/tools/faq-schema'
+      preLoaderRoute: typeof ToolsFaqSchemaRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/css-minifier': {
+      id: '/tools/css-minifier'
+      path: '/css-minifier'
+      fullPath: '/tools/css-minifier'
+      preLoaderRoute: typeof ToolsCssMinifierRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/content-checker': {
+      id: '/tools/content-checker'
+      path: '/content-checker'
+      fullPath: '/tools/content-checker'
+      preLoaderRoute: typeof ToolsContentCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/canonical-checker': {
+      id: '/tools/canonical-checker'
+      path: '/canonical-checker'
+      fullPath: '/tools/canonical-checker'
+      preLoaderRoute: typeof ToolsCanonicalCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/broken-links': {
+      id: '/tools/broken-links'
+      path: '/broken-links'
+      fullPath: '/tools/broken-links'
+      preLoaderRoute: typeof ToolsBrokenLinksRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/breadcrumb-schema': {
+      id: '/tools/breadcrumb-schema'
+      path: '/breadcrumb-schema'
+      fullPath: '/tools/breadcrumb-schema'
+      preLoaderRoute: typeof ToolsBreadcrumbSchemaRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/backlink-checker': {
+      id: '/tools/backlink-checker'
+      path: '/backlink-checker'
+      fullPath: '/tools/backlink-checker'
+      preLoaderRoute: typeof ToolsBacklinkCheckerRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/article-schema': {
+      id: '/tools/article-schema'
+      path: '/article-schema'
+      fullPath: '/tools/article-schema'
+      preLoaderRoute: typeof ToolsArticleSchemaRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/ai-geo-hub': {
+      id: '/tools/ai-geo-hub'
+      path: '/ai-geo-hub'
+      fullPath: '/tools/ai-geo-hub'
+      preLoaderRoute: typeof ToolsAiGeoHubRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/tools/ai-citation-audit': {
+      id: '/tools/ai-citation-audit'
+      path: '/ai-citation-audit'
+      fullPath: '/tools/ai-citation-audit'
+      preLoaderRoute: typeof ToolsAiCitationAuditRouteImport
+      parentRoute: typeof ToolsRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/connections': {
+      id: '/_authenticated/connections'
+      path: '/connections'
+      fullPath: '/connections'
+      preLoaderRoute: typeof AuthenticatedConnectionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/audit': {
+      id: '/_authenticated/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuthenticatedAuditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/assistant': {
+      id: '/_authenticated/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AuthenticatedAssistantRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/blog/author/team': {
       id: '/blog/author/team'
