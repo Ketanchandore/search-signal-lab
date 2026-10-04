@@ -127,7 +127,7 @@ function Page() {
             className="px-5 py-2.5 rounded-md grad-primary text-primary-foreground font-semibold text-sm inline-flex items-center gap-2 shadow-[var(--shadow-3d-sm)] disabled:opacity-50"
           >
             {loading ? <Loader2 className="size-4 animate-spin" /> : <TrendingUp className="size-4" />}
-            {loading ? "Analyzing…" : "Check Rankings"}
+            {loading ? "Analyzing…" : "Analyze on-page signals"}
           </button>
           {scores && (
             <button onClick={exportCsv} className="px-4 py-2.5 rounded-md border border-border bg-surface hover:border-primary text-sm font-semibold inline-flex items-center gap-2">
@@ -158,7 +158,7 @@ function Page() {
                 <thead className="bg-surface-2 text-xs uppercase text-muted-foreground">
                   <tr>
                     <th className="text-left p-3">Keyword</th>
-                    <th className="text-center p-3">Readiness</th>
+                    <th className="text-center p-3">On-page score</th>
                     <th className="text-center p-3">Score Δ</th>
                     <th className="text-center p-3">Title</th>
                     <th className="text-center p-3">H1</th>
