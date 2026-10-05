@@ -1,0 +1,1 @@
+- Keep account recovery on a public TanStack route so password-reset links work before the authenticated layout gate.
