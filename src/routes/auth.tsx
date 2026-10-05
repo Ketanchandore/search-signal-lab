@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { PageContainer } from "@/components/Layout";
-import { toast } from "sonner";
-import { Loader2, LogIn, UserPlus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { AlertCircle, CheckCircle2, Loader2, LogIn, UserPlus } from "lucide-react";
 
 const TITLE = "Sign In / Create Free Account | SEOAcademys";
 const DESC = "Create a free SEOAcademys account to save projects, track rankings, and connect Google Search Console, GA4 and Bing Webmaster to your SEO dashboard.";
@@ -33,20 +34,27 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
+  const [feedback, setFeedback] = useState<{ kind: "error" | "success"; message: string } | null>(null);
+  const [resetSent, setResetSent] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/dashboard", replace: true });
+    let active = true;
+    void supabase.auth.getSession().then(({ data, error }) => {
+      if (active && !error && data.session) navigate({ to: "/dashboard", replace: true });
     });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
-      if (s) navigate({ to: "/dashboard", replace: true });
+    const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
+      if (active && event === "SIGNED_IN" && session) navigate({ to: "/dashboard", replace: true });
     });
-    return () => sub.subscription.unsubscribe();
+    return () => {
+      active = false;
+      sub.subscription.unsubscribe();
+    };
   }, [navigate]);
 
   async function handleEmail(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
+    setFeedback(null);
     try {
       if (mode === "signup") {
         const { data, error } = await supabase.auth.signUp({
@@ -59,15 +67,18 @@ function AuthPage() {
         });
         if (error) throw error;
         if (!data.session) {
-          toast.success("Check your email to confirm your account.");
+          setFeedback({ kind: "success", message: "Account created. Check your email and follow the confirmation link before signing in." });
           return;
         }
+        await navigate({ to: "/dashboard", replace: true });
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        if (data.session) await navigate({ to: "/dashboard", replace: true });
       }
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Authentication failed");
+      const message = err instanceof Error ? err.message : "Authentication failed. Please try again.";
+      setFeedback({ kind: "error", message: friendlyAuthError(message) });
     } finally {
       setBusy(false);
     }
@@ -75,12 +86,41 @@ function AuthPage() {
 
   async function handleGoogle() {
     setBusy(true);
-    const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
-    });
-    if (result.redirected) return;
-    setBusy(false);
-    if (result.error) toast.error("Google sign-in failed. Please try again.");
+    setFeedback(null);
+    try {
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+      });
+      if (result.redirected) return;
+      if (result.error) throw result.error;
+      await navigate({ to: "/dashboard", replace: true });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Google sign-in failed. Please try again.";
+      setFeedback({ kind: "error", message: friendlyAuthError(message) });
+      setBusy(false);
+    }
+  }
+
+  async function handlePasswordReset() {
+    if (!email.trim()) {
+      setFeedback({ kind: "error", message: "Enter your email address first." });
+      return;
+    }
+    setBusy(true);
+    setFeedback(null);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+      if (error) throw error;
+      setResetSent(true);
+      setFeedback({ kind: "success", message: "If an account exists for that email, a password reset link is on its way." });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Could not send a reset link. Please try again.";
+      setFeedback({ kind: "error", message: friendlyAuthError(message) });
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -93,13 +133,16 @@ function AuthPage() {
           Save projects, track rankings and run bulk SEO audits — free forever.
         </p>
 
-        <button
+        <Button
+          type="button"
+          variant="outline"
           onClick={handleGoogle}
           disabled={busy}
-          className="mt-7 w-full inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium hover:border-primary hover:text-primary transition disabled:opacity-60"
+          className="mt-7 h-12 w-full"
         >
+          {busy ? <Loader2 className="size-4 animate-spin" /> : <span aria-hidden="true" className="font-bold">G</span>}
           Continue with Google
-        </button>
+        </Button>
 
         <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">
           <span className="h-px flex-1 bg-border" /> or use email <span className="h-px flex-1 bg-border" />
@@ -107,48 +150,74 @@ function AuthPage() {
 
         <form onSubmit={handleEmail} className="space-y-3">
           {mode === "signup" && (
-            <input
+            <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
+              autoComplete="name"
+              aria-label="Your name"
+              required
               placeholder="Your name"
-              className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-primary"
             />
           )}
-          <input
+          <Input
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            aria-label="Email address"
             placeholder="you@company.com"
-            className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-primary"
           />
-          <input
+          <Input
             type="password"
             required
-            minLength={6}
+            minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete={mode === "signin" ? "current-password" : "new-password"}
+            aria-label="Password"
             placeholder="Password (min 6 characters)"
-            className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-primary"
           />
-          <button
+          {mode === "signin" && (
+            <div className="flex justify-end">
+              <Button type="button" variant="link" size="sm" className="h-auto px-0" onClick={handlePasswordReset} disabled={busy || resetSent}>
+                {resetSent ? "Reset link requested" : "Forgot password?"}
+              </Button>
+            </div>
+          )}
+          {feedback && (
+            <div
+              role={feedback.kind === "error" ? "alert" : "status"}
+              className={`flex items-start gap-2 rounded-md border px-3 py-2.5 text-sm ${feedback.kind === "error" ? "border-destructive/30 bg-destructive/5 text-destructive" : "border-success/30 bg-success/5 text-foreground"}`}
+            >
+              {feedback.kind === "error" ? <AlertCircle className="mt-0.5 size-4 shrink-0" /> : <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />}
+              <span>{feedback.message}</span>
+            </div>
+          )}
+          <Button
             type="submit"
             disabled={busy}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground disabled:opacity-60"
+            className="h-12 w-full"
           >
             {busy ? <Loader2 className="size-4 animate-spin" /> : mode === "signin" ? <LogIn className="size-4" /> : <UserPlus className="size-4" />}
             {mode === "signin" ? "Sign in" : "Create account"}
-          </button>
+          </Button>
         </form>
 
         <p className="mt-5 text-center text-sm text-muted-foreground">
           {mode === "signin" ? "New here?" : "Already have an account?"}{" "}
-          <button
-            className="text-primary hover:underline font-medium"
-            onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
+          <Button
+            type="button"
+            variant="link"
+            className="h-auto p-0 font-medium"
+            onClick={() => {
+              setMode(mode === "signin" ? "signup" : "signin");
+              setFeedback(null);
+              setResetSent(false);
+            }}
           >
             {mode === "signin" ? "Create a free account" : "Sign in"}
-          </button>
+          </Button>
         </p>
         <p className="mt-6 text-center text-xs text-muted-foreground">
           By continuing you agree to our <Link to="/terms" className="hover:text-primary underline">Terms</Link> and{" "}
@@ -157,4 +226,15 @@ function AuthPage() {
       </div>
     </PageContainer>
   );
+}
+
+function friendlyAuthError(message: string) {
+  const normalized = message.toLowerCase();
+  if (normalized.includes("invalid login credentials")) return "Email or password is incorrect.";
+  if (normalized.includes("email not confirmed")) return "Please confirm your email from the link we sent before signing in.";
+  if (normalized.includes("user already registered")) return "An account already exists with this email. Try signing in instead.";
+  if (normalized.includes("password should be at least")) return "Choose a longer password and try again.";
+  if (normalized.includes("rate limit")) return "Too many attempts. Please wait a few minutes and try again.";
+  if (normalized.includes("failed to fetch") || normalized.includes("network")) return "Could not reach the account service. Check your connection and try again.";
+  return message;
 }
