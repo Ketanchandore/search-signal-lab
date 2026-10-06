@@ -176,7 +176,7 @@ function AuthPage() {
             onChange={(e) => setPassword(e.target.value)}
             autoComplete={mode === "signin" ? "current-password" : "new-password"}
             aria-label="Password"
-            placeholder="Password (min 6 characters)"
+            placeholder="Password (min 8 characters)"
           />
           {mode === "signin" && (
             <div className="flex justify-end">
