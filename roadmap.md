@@ -4,3 +4,4 @@
 - [ ] Once provider access is authorized, add per-project source dashboards, evidence-based assistant recommendations, and downloadable reports.
 - [ ] Replace Bulk Audit meta/schema/sitemap indicators with Google-verified signals where the APIs provide them; retain honest on-page checks where Google has no equivalent, and never invent data.
 - [ ] Verify build, user-isolation paths, project selection, and visible preview states.
+- [ ] Respect the clarified requirement: end users should click Connect and select their Google account without supplying OAuth client IDs; identify whether a managed per-user OAuth app can satisfy this or stop honestly at its workspace setup prerequisite.
