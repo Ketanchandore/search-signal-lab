@@ -4,3 +4,4 @@
 - [ ] After an authorized per-user provider connection exists, add project dashboards, evidence-based assistant recommendations, and downloadable reports.
 - [ ] Map provider-supported indexing/sitemap signals into Bulk Audit; retain clearly labelled live-page meta/schema checks because Google APIs do not return page HTML/meta tags.
 - [ ] Verify build, user isolation, project selection, and visible preview states after implementation.
+- [ ] Improve public SEO for https://seoacademys.lovable.app: correct canonical/domain references, robots.txt, llms.txt and sitemap; audit factual claims in existing articles; publish substantial, source-linked SEO/GEO/AEO guides for international audiences; verify public URLs.
