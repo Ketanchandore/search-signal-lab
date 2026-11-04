@@ -17,6 +17,8 @@ export type BlogPostMeta = {
   category?: string;
   /** FAQ entries embedded in the article */
   faqs?: { q: string; a: string }[];
+  /** Primary references used to verify factual guidance in the article. */
+  sources?: { label: string; url: string }[];
 };
 
 /**
@@ -124,7 +126,7 @@ export function blogIndexJsonLd(posts: BlogPostMeta[]): object[] {
  * in one shot. Route file just spreads the return value.
  */
 export function blogPostHead(post: BlogPostMeta) {
-  const path = `/blog/${post.slug}`;
+  const path = `${SITE_URL}/blog/${post.slug}`;
   const image = post.image ?? undefined;
   return {
     meta: [
