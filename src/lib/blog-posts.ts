@@ -854,6 +854,342 @@ export const BLOG_POSTS: BlogPost[] = [
       { q: "Should every page have FAQ schema?", a: "Only where the page genuinely contains questions and answers users ask. Markup that does not mirror visible content is a policy violation." },
     ],
   },
+
+  {
+    slug: "google-ai-overviews-seo-guide",
+    title: "Google AI Overviews SEO: A Practical Guide for Site Owners",
+    description: "Learn what Google says about AI Overviews and AI Mode, how to diagnose crawl and indexing issues, and which search signals to monitor without chasing unsupported GEO hacks.",
+    h1: "Google AI Overviews SEO: A Practical Guide for Site Owners",
+    datePublished: "2026-11-01",
+    author: AUTHOR,
+    category: "Google AI Search",
+    readingTime: 10,
+    intro: [
+      "Google AI Overviews and AI Mode are search experiences that can summarize information and show links to web pages. For site owners, the useful starting point is Google Search Central's own guidance: the same foundational SEO practices remain relevant, and there are no additional technical requirements or special optimizations to appear in these features.",
+      "That means no schema type, heading formula, or llms.txt file can guarantee a citation. This guide focuses on the parts you can verify: crawl access, index eligibility, clear content, source quality, and measured Search Console performance.",
+    ],
+    sections: [
+      { h2: "What Google says about AI search eligibility", body: [
+        "Google's AI-features guidance explains that AI Overviews and AI Mode use Search systems and can surface links that help people explore a topic. It does not define a separate GEO score that publishers must pass. Continue to make pages accessible, useful, and understandable to Search.",
+        "Eligibility is not the same as display. Google decides whether a feature appears for a query, which sources to show, and how a result is presented. Following documentation is important, but Google does not guarantee that a page will be crawled, indexed, or served for a particular query.",
+      ] },
+      { h2: "Start with crawlability and indexability", steps: [
+        { title: "1. Check the exact URL", body: "Use Search Console URL Inspection for the page you care about. Compare Google's indexed information with the live test and note any canonical, robots, or fetch issue." },
+        { title: "2. Check page-level directives", body: "Review the rendered page for meta robots and the HTTP response for X-Robots-Tag. A robots.txt block is not a substitute for noindex and does not make a URL private." },
+        { title: "3. Check discovery paths", body: "Make sure important pages have crawlable internal links. A sitemap can help discovery, but it is not an instruction that guarantees indexing." },
+        { title: "4. Recheck after fixes", body: "Record the date and the change you made, then monitor Search Console rather than assuming a recrawl or immediate ranking change." },
+      ] },
+      { h2: "Write pages that answer real questions", body: [
+        "Give readers a direct, accurate answer, then include the explanation they need to act on it: assumptions, steps, examples, exceptions, and links to primary sources. Distinguish firsthand experience from a summary of another source.",
+        "Do not split one useful guide into many near-identical pages for every wording or country. Create a separate page when the audience has a genuinely different need, not just because a keyword variation exists. Google's people-first guidance asks whether content adds original information, substantial coverage, or useful analysis beyond what readers can already find.",
+      ] },
+      { h2: "Use structured data as description, not a ranking trick", body: [
+        "Structured data gives search engines explicit clues about page meaning and can make a page eligible for supported search features. The data must match visible content and Google's policies. Correct markup does not guarantee that a rich result will appear, improve rankings, or produce an AI citation.",
+        "Choose a type that actually describes the page. A tutorial can use Article markup; a product detail page can use Product markup when it satisfies the product guidelines. Do not add FAQ markup to every page just to chase search exposure; check current feature eligibility first.",
+      ] },
+      { h2: "Measure results without confusing metrics", table: {
+        head: ["Question", "Use", "Do not infer"],
+        rows: [
+          ["Did Google Search clicks or impressions change?", "Search Console Performance report", "A single position is not the rank every person sees."],
+          ["Did site visits or engagement change?", "GA4 acquisition and landing-page reports", "Sessions are not the same thing as Search Console clicks."],
+          ["Was a page cited in an AI answer?", "Document a direct observation and repeat it consistently", "A page-level readiness score or direct traffic change does not prove a citation."],
+        ],
+      } },
+      { h2: "A practical review cadence", list: [
+        "Before publication: verify the page answers its intended reader question and links to relevant evidence.",
+        "After a technical release: check important URLs, canonical tags, robots directives, and sitemap output.",
+        "During monthly reviews: compare clicks, impressions, CTR, and average position over comparable date ranges and countries.",
+        "When investigating a decline: separate sitewide technical issues from query-specific demand changes and seasonal behavior.",
+      ] },
+    ],
+    relatedTools: [
+      { slug: "seo-audit", anchor: "on-page SEO audit" },
+      { slug: "robots-checker", anchor: "robots.txt checker" },
+      { slug: "sitemap-checker", anchor: "sitemap checker" },
+    ],
+    faqs: [
+      { q: "Do I need special GEO markup for Google AI Overviews?", a: "Google says there are no additional technical requirements or special optimizations to appear in AI Overviews or AI Mode. Standard SEO fundamentals remain relevant." },
+      { q: "Does a sitemap guarantee my page will be indexed?", a: "No. A sitemap helps search engines discover URLs, but it does not guarantee that they will crawl or index every listed page." },
+      { q: "Can structured data guarantee an AI citation?", a: "No. Structured data can clarify page meaning and may make eligible pages available for supported rich results, but it does not guarantee display or AI citations." },
+      { q: "Where should I check Google indexing?", a: "Use Search Console URL Inspection for the specific page, and use the relevant Search Console reports to review broader site patterns." },
+    ],
+    sources: [
+      { label: "Google Search Central: AI features and your website", url: "https://developers.google.com/search/docs/appearance/ai-features" },
+      { label: "Google Search Central: generative AI content guidance", url: "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content" },
+      { label: "Google Search Central: helpful, reliable, people-first content", url: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content" },
+      { label: "Google Search Central: structured data guidelines", url: "https://developers.google.com/search/docs/appearance/structured-data/sd-policies" },
+    ],
+  },
+
+  {
+    slug: "search-console-seo-opportunities",
+    title: "How to Find SEO Opportunities in Google Search Console",
+    description: "A step-by-step method for finding query, page, country, and device opportunities in Search Console using clicks, impressions, CTR, and average position.",
+    h1: "How to Find SEO Opportunities in Google Search Console",
+    datePublished: "2026-11-01",
+    author: AUTHOR,
+    category: "Search Console",
+    readingTime: 11,
+    intro: [
+      "Google Search Console's Performance report shows how a verified website appears in Google Search. Its clicks, impressions, click-through rate, and average position can be grouped by queries, pages, countries, devices, and search appearance. These are measured signals from Google's reporting system, not estimates from a page checker.",
+      "A useful opportunity review starts by comparing like with like: the same property, search type, date range, and dimensions. The goal is not to find a magic average-position cutoff. It is to identify a page or query where a specific improvement is plausible and testable.",
+    ],
+    sections: [
+      { h2: "Set up a trustworthy comparison", steps: [
+        { title: "1. Select the correct property", body: "Use the verified Search Console property that covers the site version you are analyzing. A domain property and a URL-prefix property can report different scopes." },
+        { title: "2. Choose the search type", body: "Web, image, video, and news performance have different contexts. Keep the type consistent when comparing periods." },
+        { title: "3. Choose comparable dates", body: "Compare equivalent periods and account for seasonality, holidays, launches, and known tracking changes. Recent data can be incomplete or still processing." },
+        { title: "4. Segment before acting", body: "Filter by query, page, country, device, or search appearance to avoid mixing unrelated changes into one average." },
+      ] },
+      { h2: "Find queries with impressions but fewer clicks", body: [
+        "A query with impressions and few clicks is a question to investigate, not automatic evidence that the title is poor. Check the query's intent, the page that receives impressions, the average position, and what the search result actually shows in that market.",
+        "If the result is already prominent but CTR differs from a relevant baseline, inspect whether the page title accurately communicates its value and whether the snippet matches the query. Google may generate a title link or snippet from page content instead of using the exact text you wrote.",
+      ], list: [
+        "Group queries by the same reader intent before combining them.",
+        "Open the page that Search Console associates with the query and check whether it answers that need.",
+        "Make one meaningful change at a time and record the publication date.",
+        "Revisit the comparison after enough data accumulates; do not treat day-to-day movement as proof of cause.",
+      ] },
+      { h2: "Use page reports to spot content updates", body: [
+        "A page can receive impressions across many different queries. Filter to the page first, then inspect its query set for related questions that the article already addresses weakly or does not address at all. Confirm any proposed section by checking the actual search results, support questions, and reliable source material.",
+        "If two pages appear for the same query, do not merge them automatically. Determine whether they serve different intents, whether internal links are clear, and whether one URL has become redundant. Compare clicks and conversions where available before redirecting or removing content.",
+      ] },
+      { h2: "Break out countries and devices", body: [
+        "For a site serving the United States, United Kingdom, Australia, and India, the country dimension can reveal that a query is relevant in one market but not another. Separate English-language countries do not necessarily need separate pages; first look for real differences in terminology, regulations, currency, availability, or user task.",
+        "Device filters can help explain changes when a page is difficult to use on mobile. Search Console's mobile performance is not a replacement for actual usability checks, and a query's device mix can change over time.",
+      ] },
+      { h2: "Prioritize fixes with evidence", table: {
+        head: ["Observed pattern", "Check next", "Possible next action"],
+        rows: [
+          ["Impressions are present, clicks are low", "Intent, result display, title/snippet fit", "Improve the page title or content only if it better represents the page."],
+          ["Clicks or impressions fall for one page", "Date range, index/canonical status, query mix", "Fix verified technical issues or update genuinely stale sections."],
+          ["A query shows the wrong landing page", "Internal links, page intent, duplicate coverage", "Clarify page targeting and link the preferred page where appropriate."],
+          ["Country performance differs", "Local phrasing, audience need, page suitability", "Localize only when the page can provide real regional value."],
+        ],
+      } },
+      { h2: "Important limits of the report", list: [
+        "Average position is an aggregate, not a fixed ranking every user sees.",
+        "Search Console reporting data may be delayed or omit some low-volume query rows.",
+        "Search Console clicks and GA4 sessions use different collection and reporting systems; they should not be treated as identical counts.",
+        "A correlation after an edit does not prove that the edit caused the change. Record other site and search changes too.",
+      ] },
+    ],
+    relatedTools: [
+      { slug: "keyword-research", anchor: "keyword idea generator" },
+      { slug: "seo-audit", anchor: "page-level SEO audit" },
+      { slug: "rank-tracker", anchor: "on-page keyword signals checker" },
+    ],
+    faqs: [
+      { q: "What is a good average position in Search Console?", a: "There is no universal target. Average position combines performance across impressions and is not the exact rank every searcher sees. Interpret it with query, page, country, device, clicks, and impressions." },
+      { q: "Should I rewrite every query with impressions and no clicks?", a: "No. First check the query intent, position context, result presentation, and whether the page is a good match. Change a page only when there is a specific user-centered reason." },
+      { q: "How often should I review Search Console?", a: "A monthly review is a practical cadence for many sites, with additional checks after launches or meaningful changes. Allow for reporting delay and avoid reacting to small daily swings." },
+      { q: "Can Search Console tell me whether ChatGPT cited my page?", a: "Search Console reports Google Search performance. It is not a general citation report for ChatGPT, Perplexity, or every AI answer product." },
+    ],
+    sources: [
+      { label: "Google Search Console Help: Performance report", url: "https://support.google.com/webmasters/answer/7576553?hl=en" },
+      { label: "Google Search Console Help: clicks, impressions, and position", url: "https://support.google.com/webmasters/answer/7042828?hl=en" },
+      { label: "Google Search Central: URL Inspection tool", url: "https://support.google.com/webmasters/answer/9012289?hl=en" },
+      { label: "Google Analytics: Search Console integration and data limits", url: "https://support.google.com/analytics/answer/10737381?hl=en" },
+    ],
+  },
+
+  {
+    slug: "ga4-ai-referral-measurement",
+    title: "How to Measure AI Search Traffic in GA4 Without Guessing",
+    description: "Use GA4 acquisition reports to review traffic sources, understand its AI Assistant channel, and report AI referrals without treating sessions as citations.",
+    h1: "How to Measure AI Search Traffic in GA4 Without Guessing",
+    datePublished: "2026-11-01",
+    author: AUTHOR,
+    category: "Analytics",
+    readingTime: 9,
+    intro: [
+      "Google Analytics 4 measures activity on your site or app and groups visits by acquisition dimensions. Google Search Console measures how a verified site appears in Google Search. These products answer related but different questions: a Search Console click is not automatically one GA4 session.",
+      "GA4 now documents an AI Assistant default channel for traffic from sources such as ChatGPT, Gemini, DeepSeek, Copilot, or Grok, and notes that it excludes Google's AI Overviews and AI Mode. What appears in a report depends on observed source information and the selected reporting dimensions—not on proof that an AI system cited a specific page.",
+    ],
+    sections: [
+      { h2: "Start in the Traffic acquisition report", steps: [
+        { title: "1. Select the right property and date range", body: "Confirm the GA4 property measures the correct site or app and compare equivalent periods. Check whether tracking or consent settings changed during the period." },
+        { title: "2. Review session source and medium", body: "Use the Traffic acquisition report to identify acquisition sources. Search for known AI referrers where they appear, and compare landing pages and engagement rather than treating a source label as a citation record." },
+        { title: "3. Check the AI Assistant channel", body: "GA4's default channel group includes an AI Assistant definition for some named AI sources. Review Google's current definition and your property's report; it does not represent every AI feature." },
+        { title: "4. Compare landing pages and outcomes", body: "Ask which pages received sessions from the observed source and whether visitors engaged or completed an important event. Do not assume higher session totals mean more citations." },
+      ] },
+      { h2: "Understand what GA4 can and cannot show", table: {
+        head: ["GA4 evidence", "What it can support", "What it cannot prove alone"],
+        rows: [
+          ["Source or channel", "A visit was attributed to a reported acquisition source", "That the source cited your page in a generated answer"],
+          ["Landing page", "Which page received the measured session", "Which answer or prompt caused the visit"],
+          ["Engagement and key events", "How measured visitors interacted with the site", "All views or influence that happened without a tracked click"],
+          ["Direct traffic", "GA4 could not assign a more specific source under its rules", "An AI mention; direct is not a citation proxy"],
+        ],
+      } },
+      { h2: "Build a custom group carefully", body: [
+        "If the default channel view does not answer your reporting question, GA4 supports custom channel groups based on source, medium, and other supported fields. Define the sources you want to group, document the rule, and test the result against the raw acquisition dimensions before you use it in a report.",
+        "Do not copy an old AI-referrer list without checking the current GA4 channel definitions. Google can change channel classifications, referrer patterns vary by product, and some visits arrive without enough referrer data to classify. A custom group is a reporting convenience, not a complete inventory of AI influence.",
+      ], list: [
+        "Name the group narrowly, such as 'Observed AI assistant referrals,' rather than implying it contains all AI traffic.",
+        "Record which source values and rule ordering are included.",
+        "Keep Search Console organic search separate from GA4 AI-source reporting.",
+        "Annotate major analytics changes so later comparisons are interpretable.",
+      ] },
+      { h2: "Pair GA4 with Search Console without merging metrics", body: [
+        "Google's Search Console integration can surface organic landing-page data alongside Analytics metrics for a linked property. It supports useful ways to explore how Search visits relate to on-site behavior, with documented dimension and date-availability limits. This linked view still does not turn Search Console clicks and GA4 sessions into the same metric.",
+        "For a monthly report, show the measures side by side, name the reporting period, and explain the source. Use Search Console for Google query/page impressions and clicks; use GA4 for sessions, traffic source, engagement, and key events. Acknowledge differences in consent, attribution, time zones, and data processing when counts do not match.",
+      ] },
+      { h2: "A simple monthly reporting template", list: [
+        "Search Console: clicks, impressions, CTR, average position, top query and landing-page changes.",
+        "GA4: sessions by source/channel, landing pages, engagement, and selected key events.",
+        "AI source observations: the channel definition, visible referrers, observed sessions, and known blind spots.",
+        "Actions: the page or measurement change, owner, date, and the next comparable review window.",
+      ] },
+    ],
+    relatedTools: [
+      { slug: "keyword-research", anchor: "keyword research guide and tool" },
+      { slug: "seo-audit", anchor: "technical page audit" },
+    ],
+    faqs: [
+      { q: "Does GA4 report all AI search visits?", a: "No. GA4 reports the source data available to it and classifies sources according to its channel definitions. Some visits may not carry usable referral information." },
+      { q: "Does the GA4 AI Assistant channel include Google AI Overviews?", a: "Google's documented default AI Assistant channel definition explicitly excludes Google AI Overviews and AI Mode." },
+      { q: "Can a GA4 referral prove that an AI cited my page?", a: "No. A referral is evidence of a measured visit attributed to a source. It does not by itself identify the prompt or prove a citation in an AI answer." },
+      { q: "Why do Search Console clicks differ from GA4 sessions?", a: "They are collected and reported differently. A Search Console click and a GA4 session are not equivalent units, and data availability, consent, attribution, and time settings can also differ." },
+    ],
+    sources: [
+      { label: "Google Analytics Help: Traffic acquisition report", url: "https://support.google.com/analytics/answer/12923437?co=GENIE.Platform%3DDesktop&hl=en" },
+      { label: "Google Analytics Help: default channel group definitions", url: "https://support.google.com/analytics/answer/9756891?hl=en" },
+      { label: "Google Analytics Help: custom channel groups", url: "https://support.google.com/analytics/answer/13051316?hl=en" },
+      { label: "Google Analytics Help: Search Console integration", url: "https://support.google.com/analytics/answer/10737381?hl=en" },
+    ],
+  },
+
+  {
+    slug: "international-seo-us-uk-australia-india",
+    title: "International SEO for the US, UK, Australia, and India",
+    description: "A practical international SEO checklist for English-language sites serving the United States, United Kingdom, Australia, and India without thin duplicate country pages.",
+    h1: "International SEO for the US, UK, Australia, and India",
+    datePublished: "2026-11-01",
+    author: AUTHOR,
+    category: "International SEO",
+    readingTime: 10,
+    intro: [
+      "Serving the United States, United Kingdom, Australia, and India does not automatically require four copies of every article. Decide whether a page needs regional treatment by examining real differences in audience needs, product availability, terminology, law, pricing, or support—not by inserting a country name into an otherwise identical page.",
+      "Google's international-site documentation distinguishes multilingual sites from multi-regional sites. For pages that genuinely have localized alternatives, separate URLs and reciprocal hreflang annotations can help Google understand the relationship. If the main content is the same and only the template changes, hreflang may still be relevant; it is not a substitute for useful regional content.",
+    ],
+    sections: [
+      { h2: "Choose the right content model", table: {
+        head: ["Situation", "Approach", "Avoid"],
+        rows: [
+          ["Same English guide works across all four markets", "One canonical page; use spelling and examples your audience understands", "Four near-identical pages with swapped country names"],
+          ["A genuine policy, pricing, or product difference exists", "Create a clearly labeled regional version where it helps readers", "A region page that offers no unique information"],
+          ["A market needs translated content", "Use separate language URLs and correctly connected alternates", "Relying only on browser detection or a redirect"],
+          ["Local search intent differs", "Research the local query, results, and user task before choosing a format", "Assuming the same keyword wording and demand in every country"],
+        ],
+      } },
+      { h2: "Use regional URLs only when they serve readers", body: [
+        "A country or language URL structure can make a real offer clearer, such as a page with local currency, local availability, country-specific terms, or regionally relevant examples. Keep each page self-contained and make the differences visible to visitors as well as search engines.",
+        "Do not create a page per country merely to capture a keyword. Thin pages that repeat the same advice can compete with one another, burden future maintenance, and offer little reason for a user to choose the local version.",
+      ] },
+      { h2: "Hreflang: connect equivalent localized pages", steps: [
+        { title: "1. Map true equivalents", body: "Only annotate pages that are alternate language or regional versions of the same content. Do not connect unrelated pages just because they share a topic." },
+        { title: "2. Use correct locale codes", body: "Use supported language and optional region codes from Google's documentation. Choose a default version or x-default only when that destination is genuinely useful." },
+        { title: "3. Add reciprocal references", body: "Each alternate should list itself and the other alternates. Keep the annotations consistent across all versions." },
+        { title: "4. Keep canonical signals aligned", body: "A localized page should generally canonicalize to its own preferred URL rather than accidentally canonicalizing all regions to one version." },
+        { title: "5. Validate and maintain", body: "Check that every alternate URL returns a usable page, is indexable as intended, and has matching references after URL changes." },
+      ] },
+      { h2: "Research intent in each market", body: [
+        "Use Search Console country filters to see where existing impressions and clicks come from. Use country-specific keyword research when available, and inspect the actual results for the query in that market. A word that sounds equivalent in US, UK, Australian, and Indian English may express a different product, regulation, or user need.",
+        "Localize more than spelling when the task requires it. A guide about payment options, tax obligations, shipping, or privacy should link to authoritative local sources and state the relevant jurisdiction. If you cannot verify a local fact, do not invent it; describe the limitation or omit the claim.",
+      ] },
+      { h2: "A four-market quality checklist", list: [
+        "Is the intended country or language audience explicit from the page itself?",
+        "Does the page provide a real local benefit beyond a country name in the title?",
+        "Are prices, dates, units, spelling, and contact or support details accurate for that market?",
+        "Do country-specific claims cite the relevant regulator or primary source?",
+        "Are canonical, hreflang, internal links, sitemap entries, and redirects consistent?",
+        "Can readers reach the other relevant region or language version without forced location redirects?",
+      ] },
+    ],
+    relatedTools: [
+      { slug: "keyword-research", anchor: "keyword research tool" },
+      { slug: "canonical-checker", anchor: "canonical URL checker" },
+      { slug: "sitemap-checker", anchor: "sitemap checker" },
+    ],
+    faqs: [
+      { q: "Do I need separate pages for the US, UK, Australia, and India?", a: "Not if the same page genuinely serves each audience. Make a regional page when it provides meaningful local differences such as pricing, availability, laws, or examples." },
+      { q: "Does hreflang improve rankings?", a: "Hreflang helps Google understand alternate language or regional versions and serve an appropriate version. It is not a ranking boost or a replacement for good content." },
+      { q: "Should every English version use hreflang?", a: "If you have distinct equivalent regional pages, hreflang can help describe those alternatives. If you have one English page serving multiple countries, separate regional copies may not be needed." },
+      { q: "Can I redirect visitors automatically by country?", a: "Avoid making important content available only after location-based redirects. Google recommends distinct URLs and hreflang for locale variants because adaptive delivery can make versions harder to discover." },
+    ],
+    sources: [
+      { label: "Google Search Central: managing multi-regional and multilingual sites", url: "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites" },
+      { label: "Google Search Central: localized versions and hreflang", url: "https://developers.google.com/search/docs/specialty/international/localized-versions" },
+      { label: "Google Search Central: locale-adaptive pages", url: "https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages" },
+    ],
+  },
+
+  {
+    slug: "robots-sitemap-indexing-guide",
+    title: "Robots.txt, XML Sitemaps, and Google Indexing: What Each File Does",
+    description: "Understand the difference between crawl rules, noindex directives, sitemaps, and Google indexing, with practical checks for diagnosing a missing page.",
+    h1: "Robots.txt, XML Sitemaps, and Google Indexing: What Each File Does",
+    datePublished: "2026-11-01",
+    author: AUTHOR,
+    category: "Technical SEO",
+    readingTime: 9,
+    intro: [
+      "Robots.txt, a sitemap, and a noindex directive solve different problems. Robots.txt tells compliant crawlers which URLs they may request. A sitemap lists URLs you want search engines to discover. A noindex directive asks a search engine not to include a page in results when it can crawl and see that directive.",
+      "None of these files makes a page private, and a sitemap does not guarantee indexing. Google describes crawling, indexing, and serving as separate stages; a page can be discovered without being indexed, and an indexed page is not guaranteed to appear for a particular query.",
+    ],
+    sections: [
+      { h2: "The four concepts are not interchangeable", table: {
+        head: ["Signal", "Purpose", "Common mistake"],
+        rows: [
+          ["robots.txt", "Manage crawler access to URL paths", "Using it as a privacy or reliable deindexing tool"],
+          ["XML sitemap", "Help search engines discover URLs and understand page relationships", "Treating submission as an indexing request or guarantee"],
+          ["meta robots noindex / X-Robots-Tag", "Tell a crawler that can access the page not to index it", "Blocking the page in robots.txt so the crawler cannot see noindex"],
+          ["Canonical", "Indicate the preferred URL among duplicate or similar pages", "Treating it as a guaranteed command rather than a signal"],
+        ],
+      } },
+      { h2: "Diagnose a page that is not appearing", steps: [
+        { title: "1. Inspect the URL in Search Console", body: "Check whether Google knows the URL, the last crawl result, the indexing status, and the canonical Google selected when available." },
+        { title: "2. Check access and responses", body: "Load the exact URL and inspect robots.txt, HTTP status, authentication, redirects, and any X-Robots-Tag or meta robots directives." },
+        { title: "3. Check canonical consistency", body: "Compare the page's canonical, internal links, redirects, and sitemap version. Fix conflicting URL variants rather than adding duplicate entries." },
+        { title: "4. Check useful discovery links", body: "Link important pages from relevant, crawlable pages. Avoid orphaning key guides or relying on a sitemap as the only discovery path." },
+        { title: "5. Recheck after a meaningful fix", body: "Request or wait for a recrawl using the appropriate Search Console tools, then confirm the indexed version. There is no guaranteed processing time." },
+      ] },
+      { h2: "Build a clean XML sitemap", list: [
+        "Include absolute URLs on the preferred host and protocol.",
+        "List only canonical pages that you want search engines to discover; omit login, utility, and private pages.",
+        "Remove redirects, errors, noindex pages, duplicate variants, and non-canonical URLs.",
+        "Use lastmod only when it reflects an authoritative, page-specific significant update; omit it when you cannot maintain it accurately.",
+        "Keep the sitemap within protocol limits and split large URL sets using a sitemap index when needed.",
+        "Reference the correct sitemap URL in robots.txt and verify the live XML response.",
+      ] },
+      { h2: "Use robots.txt for crawl management, not security", body: [
+        "Robots.txt is publicly readable and designed for cooperative crawlers. It does not prevent a person or an abusive bot from requesting a URL, and a blocked URL can sometimes still appear in search results without a snippet if it is known from other links.",
+        "For sensitive content, use authentication or access controls. To keep a public page out of Search, make sure Google can crawl the page and see an appropriate noindex directive, or use another supported removal method when relevant.",
+      ] },
+      { h2: "What to check after changing a sitemap", body: [
+        "Fetch the published sitemap and parse it as XML. Confirm that every location belongs to the intended public origin, that no temporary preview host is present, and that the list contains only intended indexable pages. Then check the sitemap report in Search Console for processing status.",
+        "A successful file fetch only proves that a server returned the file. It does not establish that every listed page is indexed, eligible, or ranking. Use URL Inspection for specific pages and site reports for broader patterns.",
+      ] },
+    ],
+    relatedTools: [
+      { slug: "robots-checker", anchor: "robots.txt checker" },
+      { slug: "sitemap-checker", anchor: "XML sitemap checker" },
+      { slug: "canonical-checker", anchor: "canonical URL checker" },
+    ],
+    faqs: [
+      { q: "Does robots.txt remove a page from Google?", a: "No. Robots.txt manages crawler access and is not a reliable way to remove a page from Search. Use a crawlable noindex directive or access protection as appropriate." },
+      { q: "Does submitting a sitemap guarantee indexing?", a: "No. A sitemap can help discovery, but Google does not guarantee that all listed URLs will be crawled or indexed." },
+      { q: "Should a noindex page be blocked in robots.txt?", a: "Usually not if you need Google to see the noindex directive. If crawling is blocked, Google may not be able to read that directive." },
+      { q: "Do I need a sitemap for a small site?", a: "Google can often discover well-linked pages without one, but a sitemap can still help describe the URLs you consider important. It does not replace internal links." },
+    ],
+    sources: [
+      { label: "Google Search Central: sitemap overview", url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview" },
+      { label: "Google Search Central: build and submit a sitemap", url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" },
+      { label: "Google Search Central: robots.txt introduction", url: "https://developers.google.com/search/docs/crawling-indexing/robots/intro" },
+      { label: "Google Search Central: how Search works", url: "https://developers.google.com/search/docs/fundamentals/how-search-works" },
+    ],
+  },
 ];
 
 export const BLOG_INDEX: BlogPostMeta[] = BLOG_POSTS.map(({ sections: _s, intro: _i, h1: _h, relatedTools: _r, ...meta }) => meta);
