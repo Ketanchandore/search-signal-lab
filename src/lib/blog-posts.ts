@@ -112,17 +112,17 @@ export const BLOG_POSTS: BlogPost[] = [
 
   {
     slug: "what-is-geo",
-    title: "What Is GEO? The Complete Generative Engine Optimization Guide for 2026",
+    title: "What Is GEO? A Practical Guide to Generative Engine Optimization",
     description:
       "GEO explained: Generative Engine Optimization — how to optimize your website to be cited by ChatGPT, Gemini, Perplexity, Claude and DeepSeek in AI-generated answers.",
-    h1: "What Is GEO? The Complete Generative Engine Optimization Guide for 2026",
+    h1: "What Is GEO? A Practical Guide to Generative Engine Optimization",
     datePublished: PUB,
     author: AUTHOR,
     category: "GEO",
     readingTime: 13,
     intro: [
       "GEO stands for Generative Engine Optimization. It is the practice of optimising a website so that it is selected, cited and recommended by AI-powered search systems — ChatGPT Search, Google Gemini and AI Overviews, Perplexity, Microsoft Copilot, Claude and DeepSeek.",
-      "As of 2026, roughly 60% of informational queries are answered directly by an AI system without a click to any website. GEO is the strategy for staying visible inside that answer instead of below it.",
+      "GEO is a broad term used for improving how content is discovered, interpreted, and cited by generative search experiences. It does not replace search fundamentals, and there is no dependable formula that guarantees a citation.",
     ],
     sections: [
       {
@@ -132,63 +132,60 @@ export const BLOG_POSTS: BlogPost[] = [
           rows: [
             ["Target", "Google's ranking algorithm", "AI language models and retrieval systems"],
             ["Goal", "Rank in the top 10 organic results", "Be cited inside the generated answer"],
-            ["Primary signal", "Backlinks and on-page optimisation", "Factual density, entities, E-E-A-T"],
+            ["Useful foundation", "Crawlable pages, helpful content, and clear site structure", "The same foundations plus direct, verifiable answers"],
             ["Content format", "Long-form comprehensive pages", "Modular, directly answerable blocks"],
             ["Measurement", "Keyword position", "Citation rate and AI referral traffic"],
-            ["Typical speed", "3–12 months", "2–8 weeks"],
+            ["Typical speed", "Varies by site and query", "Varies by product, query, and source"],
           ],
         },
         body: [
-          "GEO does not replace SEO — it depends on it. Around 97% of AI Overview citations come from pages already ranking in the organic top 20. Traditional authority is the gateway to AI citation.",
+          "GEO does not replace SEO. Google says AI Overviews and AI Mode have no additional technical requirements or special optimization, and that foundational SEO practices remain relevant. Other answer engines vary; do not assume Google's guidance guarantees their citations.",
         ],
       },
       {
-        h2: "What Actually Increases AI Citations? The Research",
+        h2: "What Can You Improve Without Overpromising?",
         body: [
-          "Princeton University's GEO study analysed which content characteristics correlate with citation in generative answers. Four levers stood out:",
+          "Published research studies specific systems, prompts, and sample sets; their results do not prove a universal ranking factor. For practical work, make source material, definitions, methods, dates, and limitations clear so readers can verify claims:",
         ],
         list: [
-          "+41% AI visibility — expert quotations and clearly attributed statements",
-          "+41% AI visibility — original data and first-party research statistics",
-          "+32% AI visibility — cited statistics with links to the source",
-          "+28% AI visibility — fluency-optimised, cleanly structured writing",
+          "Answer the main question directly, then explain conditions and edge cases.",
+          "Attribute statistics to the original source and include publication dates where relevant.",
+          "Use headings and lists to make long pages easier to scan, not to meet a supposed AI formula.",
+          "Keep factual claims current and correct errors when the source material changes.",
         ],
       },
       {
         h2: "Which Five Platforms Should You Optimize For?",
         list: [
-          "Google AI Overviews — appears above organic results, cites mostly from the top 20. Needs a solid SEO base, structured content and FAQPage schema.",
-          "ChatGPT Search — crawls live via OAI-SearchBot. Allow that bot, and build authority signals; high-authority sources dominate its citations.",
-          "Perplexity — real-time search with multiple citations per answer. Short paragraphs and fresh content matter most here.",
-          "Claude — ClaudeBot prefers structured, factual content: definitions, numbered lists and comparison tables.",
-          "Microsoft Copilot — uses the Bing index. Submit to Bing Webmaster Tools and allow Bingbot; Copilot reach exceeds a billion devices.",
+          "Google Search AI features: follow Search Central's standard crawlability, indexing, and helpful-content guidance.",
+          "ChatGPT Search, Perplexity, Claude, and other products: review each provider's current crawler and publisher documentation; policies and retrieval may differ.",
+          "Bing-powered experiences: keep Bingbot access and Bing Webmaster information accurate where you use that service.",
         ],
       },
       {
         h2: "How Do You Create AI-Citable Content? Step by Step",
         steps: [
-          { title: "Step 1 — Lead with a direct definition", body: "Answer the page's primary question in the first paragraph using the pattern 'X is …'. This sentence is what AI systems extract verbatim." },
-          { title: "Step 2 — Write in short paragraphs", body: "Two to three sentences maximum. Retrieval systems chunk pages; shorter chunks are easier to lift cleanly." },
-          { title: "Step 3 — Use question-format headings", body: "'What is GEO?', 'How does AI citation work?' — headings that mirror the queries people type into AI systems." },
-          { title: "Step 4 — Attribute every statistic", body: "A data point with a named source signals verifiability, the property AI systems weight most when choosing sources." },
-          { title: "Step 5 — Add FAQPage schema", body: "FAQ markup is the most directly extractable structured format and is frequently quoted word for word." },
-          { title: "Step 6 — Publish an llms.txt file", body: "Ten minutes of work at your domain root that tells AI crawlers what your site is and which pages are authoritative." },
+          { title: "Step 1 — Identify the reader's task", body: "Use Search Console queries, customer questions, and support notes to understand what the page needs to answer." },
+          { title: "Step 2 — State the answer and its boundaries", body: "Give a direct answer, then explain who it applies to, what exceptions matter, and what a reader should verify." },
+          { title: "Step 3 — Show the evidence", body: "Link to primary documents, describe your method for original research, and distinguish observed facts from opinion." },
+          { title: "Step 4 — Make the page usable", body: "Organize sections with descriptive headings, useful examples, accessible tables, and relevant internal links." },
+          { title: "Step 5 — Add accurate structured data when it fits", body: "Use markup that matches visible content and current search feature policies. Valid markup does not guarantee a rich result or AI citation." },
+          { title: "Step 6 — Measure what you can observe", body: "Use Search Console for Google Search performance and GA4 for on-site acquisition and behavior; label direct citation observations separately." },
         ],
       },
       {
         h2: "What Is llms.txt and Why Does It Change AI Visibility?",
         body: [
-          "llms.txt is a plain markdown file at yourdomain.com/llms.txt that describes your site's purpose, your most important pages, and how AI systems should interpret your content.",
-          "Unlike robots.txt, which controls access, llms.txt guides interpretation. It was proposed by Jeremy Howard of fast.ai and has been adopted by several AI organisations.",
-          "Across 2.4 million audited websites only about 9% have implemented it. That gap is the cheapest GEO advantage currently available.",
+          "The llms.txt proposal describes a plain-text file that can summarize a website and link to selected resources. It is separate from robots.txt and does not replace a sitemap.",
+          "Do not treat llms.txt as a Google ranking requirement or assume every AI service reads it. Publish it only if it is useful to your site's documentation and maintain it like any other public page.",
         ],
       },
       {
         h2: "How Do You Measure GEO Performance?",
         list: [
-          "AI referral traffic in GA4 — check Traffic Acquisition → Session source for chat.openai.com, perplexity.ai, claude.ai and copilot.microsoft.com.",
-          "Direct traffic growth — AI systems often mention brands without a link, so rising direct sessions is a downstream citation signal.",
-          "Citation readiness score — audit the structural signals that correlate with being cited before you wait for referrals to appear.",
+          "Google Search visibility: use Search Console clicks, impressions, CTR, and average position.",
+          "Website visits: use GA4 acquisition reports; referral information can be missing or grouped differently depending on how a visitor arrived.",
+          "AI citations: record direct observations separately, with the product, query, date, locale, and method. Do not infer citations from direct traffic changes.",
         ],
       },
     ],
