@@ -32,7 +32,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: 11,
     intro: [
       "Rank tracking is the practice of recording where a specific URL appears in search results for a specific keyword, location and device, then measuring how that position moves over time. It is the single clearest feedback loop in SEO: you change something, and the position tells you whether search engines agreed.",
-      "There are more than 53,000 monthly searches for rank tracking software, and nearly every result costs $100–$500 per month. That price is not required. This guide shows how to track rankings for free, how to read position data correctly, and why in 2026 position alone no longer describes your visibility.",
+      "This guide explains how to measure search visibility responsibly, how to read position data in context, and how to tell the difference between a genuine rank report and a page-level checker.",
     ],
     sections: [
       {
@@ -46,8 +46,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         h2: "Why Position Data Matters More Than Ever in 2026",
         body: [
-          "Click-through rate is not linear. Position 1 captures roughly 27% of clicks, position 3 around 11%, and position 10 under 3%. Moving from #8 to #4 typically triples traffic for the same keyword and the same effort.",
-          "Since AI Overviews expanded, organic position also determines AI visibility. Analysis of AI Overview citations shows about 97% of cited pages already rank in the traditional top 20. Your position is now the entry ticket to being quoted by an AI system.",
+          "A position number is not a promise of traffic. Search appearance, location, device, query wording, and result features all affect what a searcher sees and whether they click. Use clicks and impressions alongside average position to understand performance.",
+          "Google says its AI search features rely on the same core search foundations and do not require special optimization. Strong technical access and useful content are sensible foundations, but no checklist can promise a citation in an AI answer.",
         ],
       },
       {
@@ -73,13 +73,13 @@ export const BLOG_POSTS: BlogPost[] = [
           head: ["Metric", "Traditional ranking", "AI citation visibility"],
           rows: [
             ["What is measured", "Position 1–100 in organic results", "Whether the page is quoted in an AI answer"],
-            ["Primary driver", "Backlinks, relevance, page experience", "Factual density, structure, E-E-A-T, schema"],
+            ["Useful foundation", "Crawlable pages, helpful content, and clear site structure", "The same foundations plus direct, verifiable answers"],
             ["Typical time to move", "3–12 months", "2–8 weeks"],
             ["Where to measure", "Rank tracker + Search Console", "AI referral traffic in GA4 + citation audit"],
           ],
         },
         body: [
-          "Track both. A page can lose two organic positions while gaining an AI Overview citation and end up with more total visibility — or the reverse.",
+          "Track the evidence each platform actually provides. Search Console reports Google Search data; a page checker does not show whether ChatGPT or Perplexity cited a page.",
         ],
       },
       {
