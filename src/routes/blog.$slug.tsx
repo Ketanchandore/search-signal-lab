@@ -59,7 +59,9 @@ function BlogPostPage() {
             <User className="size-3.5" />
             <Link to="/blog/author/team" className="hover:text-primary">SEOAcademys Editorial Team</Link>
           </span>
-          <span className="inline-flex items-center gap-1"><CalendarDays className="size-3.5" /> Last updated: June 2026</span>
+          <span className="inline-flex items-center gap-1"><CalendarDays className="size-3.5" />
+            {post.dateModified ? `Updated: ${new Intl.DateTimeFormat("en", { dateStyle: "medium", timeZone: "UTC" }).format(new Date(post.dateModified))}` : `Published: ${new Intl.DateTimeFormat("en", { dateStyle: "medium", timeZone: "UTC" }).format(new Date(post.datePublished))}`}
+          </span>
           <span className="inline-flex items-center gap-1"><Clock className="size-3.5" /> {post.readingTime} min read</span>
         </div>
 
@@ -147,6 +149,21 @@ function BlogPostPage() {
                 </div>
               ))}
             </div>
+          </section>
+        )}
+
+        {post.sources && post.sources.length > 0 && (
+          <section className="mt-12 border-t border-border pt-7">
+            <h2 className="font-display text-2xl font-bold tracking-tight">Sources and further reading</h2>
+            <ul className="mt-4 space-y-2">
+              {post.sources.map((source) => (
+                <li key={source.url}>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline underline-offset-4">
+                    {source.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
 
