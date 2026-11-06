@@ -1,0 +1,13 @@
+# SEOAcademys — https://seoacademys.lovable.app
+# Public pages are crawlable. robots.txt is not an access-control mechanism.
+
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /audit
+Disallow: /assistant
+Disallow: /connections
+Disallow: /auth
+Disallow: /api/
+
+Sitemap: https://seoacademys.lovable.app/sitemap.xml
